@@ -7,11 +7,14 @@
   <h1>Something happened in UFSCar</h1>
 <% else %>
   <% if @status.isOpen %>
-    <% a = @labs.subjects.where("begin <= ?", DateTime.now).where("end > ?", DateTime.now) %>
-    <% if !a.empty? && !a[0].isFreeToJoin%>
+    <% a = @labs.subjects.where("begin <= ?", DateTime.current).where("end > ?", (DateTime.current.to_time + 1.hours).to_datetime ) %>
+    <% if a != nil && !a.empty? && !a[0].isFreeToJoin%>
       Right now it is happening <%= a[0].title %>, so be tuned to get your chair in lab<br>
       <%= a[0].begin %><br>
       <%= a[0].end %><br>
+    <% elsif a.empty? %>
+     <!-- when the lab is open but not within the time it should work --!>
+      Right now, the lab is open, but i dont think it should be opened in this moment.<br>
     <% else %>
       <h1>YEP IT IS OPEN!</h1><br>
       <%= a[0].title %><br>
