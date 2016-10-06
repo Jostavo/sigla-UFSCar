@@ -7,8 +7,9 @@ class LaboratoryController < ApplicationController
     end
     @status = @labs.status.last
     @subjects = @labs.subjects
-    if @status == nil
-      #redirect_to root_path
-    end
+  end
+
+  def map
+    render html: "hello world, #laboratory#map"
   end
 end

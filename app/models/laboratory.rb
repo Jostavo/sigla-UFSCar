@@ -7,4 +7,5 @@ class Laboratory < ApplicationRecord
 
   has_many :status
   has_many :subjects
+  has_many :computers
 end
