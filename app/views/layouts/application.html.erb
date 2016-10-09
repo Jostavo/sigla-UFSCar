@@ -1,14 +1,26 @@
-<!DOCTYPE html>
 <html>
   <head>
-    <title>IsLabOpen</title>
+    <title>SiGLa - Sistema de Gerenciamento de Laboratórios</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   </head>
 
   <body>
-    <%= yield %>
+    <div class="navbar-fixed-top navbar-inverse">
+      <a class="navbar-brand" href="#">
+        LSO
+      </a>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Login<span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Sobre</a></li>
+      </ul>
+    </div>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

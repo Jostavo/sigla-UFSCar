@@ -1,32 +1,45 @@
-<h1><%= @labs.title %></h1>
-
 <% time = Time.now %>
-<% timeLab = @status.created_at + 360%>
+<% timeLab = @status.created_at + 0%>
 <% if timeLab < time %>
-  <!-- here is something like blackout or the internet cable is disconnected at ufscar -->
-  <h1>Something happened in UFSCar</h1>
+  <section id="door">
+    <img src="/assets/lso_wosignal.jpg"></img>
+  </section>
+  <h1>Não estamos recebendo sinal do dispositivo. :(</h1>
 <% else %>
   <% if @status.isOpen %>
+    <img src="/assets/lso_open.jpg"></img>
     <% a = @labs.subjects.where("begin <= ?", DateTime.current).where("end > ?", (DateTime.current.to_time + 1.hours).to_datetime ) %>
-    <% if a != nil && !a.empty? && !a[0].isFreeToJoin%>
-      Right now it is happening <%= a[0].title %>, so be tuned to get your chair in lab<br>
+    <% if !a.empty? && !a[0].isFreeToJoin%>
+      Nesse momento esta acontecendo <%= a[0].title %>, fique esperto pra pegar espaço no laboratório!<br>
       <%= a[0].begin %><br>
       <%= a[0].end %><br>
     <% elsif a.empty? %>
-     <!-- when the lab is open but not within the time it should work --!>
-      Right now, the lab is open, but i dont think it should be opened in this moment.<br>
+      <h1> Está aberto! Mas deveria? :s</h1>
+      <% else %>
+        <h1>Está aberto!</h1><br>
+        <%= a[0].title %><br>
+        <%= a[0].begin %><br>
+        <%= a[0].end %><br>
+        <br>
+      <% end %>
     <% else %>
-      <h1>YEP IT IS OPEN!</h1><br>
-      <%= a[0].title %><br>
-      <%= a[0].begin %><br>
-      <%= a[0].end %><br>
-      <br>
+      <h1>Está fechado :(</h1>
+      <img src="/assets/lso_close.jpg"></img>
     <% end %>
-  <% else %>
-    <h1> Nope :(</h1>
   <% end %>
-<% end %>
 
-<% @subjects.each do |u| %>
-  <%= u.begin.hour %>:00 to <%= u.end.hour %>:00 <%= u.title %><br>
-<% end %>
+  <% @subjects.each do |u| %>
+    <%= u.begin.hour %>:00 to <%= u.end.hour %>:00 <%= u.title %><br>
+  <% end %>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
