@@ -10,6 +10,30 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
  */
+@import "bootstrap-sprockets";
+@import "font-awesome";
+
+$grid-float-breakpoint: 10px;
+
+@import "bootstrap";
+
+
+body{
+  margin: 0px;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+li:last-child{
+  padding-right: 15px;
+}
+
+section{
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
