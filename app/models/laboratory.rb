@@ -5,7 +5,7 @@ class Laboratory < ApplicationRecord
   validates :linkDocs, presence: true
   validates :initials, presence: true
 
-  has_many :status
-  has_many :subjects
-  has_many :computers
+  has_many :status, dependent: :destroy
+  has_many :subjects, dependent: :destroy
+  has_many :computers, dependent: :destroy
 end
