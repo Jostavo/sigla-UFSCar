@@ -1,45 +1,50 @@
-<% time = Time.now %>
-<% timeLab = @status.created_at + 0%>
-<% if timeLab < time %>
-  <section id="door">
-    <img src="/assets/lso_wosignal.jpg"></img>
-  </section>
-  <h1>Não estamos recebendo sinal do dispositivo. :(</h1>
-<% else %>
-  <% if @status.isOpen %>
-    <img src="/assets/lso_open.jpg"></img>
-    <% a = @labs.subjects.where("begin <= ?", DateTime.current).where("end > ?", (DateTime.current.to_time + 1.hours).to_datetime ) %>
-    <% if !a.empty? && !a[0].isFreeToJoin%>
-      Nesse momento esta acontecendo <%= a[0].title %>, fique esperto pra pegar espaço no laboratório!<br>
-      <%= a[0].begin %><br>
-      <%= a[0].end %><br>
-    <% elsif a.empty? %>
-      <h1> Está aberto! Mas deveria? :s</h1>
+<script>
+$(document).ready(function() {
+  $('#fullpage').fullpage();
+});
+</script>
+
+<div id="fullpage">
+  <div class="section active" id="section0" style="background-image: url('/assets/lso_wosignal.jpg');">
+    <div class="container-fluid" style="padding-top: 30px;">
+      <% time = Time.now %>
+      <% timeLab = @status.created_at + 0%>
+      <% if timeLab < time %>
+        <h1>Não estamos recebendo sinal do dispositivo. :(</h1>
       <% else %>
-        <h1>Está aberto!</h1><br>
-        <%= a[0].title %><br>
-        <%= a[0].begin %><br>
-        <%= a[0].end %><br>
-        <br>
+        <% if @status.isOpen %>
+          <img src="/assets/lso_open.jpg"></img>
+          <% a = @labs.subjects.where("begin <= ?", DateTime.current).where("end > ?", (DateTime.current.to_time + 1.hours).to_datetime ) %>
+          <% if !a.empty? && !a[0].isFreeToJoin%>
+            Nesse momento esta acontecendo <%= a[0].title %>, fique esperto pra pegar espaço no laboratório!<br>
+            <%= a[0].begin %><br>
+            <%= a[0].end %><br>
+          <% elsif a.empty? %>
+            <h1> Está aberto! Mas deveria? :s</h1>
+          <% else %>
+            <h1>Está aberto!</h1><br>
+            <%= a[0].title %><br>
+            <%= a[0].begin %><br>
+            <%= a[0].end %><br>
+            <br>
+          <% end %>
+        <% else %>
+          <h1>Está fechado :(</h1>
+          <img src="/assets/lso_close.jpg"></img>
+        <% end %>
       <% end %>
-    <% else %>
-      <h1>Está fechado :(</h1>
-      <img src="/assets/lso_close.jpg"></img>
+    </div>
+    <% @subjects.each do |u| %>
+      <%= u.begin.hour %>:00 to <%= u.end.hour %>:00 <%= u.title %><br>
     <% end %>
-  <% end %>
+  </div>
+  <div class="section" id="section1" style="background-color: pink;">
+    <div class="slide">
+      meupe1
+    </div>
+    <div class="slide">
+      meupe2
+    </div>
 
-  <% @subjects.each do |u| %>
-    <%= u.begin.hour %>:00 to <%= u.end.hour %>:00 <%= u.title %><br>
-  <% end %>
-
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
+  </div>
+</div>
