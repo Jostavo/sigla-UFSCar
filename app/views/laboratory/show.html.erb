@@ -7,8 +7,8 @@ $(document).ready(function() {
 <div id="fullpage">
   <div class="section active" id="section0" style="background-image: url('/assets/lso_wosignal.jpg');">
     <div class="container-fluid" style="padding-top: 30px;">
-      <% time = Time.now %>
-      <% timeLab = @status.created_at + 0%>
+      <%= time = Time.now %>
+      <%= timeLab = @status.created_at + 360%>
       <% if timeLab < time %>
         <h1>Não estamos recebendo sinal do dispositivo. :(</h1>
       <% else %>
