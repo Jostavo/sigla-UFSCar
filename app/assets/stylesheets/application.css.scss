@@ -49,7 +49,6 @@ h1{
 	text-align: center;
     display: inline-block;
     background-color: gray;
-    margin: auto;
 }
 
 .pc-wrapper{
@@ -60,13 +59,21 @@ h1{
 
 .containerPC{
 	background-color: white;
-	width: 500px;
-	height: 70px;
+	width: 95%;
+	height: 50px;
 	display: table;
 	table-layout: fixed;
 	text-align: center;
+	margin-right: 2.5%;
+	margin-left: 2.5%;
+	margin-bottom: 0px;
+	margin-top: 0px;
 }
 
 .container-wrapper{
-	margin: 0;
+	margin-right: 2.5%;
+	margin-left: 2.5%;
+	background-color: white;
+	height: 190px;	
+	width: 95%;
 }
