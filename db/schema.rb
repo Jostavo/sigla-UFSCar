@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161011130102) do
+ActiveRecord::Schema.define(version: 20161012015153) do
+
+  create_table "computer_statuses", force: :cascade do |t|
+    t.string   "status"
+    t.integer  "computer_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["computer_id"], name: "index_computer_statuses_on_computer_id"
+  end
 
   create_table "computers", force: :cascade do |t|
     t.integer  "laboratory_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "physical_id"
     t.index ["laboratory_id"], name: "index_computers_on_laboratory_id"
   end
 

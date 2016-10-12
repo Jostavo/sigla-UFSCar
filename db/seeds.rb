@@ -17,8 +17,8 @@ lasid.status.create(:isOpen => false);
 lec.status.create(:isOpen => false);
 
 #inserting computers to the labs
-[1..50].each do |i|
-  lso.computers.create(:id => i)
+for k in 1..50
+  lso.computers.create(:physical_id => k)
 end
 
 Subject.delete_all
