@@ -37,3 +37,35 @@ section{
   height: 100%;
   width: 100%;
 }
+
+h1{
+  text-align: center;
+}
+
+.pc{
+	height: 50px;
+	width: 100px;
+	text-align: center;
+    display: inline-block;
+    background-color: gray;
+    margin: auto;
+}
+
+.pc-wrapper{
+	vertical-align: top;
+	display: table-cell;
+	padding-top: 10px;
+}
+
+.containerPC{
+	background-color: white;
+	width: 500px;
+	height: 70px;
+	display: table;
+	table-layout: fixed;
+	text-align: center;
+}
+
+.container-wrapper{
+	margin: 0;
+}
