@@ -38361,3 +38361,603 @@ Processing by LaboratoryController#show as HTML
 Completed 200 OK in 314ms (Views: 222.4ms | ActiveRecord: 55.7ms)
 
 
+Started GET "/" for 127.0.0.1 at 2016-10-14 08:31:14 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by LaboratoryController#show as HTML
+  [1m[36mLaboratory Load (0.4ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" WHERE "laboratories"."initials" = ? LIMIT ?[0m  [["initials", "LSO"], ["LIMIT", 1]]
+  [1m[36mStatus Load (0.2ms)[0m  [1m[34mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."laboratory_id" = ? ORDER BY "statuses"."id" DESC LIMIT ?[0m  [["laboratory_id", 54], ["LIMIT", 1]]
+  Rendering laboratory/show.html.erb within layouts/application
+  [1m[36mSubject Load (0.5ms)[0m  [1m[34mSELECT "subjects".* FROM "subjects" WHERE "subjects"."laboratory_id" = ?[0m  [["laboratory_id", 54]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 54], ["physical_id", 1], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.3ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 107], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 54], ["physical_id", 2], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 108], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 54], ["physical_id", 3], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 109], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.4ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 54], ["physical_id", 4], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 110], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 54], ["physical_id", 5], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 111], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 54], ["physical_id", 6], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 112], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 54], ["physical_id", 7], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 113], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 54], ["physical_id", 8], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 114], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 54], ["physical_id", 9], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 115], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 54], ["physical_id", 10], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 116], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 54], ["physical_id", 11], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 117], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 54], ["physical_id", 12], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 118], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 54], ["physical_id", 13], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.2ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 119], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 54], ["physical_id", 14], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 120], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 54], ["physical_id", 15], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 121], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 54], ["physical_id", 16], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 122], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 54], ["physical_id", 17], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 123], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.6ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 54], ["physical_id", 18], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 124], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 54], ["physical_id", 19], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 125], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 54], ["physical_id", 20], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 126], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 54], ["physical_id", 21], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 127], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 54], ["physical_id", 22], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 128], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 54], ["physical_id", 23], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 129], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 54], ["physical_id", 24], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.0ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 130], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 54], ["physical_id", 25], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 131], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 54], ["physical_id", 26], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.0ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 132], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 54], ["physical_id", 27], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 133], ["LIMIT", 1]]
+  Rendered laboratory/show.html.erb within layouts/application (120.8ms)
+Completed 200 OK in 1291ms (Views: 1024.4ms | ActiveRecord: 10.7ms)
+
+
+  [1m[36mLaboratory Load (0.3ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" ORDER BY "laboratories"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mLaboratory Load (0.2ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" ORDER BY "laboratories"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mComputer Load (0.3ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ?[0m  [["laboratory_id", 54]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddColumnStatusToComputer (20161014113219)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.4ms)[0m  [1m[35mALTER TABLE "computers" ADD "status" varchar[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20161014113219"]]
+  [1m[35m (87.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_computer_statuses_on_computer_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_computer_statuses_on_computer_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_computers_on_laboratory_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_computers_on_laboratory_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_reports_on_computer_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_reports_on_computer_id' AND type='index'
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_statuses_on_laboratory_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_statuses_on_laboratory_id' AND type='index'
+[0m
+  [1m[35m (0.3ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_subjects_on_laboratory_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_subjects_on_laboratory_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mLaboratory Load (0.2ms)[0m  [1m[34mSELECT "laboratories".* FROM "laboratories"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mStatus Load (0.2ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."laboratory_id" = ?[0m  [["laboratory_id", 54]]
+  [1m[35mSQL (1.3ms)[0m  [1m[31mDELETE FROM "statuses" WHERE "statuses"."id" = ?[0m  [["id", 53]]
+  [1m[36mSubject Load (0.2ms)[0m  [1m[34mSELECT "subjects".* FROM "subjects" WHERE "subjects"."laboratory_id" = ?[0m  [["laboratory_id", 54]]
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "subjects" WHERE "subjects"."id" = ?[0m  [["id", 424]]
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "subjects" WHERE "subjects"."id" = ?[0m  [["id", 425]]
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "subjects" WHERE "subjects"."id" = ?[0m  [["id", 426]]
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "subjects" WHERE "subjects"."id" = ?[0m  [["id", 427]]
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "subjects" WHERE "subjects"."id" = ?[0m  [["id", 428]]
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "subjects" WHERE "subjects"."id" = ?[0m  [["id", 429]]
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "subjects" WHERE "subjects"."id" = ?[0m  [["id", 430]]
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "subjects" WHERE "subjects"."id" = ?[0m  [["id", 431]]
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "subjects" WHERE "subjects"."id" = ?[0m  [["id", 432]]
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "subjects" WHERE "subjects"."id" = ?[0m  [["id", 433]]
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "subjects" WHERE "subjects"."id" = ?[0m  [["id", 434]]
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "subjects" WHERE "subjects"."id" = ?[0m  [["id", 435]]
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "subjects" WHERE "subjects"."id" = ?[0m  [["id", 436]]
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "subjects" WHERE "subjects"."id" = ?[0m  [["id", 437]]
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "subjects" WHERE "subjects"."id" = ?[0m  [["id", 438]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ?[0m  [["laboratory_id", 54]]
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "computers" WHERE "computers"."id" = ?[0m  [["id", 107]]
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "computers" WHERE "computers"."id" = ?[0m  [["id", 108]]
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "computers" WHERE "computers"."id" = ?[0m  [["id", 109]]
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "computers" WHERE "computers"."id" = ?[0m  [["id", 110]]
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "computers" WHERE "computers"."id" = ?[0m  [["id", 111]]
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "computers" WHERE "computers"."id" = ?[0m  [["id", 112]]
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "computers" WHERE "computers"."id" = ?[0m  [["id", 113]]
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "computers" WHERE "computers"."id" = ?[0m  [["id", 114]]
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "computers" WHERE "computers"."id" = ?[0m  [["id", 115]]
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "computers" WHERE "computers"."id" = ?[0m  [["id", 116]]
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "computers" WHERE "computers"."id" = ?[0m  [["id", 117]]
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "computers" WHERE "computers"."id" = ?[0m  [["id", 118]]
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "computers" WHERE "computers"."id" = ?[0m  [["id", 119]]
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "computers" WHERE "computers"."id" = ?[0m  [["id", 120]]
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "computers" WHERE "computers"."id" = ?[0m  [["id", 121]]
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "computers" WHERE "computers"."id" = ?[0m  [["id", 122]]
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "computers" WHERE "computers"."id" = ?[0m  [["id", 123]]
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "computers" WHERE "computers"."id" = ?[0m  [["id", 124]]
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "computers" WHERE "computers"."id" = ?[0m  [["id", 125]]
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "computers" WHERE "computers"."id" = ?[0m  [["id", 126]]
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "computers" WHERE "computers"."id" = ?[0m  [["id", 127]]
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "computers" WHERE "computers"."id" = ?[0m  [["id", 128]]
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "computers" WHERE "computers"."id" = ?[0m  [["id", 129]]
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "computers" WHERE "computers"."id" = ?[0m  [["id", 130]]
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "computers" WHERE "computers"."id" = ?[0m  [["id", 131]]
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "computers" WHERE "computers"."id" = ?[0m  [["id", 132]]
+  [1m[35mSQL (0.0ms)[0m  [1m[31mDELETE FROM "computers" WHERE "computers"."id" = ?[0m  [["id", 133]]
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "laboratories" WHERE "laboratories"."id" = ?[0m  [["id", 54]]
+  [1m[35m (113.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mStatus Load (0.1ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."laboratory_id" = ?[0m  [["laboratory_id", 55]]
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "statuses" WHERE "statuses"."id" = ?[0m  [["id", 54]]
+  [1m[36mSubject Load (0.1ms)[0m  [1m[34mSELECT "subjects".* FROM "subjects" WHERE "subjects"."laboratory_id" = ?[0m  [["laboratory_id", 55]]
+  [1m[36mComputer Load (0.0ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ?[0m  [["laboratory_id", 55]]
+  [1m[35mSQL (0.1ms)[0m  [1m[31mDELETE FROM "laboratories" WHERE "laboratories"."id" = ?[0m  [["id", 55]]
+  [1m[35m (72.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mStatus Load (0.1ms)[0m  [1m[34mSELECT "statuses".* FROM "statuses" WHERE "statuses"."laboratory_id" = ?[0m  [["laboratory_id", 56]]
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "statuses" WHERE "statuses"."id" = ?[0m  [["id", 55]]
+  [1m[36mSubject Load (0.1ms)[0m  [1m[34mSELECT "subjects".* FROM "subjects" WHERE "subjects"."laboratory_id" = ?[0m  [["laboratory_id", 56]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ?[0m  [["laboratory_id", 56]]
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "laboratories" WHERE "laboratories"."id" = ?[0m  [["id", 56]]
+  [1m[35m (73.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLaboratory Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "laboratories" WHERE "laboratories"."initials" = ? LIMIT ?[0m  [["initials", "LSO"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "laboratories" ("title", "mantainer", "email", "linkDocs", "created_at", "updated_at", "initials") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Laboratório de Sistemas Operacionais"], ["mantainer", "Profa. Dra. Sahudy"], ["email", "dcomp@ufscar.br"], ["linkDocs", "www.google.com.br"], ["created_at", 2016-10-14 11:39:01 UTC], ["updated_at", 2016-10-14 11:39:01 UTC], ["initials", "LSO"]]
+  [1m[35m (71.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLaboratory Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "laboratories" WHERE "laboratories"."initials" = ? LIMIT ?[0m  [["initials", "LASiD"], ["LIMIT", 1]]
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "laboratories" ("title", "mantainer", "email", "linkDocs", "created_at", "updated_at", "initials") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Laboratório de Sistemas Digitais"], ["mantainer", "Profa. Dra. Yeda"], ["email", "dcomp@ufscar.br"], ["linkDocs", "www.google.com.br"], ["created_at", 2016-10-14 11:39:01 UTC], ["updated_at", 2016-10-14 11:39:01 UTC], ["initials", "LASiD"]]
+  [1m[35m (84.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mLaboratory Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "laboratories" WHERE "laboratories"."initials" = ? LIMIT ?[0m  [["initials", "LEC"], ["LIMIT", 1]]
+  [1m[35mSQL (3.6ms)[0m  [1m[32mINSERT INTO "laboratories" ("title", "mantainer", "email", "linkDocs", "created_at", "updated_at", "initials") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["title", "Laboratório de Ensino de Computação"], ["mantainer", "Profa. Dra. Sahudy"], ["email", "dcomp@ufscar.br"], ["linkDocs", "www.google.com.br"], ["created_at", 2016-10-14 11:39:01 UTC], ["updated_at", 2016-10-14 11:39:01 UTC], ["initials", "LEC"]]
+  [1m[35m (62.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "statuses" ("laboratory_id", "isOpen", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["laboratory_id", 57], ["isOpen", true], ["created_at", 2016-10-14 11:39:02 UTC], ["updated_at", 2016-10-14 11:39:02 UTC]]
+  [1m[35m (84.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "statuses" ("laboratory_id", "isOpen", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["laboratory_id", 58], ["isOpen", false], ["created_at", 2016-10-14 11:39:02 UTC], ["updated_at", 2016-10-14 11:39:02 UTC]]
+  [1m[35m (86.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "statuses" ("laboratory_id", "isOpen", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["laboratory_id", 59], ["isOpen", false], ["created_at", 2016-10-14 11:39:02 UTC], ["updated_at", 2016-10-14 11:39:02 UTC]]
+  [1m[35m (66.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "computers" ("laboratory_id", "created_at", "updated_at", "physical_id", "status") VALUES (?, ?, ?, ?, ?)[0m  [["laboratory_id", 57], ["created_at", 2016-10-14 11:39:02 UTC], ["updated_at", 2016-10-14 11:39:02 UTC], ["physical_id", 1], ["status", "maintenance"]]
+  [1m[35m (86.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 134], ["created_at", 2016-10-14 11:39:02 UTC], ["updated_at", 2016-10-14 11:39:02 UTC]]
+  [1m[35m (70.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "computers" ("laboratory_id", "created_at", "updated_at", "physical_id", "status") VALUES (?, ?, ?, ?, ?)[0m  [["laboratory_id", 57], ["created_at", 2016-10-14 11:39:02 UTC], ["updated_at", 2016-10-14 11:39:02 UTC], ["physical_id", 2], ["status", "maintenance"]]
+  [1m[35m (65.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 135], ["created_at", 2016-10-14 11:39:02 UTC], ["updated_at", 2016-10-14 11:39:02 UTC]]
+  [1m[35m (71.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "computers" ("laboratory_id", "created_at", "updated_at", "physical_id", "status") VALUES (?, ?, ?, ?, ?)[0m  [["laboratory_id", 57], ["created_at", 2016-10-14 11:39:02 UTC], ["updated_at", 2016-10-14 11:39:02 UTC], ["physical_id", 3], ["status", "maintenance"]]
+  [1m[35m (78.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 136], ["created_at", 2016-10-14 11:39:02 UTC], ["updated_at", 2016-10-14 11:39:02 UTC]]
+  [1m[35m (91.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "computers" ("laboratory_id", "created_at", "updated_at", "physical_id", "status") VALUES (?, ?, ?, ?, ?)[0m  [["laboratory_id", 57], ["created_at", 2016-10-14 11:39:02 UTC], ["updated_at", 2016-10-14 11:39:02 UTC], ["physical_id", 4], ["status", "maintenance"]]
+  [1m[35m (69.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 137], ["created_at", 2016-10-14 11:39:02 UTC], ["updated_at", 2016-10-14 11:39:02 UTC]]
+  [1m[35m (84.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "computers" ("laboratory_id", "created_at", "updated_at", "physical_id", "status") VALUES (?, ?, ?, ?, ?)[0m  [["laboratory_id", 57], ["created_at", 2016-10-14 11:39:02 UTC], ["updated_at", 2016-10-14 11:39:02 UTC], ["physical_id", 5], ["status", "maintenance"]]
+  [1m[35m (82.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 138], ["created_at", 2016-10-14 11:39:03 UTC], ["updated_at", 2016-10-14 11:39:03 UTC]]
+  [1m[35m (65.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "computers" ("laboratory_id", "created_at", "updated_at", "physical_id", "status") VALUES (?, ?, ?, ?, ?)[0m  [["laboratory_id", 57], ["created_at", 2016-10-14 11:39:03 UTC], ["updated_at", 2016-10-14 11:39:03 UTC], ["physical_id", 6], ["status", "maintenance"]]
+  [1m[35m (64.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 139], ["created_at", 2016-10-14 11:39:03 UTC], ["updated_at", 2016-10-14 11:39:03 UTC]]
+  [1m[35m (102.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "computers" ("laboratory_id", "created_at", "updated_at", "physical_id", "status") VALUES (?, ?, ?, ?, ?)[0m  [["laboratory_id", 57], ["created_at", 2016-10-14 11:39:03 UTC], ["updated_at", 2016-10-14 11:39:03 UTC], ["physical_id", 7], ["status", "maintenance"]]
+  [1m[35m (72.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 140], ["created_at", 2016-10-14 11:39:03 UTC], ["updated_at", 2016-10-14 11:39:03 UTC]]
+  [1m[35m (64.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "computers" ("laboratory_id", "created_at", "updated_at", "physical_id", "status") VALUES (?, ?, ?, ?, ?)[0m  [["laboratory_id", 57], ["created_at", 2016-10-14 11:39:03 UTC], ["updated_at", 2016-10-14 11:39:03 UTC], ["physical_id", 8], ["status", "maintenance"]]
+  [1m[35m (77.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (4.2ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 141], ["created_at", 2016-10-14 11:39:03 UTC], ["updated_at", 2016-10-14 11:39:03 UTC]]
+  [1m[35m (86.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "computers" ("laboratory_id", "created_at", "updated_at", "physical_id", "status") VALUES (?, ?, ?, ?, ?)[0m  [["laboratory_id", 57], ["created_at", 2016-10-14 11:39:03 UTC], ["updated_at", 2016-10-14 11:39:03 UTC], ["physical_id", 9], ["status", "maintenance"]]
+  [1m[35m (84.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 142], ["created_at", 2016-10-14 11:39:03 UTC], ["updated_at", 2016-10-14 11:39:03 UTC]]
+  [1m[35m (83.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "computers" ("laboratory_id", "created_at", "updated_at", "physical_id", "status") VALUES (?, ?, ?, ?, ?)[0m  [["laboratory_id", 57], ["created_at", 2016-10-14 11:39:03 UTC], ["updated_at", 2016-10-14 11:39:03 UTC], ["physical_id", 10], ["status", "maintenance"]]
+  [1m[35m (63.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 143], ["created_at", 2016-10-14 11:39:03 UTC], ["updated_at", 2016-10-14 11:39:03 UTC]]
+  [1m[35m (99.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "computers" ("laboratory_id", "created_at", "updated_at", "physical_id", "status") VALUES (?, ?, ?, ?, ?)[0m  [["laboratory_id", 57], ["created_at", 2016-10-14 11:39:04 UTC], ["updated_at", 2016-10-14 11:39:04 UTC], ["physical_id", 11], ["status", "maintenance"]]
+  [1m[35m (97.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 144], ["created_at", 2016-10-14 11:39:04 UTC], ["updated_at", 2016-10-14 11:39:04 UTC]]
+  [1m[35m (123.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "computers" ("laboratory_id", "created_at", "updated_at", "physical_id", "status") VALUES (?, ?, ?, ?, ?)[0m  [["laboratory_id", 57], ["created_at", 2016-10-14 11:39:04 UTC], ["updated_at", 2016-10-14 11:39:04 UTC], ["physical_id", 12], ["status", "maintenance"]]
+  [1m[35m (90.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 145], ["created_at", 2016-10-14 11:39:04 UTC], ["updated_at", 2016-10-14 11:39:04 UTC]]
+  [1m[35m (122.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "computers" ("laboratory_id", "created_at", "updated_at", "physical_id", "status") VALUES (?, ?, ?, ?, ?)[0m  [["laboratory_id", 57], ["created_at", 2016-10-14 11:39:04 UTC], ["updated_at", 2016-10-14 11:39:04 UTC], ["physical_id", 13], ["status", "maintenance"]]
+  [1m[35m (62.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 146], ["created_at", 2016-10-14 11:39:04 UTC], ["updated_at", 2016-10-14 11:39:04 UTC]]
+  [1m[35m (90.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "computers" ("laboratory_id", "created_at", "updated_at", "physical_id", "status") VALUES (?, ?, ?, ?, ?)[0m  [["laboratory_id", 57], ["created_at", 2016-10-14 11:39:04 UTC], ["updated_at", 2016-10-14 11:39:04 UTC], ["physical_id", 14], ["status", "maintenance"]]
+  [1m[35m (109.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 147], ["created_at", 2016-10-14 11:39:04 UTC], ["updated_at", 2016-10-14 11:39:04 UTC]]
+  [1m[35m (76.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "computers" ("laboratory_id", "created_at", "updated_at", "physical_id", "status") VALUES (?, ?, ?, ?, ?)[0m  [["laboratory_id", 57], ["created_at", 2016-10-14 11:39:04 UTC], ["updated_at", 2016-10-14 11:39:04 UTC], ["physical_id", 15], ["status", "maintenance"]]
+  [1m[35m (90.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 148], ["created_at", 2016-10-14 11:39:04 UTC], ["updated_at", 2016-10-14 11:39:04 UTC]]
+  [1m[35m (79.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "computers" ("laboratory_id", "created_at", "updated_at", "physical_id", "status") VALUES (?, ?, ?, ?, ?)[0m  [["laboratory_id", 57], ["created_at", 2016-10-14 11:39:05 UTC], ["updated_at", 2016-10-14 11:39:05 UTC], ["physical_id", 16], ["status", "maintenance"]]
+  [1m[35m (71.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 149], ["created_at", 2016-10-14 11:39:05 UTC], ["updated_at", 2016-10-14 11:39:05 UTC]]
+  [1m[35m (99.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "computers" ("laboratory_id", "created_at", "updated_at", "physical_id", "status") VALUES (?, ?, ?, ?, ?)[0m  [["laboratory_id", 57], ["created_at", 2016-10-14 11:39:05 UTC], ["updated_at", 2016-10-14 11:39:05 UTC], ["physical_id", 17], ["status", "maintenance"]]
+  [1m[35m (71.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 150], ["created_at", 2016-10-14 11:39:05 UTC], ["updated_at", 2016-10-14 11:39:05 UTC]]
+  [1m[35m (93.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "computers" ("laboratory_id", "created_at", "updated_at", "physical_id", "status") VALUES (?, ?, ?, ?, ?)[0m  [["laboratory_id", 57], ["created_at", 2016-10-14 11:39:05 UTC], ["updated_at", 2016-10-14 11:39:05 UTC], ["physical_id", 18], ["status", "maintenance"]]
+  [1m[35m (78.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 151], ["created_at", 2016-10-14 11:39:05 UTC], ["updated_at", 2016-10-14 11:39:05 UTC]]
+  [1m[35m (91.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "computers" ("laboratory_id", "created_at", "updated_at", "physical_id", "status") VALUES (?, ?, ?, ?, ?)[0m  [["laboratory_id", 57], ["created_at", 2016-10-14 11:39:05 UTC], ["updated_at", 2016-10-14 11:39:05 UTC], ["physical_id", 19], ["status", "maintenance"]]
+  [1m[35m (62.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 152], ["created_at", 2016-10-14 11:39:05 UTC], ["updated_at", 2016-10-14 11:39:05 UTC]]
+  [1m[35m (112.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "computers" ("laboratory_id", "created_at", "updated_at", "physical_id", "status") VALUES (?, ?, ?, ?, ?)[0m  [["laboratory_id", 57], ["created_at", 2016-10-14 11:39:05 UTC], ["updated_at", 2016-10-14 11:39:05 UTC], ["physical_id", 20], ["status", "maintenance"]]
+  [1m[35m (81.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 153], ["created_at", 2016-10-14 11:39:05 UTC], ["updated_at", 2016-10-14 11:39:05 UTC]]
+  [1m[35m (101.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "computers" ("laboratory_id", "created_at", "updated_at", "physical_id", "status") VALUES (?, ?, ?, ?, ?)[0m  [["laboratory_id", 57], ["created_at", 2016-10-14 11:39:05 UTC], ["updated_at", 2016-10-14 11:39:05 UTC], ["physical_id", 21], ["status", "maintenance"]]
+  [1m[35m (69.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 154], ["created_at", 2016-10-14 11:39:06 UTC], ["updated_at", 2016-10-14 11:39:06 UTC]]
+  [1m[35m (94.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "computers" ("laboratory_id", "created_at", "updated_at", "physical_id", "status") VALUES (?, ?, ?, ?, ?)[0m  [["laboratory_id", 57], ["created_at", 2016-10-14 11:39:06 UTC], ["updated_at", 2016-10-14 11:39:06 UTC], ["physical_id", 22], ["status", "maintenance"]]
+  [1m[35m (83.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 155], ["created_at", 2016-10-14 11:39:06 UTC], ["updated_at", 2016-10-14 11:39:06 UTC]]
+  [1m[35m (98.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "computers" ("laboratory_id", "created_at", "updated_at", "physical_id", "status") VALUES (?, ?, ?, ?, ?)[0m  [["laboratory_id", 57], ["created_at", 2016-10-14 11:39:06 UTC], ["updated_at", 2016-10-14 11:39:06 UTC], ["physical_id", 23], ["status", "maintenance"]]
+  [1m[35m (71.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 156], ["created_at", 2016-10-14 11:39:06 UTC], ["updated_at", 2016-10-14 11:39:06 UTC]]
+  [1m[35m (89.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "computers" ("laboratory_id", "created_at", "updated_at", "physical_id", "status") VALUES (?, ?, ?, ?, ?)[0m  [["laboratory_id", 57], ["created_at", 2016-10-14 11:39:06 UTC], ["updated_at", 2016-10-14 11:39:06 UTC], ["physical_id", 24], ["status", "maintenance"]]
+  [1m[35m (71.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 157], ["created_at", 2016-10-14 11:39:06 UTC], ["updated_at", 2016-10-14 11:39:06 UTC]]
+  [1m[35m (105.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "computers" ("laboratory_id", "created_at", "updated_at", "physical_id", "status") VALUES (?, ?, ?, ?, ?)[0m  [["laboratory_id", 57], ["created_at", 2016-10-14 11:39:06 UTC], ["updated_at", 2016-10-14 11:39:06 UTC], ["physical_id", 25], ["status", "maintenance"]]
+  [1m[35m (86.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 158], ["created_at", 2016-10-14 11:39:06 UTC], ["updated_at", 2016-10-14 11:39:06 UTC]]
+  [1m[35m (88.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "computers" ("laboratory_id", "created_at", "updated_at", "physical_id", "status") VALUES (?, ?, ?, ?, ?)[0m  [["laboratory_id", 57], ["created_at", 2016-10-14 11:39:06 UTC], ["updated_at", 2016-10-14 11:39:06 UTC], ["physical_id", 26], ["status", "maintenance"]]
+  [1m[35m (77.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 159], ["created_at", 2016-10-14 11:39:06 UTC], ["updated_at", 2016-10-14 11:39:06 UTC]]
+  [1m[35m (85.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "computers" ("laboratory_id", "created_at", "updated_at", "physical_id", "status") VALUES (?, ?, ?, ?, ?)[0m  [["laboratory_id", 57], ["created_at", 2016-10-14 11:39:07 UTC], ["updated_at", 2016-10-14 11:39:07 UTC], ["physical_id", 27], ["status", "maintenance"]]
+  [1m[35m (128.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 160], ["created_at", 2016-10-14 11:39:07 UTC], ["updated_at", 2016-10-14 11:39:07 UTC]]
+  [1m[35m (100.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35mSQL (66.0ms)[0m  [1m[31mDELETE FROM "subjects"[0m
+  [1m[36mLaboratory Load (0.2ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" WHERE "laboratories"."initials" = ? LIMIT ?[0m  [["initials", "LSO"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "subjects" ("begin", "end", "title", "created_at", "updated_at", "laboratory_id", "isFreeToJoin") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["begin", 2016-10-14 11:00:00 UTC], ["end", 2016-10-14 12:00:00 UTC], ["title", "Introdução à Robótica - A"], ["created_at", 2016-10-14 11:39:07 UTC], ["updated_at", 2016-10-14 11:39:07 UTC], ["laboratory_id", 57], ["isFreeToJoin", false]]
+  [1m[35m (89.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mLaboratory Load (0.2ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" WHERE "laboratories"."initials" = ? LIMIT ?[0m  [["initials", "LSO"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "subjects" ("begin", "end", "title", "created_at", "updated_at", "laboratory_id", "isFreeToJoin") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["begin", 2016-10-14 12:00:00 UTC], ["end", 2016-10-14 13:00:00 UTC], ["title", "Introdução à Robótica - A"], ["created_at", 2016-10-14 11:39:07 UTC], ["updated_at", 2016-10-14 11:39:07 UTC], ["laboratory_id", 57], ["isFreeToJoin", false]]
+  [1m[35m (74.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mLaboratory Load (0.2ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" WHERE "laboratories"."initials" = ? LIMIT ?[0m  [["initials", "LSO"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "subjects" ("begin", "end", "title", "created_at", "updated_at", "laboratory_id", "isFreeToJoin") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["begin", 2016-10-14 13:00:00 UTC], ["end", 2016-10-14 14:00:00 UTC], ["title", "Introdução à Robótica - A"], ["created_at", 2016-10-14 11:39:07 UTC], ["updated_at", 2016-10-14 11:39:07 UTC], ["laboratory_id", 57], ["isFreeToJoin", false]]
+  [1m[35m (77.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mLaboratory Load (0.2ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" WHERE "laboratories"."initials" = ? LIMIT ?[0m  [["initials", "LSO"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "subjects" ("begin", "end", "title", "created_at", "updated_at", "laboratory_id", "isFreeToJoin") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["begin", 2016-10-14 14:00:00 UTC], ["end", 2016-10-14 15:00:00 UTC], ["title", "Introdução à Robótica - A"], ["created_at", 2016-10-14 11:39:07 UTC], ["updated_at", 2016-10-14 11:39:07 UTC], ["laboratory_id", 57], ["isFreeToJoin", false]]
+  [1m[35m (83.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mLaboratory Load (0.2ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" WHERE "laboratories"."initials" = ? LIMIT ?[0m  [["initials", "LSO"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "subjects" ("begin", "end", "title", "created_at", "updated_at", "laboratory_id", "isFreeToJoin") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["begin", 2016-10-14 15:00:00 UTC], ["end", 2016-10-14 16:00:00 UTC], ["title", "Vazio"], ["created_at", 2016-10-14 11:39:08 UTC], ["updated_at", 2016-10-14 11:39:08 UTC], ["laboratory_id", 57], ["isFreeToJoin", true]]
+  [1m[35m (91.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mLaboratory Load (0.2ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" WHERE "laboratories"."initials" = ? LIMIT ?[0m  [["initials", "LSO"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "subjects" ("begin", "end", "title", "created_at", "updated_at", "laboratory_id", "isFreeToJoin") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["begin", 2016-10-14 16:00:00 UTC], ["end", 2016-10-14 17:00:00 UTC], ["title", "Abner Figueiredo Bertelline - TREINAM..."], ["created_at", 2016-10-14 11:39:08 UTC], ["updated_at", 2016-10-14 11:39:08 UTC], ["laboratory_id", 57], ["isFreeToJoin", false]]
+  [1m[35m (85.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mLaboratory Load (0.2ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" WHERE "laboratories"."initials" = ? LIMIT ?[0m  [["initials", "LSO"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "subjects" ("begin", "end", "title", "created_at", "updated_at", "laboratory_id", "isFreeToJoin") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["begin", 2016-10-14 17:00:00 UTC], ["end", 2016-10-14 18:00:00 UTC], ["title", "Novas Tecnologias"], ["created_at", 2016-10-14 11:39:08 UTC], ["updated_at", 2016-10-14 11:39:08 UTC], ["laboratory_id", 57], ["isFreeToJoin", false]]
+  [1m[35m (91.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mLaboratory Load (0.2ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" WHERE "laboratories"."initials" = ? LIMIT ?[0m  [["initials", "LSO"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "subjects" ("begin", "end", "title", "created_at", "updated_at", "laboratory_id", "isFreeToJoin") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["begin", 2016-10-14 18:00:00 UTC], ["end", 2016-10-14 19:00:00 UTC], ["title", "Novas Tecnologias"], ["created_at", 2016-10-14 11:39:08 UTC], ["updated_at", 2016-10-14 11:39:08 UTC], ["laboratory_id", 57], ["isFreeToJoin", false]]
+  [1m[35m (108.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mLaboratory Load (0.2ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" WHERE "laboratories"."initials" = ? LIMIT ?[0m  [["initials", "LSO"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "subjects" ("begin", "end", "title", "created_at", "updated_at", "laboratory_id", "isFreeToJoin") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["begin", 2016-10-14 19:00:00 UTC], ["end", 2016-10-14 20:00:00 UTC], ["title", "Novas Tecnologias"], ["created_at", 2016-10-14 11:39:08 UTC], ["updated_at", 2016-10-14 11:39:08 UTC], ["laboratory_id", 57], ["isFreeToJoin", false]]
+  [1m[35m (72.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mLaboratory Load (0.2ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" WHERE "laboratories"."initials" = ? LIMIT ?[0m  [["initials", "LSO"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "subjects" ("begin", "end", "title", "created_at", "updated_at", "laboratory_id", "isFreeToJoin") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["begin", 2016-10-14 20:00:00 UTC], ["end", 2016-10-14 21:00:00 UTC], ["title", "Novas Tecnologias"], ["created_at", 2016-10-14 11:39:08 UTC], ["updated_at", 2016-10-14 11:39:08 UTC], ["laboratory_id", 57], ["isFreeToJoin", false]]
+  [1m[35m (87.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mLaboratory Load (0.2ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" WHERE "laboratories"."initials" = ? LIMIT ?[0m  [["initials", "LSO"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "subjects" ("begin", "end", "title", "created_at", "updated_at", "laboratory_id", "isFreeToJoin") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["begin", 2016-10-14 21:00:00 UTC], ["end", 2016-10-14 22:00:00 UTC], ["title", "Vazio"], ["created_at", 2016-10-14 11:39:08 UTC], ["updated_at", 2016-10-14 11:39:08 UTC], ["laboratory_id", 57], ["isFreeToJoin", true]]
+  [1m[35m (79.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mLaboratory Load (0.2ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" WHERE "laboratories"."initials" = ? LIMIT ?[0m  [["initials", "LSO"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "subjects" ("begin", "end", "title", "created_at", "updated_at", "laboratory_id", "isFreeToJoin") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["begin", 2016-10-14 22:00:00 UTC], ["end", 2016-10-14 23:00:00 UTC], ["title", "Vazio"], ["created_at", 2016-10-14 11:39:08 UTC], ["updated_at", 2016-10-14 11:39:08 UTC], ["laboratory_id", 57], ["isFreeToJoin", true]]
+  [1m[35m (80.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mLaboratory Load (0.1ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" WHERE "laboratories"."initials" = ? LIMIT ?[0m  [["initials", "LSO"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "subjects" ("begin", "end", "title", "created_at", "updated_at", "laboratory_id", "isFreeToJoin") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["begin", 2016-10-14 23:00:00 UTC], ["end", 2016-10-15 00:00:00 UTC], ["title", "Vazio"], ["created_at", 2016-10-14 11:39:08 UTC], ["updated_at", 2016-10-14 11:39:08 UTC], ["laboratory_id", 57], ["isFreeToJoin", true]]
+  [1m[35m (80.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mLaboratory Load (0.1ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" WHERE "laboratories"."initials" = ? LIMIT ?[0m  [["initials", "LSO"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "subjects" ("begin", "end", "title", "created_at", "updated_at", "laboratory_id", "isFreeToJoin") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["begin", 2016-10-15 00:00:00 UTC], ["end", 2016-10-15 01:00:00 UTC], ["title", "Vazio"], ["created_at", 2016-10-14 11:39:08 UTC], ["updated_at", 2016-10-14 11:39:08 UTC], ["laboratory_id", 57], ["isFreeToJoin", true]]
+  [1m[35m (99.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mLaboratory Load (0.2ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" WHERE "laboratories"."initials" = ? LIMIT ?[0m  [["initials", "LSO"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "subjects" ("begin", "end", "title", "created_at", "updated_at", "laboratory_id", "isFreeToJoin") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["begin", 2016-10-15 01:00:00 UTC], ["end", 2016-10-15 02:00:00 UTC], ["title", "Vazio"], ["created_at", 2016-10-14 11:39:09 UTC], ["updated_at", 2016-10-14 11:39:09 UTC], ["laboratory_id", 57], ["isFreeToJoin", true]]
+  [1m[35m (83.9ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for 127.0.0.1 at 2016-10-14 08:39:21 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by LaboratoryController#show as HTML
+  [1m[36mLaboratory Load (0.2ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" WHERE "laboratories"."initials" = ? LIMIT ?[0m  [["initials", "LSO"], ["LIMIT", 1]]
+  [1m[36mStatus Load (0.1ms)[0m  [1m[34mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."laboratory_id" = ? ORDER BY "statuses"."id" DESC LIMIT ?[0m  [["laboratory_id", 57], ["LIMIT", 1]]
+  Rendering laboratory/show.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "subjects" WHERE "subjects"."laboratory_id" = ? AND (begin <= '2016-10-14 11:39:21.433806') AND (end > '2016-10-14 12:39:21.434379')[0m  [["laboratory_id", 57]]
+  [1m[36mSubject Load (0.2ms)[0m  [1m[34mSELECT "subjects".* FROM "subjects" WHERE "subjects"."laboratory_id" = ?[0m  [["laboratory_id", 57]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 1], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 134], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 2], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 135], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 3], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 136], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 4], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 137], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 5], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 138], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 6], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 139], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 7], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 140], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 8], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 141], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 9], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 142], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 10], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 143], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 11], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 144], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 12], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.0ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 145], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 13], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.0ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 146], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 14], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.0ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 147], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 15], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 148], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 16], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.0ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 149], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 17], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.0ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 150], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 18], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 151], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 19], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 152], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.4ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 20], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 153], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 21], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 154], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 22], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 155], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 23], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 156], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 24], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 157], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 25], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.1ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 158], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 26], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.0ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 159], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 27], ["LIMIT", 1]]
+  [1m[36mComputerStatus Load (0.0ms)[0m  [1m[34mSELECT  "computer_statuses".* FROM "computer_statuses" WHERE "computer_statuses"."computer_id" = ? ORDER BY "computer_statuses"."id" DESC LIMIT ?[0m  [["computer_id", 160], ["LIMIT", 1]]
+  Rendered laboratory/show.html.erb within layouts/application (79.2ms)
+Completed 200 OK in 166ms (Views: 127.3ms | ActiveRecord: 7.4ms)
+
+
+  [1m[36mLaboratory Load (0.3ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" ORDER BY "laboratories"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mComputer Load (0.5ms)[0m  [1m[34mSELECT "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ?[0m  [["laboratory_id", 57]]
+  [1m[36mLaboratory Load (0.3ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" ORDER BY "laboratories"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? ORDER BY "computers"."id" ASC LIMIT ?[0m  [["laboratory_id", 57], ["LIMIT", 1]]
+  [1m[36mLaboratory Load (0.2ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" ORDER BY "laboratories"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? ORDER BY "computers"."id" ASC LIMIT ?[0m  [["laboratory_id", 57], ["LIMIT", 1]]
+  [1m[36mLaboratory Load (0.2ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" ORDER BY "laboratories"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? ORDER BY "computers"."id" ASC LIMIT ?[0m  [["laboratory_id", 57], ["LIMIT", 1]]
+  [1m[36mLaboratory Load (0.3ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" ORDER BY "laboratories"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? ORDER BY "computers"."id" ASC LIMIT ?[0m  [["laboratory_id", 57], ["LIMIT", 1]]
+  [1m[36mLaboratory Load (0.2ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" ORDER BY "laboratories"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? ORDER BY "computers"."id" ASC LIMIT ?[0m  [["laboratory_id", 57], ["LIMIT", 1]]
+  [1m[36mLaboratory Load (0.2ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" ORDER BY "laboratories"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? ORDER BY "computers"."id" ASC LIMIT ?[0m  [["laboratory_id", 57], ["LIMIT", 1]]
+  [1m[36mLaboratory Load (0.3ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" ORDER BY "laboratories"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? ORDER BY "computers"."id" ASC LIMIT ?[0m  [["laboratory_id", 57], ["LIMIT", 1]]
+  [1m[36mLaboratory Load (0.2ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" ORDER BY "laboratories"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? ORDER BY "computers"."id" ASC LIMIT ?[0m  [["laboratory_id", 57], ["LIMIT", 1]]
+Started GET "/" for 127.0.0.1 at 2016-10-14 08:46:01 -0300
+Processing by LaboratoryController#show as HTML
+  [1m[36mLaboratory Load (0.3ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" WHERE "laboratories"."initials" = ? LIMIT ?[0m  [["initials", "LSO"], ["LIMIT", 1]]
+  [1m[36mStatus Load (0.2ms)[0m  [1m[34mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."laboratory_id" = ? ORDER BY "statuses"."id" DESC LIMIT ?[0m  [["laboratory_id", 57], ["LIMIT", 1]]
+  Rendering laboratory/show.html.erb within layouts/application
+  [1m[36mSubject Load (0.3ms)[0m  [1m[34mSELECT "subjects".* FROM "subjects" WHERE "subjects"."laboratory_id" = ?[0m  [["laboratory_id", 57]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 1], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 2], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 3], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 4], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 5], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 6], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 7], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 8], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 9], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 10], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 11], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 12], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 13], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 14], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 15], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 16], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 17], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 18], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 19], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 20], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 21], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 22], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 23], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 24], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 25], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 26], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.1ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 27], ["LIMIT", 1]]
+  Rendered laboratory/show.html.erb within layouts/application (39.8ms)
+Completed 200 OK in 148ms (Views: 100.1ms | ActiveRecord: 6.4ms)
+
+
+Started POST "/LSO/status" for 127.0.0.1 at 2016-10-14 08:46:48 -0300
+Processing by StatusController#new_computer as JSON
+  Parameters: {"computer_id"=>"1", "status"=>"available", "initials"=>"LSO"}
+  [1m[36mLaboratory Load (0.6ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" WHERE "laboratories"."initials" = ? LIMIT ?[0m  [["initials", "LSO"], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "computer_statuses" ("status", "computer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["status", "available"], ["computer_id", 134], ["created_at", 2016-10-14 11:46:48 UTC], ["updated_at", 2016-10-14 11:46:48 UTC]]
+  [1m[35m (85.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "computers" SET "status" = ?, "updated_at" = ? WHERE "computers"."id" = ?[0m  [["status", "available"], ["updated_at", 2016-10-14 11:46:48 UTC], ["id", 134]]
+  [1m[35m (71.6ms)[0m  [1m[36mcommit transaction[0m
+Completed 200 OK in 187ms (Views: 1.1ms | ActiveRecord: 160.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-14 08:46:51 -0300
+Processing by LaboratoryController#show as HTML
+  [1m[36mLaboratory Load (1.4ms)[0m  [1m[34mSELECT  "laboratories".* FROM "laboratories" WHERE "laboratories"."initials" = ? LIMIT ?[0m  [["initials", "LSO"], ["LIMIT", 1]]
+  [1m[36mStatus Load (0.4ms)[0m  [1m[34mSELECT  "statuses".* FROM "statuses" WHERE "statuses"."laboratory_id" = ? ORDER BY "statuses"."id" DESC LIMIT ?[0m  [["laboratory_id", 57], ["LIMIT", 1]]
+  Rendering laboratory/show.html.erb within layouts/application
+  [1m[36mSubject Load (0.4ms)[0m  [1m[34mSELECT "subjects".* FROM "subjects" WHERE "subjects"."laboratory_id" = ?[0m  [["laboratory_id", 57]]
+  [1m[36mComputer Load (0.4ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 1], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.3ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 2], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 3], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 4], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 5], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 6], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 7], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 8], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.3ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 9], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 10], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 11], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 12], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 13], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 14], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 15], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 16], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 17], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 18], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 19], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 20], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 21], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 22], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 23], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 24], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 25], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 26], ["LIMIT", 1]]
+  [1m[36mComputer Load (0.2ms)[0m  [1m[34mSELECT  "computers".* FROM "computers" WHERE "computers"."laboratory_id" = ? AND "computers"."physical_id" = ? LIMIT ?[0m  [["laboratory_id", 57], ["physical_id", 27], ["LIMIT", 1]]
+  Rendered laboratory/show.html.erb within layouts/application (44.0ms)
+Completed 200 OK in 129ms (Views: 111.5ms | ActiveRecord: 7.6ms)
+
+

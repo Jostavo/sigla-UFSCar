@@ -31,13 +31,14 @@ class StatusController < ApplicationController
         return
       else
         puts "entrada1"
-        @computer = @computer.computer_status.new(:status => params[:status])
+        @computer_status = @computer.computer_status.new(:status => params[:status])
       end
 
-      if @computer.save
-        format.json { render json: @computer }
+      if @computer_status.save
+        @computer.update_attributes(:status => params[:status])
+        format.json { render json: @computer_status }
       else
-        format.json { render json: @computer.errors.as_json }
+        format.json { render json: @computer_status.errors.as_json }
       end
     end
   end

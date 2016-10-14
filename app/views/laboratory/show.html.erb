@@ -52,95 +52,95 @@ $(document).ready(function() {
   <div class="section" id="section1" style="background-color: pink;">
     <div class="slide">
       <header>
-        <h1>Mapa de laboratório</h1>  
+        <h1>Mapa de laboratório</h1>
       </header>
       <section>
         <div class="container-wrapper">
           <div class="containerPC">
             <div class="pc-wrapper">
-              <div class="<%= @computers.find_by(:physical_id=> 1).computer_status.last.last_status%>">PC 1<br>Em uso</div>
+              <div class="<%= @computers.find_by(:physical_id=> 1).last_status%>">PC 1<br>Em uso</div>
             </div>
             <div class="pc-wrapper">
-              <div class="<%= @computers.find_by(:physical_id=> 2).computer_status.last.last_status%>">PC 2<br>Livre</div>
+              <div class="<%= @computers.find_by(:physical_id=> 2).last_status%>">PC 2<br>Livre</div>
             </div>
             <div class="pc-wrapper">
-              <div class="<%= @computers.find_by(:physical_id=> 3).computer_status.last.last_status%>">PC 3<br>Manutenção</div>
+              <div class="<%= @computers.find_by(:physical_id=> 3).last_status%>">PC 3<br>Manutenção</div>
             </div>
             <div class="pc-wrapper">
-              <div class="<%= @computers.find_by(:physical_id=> 4).computer_status.last.last_status%>">PC 4<br>Manutenção</div>
+              <div class="<%= @computers.find_by(:physical_id=> 4).last_status%>">PC 4<br>Manutenção</div>
             </div>
             <div class="pc-wrapper">
-              <div class="<%= @computers.find_by(:physical_id=> 5).computer_status.last.last_status%>">PC 5<br>Manutenção</div>
+              <div class="<%= @computers.find_by(:physical_id=> 5).last_status%>">PC 5<br>Manutenção</div>
             </div>
             <div class="pc-wrapper">
-              <div class="<%= @computers.find_by(:physical_id=> 6).computer_status.last.last_status%>">PC 6<br>Manutenção</div>
+              <div class="<%= @computers.find_by(:physical_id=> 6).last_status%>">PC 6<br>Manutenção</div>
             </div>
             <div class="pc-wrapper">
-              <div class="<%= @computers.find_by(:physical_id=> 7).computer_status.last.last_status%>">PC 7<br>Manutenção</div>
+              <div class="<%= @computers.find_by(:physical_id=> 7).last_status%>">PC 7<br>Manutenção</div>
             </div>
             <div class="pc-wrapper">
-              <div class="<%= @computers.find_by(:physical_id=> 8).computer_status.last.last_status%>">PC 8<br>Manutenção</div>
+              <div class="<%= @computers.find_by(:physical_id=> 8).last_status%>">PC 8<br>Manutenção</div>
             </div>
             <div class="pc-wrapper">
-              <div class="<%= @computers.find_by(:physical_id=> 9).computer_status.last.last_status%>">PC 9<br>Manutenção</div>
-            </div>
-          </div>
-          <div class="containerPC">
-            <div class="pc-wrapper">
-              <div class="<%= @computers.find_by(:physical_id=> 10).computer_status.last.last_status%>">PC 10<br>Manutenção</div>
-            </div>
-            <div class="pc-wrapper">
-              <div class="<%= @computers.find_by(:physical_id=> 11).computer_status.last.last_status%>">PC 11<br>Manutenção</div>
-            </div>
-            <div class="pc-wrapper">
-              <div class="<%= @computers.find_by(:physical_id=> 12).computer_status.last.last_status%>">PC 12<br>Manutenção</div>
-            </div>
-            <div class="pc-wrapper">
-              <div class="<%= @computers.find_by(:physical_id=> 13).computer_status.last.last_status%>">PC 13<br>Manutenção</div>
-            </div>
-            <div class="pc-wrapper">
-              <div class="<%= @computers.find_by(:physical_id=> 14).computer_status.last.last_status%>">PC 14<br>Manutenção</div>
-            </div>
-            <div class="pc-wrapper">
-              <div class="<%= @computers.find_by(:physical_id=> 15).computer_status.last.last_status%>">PC 15<br>Manutenção</div>
-            </div>
-            <div class="pc-wrapper">
-              <div class="<%= @computers.find_by(:physical_id=> 16).computer_status.last.last_status%>">PC 16<br>Manutenção</div>
-            </div>
-            <div class="pc-wrapper">
-              <div class="<%= @computers.find_by(:physical_id=> 17).computer_status.last.last_status%>">PC 17<br>Manutenção</div>
-            </div>
-            <div class="pc-wrapper">
-              <div class="<%= @computers.find_by(:physical_id=> 18).computer_status.last.last_status%>">PC 18<br>Manutenção</div>
+              <div class="<%= @computers.find_by(:physical_id=> 9).last_status%>">PC 9<br>Manutenção</div>
             </div>
           </div>
           <div class="containerPC">
             <div class="pc-wrapper">
-              <div class="<%= @computers.find_by(:physical_id=> 19).computer_status.last.last_status%>">PC 19<br>Manutenção</div>
+              <div class="<%= @computers.find_by(:physical_id=> 10).last_status%>">PC 10<br>Manutenção</div>
             </div>
             <div class="pc-wrapper">
-              <div class="<%= @computers.find_by(:physical_id=> 20).computer_status.last.last_status%>">PC 20<br>Manutenção</div>
+              <div class="<%= @computers.find_by(:physical_id=> 11).last_status%>">PC 11<br>Manutenção</div>
             </div>
             <div class="pc-wrapper">
-              <div class="<%= @computers.find_by(:physical_id=> 21).computer_status.last.last_status%>">PC 21<br>Manutenção</div>
+              <div class="<%= @computers.find_by(:physical_id=> 12).last_status%>">PC 12<br>Manutenção</div>
             </div>
             <div class="pc-wrapper">
-              <div class="<%= @computers.find_by(:physical_id=> 22).computer_status.last.last_status%>">PC 22<br>Manutenção</div>
+              <div class="<%= @computers.find_by(:physical_id=> 13).last_status%>">PC 13<br>Manutenção</div>
             </div>
             <div class="pc-wrapper">
-              <div class="<%= @computers.find_by(:physical_id=> 23).computer_status.last.last_status%>">PC 23<br>Manutenção</div>
+              <div class="<%= @computers.find_by(:physical_id=> 14).last_status%>">PC 14<br>Manutenção</div>
             </div>
             <div class="pc-wrapper">
-              <div class="<%= @computers.find_by(:physical_id=> 24).computer_status.last.last_status%>">PC 24<br>Manutenção</div>
+              <div class="<%= @computers.find_by(:physical_id=> 15).last_status%>">PC 15<br>Manutenção</div>
             </div>
             <div class="pc-wrapper">
-              <div class="<%= @computers.find_by(:physical_id=> 25).computer_status.last.last_status%>">PC 25<br>Manutenção</div>
+              <div class="<%= @computers.find_by(:physical_id=> 16).last_status%>">PC 16<br>Manutenção</div>
             </div>
             <div class="pc-wrapper">
-              <div class="<%= @computers.find_by(:physical_id=> 26).computer_status.last.last_status%>">PC 26<br>Manutenção</div>
+              <div class="<%= @computers.find_by(:physical_id=> 17).last_status%>">PC 17<br>Manutenção</div>
             </div>
             <div class="pc-wrapper">
-              <div class="<%= @computers.find_by(:physical_id=> 27).computer_status.last.last_status%>">PC 27<br>Manutenção</div>
+              <div class="<%= @computers.find_by(:physical_id=> 18).last_status%>">PC 18<br>Manutenção</div>
+            </div>
+          </div>
+          <div class="containerPC">
+            <div class="pc-wrapper">
+              <div class="<%= @computers.find_by(:physical_id=> 19).last_status%>">PC 19<br>Manutenção</div>
+            </div>
+            <div class="pc-wrapper">
+              <div class="<%= @computers.find_by(:physical_id=> 20).last_status%>">PC 20<br>Manutenção</div>
+            </div>
+            <div class="pc-wrapper">
+              <div class="<%= @computers.find_by(:physical_id=> 21).last_status%>">PC 21<br>Manutenção</div>
+            </div>
+            <div class="pc-wrapper">
+              <div class="<%= @computers.find_by(:physical_id=> 22).last_status%>">PC 22<br>Manutenção</div>
+            </div>
+            <div class="pc-wrapper">
+              <div class="<%= @computers.find_by(:physical_id=> 23).last_status%>">PC 23<br>Manutenção</div>
+            </div>
+            <div class="pc-wrapper">
+              <div class="<%= @computers.find_by(:physical_id=> 24).last_status%>">PC 24<br>Manutenção</div>
+            </div>
+            <div class="pc-wrapper">
+              <div class="<%= @computers.find_by(:physical_id=> 25).last_status%>">PC 25<br>Manutenção</div>
+            </div>
+            <div class="pc-wrapper">
+              <div class="<%= @computers.find_by(:physical_id=> 26).last_status%>">PC 26<br>Manutenção</div>
+            </div>
+            <div class="pc-wrapper">
+              <div class="<%= @computers.find_by(:physical_id=> 27).last_status%>">PC 27<br>Manutenção</div>
             </div>
           </div>
         </div>     
