@@ -7,6 +7,7 @@ class LaboratoryController < ApplicationController
     end
     @status = @labs.status.last
     @subjects = @labs.subjects
+    @computers = @labs.computers
   end
 
   def map

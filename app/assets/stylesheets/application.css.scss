@@ -43,6 +43,18 @@ h1{
   text-align: center;
 }
 
+// computer status
+.maintenance{
+  background-color: gray;
+}
+.busy{
+  background-color: red;
+}
+.available{
+  background-color: green;
+}
+
+
 .pc{
 	height: 50px;
 	width: 100px;
@@ -50,7 +62,6 @@ h1{
     display: inline-block;
     background-color: gray;
 }
-
 .pc-wrapper{
 	vertical-align: top;
 	display: table-cell;
