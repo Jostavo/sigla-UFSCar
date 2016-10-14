@@ -46,45 +46,44 @@ h1{
 // computer status
 .maintenance{
   background-color: gray;
+  height: 40px;
+  width: 90px;
 }
 .busy{
+  height: 40px;
+  width: 90px;
   background-color: red;
 }
 .available{
+  height: 40px;
+  width: 90px;
   background-color: green;
 }
 
-
-.pc{
-	height: 50px;
-	width: 100px;
-	text-align: center;
-    display: inline-block;
-    background-color: gray;
-}
 .pc-wrapper{
-	vertical-align: top;
-	display: table-cell;
-	padding-top: 10px;
+  text-align: center;
+  vertical-align: top;
+  display: inline-block;
+  padding: 10px;
 }
 
 .containerPC{
-	background-color: white;
-	width: 95%;
-	height: 50px;
-	display: table;
-	table-layout: fixed;
-	text-align: center;
-	margin-right: 2.5%;
-	margin-left: 2.5%;
-	margin-bottom: 0px;
-	margin-top: 0px;
+  background-color: white;
+  width: 95%;
+  height: 50px;
+  display: table;
+  table-layout: fixed;
+  text-align: center;
+  margin-right: 2.5%;
+  margin-left: 2.5%;
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 .container-wrapper{
-	margin-right: 2.5%;
-	margin-left: 2.5%;
-	background-color: white;
-	height: 190px;	
-	width: 95%;
+  margin-right: 2.5%;
+  margin-left: 2.5%;
+  background-color: white;
+  height: 190px;	
+  width: 95%;
 }
