@@ -35,7 +35,7 @@ class StatusController < ApplicationController
       end
 
       if @computer_status.save
-        @computer.update_attributes(:status => params[:status])
+        @computer.update(:status => params[:status], :updated_at => Time.now)
         format.json { render json: @computer_status }
       else
         format.json { render json: @computer_status.errors.as_json }
