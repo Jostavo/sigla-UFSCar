@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161012015153) do
+ActiveRecord::Schema.define(version: 20161014113219) do
 
   create_table "computer_statuses", force: :cascade do |t|
     t.string   "status"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20161012015153) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "physical_id"
+    t.string   "status"
     t.index ["laboratory_id"], name: "index_computers_on_laboratory_id"
   end
 

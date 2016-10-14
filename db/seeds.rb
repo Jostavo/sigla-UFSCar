@@ -17,8 +17,9 @@ lasid.status.create(:isOpen => false);
 lec.status.create(:isOpen => false);
 
 #inserting computers to the labs
-for k in 1..50
-  lso.computers.create(:physical_id => k)
+for k in 1..27
+  a = lso.computers.create(:physical_id => k, :status => "maintenance")
+  a.computer_status.create(:status => "available")
 end
 
 Subject.delete_all
