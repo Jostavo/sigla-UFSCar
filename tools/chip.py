@@ -31,7 +31,7 @@ def requestPost(condition):
         string_isOpen = str(isOpen).lower()
         params = urllib.urlencode({'laboratory_id':57, 'lab_tag':'LSO', 'isOpen': string_isOpen})
         headers = {"Content-type": "application/x-www-form-urlencoded","Accept": "text/plain"}
-        conn = httplib.HTTPConnection("localhost:3000")
+        conn = httplib.HTTPConnection("192.168.0.13:3000")
         conn.request("POST", "/status", params, headers)
         response = conn.getresponse()
         condition.wait()
@@ -47,10 +47,14 @@ def checkCondition(condition):
         except:
             print "deu algum erro..."
         timeNow = time.time()
-        if (stamp != _cached_stamp) | ((timeNow - cron) >= 10):
+        if (state != state_aux) | ((timeNow - cron) >= 300):
             condition.acquire()
 
-            gpio.output(led, not state)
+            gpio.output(led, state)
+            if(state_aux == 1):
+              isOpen = False
+            else:
+              isOpen = True
 
             state = state_aux
             cron = timeNow
