@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  </head>
+
+  <body>
+    <table class="table table-condensed" >
+      <tr>
+        <th>Horário</th>
+        <th>Aula</th>
+      </tr>
+      <% @subjects.each do |u| %>
+        <tr>
+          <td><%= u.begin.hour %>:00</td>
+          <td><%= u.title %></td>
+        </tr>
+      <% end %>
+    </table>
+  </body>
+</html>

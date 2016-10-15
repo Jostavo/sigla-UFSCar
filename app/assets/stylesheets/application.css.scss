@@ -50,8 +50,8 @@ h1{
   width: 90px;
 }
 .busy{
-  height: 40px;
-  width: 90px;
+  height: 40%;
+  width: 80px;
   background-color: red;
 }
 .available{
@@ -64,7 +64,7 @@ h1{
   text-align: center;
   vertical-align: top;
   display: inline-block;
-  padding: 10px;
+  padding: 5px;
 }
 
 .containerPC{
@@ -86,4 +86,32 @@ h1{
   background-color: white;
   height: 190px;	
   width: 95%;
+}
+
+.container-label{
+  text-align: right;
+}
+.label_status{
+  display: inline-block;
+  height: 8px;
+  width: 8px;
+  vertical-align: center;
+  background-color: black;
+}
+
+.container-fluid{
+  padding-top: 80px;
+}
+
+.jumbotron h2{
+  text-align: center;
+}
+
+.fp-controlArrow.fp-prev{
+  border-width: 10px 10px 10px  0;
+  border-color: transparent black transparent transparent;
+}
+.fp-controlArrow.fp-next{
+  border-width: 10px  0 10px  10px ;
+  border-color: transparent transparent transparent black;
 }

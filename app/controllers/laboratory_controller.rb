@@ -6,11 +6,16 @@ class LaboratoryController < ApplicationController
       @labs = Laboratory.find_by(:initials => "LSO")
     end
     @status = @labs.status.last
-    @subjects = @labs.subjects
     @computers = @labs.computers
   end
 
   def map
     render html: "hello world, #laboratory#map"
+  end
+
+  def subjects
+    @labs = Laboratory.find_by(:initials => params[:initials])
+    @subjects = @labs.subjects
+    render :layout => false
   end
 end
