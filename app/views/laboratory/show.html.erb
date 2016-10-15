@@ -22,8 +22,6 @@ $(document).ready(function() {
               <% a = @labs.subjects.where("begin <= ?", DateTime.current).where("end > ?", (DateTime.current.to_time + 1.hours).to_datetime ) %>
               <% if !a.empty?# && !a[0].isFreeToJoin%>
                 <h1> Acontencendo a aula <%= a[0].title %>!</h1>
-                <%= a[0].begin %><br>
-                <%= a[0].end %><br>
               <% elsif Time.now.hour > 23 && Time.now.hour < 8%>
                 <h1> Está aberto! Mas deveria? :s</h1>
               <% else %>
