@@ -1,14 +1,24 @@
 import httplib, urllib
-import os
+import os,sys
 import time
 import threading
-#from pyA20.gpio import gpio
-#from pyA20.gpio import port
-#from pyA20.gpio import connector
+
+if not os.getegid() == 0:
+    sys.exit('This script must be run as root')
+
+from pyA20.gpio import gpio
+from pyA20.gpio import port
+from pyA20.gpio import connector
 
 laboratory_id = 57
 laboratory_tag = 'LSO'
-GPIO_INPUT = 'algma coisa'
+
+led = port.PA6
+button = port.PA20
+
+gpio.init()
+gpio.setcfg(led, gpio.OUTPUT)
+gpio.setcfg(button, gpio.INPUT)
 
 def requestPost(condition):
     global isOpen
@@ -30,35 +40,31 @@ def requestPost(condition):
 def checkCondition(condition):
     global isOpen
     cron = time.time()
-    _cached_stamp = 0
-    filename = '/home/floss/test.txt'
+    state = -1
     while True:
         try:
-            stamp = os.stat(filename).st_mtime
+            state_aux = gpio.input(button)
         except:
             print "deu algum erro..."
         timeNow = time.time()
         if (stamp != _cached_stamp) | ((timeNow - cron) >= 10):
             condition.acquire()
 
-            f = open(filename, "r")
-            if(f.read(1) == "1"):
-                isOpen = False
-            else:
-                isOpen = True
+            gpio.output(led, not state)
 
-            _cached_stamp = stamp
+            state = state_aux
             cron = timeNow
             condition.notify()
             condition.release()
 
 if __name__ == '__main__':
-        global isOpen
-        isOpen = False
-        condition = threading.Condition()
-        producer = threading.Thread(target=checkCondition, args=(condition,))
-        consumer = threading.Thread(target=requestPost, args=(condition,))
 
-        consumer.start()
-        time.sleep(5)
-        producer.start()
+    global isOpen
+    isOpen = False
+    condition = threading.Condition()
+    producer = threading.Thread(target=checkCondition, args=(condition,))
+    consumer = threading.Thread(target=requestPost, args=(condition,))
+
+    consumer.start()
+    time.sleep(5)
+    producer.start()
