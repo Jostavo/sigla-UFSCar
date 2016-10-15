@@ -16,7 +16,7 @@
       </tr>
       <% @subjects.each do |u| %>
         <tr>
-          <td><%= u.begin.hour %>:00</td>
+          <td><%= u.begin_time.hour %>:00</td>
           <td><%= u.title %></td>
         </tr>
       <% end %>

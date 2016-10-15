@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161014113219) do
+ActiveRecord::Schema.define(version: 20161015164146) do
 
   create_table "computer_statuses", force: :cascade do |t|
     t.string   "status"
@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 20161014113219) do
   end
 
   create_table "subjects", force: :cascade do |t|
-    t.datetime "begin"
-    t.datetime "end"
+    t.datetime "begin_time"
+    t.datetime "end_time"
     t.string   "title"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false

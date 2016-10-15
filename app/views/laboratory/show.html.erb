@@ -19,9 +19,11 @@ $(document).ready(function() {
             <h1>Sem sinal do dispositivo. :(</h1>
           <% else %>
             <% if @status.isOpen %>
-              <% a = @labs.subjects.where("begin <= ?", DateTime.current).where("end > ?", (DateTime.current.to_time + 1.hours).to_datetime ) %>
+              <% a = @labs.subjects.where("begin_time<= ?", DateTime.current).where("end_time> ?", (DateTime.current.to_time + 1.hours).to_datetime ) %>
               <% if !a.empty?# && !a[0].isFreeToJoin%>
                 <h1> Acontencendo a aula <%= a[0].title %>!</h1>
+                <%= a[0].begin_time%><br>
+                <%= a[0].end_time%><br>
               <% elsif Time.now.hour > 23 && Time.now.hour < 8%>
                 <h1> Está aberto! Mas deveria? :s</h1>
               <% else %>
