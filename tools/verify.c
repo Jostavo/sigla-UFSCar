@@ -1,3 +1,6 @@
+// to compile use this:
+// gcc verify.c -o verify -lfprint -lwiringPi -lwiringPiDev
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
