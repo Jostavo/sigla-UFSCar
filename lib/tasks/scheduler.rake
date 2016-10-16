@@ -45,9 +45,9 @@ task :update_subjects => :environment do
       if numberSubjects % numberLabs == 0
         puts el.text
         if el.text != "Vazio"
-          Laboratory.find_by(:initials => "LSO").subjects.create(:begin => DateTime.now.change({ hour: hour }).localtime("-03:00"), :end => DateTime.now.change({ hour: hour+1}).localtime("-03:00"), :title => el.text, :isFreeToJoin => false)
+          Laboratory.find_by(:initials => "LSO").subjects.create(:begin_clock => DateTime.now.change({ hour: hour }).localtime("-03:00"), :end_clock => DateTime.now.change({ hour: hour+1}).localtime("-03:00"), :title => el.text, :isFreeToJoin => false)
         else
-          Laboratory.find_by(:initials => "LSO").subjects.create(:begin => DateTime.now.change({ hour: hour }).localtime("-03:00"), :end => DateTime.now.change({ hour: hour+1}).localtime("-03:00"), :title => el.text, :isFreeToJoin => true)
+          Laboratory.find_by(:initials => "LSO").subjects.create(:begin_clock => DateTime.now.change({ hour: hour }).localtime("-03:00"), :end_clock => DateTime.now.change({ hour: hour+1}).localtime("-03:00"), :title => el.text, :isFreeToJoin => true)
         end
         hour += 1
       end
