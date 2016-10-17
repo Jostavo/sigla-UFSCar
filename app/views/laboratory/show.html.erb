@@ -2,6 +2,7 @@
 $(document).ready(function() {
   $('#fullpage').fullpage({
     normalScrollElements: '#horario',
+    loopHorizontal: false,
     loopBottom: true
   });
 });
@@ -41,7 +42,7 @@ $(document).ready(function() {
     <div class="slide">
       <div class="container-fluid">
         <div class="jumbotron">
-          <h2>Mapa de laboratório</h2>
+          <h2>Mapa de Computadores</h2>
           <div class="pc-wrapper">
             <div class="<%= @computers.find_by(:physical_id=> 1).last_status%>">PC 1</div>
           </div>
