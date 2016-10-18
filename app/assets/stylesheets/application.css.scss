@@ -47,16 +47,16 @@ h1{
 .maintenance{
   background-color: gray;
   height: 40px;
-  width: 90px;
-}
-.busy{
-  height: 40%;
   width: 80px;
-  background-color: red;
 }
 .available{
   height: 40px;
-  width: 90px;
+  width: 80px;
+  background-color: red;
+}
+.busy{
+  height: 40px;
+  width: 80px;
   background-color: green;
 }
 

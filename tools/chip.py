@@ -31,7 +31,7 @@ def requestPost(condition):
         string_isOpen = str(isOpen).lower()
         params = urllib.urlencode({'laboratory_id':57, 'lab_tag':'LSO', 'isOpen': string_isOpen})
         headers = {"Content-type": "application/x-www-form-urlencoded","Accept": "text/plain"}
-        conn = httplib.HTTPConnection("192.168.0.13:3000")
+        conn = httplib.HTTPConnection("siglaufscar.herokuapp.com")
         conn.request("POST", "/status", params, headers)
         response = conn.getresponse()
         condition.wait()
