@@ -1,16 +1,34 @@
-<script>
-$(document).ready(function() {
-  $('#fullpage').fullpage({
-    normalScrollElements: '#horario',
-    loopHorizontal: false,
-    loopBottom: true
-  });
-});
-</script>
+<h1><%= @labs.title %></h1>
 
 <% time = Time.now %>
-<% timeLab = @status.created_at + 360 #360seg = 5min%>
+<% timeLab = @status.created_at + 360%>
+<% if timeLab < time %>
+  <!-- here is something like blackout or the internet cable is disconnected at ufscar -->
+  <h1>Something happened in UFSCar</h1>
+<% else %>
+  <% if @status.isOpen %>
+    <% a = @labs.subjects.where("begin <= ?", DateTime.now).where("end > ?", DateTime.now) %>
+    <% if !a.empty? && !a[0].isFreeToJoin%>
+      Right now it is happening <%= a[0].title %>, so be tuned to get your chair in lab<br>
+      <%= a[0].begin %><br>
+      <%= a[0].end %><br>
+    <% else %>
+      <h1>YEP IT IS OPEN!</h1><br>
+      <%= a[0].title %><br>
+      <%= a[0].begin %><br>
+      <%= a[0].end %><br>
+      <br>
+    <% end %>
+  <% else %>
+    <h1> Nope :(</h1>
+  <% end %>
+<% end %>
 
+<<<<<<< HEAD
+<% @subjects.each do |u| %>
+  <%= u.begin.hour %>:00 to <%= u.end.hour %>:00 <%= u.title %><br>
+<% end %>
+=======
 <div id="fullpage">
   <div class="section active" id="section0" style="background-color: black");>
     <div class="slide">
@@ -20,11 +38,11 @@ $(document).ready(function() {
             <h1>Sem sinal do dispositivo. :(</h1>
           <% else %>
             <% if @status.isOpen %>
-              <% a = @labs.subjects.where("begin_time<= ?", DateTime.current).where("end_time> ?", (DateTime.current.to_time + 1.hours).to_datetime ) %>
+              <% a = @labs.subjects.where("begin <= ?", DateTime.current).where("end > ?", (DateTime.current.to_time + 1.hours).to_datetime ) %>
               <% if !a.empty?# && !a[0].isFreeToJoin%>
                 <h1> Acontencendo a aula <%= a[0].title %>!</h1>
-                <%= a[0].begin_time%><br>
-                <%= a[0].end_time%><br>
+                <%= a[0].begin %><br>
+                <%= a[0].end %><br>
               <% elsif Time.now.hour > 23 && Time.now.hour < 8%>
                 <h1> Está aberto! Mas deveria? :s</h1>
               <% else %>
@@ -42,7 +60,7 @@ $(document).ready(function() {
     <div class="slide">
       <div class="container-fluid">
         <div class="jumbotron">
-          <h2>Mapa de Computadores</h2>
+          <h2>Mapa de laboratório</h2>
           <div class="pc-wrapper">
             <div class="<%= @computers.find_by(:physical_id=> 1).last_status%>">PC 1</div>
           </div>
@@ -134,7 +152,8 @@ $(document).ready(function() {
       </div>
     </div>
   </div>
-<!--  <div class="section" id="section1" style="background-color: pink;">
+  <div class="section" id="section1" style="background-color: pink;">
 
-</div>!-->
+  </div>
 </div>
+>>>>>>> 73fec0d... Changed frontpage, create a new route for iframe

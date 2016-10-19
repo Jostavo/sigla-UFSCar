@@ -31,7 +31,7 @@ def requestPost(condition):
         string_isOpen = str(isOpen).lower()
         params = urllib.urlencode({'laboratory_id':57, 'lab_tag':'LSO', 'isOpen': string_isOpen})
         headers = {"Content-type": "application/x-www-form-urlencoded","Accept": "text/plain"}
-        conn = httplib.HTTPConnection("siglaufscar.herokuapp.com")
+        conn = httplib.HTTPConnection("localhost:3000")
         conn.request("POST", "/status", params, headers)
         response = conn.getresponse()
         condition.wait()
@@ -47,14 +47,10 @@ def checkCondition(condition):
         except:
             print "deu algum erro..."
         timeNow = time.time()
-        if (state != state_aux) | ((timeNow - cron) >= 300):
+        if (stamp != _cached_stamp) | ((timeNow - cron) >= 10):
             condition.acquire()
 
-            gpio.output(led, state)
-            if(state_aux == 1):
-              isOpen = False
-            else:
-              isOpen = True
+            gpio.output(led, not state)
 
             state = state_aux
             cron = timeNow

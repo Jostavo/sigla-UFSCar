@@ -6,11 +6,18 @@ class LaboratoryController < ApplicationController
       @labs = Laboratory.find_by(:initials => "LSO")
     end
     @status = @labs.status.last
+<<<<<<< HEAD
+    @subjects = @labs.subjects
+    if @status == nil
+      #redirect_to root_path
+    end
+=======
     @computers = @labs.computers
   end
 
   def map
     render html: "hello world, #laboratory#map"
+>>>>>>> 73fec0d... Changed frontpage, create a new route for iframe
   end
 
   def subjects

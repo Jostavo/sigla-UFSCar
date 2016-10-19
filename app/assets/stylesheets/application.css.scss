@@ -46,17 +46,17 @@ h1{
 // computer status
 .maintenance{
   background-color: gray;
-  height: 20px;
-  width: 80px;
+  height: 40px;
+  width: 90px;
 }
-.available{
-  height: 20px;
+.busy{
+  height: 40%;
   width: 80px;
   background-color: red;
 }
-.busy{
-  height: 20px;
-  width: 80px;
+.available{
+  height: 40px;
+  width: 90px;
   background-color: green;
 }
 
