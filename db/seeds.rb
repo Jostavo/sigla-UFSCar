@@ -21,6 +21,3 @@ for k in 1..27
   a = lso.computers.create(:physical_id => k, :status => "maintenance")
   a.computer_status.create(:status => "available")
 end
-
-Subject.delete_all
-

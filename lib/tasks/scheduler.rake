@@ -1,7 +1,5 @@
-desc "This task is called by the Heroku scheduler add-on"
+desc "This task update all subjects of LSO"
 task :update_subjects => :environment do
-  Subject.delete_all
-
   # WebCrawler for isLabOpen
   require 'nokogiri'
   require 'open-uri'
@@ -19,9 +17,9 @@ task :update_subjects => :environment do
     if el.text != "Reservas somente com o técnico responsável."
       if el.text.strip == "Laboratório Sistemas Operacionais e Distribuídos"
         #if el.text.strip == "Laboratório de Ensino de Computação (LEC)"
-        puts el.text.strip
+        #puts el.text.strip
         numberLSO = numberLabs
-        puts numberLSO
+        #puts numberLSO
       end
       numberLabs += 1
     end
@@ -33,8 +31,6 @@ task :update_subjects => :environment do
 
   flag = 0
 
-  puts DateTime.now.change({ hour: 8 }).localtime("-03:00")
-  puts DateTime.now
   doc.css('tbody tr td font').each do |el|
     if flag == 0
       if numberSubjects == numberLSO
@@ -43,7 +39,7 @@ task :update_subjects => :environment do
       end
     else
       if numberSubjects % numberLabs == 0
-        puts el.text
+        #puts el.text
         if el.text != "Vazio"
           Laboratory.find_by(:initials => "LSO").subjects.create(:begin_time => DateTime.now.change({ hour: hour }).localtime("-03:00"), :end_time => DateTime.now.change({ hour: hour+1}).localtime("-03:00"), :title => el.text, :isFreeToJoin => false)
         else
