@@ -45,7 +45,7 @@ class StatusController < ApplicationController
 
   private
   def status_params
-    params.require[:status].permit(:laboratory_id, :lab_tag, :isOpen)
+    params.require[:status].permit(:laboratory_id, :isOpen,:lab_tag )
   end
 
 end
