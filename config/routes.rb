@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'dashboard/show'
+
   post 'status/' => 'status#new_laboratory', :defaults => { :format => :json }
   post '/:initials/status/' => 'status#new_computer', :defaults => { :format => :json }
   get '/:initials' => 'laboratory#show', :defaults => { :initials => "LSO" }
