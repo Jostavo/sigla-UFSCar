@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  laboratory_id: one
-  isOpen: false
-
-two:
-  laboratory_id: two
-  isOpen: false
