@@ -11,14 +11,21 @@
 
   <body>
     <div class="navbar-fixed-top navbar-inverse">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="/">
         Laboratório de Sistemas Operacionais
       </a>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Login<span class="sr-only">(current)</span></a></li>
-<li><a href="#">Sobre</a></li>
+        <% if user_signed_in? %>
+          <li><a href="/users/edit">Olá, <%= current_user.email %><span class="sr-only">(current)</span></a></li>
+          <li><%= link_to('Sair', destroy_user_session_path, :method => :delete) %></li>
+        <% else %>
+          <li><a href="/users/sign_in">Login<span class="sr-only">(current)</span></a></li>
+        <% end %>
+        <li><a href="/about">Sobre</a></li>
       </ul>
     </div>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
       <%= yield %>
   </body>
 </html>
