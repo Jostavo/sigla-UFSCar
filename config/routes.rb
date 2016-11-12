@@ -2,7 +2,10 @@ Rails.application.routes.draw do
 
   get '/user/show' => 'user#show'
 
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    :omniauth_callbacks => "users/omniauth_callbacks"
+  }
 
   get 'dashboard/show'
   get 'about/' => 'application#about'
