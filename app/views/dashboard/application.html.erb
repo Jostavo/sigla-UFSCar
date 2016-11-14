@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>SiGLa - Sistema de Gerenciamento de Laboratórios</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="manifest" href="manifest.json">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  </head>
+
+  <body>
+    <div class="navbar-fixed-top navbar-inverse">
+      <a class="navbar-brand" href="/">
+        Laboratório de Sistemas Operacionais
+      </a>
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li><a href="/users/edit">Olá, <%= current_user.email %><span class="sr-only">(current)</span></a></li>
+          <li><%= link_to('Sair', destroy_user_session_path, :method => :delete) %></li>
+        <% else %>
+          <li><a href="/users/sign_in">Login<span class="sr-only">(current)</span></a></li>
+        <% end %>
+        <li><a href="/about">Sobre</a></li>
+      </ul>
+    </div>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+  </body>
+</html>
