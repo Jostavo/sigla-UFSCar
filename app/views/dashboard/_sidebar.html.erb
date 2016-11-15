@@ -1,24 +1,30 @@
 <!-- sidebar menu -->
+<% laboratory = Laboratory.all # ISSO DEVERIA ESTAR AQUI?%>
 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
   <div class="menu_section">
     <h3>General</h3>
     <ul class="nav side-menu">
-      <li><a><i class="active fa fa-desktop"></i> Lab. S.O.<span class="fa fa-chevron-down"></span></a>
-        <ul class="nav child_menu">
-          <li><a href="index.html">Report de Máquinas</a></li>
-          <li><a href="index.html">Mapa de Máquinas</a></li>
-          <li><a href="index.html">Ordem de Serviços</a></li>
-          <li><a href="index3.html">Informações</a></li>
-          <li><a href="index.html">Dispositivo Embarcado</a></li>
-        </ul>
-      </li>
-      <li><a><i class="fa fa-desktop"></i> LERIS<span class="fa fa-chevron-down"></span></a>
-        <ul class="nav child_menu">
-          <li><a href="index.html">Acesso ao Laboratório</a></li>
-          <li><a href="index.html">Relatório</a></li>
-          <li><a href="index.html">Dispositivo Embarcado</a></li>
-        </ul>
-      </li>
+      <% laboratory.each do |lab| %>
+        <li><a><i class="fa fa-desktop"></i> <%= lab.initials %><span class="fa fa-chevron-down"></span></a>
+          <ul class="nav child_menu" style="display: none">
+            <% if lab.function.include? "a" %>
+              <li><%= link_to('Report de Computadores', "/dashboard/report/#{lab.initials}")%></li>
+            <% end %>
+            <% if lab.function.include? "b" %>
+              <li><%= link_to('Mapa de Computadores', "/dashboard/map/#{lab.initials}")%></li>
+            <% end %>
+            <% if lab.function.include? "c" %>
+              <li><%= link_to('Relatório e Estatísticas', "/dashboard/statistics/#{lab.initials}")%></li>
+            <% end %>
+            <% if lab.function.include? "d" %>
+              <li><%= link_to('Dispositivo Embarcado', "/dashboard/embedded/#{lab.initials}")%></li>
+            <% end %>
+            <% if lab.function.include? "e" %>
+              <li><%= link_to('Acesso Autorizado', "/dashboard/access/#{lab.initials}")%></li>
+            <% end %>
+          </ul>
+        </li>
+      <% end %>
     </ul>
   </div>
 </div>

@@ -54,14 +54,14 @@
                 </div>
               </div>
               <% if @user.provider == nil %>
-              <div class="form-group">
-                <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Senha Atual<span class="required">*</span>
-</label>
-                <div class="col-md-6 col-sm-6 col-xs-12">
-                  <%= f.password_field :current_password, autocomplete: "off", class:"form-control col-md-7 col-xs-12", required: "required" %>
+                <div class="form-group">
+                  <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Senha Atual<span class="required">*</span>
+                  </label>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <%= f.password_field :current_password, autocomplete: "off", class:"form-control col-md-7 col-xs-12", required: "required" %>
+                  </div>
                 </div>
-              </div>
-            <% end %>
+              <% end %>
               <div class="form-group">
                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                   <button type="submit" class="btn btn-success">Editar</button>
@@ -72,5 +72,6 @@
         </div>
       </div>
     </div>
+  </div>
 </div>
 <!-- /page content -->

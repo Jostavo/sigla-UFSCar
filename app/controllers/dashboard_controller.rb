@@ -27,6 +27,29 @@ class DashboardController < ApplicationController
     end
   end
 
+  def help
+  end
+
+  def report
+    @laboratory = Laboratory.find_by(:initials => params[:initials])
+  end
+
+  def map
+    @laboratory = Laboratory.find_by(:initials => params[:initials])
+  end
+
+  def statistics
+    @laboratory = Laboratory.find_by(:initials => params[:initials])
+  end
+
+  def embedded
+    @laboratory = Laboratory.find_by(:initials => params[:initials])
+  end
+
+  def access
+    @laboratory = Laboratory.find_by(:initials => params[:initials])
+  end
+
   # if user is a admin, the user is allowed to access the dashboard
   private
   def isAdmin

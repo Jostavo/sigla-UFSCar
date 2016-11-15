@@ -7,7 +7,14 @@ Rails.application.routes.draw do
 
   get 'dashboard/' => 'dashboard#show'
   get 'dashboard/profile' => 'dashboard#profile'
+  get 'dashboard/help' => 'dashboard#help'
   patch 'dashboard/edit' => 'dashboard#edit'
+
+  get 'dashboard/report/:initials/' => 'dashboard#report'
+  get 'dashboard/map/:initials' => 'dashboard#map'
+  get 'dashboard/statistics/:initials' => 'dashboard#statistics'
+  get 'dashboard/embedded/:initials' => 'dashboard#embedded'
+  get 'dashboard/access/:initials' => 'dashboard#access'
 
   get 'about/' => 'application#about'
 
