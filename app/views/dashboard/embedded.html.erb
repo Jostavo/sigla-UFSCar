@@ -23,6 +23,12 @@
             </ul>
             <div class="clearfix"></div>
           </div>
+          <% if not @laboratory.function.include? "d"%>
+            <div class="alert alert-danger alert-dismissible fade in" role="alert">
+              <strong>Que loucura!</strong> Acreditamos que este laboratório não possui essa opção disponível.
+            </div>
+          <% end %>
+
           <div class="x_content">
             <br />
           </div>

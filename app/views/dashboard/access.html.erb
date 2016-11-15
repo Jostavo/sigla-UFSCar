@@ -6,6 +6,7 @@
         <div class="x_panel">
           <div class="x_title">
             <h2>Acesso Autorizado<small>Acesso Autorizado pelo leitor biométrico no <%= @laboratory.title%></small></h2>
+
             <ul class="nav navbar-right panel_toolbox">
               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
               </li>
@@ -23,6 +24,11 @@
             </ul>
             <div class="clearfix"></div>
           </div>
+          <% if not @laboratory.function.include? "e"%>
+            <div class="alert alert-danger alert-dismissible fade in" role="alert">
+              <strong>Que loucura!</strong> Acreditamos que este laboratório não possui essa opção disponível.
+            </div>
+          <% end %>
           <div class="x_content">
             <br />
           </div>
