@@ -1,13 +1,3 @@
-<script>
-$(document).ready(function() {
-  $('#fullpage').fullpage({
-    normalScrollElements: '#horario',
-    loopHorizontal: false,
-    loopBottom: true
-  });
-});
-</script>
-
 <% time = Time.now %>
 <% timeLab = @status.created_at + 360 #360seg = 5min%>
 
@@ -15,6 +5,14 @@ $(document).ready(function() {
   <div class="section active" id="section0" style="background-color: black");>
     <div class="slide">
       <div class="container-fluid">
+
+        <% if notice != nil %>
+          <div class="alert alert-success" role="alert"><%= notice %></div>
+        <% end %>
+        <% if alert != nil %>
+          <div class="alert alert-danger" role="alert"><%= alert %></div>
+        <% end %>
+
         <div class="jumbotron">
           <% if timeLab < time %>
             <h1>Sem sinal do dispositivo. :(</h1>
