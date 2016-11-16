@@ -19,7 +19,7 @@
           </div>
         <% end %>
 
-        <div class="jumbotron">
+        <div class="jumbotron" style="margin-top: 5em">
           <% if timeLab < time %>
             <h1>Sem sinal do dispositivo. :(</h1>
           <% else %>
@@ -45,7 +45,7 @@
     </div>
     <div class="slide">
       <div class="container-fluid">
-        <div class="jumbotron">
+        <div class="jumbotron" style="margin-top: 5em">
           <h2>Mapa de Computadores</h2>
           <div class="pc-wrapper">
             <div class="<%= @computers.find_by(:physical_id=> 1).last_status%>">PC 1</div>
@@ -128,12 +128,19 @@
           <div class="pc-wrapper">
             <div class="<%= @computers.find_by(:physical_id=> 27).last_status%>">PC 27</div>
           </div>
-          <div class="container-label">
-            <div class="label_status" style="background-color: green"></div> Disponível para Uso 
-            <div class="label_status" style="background-color: red"></div> Ocupado 
-            <div class="label_status" style="background-color: gray"></div> Em manutenção 
+          <div class="container-label" style="text-align: center">
+            <div class="label_status" style="background-color: green"></div> Disponível
+            <div class="label_status" style="background-color: red"></div> Ocupado
+            <div class="label_status" style="background-color: gray"></div> Em manutenção
           </div>
-
+          <div style="text-align: center">
+            <button class="btn btn-default">
+              Reportar Máquina
+              <div type="button" class="btn btn-default btn-circle btn-danger">
+                <i class="glyphicon glyphicon-exclamation-sign"></i>
+              </div>
+            </button>
+          </div>
         </div>
       </div>
     </div>
