@@ -12,6 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.fullpage
 //= require turbolinks
 //= require bootstrap-sprockets
-//= require jquery.fullpage
