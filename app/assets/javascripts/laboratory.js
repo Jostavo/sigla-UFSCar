@@ -19,7 +19,5 @@
 
 //= require turbolinks
 //= require bootstrap-sprockets
-//= require fullpage
 //= require moment/min/moment.min
 //= require lodash/lodash.core
-//
