@@ -1,0 +1,106 @@
+@import "https://fonts.googleapis.com/css?family=Roboto+Mono";
+@import "https://fonts.googleapis.com/css?family=Roboto:300,400";
+/*100px equal 1 hour*/
+/*clock*/
+/*clock hands*/
+/*colors*/
+/*display scheduele*/
+body {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  font: 12px/1.5;
+  font-family: 'Roboto Mono', "Lucida Console", monospace;
+  letter-spacing: .05em;
+  background-color: white;
+  height: 2400px;
+}
+.left-arrow{
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent; 
+  border-right:10px solid rgba(0,0, 0, 0.50);
+}
+/*clock*/
+#clock {
+  display: flex;
+  right: 1%;
+  position: fixed;
+  -webkit-transition: -webkit-transform ease-out .2s;
+  transition: -webkit-transform ease-out .2s;
+  transition: transform ease-out .2s;
+  transition: transform ease-out .2s, -webkit-transform ease-out .2s;
+}
+
+/*digital time*/
+#clock .digital-time {
+  color: rgba(0,0, 0, 0.50);
+  margin-left: 0.5em;
+}
+
+@media (min-width: 600px) {
+  #clock {
+  }
+
+  #clock .digital-time {
+  }
+}
+/*scheduele*/
+.schedule {
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  top: 0px;
+  width: 100%;
+  padding: 0 2%;
+  margin: 0 auto;
+  position: relative;
+  display: block;
+}
+
+.schedule-item {
+  display: block;
+  width: 100%;
+  height: 100px;
+  margin: 0;
+  text-align: left;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 15px;
+  width: 100%;
+  line-height: 60px;
+  box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.25);
+}
+
+.schedule-content {
+  position: absolute;
+  display: block;
+  width: calc(96% - 75px);
+  margin: 1px 0px 0px 60px;
+  padding: 0px 0px 0px 15px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.content-title {
+  padding-top: 7px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 48px;
+  color: rgba(0,0, 0, 0.85);
+}
+
+.content-duration {
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 0px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.busy{
+  height: 99px;
+  background-color: rgba(0,0,0,0.1);
+}

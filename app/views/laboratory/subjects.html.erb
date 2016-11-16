@@ -1,25 +1,39 @@
 <html>
   <head>
     <%= csrf_meta_tags %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'laboratory', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'laboratory', 'data-turbolinks-track': 'reload' %>
     <link rel="manifest" href="manifest.json">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   </head>
-
   <body>
-    <table class="table table-condensed" >
-      <tr>
-        <th>Horário</th>
-        <th>Aula</th>
-      </tr>
-      <% @subjects.each do |u| %>
-        <tr>
-          <td><%= u.begin_time.hour %>:00</td>
-          <td><%= u.title %></td>
-        </tr>
+    <div class='schedule'>
+      <% i = 0 %>
+      <% @subjects.each do |n| %>
+        <% if n[1] == "Vazio" %>
+          <div class='schedule-content'>
+            <div class='content-title'></div>
+            <div class='content-duration'></div>
+          </div>
+        <% else %>
+          <div class='schedule-content busy'>
+            <div class='content-title'><%= n[1] %></div>
+            <div class='content-duration'></div>
+          </div>
+        <% end %>
+        <% if i <= 9 %>
+          <div class='schedule-item'>0<%=i%>:00</div>
+        <% else %>
+          <div class='schedule-item'><%=i%>:00</div>
+        <% end %> 
+        <% i = i + 1 %>
       <% end %>
-    </table>
+    </div>
+    <div id='clock'>
+      <div class="left-arrow"></div>
+      <div class='digital-time'></div>
+    </div>
   </body>
+  <script src="/assets/clock.js"></script>
 </html>

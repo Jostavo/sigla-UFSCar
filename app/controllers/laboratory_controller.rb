@@ -15,7 +15,7 @@ class LaboratoryController < ApplicationController
 
   def subjects
     @labs = Laboratory.find_by(:initials => params[:initials])
-    @subjects = @labs.subjects.today
+    @subjects = @labs.subjects.today_with_hash
     render :layout => false
   end
 end
