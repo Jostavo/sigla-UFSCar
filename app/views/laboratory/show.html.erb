@@ -7,10 +7,16 @@
       <div class="container-fluid">
 
         <% if notice != nil %>
-          <div class="alert alert-success" role="alert"><%= notice %></div>
+          <div class="alert alert-success" role="alert"><%= notice %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+          </button>
+          </div>
         <% end %>
         <% if alert != nil %>
-          <div class="alert alert-danger" role="alert"><%= alert %></div>
+          <div class="alert alert-danger" role="alert"><%= alert %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+          </button>
+          </div>
         <% end %>
 
         <div class="jumbotron">
@@ -132,7 +138,7 @@
       </div>
     </div>
   </div>
-<!--  <div class="section" id="section1" style="background-color: pink;">
+  <!--  <div class="section" id="section1" style="background-color: pink;">
 
-</div>!-->
+    </div>!-->
 </div>

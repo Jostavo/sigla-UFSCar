@@ -20,8 +20,10 @@
             <i class="fa fa-bars" aria-hidden="true"></i>
           </a>
           <ul class="dropdown-menu">
-            <li><a href="/about">Sobre</a></li>
+            <li><%= link_to('Home', '/' )%></li>
+            <li><%= link_to('Sobre', '/about' )%></li>
             <% if user_signed_in? %>
+              <li role="separator" class="divider"></li>
               <li><a href="/users/edit">Perfil<span class="sr-only">(current)</span></a></li>
               <% if current_user.function == "admin" %>
                 <li><%= link_to('Dashboard', '/dashboard/') %></li>
@@ -29,6 +31,7 @@
               <li role="separator" class="divider"></li>
               <li><%= link_to('Sair', destroy_user_session_path, :method => :delete) %></li>
             <% else %>
+              <li role="separator" class="divider"></li>
               <li><a href="/users/sign_in">Login<span class="sr-only">(current)</span></a></li>
             <% end %>
           </ul>
