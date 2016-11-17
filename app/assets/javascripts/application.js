@@ -15,14 +15,3 @@
 //= require jquery.fullpage
 //= require turbolinks
 //= require bootstrap-sprockets
-
-
-$(document).ready(function() {
-  $('#report-btn').click(function() {
-    $('#report-form').show();
-  });
-  $('#report-form-close-btn').click(function() {
-    $('#report-form').hide();
-  });
-});
-

@@ -10,6 +10,7 @@
   </head>
 
   <body>
+    <%= render "laboratory/reportpc" %>
     <div class="navbar-fixed-top navbar-inverse">
       <a class="navbar-brand">
         LSO
@@ -49,7 +50,14 @@ $(document).ready(function() {
     loopHorizontal: false,
     autoScrolling:false
   });
+  $('#report-btn').click(function() {
+    $('#report-form').show();
+  });
+  $('#report-form-close-btn').click(function() {
+    $('#report-form').hide();
+  });
 });
+
     </script>
   </body>
 </html>
