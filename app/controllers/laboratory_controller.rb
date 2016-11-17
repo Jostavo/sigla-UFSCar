@@ -9,7 +9,7 @@ class LaboratoryController < ApplicationController
     @computers = @labs.computers
 
     if user_signed_in?
-      @report = @labs.reports.new
+      @report = Report.new
     end
   end
 
