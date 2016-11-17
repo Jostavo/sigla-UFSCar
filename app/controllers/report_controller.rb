@@ -3,7 +3,7 @@ class ReportController < ApplicationController
     params = report_params
     @laboratory = Laboratory.find_by(:initials => params[:laboratory_initials])
     @computer = @laboratory.computers.find_by(:physical_id => params[:computer_id])
-    @report = @computer.reports.new(:description => params[:description], :user_id => current_user.id, :laboratory_id => @laboratory.id, :laboratory_initials => @laboratory.initials)
+    @report = @computer.reports.new(:description => params[:description], :user_id => current_user.id, :laboratory_id => @laboratory.id)
 
     if @report.save
       flash.notice = "Report salvo!"
