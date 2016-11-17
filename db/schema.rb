@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117044145) do
+ActiveRecord::Schema.define(version: 20161117055757) do
 
   create_table "computer_statuses", force: :cascade do |t|
     t.string   "status"
@@ -48,8 +48,8 @@ ActiveRecord::Schema.define(version: 20161117044145) do
     t.datetime "updated_at",          null: false
     t.integer  "computer_id"
     t.integer  "user_id"
-    t.string   "laboratory_initials"
     t.integer  "laboratory_id"
+    t.string   "laboratory_initials"
     t.index ["computer_id"], name: "index_reports_on_computer_id"
     t.index ["laboratory_id"], name: "index_reports_on_laboratory_id"
     t.index ["user_id"], name: "index_reports_on_user_id"
