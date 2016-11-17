@@ -10,10 +10,11 @@
   </head>
 
   <body>
-    <%= render "laboratory/reportpc" %>
     <div class="navbar-fixed-top navbar-inverse">
       <a class="navbar-brand">
-        LSO
+        <% if @labs %>
+          <%= @labs.initials %>
+        <% end %>
       </a>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">

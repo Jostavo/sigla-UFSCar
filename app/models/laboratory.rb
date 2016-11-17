@@ -8,4 +8,5 @@ class Laboratory < ApplicationRecord
   has_many :status, dependent: :destroy
   has_many :subjects, dependent: :destroy
   has_many :computers, dependent: :destroy
+  has_many :reports, dependent: :destroy
 end

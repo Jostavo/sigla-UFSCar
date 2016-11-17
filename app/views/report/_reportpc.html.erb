@@ -1,0 +1,31 @@
+<div id="report-form" style="display: none;">
+  <div class="container">
+    <div id="report-form-inside" class="jumbotron">
+      <button id="report-form-close-btn" type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
+      <% if user_signed_in? %>
+        <%= form_for(@report, url: report_path) do |f| %>
+          <div class="form-group">
+            <%= f.label :computer_id, 'Número da Máquina'%><br />
+            <%= f.text_field :computer_id, autofocus: true %>
+          </div>
+
+          <div style="dipslay:none" class="form-group">
+            <%= f.label :laboratory_initials, 'Sigla do Laboratório'%><br />
+            <%= f.text_field :laboratory_initials, :value => @labs.initials, :readonly => true %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :description, 'Descrição'%><br />
+            <%= f.text_area :description, autofocus: true %>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "Registrar Report" %>
+          </div>
+        <% end %>
+      <% else %>
+        <%= "seu safado" %>
+      <% end %>
+    </div>
+  </div>
+</div>

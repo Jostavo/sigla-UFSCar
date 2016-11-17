@@ -7,6 +7,8 @@ class User < ApplicationRecord
   validates :function, format: { with: /(^admin$|^technician$|^normal$|^$)/, message: "only allow 'admin', 'technician' or 'normal'"}
   validates :name, presence: true
 
+  has_many :reports
+
   def isAdmin?
     self.function == "admin"
   end

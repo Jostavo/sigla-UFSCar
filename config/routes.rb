@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     :omniauth_callbacks => "users/omniauth_callbacks"
   }
 
+  post 'report/' => "report#create"
+
   get 'dashboard/' => 'dashboard#show'
   get 'dashboard/profile' => 'dashboard#profile'
   get 'dashboard/help' => 'dashboard#help'
@@ -23,6 +25,7 @@ Rails.application.routes.draw do
   get '/laboratory/:initials' => 'laboratory#show', :defaults => { :initials => "LSO" }
   get '/:initials/subjects' => 'laboratory#subjects', :defaults => { :initials => "LSO" }
   get '/:initials/map' => 'laboratory#map', :defaults => { :initials => "LSO" }
+  get '/:initials' => 'laboratory#show'
   root 'laboratory#show'
 
 end

@@ -7,6 +7,10 @@ class LaboratoryController < ApplicationController
     end
     @status = @labs.status.last
     @computers = @labs.computers
+
+    if user_signed_in?
+      @report = @labs.reports.new
+    end
   end
 
   def map
