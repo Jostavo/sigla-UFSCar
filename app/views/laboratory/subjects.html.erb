@@ -9,6 +9,10 @@
   </head>
   <body>
     <div class='schedule'>
+      <div id='clock'>
+        <div class="left-arrow"></div>
+        <div class='digital-time'></div>
+      </div>
       <% i = 0 %>
       <% @subjects.each do |n| %>
         <% if n[1] == "Vazio" %>
@@ -26,13 +30,9 @@
           <div class='schedule-item'>0<%=i%>:00</div>
         <% else %>
           <div class='schedule-item'><%=i%>:00</div>
-        <% end %> 
+        <% end %>
         <% i = i + 1 %>
       <% end %>
-    </div>
-    <div id='clock'>
-      <div class="left-arrow"></div>
-      <div class='digital-time'></div>
     </div>
   </body>
   <script src="/assets/clock.js"></script>
