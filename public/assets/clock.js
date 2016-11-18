@@ -27,31 +27,23 @@ $(document).ready(function() {
         });
     }
 
-    function updateUI(distanceCircle, progress) {
-        $('.digital-time').text('' + progressToText(progress, (1440 / 60), null, true) + ':' + progressToText(progress, 1440, 60, true) + '');
-        translateElement('#clock', distanceCircle);
+    function updateUI() {
+        var today = new Date();
+        var hour = today.getHours();
+        var minutes = today.getMinutes();
+        $('.digital-time').text('' + checkTime(hour) + ':' + checkTime(minutes) + '');
+        translateElement('#clock', (hour*100)+(minutes*1.6));
     }
-
-    function scrollClock(e) {
-        const documentHeight = $(document).height();
-
-        var viewportHeight = window.innerHeight;
-        var scrollbarHeight = viewportHeight / documentHeight * viewportHeight;
-        var progress = $(window).scrollTop() / (documentHeight - viewportHeight);
-        var distanceCircle = progress * (viewportHeight - scrollbarHeight) + scrollbarHeight / 2 - clockHeight/2;
-
-        //functions block
-        posLayout(scrollbarHeight);
-        updateUI(distanceCircle, progress);
-
-    };
+    function checkTime(i) {
+        if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+        return i;
+    }
 
     // main
     posLayout(scrollbarHeight);
     window.scrollTo(0, (minutes / 1440) * ($(document).height() - window.innerHeight));
+    updateUI();
 
-    $(window).scroll(_.throttle(function() {
-        scrollClock();
-    }, 80));
+    window.setInterval(updateUI,1000);
 });
 
