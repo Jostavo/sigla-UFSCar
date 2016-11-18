@@ -44,6 +44,6 @@ $(document).ready(function() {
     window.scrollTo(0, (minutes / 1440) * ($(document).height() - window.innerHeight));
     updateUI();
 
-    window.setInterval(updateUI,1000);
+    window.setInterval(updateUI,60000);
 });
 
