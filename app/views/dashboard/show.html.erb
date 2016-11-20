@@ -460,7 +460,6 @@ $(document).ready(function() {
 
 $(document).ready(function(){
   pc_reports_json = <%= raw chart_json %>; // json criado
-  alert(JSON.stringify(pc_reports_json));
 
   var options = {
     legend: false,
@@ -486,7 +485,8 @@ $(document).ready(function(){
       labels: 
         labelClass,
       datasets: [{
-        data: dataClass,
+        data: 
+          dataClass,
         backgroundColor: [
           "#BDC3C7",
           "#9B59B6",
