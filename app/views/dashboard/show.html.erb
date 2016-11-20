@@ -241,28 +241,10 @@
             </tr>
             <tr>
               <td>
-                <canvas id="canvas1" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+                <canvas id="canvasReport" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
               </td>
               <td>
-                <table class="tile_info">
-                  <tr>
-                    <td>
-                      <p><i class="fa fa-square blue"></i>PC32 </p>
-                    </td>
-                    <td>7</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p><i class="fa fa-square green"></i>PC22 </p>
-                    </td>
-                    <td>3</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p><i class="fa fa-square purple"></i>PC40 </p>
-                    </td>
-                    <td>1</td>
-                  </tr>
+                <table class="tile_info" id="reportMax">
                 </table>
               </td>
             </tr>
@@ -485,16 +467,22 @@ $(document).ready(function(){
     responsive: false
   };
 
-  new Chart(document.getElementById("canvas1"), {
+  var colorClass = ['fa fa-square blue', 'fa fa-square green', 'fa fa-square purple', 'fa fa-square aero', 'fa fa-square red'];
+  var labelClass = [];
+
+  for(var i = 0; i < 5; i++){
+    if(i <= pc_reports_json.length){
+      $("#reportMax").append("<tr><td><p><i class ='"+colorClass[i]+"'></i>"+pc_reports_json[i][0]+"</p></td><td>"+pc_reports_json[i][1]+"</td></tr>");
+      labelClass.push(pc_reports_json[i]);
+    }
+  }
+
+  new Chart(document.getElementById("canvasReport"), {
     type: 'doughnut',
     tooltipFillColor: "rgba(51, 51, 51, 0.55)",
     data: {
       labels: [
-        "Symbian",
-        "Blackberry",
-        "Other",
-        "Android",
-        "IOS"
+        labelClass
       ],
       datasets: [{
         data: [15, 20, 30, 10, 30],
