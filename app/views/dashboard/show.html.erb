@@ -471,7 +471,7 @@ $(document).ready(function(){
   var labelClass = [];
 
   for(var i = 0; i < 5; i++){
-    if(i <= pc_reports_json.length){
+    if(i < pc_reports_json.length){
       $("#reportMax").append("<tr><td><p><i class ='"+colorClass[i]+"'></i>"+pc_reports_json[i][0]+"</p></td><td>"+pc_reports_json[i][1]+"</td></tr>");
       labelClass.push([pc_reports_json[i][0],pc_reports_json[i][1]]);
     }
