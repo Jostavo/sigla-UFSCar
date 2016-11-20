@@ -1,19 +1,19 @@
-<div class="thumbnail">
-  <img src="/assets/images/andre.jpg" class="img-circle">
-  <div class="caption">
-    <h3>André Vieira</h3>
-    <p>Estudante de Ciência da Computação, curioso na area de robotica com enfase em protêses médicas.<br />Apaixonado por jogos e nas horas vagas praticante de Slackline</p>
-    <p><a href="#" onclick="customButtomClick('https://github.com/byandreee')" class="btn btn-social-icon btn-github">
-      <i class="fa fa-github"></i>
-    </a>
-    <a href="#" onclick="customButtomClick('https://br.linkedin.com/in/andredvieira')" class="btn btn-linkedin">
-      <i class="fa fa-linkedin"></i>
-  </div>
-</div>
-</div>
+<div class="col-sm-3 col-md-2 perfil">
+	<div class="thumbnail">
+		<img src="/assets/images/andre.jpg" class="img-circle">
+		<div class="caption">
+		<h3>André Vieira</h3>
+		<p>Estudante de Ciência da Computação, curioso na area de robotica com enfase em protêses médicas.<br />Apaixonado por jogos e nas horas vagas praticante de Slackline</p>
+		<p><a href="#" onclick="customButtomClick('https://github.com/byandreee')" class="btn btn-social-icon btn-github">
+		<i class="fa fa-github"></i>
+		</a>
+		<a href="#" onclick="customButtomClick('https://br.linkedin.com/in/andredvieira')" class="btn btn-linkedin">
+		<i class="fa fa-linkedin"></i>
+		</div>
+	</div>
 </div>
 
-<div class="col-sm-6 col-md-3 perfil">
+<div class="col-sm-3 col-md-2 perfil">
   <div class="thumbnail">
     <img src="/assets/images/gustavo.jpg" class="img-circle">
     <div class="caption">
@@ -29,7 +29,7 @@
   </div>
 </div>
 
-<div class="col-sm-6 col-md-3 perfil">
+<div class="col-sm-3 col-md-2 perfil">
   <div class="thumbnail">
     <img src="/assets/images/eihara.jpg" class="img-circle">
     <div class="caption">
@@ -43,7 +43,8 @@
       </a>
     </div>
   </div>
-  <div class="col-sm-6 col-md-3 perfil">
+ </div>
+  <div class="col-sm-3 col-md-2 perfil">
     <div class="thumbnail">
       <img src="/assets/images/lordello.jpg" class="img-circle">
       <div class="caption">
@@ -58,183 +59,96 @@
       </div>
     </div>
   </div>
-</div>
+
 
 <style>
-#report-form{
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  z-index: 999;
-  background: rgba(0,0,0, 0.5);
+body {
+  padding-top: 75px;
 }
 
-#report-form-inside{
-  position: fixed;
-  height: 400px;
-  width: 80%;
-position: fixed;
-left: 50%;
-top: 50%;
-margin-left: -40%;
-margin-top: -200px;
+.img-circle {
+  max-width: 140px;
+  max-height: 140px;
 }
 
-.alert-danger{
-  margin-top: 50px;
-}
-.alert-success{
-  margin-top: 50px;
+.centered {
+  width: 600px;
 }
 
-body{
-  margin: 0px;
+.perfil {
+  width: 50%;
 }
 
-img {
-  max-width: 100%;
-  max-height: 100%;
+.thumbnail {
+  border-style: none;
+  background-color: transparent;
 }
 
-li:last-child{
-  padding-right: 15px;
-}
-
-section{
-  position: relative;
-  height: 100%;
-  width: 100%;
-}
-p{
-  text-align: center;
-}
-h3{
-  text-align: center;
-}
-h1{
-  text-align: center;
-}
-
-// computer status
-.maintenance{
-  background-color: gray;
-  height: 20px;
-  width: 80px;
-}
-.available{
-  height: 20px;
-  width: 80px;
-  background-color: red;
-}
-.busy{
-  height: 20px;
-  width: 80px;
-  background-color: green;
-}
-
-.pc-wrapper{
-  text-align: center;
-  vertical-align: top;
-  display: inline-block;
-  padding: 5px;
-}
-
-.containerPC{
+.caption {
   background-color: white;
-  width: 95%;
-  height: 50px;
-  display: table;
-  table-layout: fixed;
-  text-align: center;
-  margin-right: 2.5%;
-  margin-left: 2.5%;
-  margin-bottom: 0px;
-  margin-top: 0px;
+  border-radius: 30px;
 }
 
-.container-wrapper{
-  margin-right: 2.5%;
-  margin-left: 2.5%;
-  background-color: white;
-  height: 190px;	
-  width: 95%;
+.jumbotron p {
+  margin: 0;
 }
 
-.container-label{
-  text-align: right;
-}
-.label_status{
-  display: inline-block;
-  height: 8px;
-  width: 8px;
-  vertical-align: center;
-  background-color: black;
+#consulta-relativa {
+  margin: 15px 0;
 }
 
-.container-fluid{
+.alert {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
 
-.jumbotron h2{
-  text-align: center;
-}
-
-.fp-controlArrow.fp-prev{
-  border-width: 20px 20px 20px  0;
-  border-color: transparent black transparent transparent;
-}
-.fp-controlArrow.fp-next{
-  border-width: 20px  0 20px  20px ;
-  border-color: transparent transparent transparent black;
-}
-
-
-.btn-circle {
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  padding: 6px 0;
-  font-size: 12px;
-  line-height: 1.428571429;
-  border-radius: 15px;
-}
-.btn-circle.btn-lg {
-  width: 50px;
-  height: 50px;
-  padding: 10px 16px;
-  font-size: 18px;
-  line-height: 1.33;
-  border-radius: 25px;
-}
-.btn-circle.btn-xl {
-  width: 70px;
-  height: 70px;
-  padding: 10px 16px;
-  font-size: 24px;
-  line-height: 1.33;
-  border-radius: 35px;
-}
-
-h4 {
-  margin-top: 25px;
-}
-.row {
-  margin-bottom: 20px;
-}
-.row .row {
-  margin-top: 10px;
+.table {
   margin-bottom: 0;
 }
-[class*="col-"] {
-  padding-top: 15px;
-  padding-bottom: 15px;
-  background-color: #eee;
-  background-color: rgba(86,61,124,.15);
-  border: 1px solid #ddd;
-  border: 1px solid rgba(86,61,124,.2);
+
+#selectList {
+  border: 0;
+  border-radius: 6px;
+  box-shadow: none;
 }
 
-hr {
-  margin-top: 40px;
-  margin-bottom: 40px;
+#selectList2 {
+  border: 0;
+  border-radius: 6px;
+  background-color: #fff;
+  box-shadow: none;
+}
+
+#custom-search-input{
+    border: solid 1px #E4E4E4;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+#custom-search-input input {
+  border: 0;
+  box-shadow: none;
+}
+
+#custom-search-input button{
+  margin: 2px 0 0 0;
+  background: none;
+  box-shadow: none;
+  border: 0;
+  color: #666666;
+  padding: 0 8px 0 10px;
+  border-left: solid 1px #ccc;
+}
+
+#custom-search-input button:hover{
+  border: 0;
+  box-shadow: none;
+  border-left: solid 1px #ccc;
+}
+
+#custom-search-input .glyphicon-search{
+  font-size: 23px;
+
 }
 </style>
