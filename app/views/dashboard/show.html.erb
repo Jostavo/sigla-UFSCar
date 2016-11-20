@@ -474,7 +474,12 @@ $(document).ready(function() {
       });
 });
 
+<% chart_json = @report.to_json %>
+
 $(document).ready(function(){
+  pc_reports_json = <%= raw chart_json %>; // json criado
+  alert(JSON.stringify(pc_reports_json));
+
   var options = {
     legend: false,
     responsive: false
@@ -514,6 +519,7 @@ $(document).ready(function(){
 });
 
 $(document).ready(function() {
+
 
   var cb = function(start, end, label) {
     console.log(start.toISOString(), end.toISOString(), label);

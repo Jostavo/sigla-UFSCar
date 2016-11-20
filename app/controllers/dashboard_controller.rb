@@ -4,6 +4,8 @@ class DashboardController < ApplicationController
   before_action :authenticate_user!, :isAdmin
 
   def show
+    @report = Report.group(:computer_id).count().sort_by{|k,v| v}.reverse
+
   end
 
   def profile
