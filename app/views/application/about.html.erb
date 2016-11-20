@@ -59,3 +59,182 @@
     </div>
   </div>
 </div>
+
+<style>
+#report-form{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 999;
+  background: rgba(0,0,0, 0.5);
+}
+
+#report-form-inside{
+  position: fixed;
+  height: 400px;
+  width: 80%;
+position: fixed;
+left: 50%;
+top: 50%;
+margin-left: -40%;
+margin-top: -200px;
+}
+
+.alert-danger{
+  margin-top: 50px;
+}
+.alert-success{
+  margin-top: 50px;
+}
+
+body{
+  margin: 0px;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+li:last-child{
+  padding-right: 15px;
+}
+
+section{
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+p{
+  text-align: center;
+}
+h3{
+  text-align: center;
+}
+h1{
+  text-align: center;
+}
+
+// computer status
+.maintenance{
+  background-color: gray;
+  height: 20px;
+  width: 80px;
+}
+.available{
+  height: 20px;
+  width: 80px;
+  background-color: red;
+}
+.busy{
+  height: 20px;
+  width: 80px;
+  background-color: green;
+}
+
+.pc-wrapper{
+  text-align: center;
+  vertical-align: top;
+  display: inline-block;
+  padding: 5px;
+}
+
+.containerPC{
+  background-color: white;
+  width: 95%;
+  height: 50px;
+  display: table;
+  table-layout: fixed;
+  text-align: center;
+  margin-right: 2.5%;
+  margin-left: 2.5%;
+  margin-bottom: 0px;
+  margin-top: 0px;
+}
+
+.container-wrapper{
+  margin-right: 2.5%;
+  margin-left: 2.5%;
+  background-color: white;
+  height: 190px;	
+  width: 95%;
+}
+
+.container-label{
+  text-align: right;
+}
+.label_status{
+  display: inline-block;
+  height: 8px;
+  width: 8px;
+  vertical-align: center;
+  background-color: black;
+}
+
+.container-fluid{
+}
+
+.jumbotron h2{
+  text-align: center;
+}
+
+.fp-controlArrow.fp-prev{
+  border-width: 20px 20px 20px  0;
+  border-color: transparent black transparent transparent;
+}
+.fp-controlArrow.fp-next{
+  border-width: 20px  0 20px  20px ;
+  border-color: transparent transparent transparent black;
+}
+
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
+}
+
+h4 {
+  margin-top: 25px;
+}
+.row {
+  margin-bottom: 20px;
+}
+.row .row {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+[class*="col-"] {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #eee;
+  background-color: rgba(86,61,124,.15);
+  border: 1px solid #ddd;
+  border: 1px solid rgba(86,61,124,.2);
+}
+
+hr {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+</style>
