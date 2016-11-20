@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   }
 
   post 'report/' => "report#create"
+  get 'report/show' => "report#show"
 
   get 'dashboard/' => 'dashboard#show'
   get 'dashboard/profile' => 'dashboard#profile'
