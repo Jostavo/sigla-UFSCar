@@ -1,9 +1,16 @@
 class ReportController < ApplicationController
+  before_action :authenticate_user!
+
+  def show
+    @report = Report.where(:user_id => current_user.id).order(created_at: :desc)
+
+  end
+
   def create
     params = report_params
     @laboratory = Laboratory.find_by(:initials => params[:laboratory_initials])
     @computer = @laboratory.computers.find_by(:physical_id => params[:computer_id])
-    @report = @computer.reports.new(:description => params[:description], :user_id => current_user.id, :laboratory_id => @laboratory.id)
+    @report = @computer.reports.new(:description => params[:description], :user_id => current_user.id, :laboratory_id => @laboratory.id, :laboratory_initials => @laboratory.initials)
 
     if @report.save
       flash.notice = "Report salvo!"

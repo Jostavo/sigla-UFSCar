@@ -1,0 +1,64 @@
+<div class="report-form" style="display:none;">
+  <div class="container report-form-inside">
+    <div class="jumbotron">
+      <button id="btn-close" type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
+      <h4>Report feito em <h4> <h4 id="date"></h4>
+      <div class="form-group">
+        <label>Descrição:</label>
+        <textarea id="description-form" class="form-control" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Solução:</label>
+        <textarea id="solution-form" class="form-control" rows="3"></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function() {
+  $('.report').click(function() {
+    $('#test').text($(this).data('id'));
+    console.log(json[0].id);
+    description = JSON.stringify(json[$(this).data('id')].description);
+    $('#description-form').text(description.slice(1,description.length -1));
+
+    solution = JSON.stringify(json[$(this).data('id')].solution);
+    if(solution != "null"){
+      $('#solution-form').text(solution.slice(1,solution.length -1));
+    }else{
+      $('#solution-form').text("Não foi definido nenhuma solução...");
+    }
+
+    date = JSON.stringify(json[$(this).data('id')].created_at);
+    $('#date').text(date);
+
+
+    $('.report-form').show();
+  });
+
+  $('#btn-close').click(function() {
+    $('.report-form').hide();
+  });
+
+});
+</script>
+
+<style>
+.report-form{
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+  background: rgba(0,0,0, 0.5);
+}
+
+.report-form-inside{
+  position: fixed;
+  height: 95%;
+  width: 90%;
+  position: fixed;
+  left: 50%;
+  margin-left: -47.5%;
+}
+</style>

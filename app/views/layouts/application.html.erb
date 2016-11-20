@@ -27,6 +27,7 @@
             <% if user_signed_in? %>
               <li role="separator" class="divider"></li>
               <li><a href="/users/edit">Perfil<span class="sr-only">(current)</span></a></li>
+              <li><a href="/report/show">Reports<span class="sr-only">(current)</span></a></li>
               <% if current_user.function == "admin" %>
                 <li><%= link_to('Dashboard', '/dashboard/') %></li>
               <% end %>
