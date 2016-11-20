@@ -288,25 +288,10 @@
             </tr>
             <tr>
               <td>
-                <table class="tile_info">
-                  <tr>
-                    <td>
-                      <p><i class="fa fa-square blue"></i>LabSO </p>
-                    </td>
-                    <td>7</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p><i class="fa fa-square green"></i>LEC </p>
-                    </td>
-                    <td>3</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p><i class="fa fa-square purple"></i>Lab Redes </p>
-                    </td>
-                    <td>1</td>
-                  </tr>
+                <canvas id="canvasSala" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+              </td>
+              <td>
+                <table class="tile_info" id="salasMax">
                 </table>
               </td>
             </tr>
@@ -354,25 +339,10 @@
             </tr>
             <tr>
               <td>
-                <table class="tile_info">
-                  <tr>
-                    <td>
-                      <p><i class="fa fa-square blue"></i>PC32 </p>
-                    </td>
-                    <td>7</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p><i class="fa fa-square green"></i>PC22 </p>
-                    </td>
-                    <td>3</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <p><i class="fa fa-square purple"></i>PC40 </p>
-                    </td>
-                    <td>1</td>
-                  </tr>
+                <canvas id="canvasRandom" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+              </td>
+              <td>
+                <table class="tile_info" id="algumidrandom">
                 </table>
               </td>
             </tr>
@@ -488,18 +458,18 @@ $(document).ready(function(){
         data: 
           dataClass,
         backgroundColor: [
-          "#BDC3C7",
-          "#9B59B6",
-          "#E74C3C",
+          "#3498DB",
           "#26B99A",
-          "#3498DB"
+          "#9B59B6",
+          "#BDC3C7",
+          "#E74C3C"
         ],
         hoverBackgroundColor: [
-          "#CFD4D8",
-          "#B370CF",
-          "#E95E4F",
+          "#49A9EA",
           "#36CAAB",
-          "#49A9EA"
+          "#B370CF",
+          "#CFD4D8",
+          "#E95E4F"
         ]
       }]
     },
@@ -508,7 +478,6 @@ $(document).ready(function(){
 });
 
 $(document).ready(function() {
-
 
   var cb = function(start, end, label) {
     console.log(start.toISOString(), end.toISOString(), label);
