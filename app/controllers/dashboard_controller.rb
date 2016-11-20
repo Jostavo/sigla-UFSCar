@@ -32,6 +32,7 @@ class DashboardController < ApplicationController
 
   def report
     @laboratory = Laboratory.find_by(:initials => params[:initials])
+    @report = Report.where(:laboratory_initials => @laboratory.initials)
   end
 
   def map

@@ -1,3 +1,4 @@
+<%= render "report/report_edit" %>
 <!-- page content -->
 <div class="right_col" role="main">
   <div class="">
@@ -23,6 +24,39 @@
             </ul>
             <div class="clearfix"></div>
           </div>
+          <% i = 0 %>
+          <% @report.each do |u| %>
+            <% if u.resolution == "pending" %>
+              <% resolution = "fa-times" %>
+              <% text = "Não resolvido" %>
+              <% state = "danger" %>
+              <% else if u.resolution == "verifyng" %>
+                <% resolution = "fa-exclamation" %>
+                <% text = "Analisando" %>
+                <% state = "warning" %>
+              <% else %>
+                <% resolution = "fa-check" %>
+                <% text = "Resolvido" %>
+                <% state = "success" %>
+              <% end %>
+            <% end %>
+            <div class="row report" data-id="<%= i %>">
+              <div class="col-xs-12 col-sm-2 date">
+                <strong><%= u.created_at.strftime("%d/%m/%Y") %></strong><hr />
+              </div>
+              <div class="col-xs-4 col-sm-5 description">
+                <%= u.description.at(0..50) %>...
+              </div>
+              <div class="col-xs-2 col-sm-2 lab">
+                <%= u.computer_id %>/<%= u.laboratory_initials %>
+              </div>
+              <div class="col-xs-6 col-sm-3 state">
+                <button type="button" class="btn btn-sm btn-<%= state %>"><i class="fa <%= resolution %>" aria-hidden="true"></i> <%= text %></button>
+              </div>
+            </div>
+            <% i = i + 1 %>
+          <% end %>
+
           <% if not @laboratory.function.include? "a"%>
             <div class="alert alert-danger alert-dismissible fade in" role="alert">
               <strong>Que loucura!</strong> Acreditamos que este laboratório não possui essa opção disponível.
@@ -37,3 +71,57 @@
   </div>
 </div>
 <!-- /page content -->
+
+<style>
+.row{
+  vertical-align: center;
+}
+.row .description{
+  word-wrap: break-word;
+}
+.row .lab{
+  text-align: right;
+}
+.row .state{
+  text-align: right;
+}
+.row:not(:first-child){
+  margin-top: 1.5em;
+}
+
+.date{
+  margin-bottom: 10px;
+}
+
+/* clearfix for floats */
+.date:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.date strong {
+  padding-right: 10px;
+  float: left;
+}
+
+.date hr {
+  border:1px solid #DDD;
+  border-width: 1px 0 0 0;
+  margin-top: 11px;
+}
+
+    @media screen and (min-width: 768px) {
+      .date hr {
+        border: 0px solid #DDD;
+        border-width: 0px 0 0 0;
+        margin-top: 11px;
+      }
+    }
+</style>
+<script>
+<% reportjson = @report.to_json %>
+$(document).ready(function() {
+  json = <%= raw reportjson %>;
+});
+</script>
