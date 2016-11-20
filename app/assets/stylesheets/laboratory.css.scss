@@ -29,7 +29,7 @@ body {
 #clock {
   display: flex;
   right: 1%;
-  position: fixed;
+  position: absolute;
   -webkit-transition: -webkit-transform ease-out .2s;
   transition: -webkit-transform ease-out .2s;
   transition: transform ease-out .2s;
