@@ -469,11 +469,13 @@ $(document).ready(function(){
 
   var colorClass = ['fa fa-square blue', 'fa fa-square green', 'fa fa-square purple', 'fa fa-square aero', 'fa fa-square red'];
   var labelClass = [];
+  var dataClass = [];
 
   for(var i = 0; i < 5; i++){
     if(i < pc_reports_json.length){
       $("#reportMax").append("<tr><td><p><i class ='"+colorClass[i]+"'></i>"+pc_reports_json[i][0]+"</p></td><td>"+pc_reports_json[i][1]+"</td></tr>");
-      labelClass.push([pc_reports_json[i][0],pc_reports_json[i][1]]);
+      labelClass.push(pc_reports_json[i][0]);
+      dataClass.push(pc_reports_json[i][1]);
     }
   }
 
@@ -485,7 +487,7 @@ $(document).ready(function(){
         labelClass
       ],
       datasets: [{
-        data: [15, 20, 30, 10, 30],
+        data: dataClass,
         backgroundColor: [
           "#BDC3C7",
           "#9B59B6",
