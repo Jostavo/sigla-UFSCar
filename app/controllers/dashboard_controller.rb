@@ -47,7 +47,7 @@ class DashboardController < ApplicationController
 
   def report
     @laboratory = Laboratory.find_by(:initials => params[:initials])
-    @report = Report.where(:laboratory_initials => @laboratory.initials).reverse
+    @report = Report.where(:laboratory_initials => @laboratory.initials).order(created_at: "desc")
     @report_edit = Report.new
   end
 
