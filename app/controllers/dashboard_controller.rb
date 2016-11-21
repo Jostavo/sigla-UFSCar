@@ -28,21 +28,6 @@ class DashboardController < ApplicationController
     #Últimos 4 acessos ao LERIS --> # modelagem ainda não implementada...
   end
 
-  # temporary solution
-  private
-  def top5_labs
-    lab = Laboratory.all
-    hash_labs = Hash.new
-
-    lab.each do |l|
-      hash_labs[l.initials] = l.subjects.count
-    end
-    puts "HUEHUEHUEHUH"
-    puts hash_labs
-    puts "HUEHUEHUEHUH"
-    hash_labs.sort
-  end
-
   def profile
     @user = current_user
   end
@@ -75,6 +60,7 @@ class DashboardController < ApplicationController
 
   def map
     @laboratory = Laboratory.find_by(:initials => params[:initials])
+    @computers = @laboratory.computers
   end
 
   def statistics
@@ -103,5 +89,18 @@ class DashboardController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :current_password)
   end
+
+  # temporary solution
+  private
+  def top5_labs
+    lab = Laboratory.all
+    hash_labs = Hash.new
+
+    lab.each do |l|
+      hash_labs[l.initials] = l.subjects.count
+    end
+    hash_labs.sort
+  end
+
 
 end

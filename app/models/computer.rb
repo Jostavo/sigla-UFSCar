@@ -6,6 +6,10 @@ class Computer < ApplicationRecord
   has_many :reports
 
   def last_status
+    if(self.status == "maintenance")
+      "maintenance"
+    end
+
     time = self.updated_at + 600
     if(Time.now > time)
       return "busy"
