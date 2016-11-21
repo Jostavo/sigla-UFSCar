@@ -12,7 +12,7 @@ class DashboardController < ApplicationController
     #Tempo médio que ficou aberto essa semana
     @labopen_week = Laboratory.find_by(:initials => "LSO").status.average_this_week
     #Tempo médio que ficou aberto semana passada
-    @labopen_week = Laboratory.find_by(:initials => "LSO").status.average_last_week
+    @labopen_last_week = Laboratory.find_by(:initials => "LSO").status.average_last_week
     #Número de usuários cadastrados no sistema
     @users_count = User.all.count
     #Número de Reports não resolvidos
