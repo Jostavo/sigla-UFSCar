@@ -5,6 +5,21 @@ class DashboardController < ApplicationController
 
   def show
     @report = Report.group(:computer_id).count().sort_by{|k,v| v}.reverse
+  #Tempo aberto no dia atual
+    @labopen_today = Laboratory.find_by(:initials => "LSO").status.today_open_in_seconds
+  #Tempo aberto no mesmo dia, só que 1 semana atrás
+    @labopen_today = Laboratory.find_by(:initials => "LSO").status.last_week_open_in_seconds
+  #Tempo médio que ficou aberto essa semana
+  #Tempo médio que ficou aberto semana passada
+  #Número de usuários cadastrados no sistema
+  #Número de Reports não resolvidos
+  #Número total de reports
+  #Tempo sem energia essa semana
+  #Tempo sem energia semana passada
+  #5 salas com mais aulas
+  #Últimos 4 reports de máquinas (e o horário que foram feitos)
+  #Últimos 4 acessos ao LERIS -->
+
 
   end
 
