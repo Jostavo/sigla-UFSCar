@@ -30,7 +30,7 @@
               <% resolution = "fa-times" %>
               <% text = "Não resolvido" %>
               <% state = "danger" %>
-              <% else if u.resolution == "verifyng" %>
+              <% else if u.resolution == "verifying" %>
                 <% resolution = "fa-exclamation" %>
                 <% text = "Analisando" %>
                 <% state = "warning" %>
@@ -44,11 +44,14 @@
               <div class="col-xs-12 col-sm-2 date">
                 <strong><%= u.created_at.strftime("%d/%m/%Y") %></strong><hr />
               </div>
-              <div class="col-xs-4 col-sm-5 description">
+              <div class="col-xs-4 col-sm-4 description">
                 <%= u.description.at(0..50) %>...
               </div>
-              <div class="col-xs-2 col-sm-2 lab">
+              <div class="col-xs-2 col-sm-1 lab">
                 <%= u.computer_id %>/<%= u.laboratory_initials %>
+              </div>
+              <div class="col-sm-2 name">
+                <%= u.user_name %>
               </div>
               <div class="col-xs-6 col-sm-3 state">
                 <button type="button" class="btn btn-sm btn-<%= state %>"><i class="fa <%= resolution %>" aria-hidden="true"></i> <%= text %></button>
@@ -111,11 +114,19 @@
   margin-top: 11px;
 }
 
+.name {
+  display: none;
+}
+
     @media screen and (min-width: 768px) {
       .date hr {
         border: 0px solid #DDD;
         border-width: 0px 0 0 0;
         margin-top: 11px;
+      }
+
+      .name {
+        display: block;
       }
     }
 </style>

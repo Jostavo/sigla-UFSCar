@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   patch 'dashboard/edit' => 'dashboard#edit'
 
   get 'dashboard/report/:initials/' => 'dashboard#report'
+  post 'dashboard/report/:initials/' => 'report#edit'
+
   get 'dashboard/map/:initials' => 'dashboard#map'
   get 'dashboard/statistics/:initials' => 'dashboard#statistics'
   get 'dashboard/embedded/:initials' => 'dashboard#embedded'

@@ -10,7 +10,7 @@ class ReportController < ApplicationController
     params = report_params
     @laboratory = Laboratory.find_by(:initials => params[:laboratory_initials])
     @computer = @laboratory.computers.find_by(:physical_id => params[:computer_id])
-    @report = @computer.reports.new(:description => params[:description], :user_id => current_user.id, :laboratory_id => @laboratory.id, :laboratory_initials => @laboratory.initials)
+    @report = @computer.reports.new(:description => params[:description], :user_id => current_user.id, :user_name => current_user.name, :laboratory_id => @laboratory.id, :laboratory_initials => @laboratory.initials)
 
     if @report.save
       flash.notice = "Report salvo!"
@@ -19,6 +19,28 @@ class ReportController < ApplicationController
       flash.alert= "Não foi possível salvar o report! #{@report.errors}"
       redirect_to root_path
     end
+  end
+
+  def edit
+    id = params[:report_id_]
+    commit = params[:commit]
+    edit_params = report_params_edit_dashboard
+
+    @report = Report.find_by(:id => id[0])
+    if @report.update_attributes(:solution => edit_params[:solution], :resolution => commit)
+      flash.notice = "Report editado!"
+      redirect_to :back
+    else
+      flash.alert = "Não foi possível editar o report! #{@report.errors}"
+      redirect_to :back
+    end
+
+
+  end
+
+  private
+  def report_params_edit_dashboard
+    params.require(:report).permit(:id, :solution)
   end
 
   private

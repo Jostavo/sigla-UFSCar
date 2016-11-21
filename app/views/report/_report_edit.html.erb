@@ -2,15 +2,32 @@
   <div class="container report-form-inside">
     <div class="jumbotron">
       <button id="btn-close" type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
-      <h4>Report feito em <h4> <h4 id="date"></h4>
-      <div class="form-group">
-        <label>Descrição:</label>
-        <textarea id="description-form" class="form-control" rows="3"></textarea>
-      </div>
-      <div class="form-group">
-        <label>Solução:</label>
-        <textarea id="solution-form" class="form-control" rows="3"></textarea>
-      </div>
+      <%= form_tag("/dashboard/report/#{@laboratory.initials}", method: "post") do %>
+        <h5>Report feito em </h5>
+        <div class="form-group">
+          <%= text_field "report_id_", nil, class: "form-control hidden", :readonly => "true"%>
+        </div>
+        <div class="form-group">
+          <%= label_tag(:q, "Report criado por:") %>
+          <span id="report_user_name"></span>
+        </div>
+        <div class="form-group">
+          <label>Descrição:</label>
+          <%= text_area_tag "report_description", nil, class: "form-control", :readonly => "true" %>
+        </div>
+        <div class="form-group">
+          <label>Solução:</label>
+          <%= text_area_tag "report[solution]", nil, class: "form-control"  %>
+        </div>
+        <div class="form-group btn-group" role="group">
+          <button name="commit" id="report_danger" value="pending" type="submit" class="btn btn-sm btn-danger btn-default"><i class="fa fa-times" aria-hidden="true"></i> Não Resolvido</button>
+          <button name="commit" id="report_warning" value="verifying" type="submit" class="btn btn-sm btn-warning btn-default"><i class="fa fa-exclamation" aria-hidden="true"></i> Analisando</button>
+          <button name="commit" id="report_success" value="resolved" type="submit" class="btn btn-sm btn-success btn-default"><i class="fa fa-check" aria-hidden="true"></i> Resolvido</button>
+        </div>
+        <div id="form-grou-text" class="col-xs-12 col-sm-12">
+          <i>Clique nos botões acima para editar o report</i>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
@@ -19,19 +36,39 @@
 $(document).ready(function() {
   $('.report').click(function() {
     $('#test').text($(this).data('id'));
-    console.log(json[0].id);
+    console.log($(this).data('id'));
+    id = JSON.stringify(json[$(this).data('id')].id);
     description = JSON.stringify(json[$(this).data('id')].description);
-    $('#description-form').text(description.slice(1,description.length -1));
-
+    user_name = JSON.stringify(json[$(this).data('id')].user_name);
+    lab_initials = JSON.stringify(json[$(this).data('id')].laboratory_initials);
     solution = JSON.stringify(json[$(this).data('id')].solution);
+    resolution = JSON.stringify(json[$(this).data('id')].resolution);
+    $('#report_description').text(description.slice(1,description.length -1));
+    $('#report_user_name').text(user_name.slice(1,user_name.length-1));
+    $('#report_id_').val(id);
+
     if(solution != "null"){
-      $('#solution-form').text(solution.slice(1,solution.length -1));
+      $('#report_solution').text(solution.slice(1,solution.length -1));
     }else{
-      $('#solution-form').text("Não foi definido nenhuma solução...");
+      $('#report_solution').text("Não foi definido nenhuma solução...");
+    }
+
+    console.log(resolution);
+
+    $('#report_danger').removeClass('active');
+    $('#report_warning').removeClass('active');
+    $('#report_success').removeClass('active');
+    if(resolution == "\"pending\""){
+      $('#report_danger').addClass('active');
+    }else if (resolution == "\"verifying\""){
+      $('#report_warning').addClass('active');
+    }else{
+      $('#report_success').addClass('active');
+      // resolved
     }
 
     date = JSON.stringify(json[$(this).data('id')].created_at);
-    $('#date').text(date);
+    $('#report-created_at').text(date);
 
 
     $('.report-form').show();
@@ -60,5 +97,13 @@ $(document).ready(function() {
   position: fixed;
   left: 50%;
   margin-left: -47.5%;
+}
+
+.btn-group{
+  float: right;
+}
+
+#form-grou-text{
+  text-align: right;
 }
 </style>

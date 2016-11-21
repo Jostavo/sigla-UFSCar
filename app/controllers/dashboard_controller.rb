@@ -8,7 +8,7 @@ class DashboardController < ApplicationController
   #Tempo aberto no dia atual
     @labopen_today = Laboratory.find_by(:initials => "LSO").status.today_open_in_seconds
   #Tempo aberto no mesmo dia, só que 1 semana atrás
-    @labopen_today = Laboratory.find_by(:initials => "LSO").status.last_week_open_in_seconds
+    @labopen_today_and_week_ago = Laboratory.find_by(:initials => "LSO").status.last_week_open_in_seconds
   #Tempo médio que ficou aberto essa semana
   #Tempo médio que ficou aberto semana passada
   #Número de usuários cadastrados no sistema
@@ -19,8 +19,6 @@ class DashboardController < ApplicationController
   #5 salas com mais aulas
   #Últimos 4 reports de máquinas (e o horário que foram feitos)
   #Últimos 4 acessos ao LERIS -->
-
-
   end
 
   def profile
@@ -49,7 +47,8 @@ class DashboardController < ApplicationController
 
   def report
     @laboratory = Laboratory.find_by(:initials => params[:initials])
-    @report = Report.where(:laboratory_initials => @laboratory.initials)
+    @report = Report.where(:laboratory_initials => @laboratory.initials).reverse
+    @report_edit = Report.new
   end
 
   def map
