@@ -5,20 +5,42 @@ class DashboardController < ApplicationController
 
   def show
     @report = Report.group(:computer_id).count().sort_by{|k,v| v}.reverse
-  #Tempo aberto no dia atual
+    #Tempo aberto no dia atual
     @labopen_today = Laboratory.find_by(:initials => "LSO").status.today_open_in_seconds
-  #Tempo aberto no mesmo dia, só que 1 semana atrás
+    #Tempo aberto no mesmo dia, só que 1 semana atrás
     @labopen_today_and_week_ago = Laboratory.find_by(:initials => "LSO").status.last_week_open_in_seconds
-  #Tempo médio que ficou aberto essa semana
-  #Tempo médio que ficou aberto semana passada
-  #Número de usuários cadastrados no sistema
-  #Número de Reports não resolvidos
-  #Número total de reports
-  #Tempo sem energia essa semana
-  #Tempo sem energia semana passada
-  #5 salas com mais aulas
-  #Últimos 4 reports de máquinas (e o horário que foram feitos)
-  #Últimos 4 acessos ao LERIS -->
+    #Tempo médio que ficou aberto essa semana
+    @labopen_week = Laboratory.find_by(:initials => "LSO").status.average_this_week
+    #Tempo médio que ficou aberto semana passada
+    @labopen_week = Laboratory.find_by(:initials => "LSO").status.average_last_week
+    #Número de usuários cadastrados no sistema
+    @users_count = User.all.count
+    #Número de Reports não resolvidos
+    @reports_pending = Report.where(:resolution => "pending").count + Report.where(:resolution => "verifying").count
+    #Número total de reports
+    @total_reports = Report.all.count
+    #Tempo sem energia essa semana  #fica pra próxima
+    #Tempo sem energia semana passada #fica pra próxima
+    #5 salas com mais aulas
+    @top5_labs = top5_labs
+    #Últimos 4 reports de máquinas (e o horário que foram feitos)
+    @last_4_reports = Report.last(5).reverse
+    #Últimos 4 acessos ao LERIS --> # modelagem ainda não implementada...
+  end
+
+  # temporary solution
+  private
+  def top5_labs
+    lab = Laboratory.all
+    hash_labs = Hash.new
+
+    lab.each do |l|
+      hash_labs[l.initials] = l.subjects.count
+    end
+    puts "HUEHUEHUEHUH"
+    puts hash_labs
+    puts "HUEHUEHUEHUH"
+    hash_labs.sort
   end
 
   def profile
