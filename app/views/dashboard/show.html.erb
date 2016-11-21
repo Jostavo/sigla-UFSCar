@@ -363,7 +363,7 @@ $("#TAH").append("<span class='count_top'><i class='fa fa-user'></i> Tempo Abert
 if(time_open_today_chart < 60){
   $("#TAH").append("<div class='count'> &gt; 1 Min </div>");
 }else if(time_open_today_chart > 60 && time_open_today_chart < 3600){
-  $("#TAH").append("<div class='count'> &gt; 1 Hr </div>");
+  $("#TAH").append("<div class='count'>"+ Math.floor(time_open_today_chart/60) +" Min </div>");
 }else if(time_open_today_chart > 3600 && time_open_today_chart < 7200){
   $("#TAH").append("<div class='count'> 1 Hr </div>");
 }else{
