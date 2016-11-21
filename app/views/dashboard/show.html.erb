@@ -3,13 +3,7 @@
   <!-- top tiles -->
 
   <div class="row tile_count">
-    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-      <span class="count_top"><i class="fa fa-user"></i> Tempo Aberto Hoje</span>
-      <!-- aqui precisa pegar do dia atual (moment()) quantas horas está aberto até o momento-->
-      <!-- pra pegar o moment a partir da meia noite, é necessário que vc escreva moment().startOf("day")-->
-      <div class="count">50</div>
-      <!-- aqui precisa pegar o valor diário do mesmo dia na semana passada. moment().subtract(7, 'days").startOf("day")-->
-      <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count" id="TAH">
     </div>
     <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
       <span class="count_top"><i class="fa fa-clock-o"></i> Tempo Médio Aberto</span>
@@ -358,6 +352,38 @@
 <!-- /page content -->
 <script>
 $(document).ready(function() {
+<% time_open_today = @labopen_today.to_json %>
+time_open_today_chart = <%= raw time_open_today%>;
+
+<% time_open_today_week = @labopen_today_and_week_ago.to_json %>
+time_open_today_week_chart = <%= raw time_open_today_week%>;
+
+$("#TAH").append("<span class='count_top'><i class='fa fa-user'></i> Tempo Aberto Hoje</span>");
+
+if(time_open_today_chart < 60){
+  $("#TAH").append("<div class='count'> &gt; 1 Min </div>");
+}else if(time_open_today_chart > 60 && time_open_today_chart < 3600){
+  $("#TAH").append("<div class='count'> &gt; 1 Hr </div>");
+}else if(time_open_today_chart > 3600 && time_open_today_chart < 7200){
+  $("#TAH").append("<div class='count'> 1 Hr </div>");
+}else{
+  $("#TAH").append("<div class='count'> "+ Math.floor(time_open_today_chart/3600) +" Hrs </div>");
+}
+
+var porcentagem = time_open_today_chart - time_open_today_week_chart;
+porcentagem = porcentagem / time_open_today_chart;
+porcentagem = porcentagem * 100;
+
+if(time_open_today_chart > time_open_today_week_chart){
+  $("#TAH").append("<span class='count_bottom'><i class='green'><i class='fa fa-sort-asc'></i>"+ Math.floor(porcentagem) +"</i> que semana passada</span>");
+}else if(time_open_today_chart < time_open_today_week_chart){
+  $("#TAH").append("<span class='count_bottom'><i class='red'><i class='fa fa-sort-desc'></i>"+ Math.floor(porcentagem) +"</i> que semana passada</span>");
+}else{
+  $("#TAH").append("<span class='count_bottom'><i class='gray'>Igual</i> a semana passada</span>");
+}
+});
+
+$(document).ready(function() {
   //Data1 seria o total de horas por dia no qual o lab ficou aberto
   var data1 = [
     [moment().subtract(6, 'days').startOf('day').toDate(), 15/*aqui entra os role do banco de dados*/],
@@ -550,13 +576,6 @@ $(document).ready(function() {
 </script>
 
 <script>
-// Tempo aberto no dia atual
-<% time_open_today = @labopen_today.to_json %>
-time_open_today_chart = <%= raw time_open_today%>; // json criado
-
-<% time_open_today_week = @labopen_today_and_week_ago.to_json %>
-time_open_today_week_chart = <%= raw time_open_today_week%>; // json criado
-
 // Tempo aberto no mesmo dia, só que 1 semana atrás
 // Tempo médio que ficou aberto essa semana
 // Tempo médio que ficou aberto semana passada
