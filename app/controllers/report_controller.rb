@@ -3,7 +3,6 @@ class ReportController < ApplicationController
 
   def show
     @report = Report.where(:user_id => current_user.id).order(created_at: :desc)
-
   end
 
   def create
@@ -28,14 +27,18 @@ class ReportController < ApplicationController
 
     @report = Report.find_by(:id => id[0])
     if @report.update_attributes(:solution => edit_params[:solution], :resolution => commit)
+      computer = Computer.find_by(:id => @report.computer_id)
+      if (commit == "verifying")
+        computer.update_attributes(:status => "maintenance")
+      elsif (commit == "resolved")||(commit == "pending")
+        computer.update_attributes(:status => "busy")
+      end
       flash.notice = "Report editado!"
       redirect_to :back
     else
       flash.alert = "Não foi possível editar o report! #{@report.errors}"
       redirect_to :back
     end
-
-
   end
 
   private

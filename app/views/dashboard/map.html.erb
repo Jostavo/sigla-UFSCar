@@ -23,6 +23,18 @@
             </ul>
             <div class="clearfix"></div>
           </div>
+          <% @computers.each do |pc| %>
+            <div class="col-xs-3 col-sm-2 col-md-1 pc">
+              <div class="<%= pc.last_status%>"><%= pc.physical_id %></div>
+            </div>
+          <% end %>
+          <div class="clearfix"></div>
+          <div class="labels" style="text-align: center">
+            <div class="col-xs-6 col-sm-4"><div class="label_status" style="background-color: green"></div> Disponível</div>
+            <div class="col-xs-6 col-sm-4"><div class="label_status" style="background-color: red"></div> Ocupado</div>
+            <div class="col-xs-12 col-sm-4"><div class="label_status" style="background-color: gray"></div> Em manutenção</div>
+          </div>
+
           <% if not @laboratory.function.include? "b"%>
             <div class="alert alert-danger alert-dismissible fade in" role="alert">
               <strong>Que loucura!</strong> Acreditamos que este laboratório não possui essa opção disponível.
@@ -37,3 +49,39 @@
   </div>
 </div>
 <!-- /page content -->
+<style>
+
+.pc {
+  padding-top: 1em;
+}
+.maintenance{
+  background-color: gray;
+  text-align: center;
+  color: black;
+}
+
+.available{
+  background-color: green;
+  text-align: center;
+  color: white;
+}
+
+.busy{
+  background-color: red;
+  text-align: center;
+  color: white;
+}
+
+.labels{
+  margin-top: 1em;
+}
+
+.label_status{
+  display: inline-block;
+  height: 8px;
+  width: 8px;
+  vertical-align: center;
+  background-color: black;
+}
+
+</style>
