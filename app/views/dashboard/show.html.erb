@@ -409,21 +409,21 @@ if(time_open_week_chart > time_open_last_week_chart){
 $("#TMA").append("<span class='count_top'><i class='fa fa-clock-o'></i> Tempo Médio Aberto</span>");
 
 if(time_open_week_chart < 60){
-  $("#TAH").append("<div class='count"+ adicao +"'> &gt; 1 Min </div>");
+  $("#TMA").append("<div class='count"+ adicao +"'> &gt; 1 Min </div>");
 }else if(time_open_week_chart > 60 && time_open_week_chart < 3600){
-  $("#TAH").append("<div class='count"+ adicao +"'>"+ Math.floor(time_open_week_chart/60) +" Min </div>");
+  $("#TMA").append("<div class='count"+ adicao +"'>"+ Math.floor(time_open_week_chart/60) +" Min </div>");
 }else if(time_open_week_chart > 3600 && time_open_week_chart < 7200){
-  $("#TAH").append("<div class='count"+ adicao +"'> 1 Hr </div>");
+  $("#TMA").append("<div class='count"+ adicao +"'> 1 Hr </div>");
 }else{
-  $("#TAH").append("<div class='count"+ adicao +"'> "+ Math.floor(time_open_week_chart/3600) +" Hrs </div>");
+  $("#TMA").append("<div class='count"+ adicao +"'> "+ Math.floor(time_open_week_chart/3600) +" Hrs </div>");
 }
 
 if(time_open_week_chart > time_open_last_week_chart){
-  $("#TAH").append("<span class='count_bottom'><i class='green'><i class='fa fa-sort-asc'></i>"+ Math.floor(porcentagem) +"</i> que semana passada</span>");
+  $("#TMA").append("<span class='count_bottom'><i class='green'><i class='fa fa-sort-asc'></i>"+ Math.floor(porcentagem) +"</i> que semana passada</span>");
 }else if(time_open_week_chart < time_open_last_week_chart){
-  $("#TAH").append("<span class='count_bottom'><i class='red'><i class='fa fa-sort-desc'></i>"+ Math.floor(porcentagem) +"</i> que semana passada</span>");
+  $("#TMA").append("<span class='count_bottom'><i class='red'><i class='fa fa-sort-desc'></i>"+ Math.floor(porcentagem) +"</i> que semana passada</span>");
 }else{
-  $("#TAH").append("<span class='count_bottom'><i class='gray'>Igual</i> a semana passada</span>");
+  $("#TMA").append("<span class='count_bottom'><i class='gray'>Igual</i> a semana passada</span>");
 }
 });
 
