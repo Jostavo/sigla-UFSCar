@@ -419,9 +419,9 @@ if(time_open_week_chart < 60){
 }
 
 if(time_open_week_chart > time_open_last_week_chart){
-  $("#TAH").append("<span class='count_bottom'><i class='green'><i class='fa fa-sort-asc'></i>"+ Math.floor(porcentagem) +"%</i> que semana passada</span>");
+  $("#TMA").append("<span class='count_bottom'><i class='green'><i class='fa fa-sort-asc'></i>"+ Math.floor(porcentagem) +"%</i> que semana passada</span>");
 }else if(time_open_week_chart < time_open_last_week_chart){
-  $("#TAH").append("<span class='count_bottom'><i class='red'><i class='fa fa-sort-desc'></i>"+ Math.floor(porcentagem) +"%</i> que semana passada</span>");
+  $("#TMA").append("<span class='count_bottom'><i class='red'><i class='fa fa-sort-desc'></i>"+ Math.floor(porcentagem) +"%</i> que semana passada</span>");
 }else{
   $("#TMA").append("<span class='count_bottom'><i class='gray'>Igual</i> a semana passada</span>");
 }
