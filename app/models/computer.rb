@@ -6,8 +6,9 @@ class Computer < ApplicationRecord
   has_many :reports
 
   def last_status
+    puts self.status
     if(self.status == "maintenance")
-      "maintenance"
+      return "maintenance"
     end
 
     time = self.updated_at + 600

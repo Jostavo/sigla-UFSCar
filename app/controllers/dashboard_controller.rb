@@ -60,7 +60,7 @@ class DashboardController < ApplicationController
 
   def map
     @laboratory = Laboratory.find_by(:initials => params[:initials])
-    @computers = @laboratory.computers
+    @computers = @laboratory.computers.order(physical_id: "ASC")
   end
 
   def statistics
