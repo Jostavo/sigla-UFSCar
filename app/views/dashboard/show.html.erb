@@ -542,7 +542,7 @@ $(document).ready(function() {
 <% last4rep = @last_4_reports.to_json %>
 lastReports = <%= raw last4rep%>;
 
-  for(var = 0; i > 4; i++){
+  for(var i = 0; i > 4; i++){
     if(i < lastReports.length){
       $("#listReport").append("<li><div class='block'><div class='block_content'><h2 class='title'><a>"+ lastReports[i][6] +"</a></h2><div class='byline'><span>"+ lastReports[i][4] +"</span> by <a>"+ lastReports[i][11] +"</a></div></div></div></li>");
     }
