@@ -47,7 +47,7 @@
         </div>
         <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
           <div class="x_title">
-            <h2>Porcentagem de período</h2>
+            <h2>Porcentagem por período</h2>
             <div class="clearfix"></div>
           </div>
 
@@ -71,7 +71,7 @@
           </div>
           <div class="col-md-12 col-sm-12 col-xs-6">
             <div>
-              <p>Nortuno</p>
+              <p>Notuno</p>
               <div class="">
                 <div class="progress progress_sm" style="width: 76%;">
                   <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="20"></div>
@@ -113,7 +113,7 @@
         </div>
         <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
           <div class="x_title">
-            <h2>Porcentagem de período</h2>
+            <h2>Porcentagem por período</h2>
             <div class="clearfix"></div>
           </div>
 
@@ -137,7 +137,7 @@
           </div>
           <div class="col-md-12 col-sm-12 col-xs-6">
             <div>
-              <p>Nortuno</p>
+              <p>Notuno</p>
               <div class="">
                 <div class="progress progress_sm" style="width: 76%;">
                   <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="20"></div>
@@ -536,6 +536,7 @@ tPorts = <%= raw totalPorts%>;
 var porcentagem = pPorts - tPorts;
 porcentagem = porcentagem / tPorts;
 porcentagem = porcentagem * 100;
+porcentagem = porcentagem + 100;
 
 $("#nReport").append("<span class='count_top'><i class='fa fa-user'></i> Reports Não Resolvidos</span>");
 if(pPorts != 0){
