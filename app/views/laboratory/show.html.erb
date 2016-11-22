@@ -47,28 +47,28 @@
     </div>
     <div class="slide">
       <div class="container-fluid">
-        <div class="jumbotron" style="margin-top: 5em">
-          <h2>Mapa de Computadores</h2>
-          <% @computers.each do |pc| %>
-            <div class="pc-wrapper">
-              <div class="<%= pc.last_status%>"><%= pc.physical_id %></div>
-            </div>
-          <% end %>
-
-          <div class="container-label" style="text-align: center">
-            <div class="label_status" style="background-color: green"></div> Ligado
-            <div class="label_status" style="background-color: gray"></div> Desligado
-            <div class="label_status" style="background-color: red"></div> Em manutenção
-          </div>
-          <div style="text-align: center">
-            <button id="report-btn" class="btn btn-default">
-              Reportar Máquina
-              <div type="button" class="btn btn-default btn-circle btn-danger">
-                <i class="glyphicon glyphicon-exclamation-sign"></i>
+        <div id="map" class="jumbotron" style="margin-top: 5em">
+            <h2>Mapa de Computadores</h2>
+            <% @computers.each do |pc| %>
+              <div class="pc-wrapper">
+                <div class="<%= pc.last_status%>"><%= pc.physical_id %></div>
               </div>
-            </button>
+            <% end %>
+
+            <div class="container-label" style="text-align: center">
+              <div class="label_status" style="background-color: green"></div> Ligado
+              <div class="label_status" style="background-color: gray"></div> Desligado
+              <div class="label_status" style="background-color: red"></div> Em manutenção
+            </div>
+            <div style="text-align: center">
+              <button id="report-btn" class="btn btn-default">
+                Reportar Máquina
+                <div type="button" class="btn btn-default btn-circle btn-danger">
+                  <i class="glyphicon glyphicon-exclamation-sign"></i>
+                </div>
+              </button>
+            </div>
           </div>
-        </div>
       </div>
     </div>
   </div>
@@ -76,4 +76,12 @@
 
     </div>!-->
 </div>
+<style>
 
+#table-clock{
+  height: 350px;
+}
+#map {
+  height: 500px;
+}
+</style>
