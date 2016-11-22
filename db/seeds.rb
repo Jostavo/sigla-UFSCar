@@ -38,4 +38,4 @@ for k in 1..6
   a.computer_status.create(:status => "available")
 end
 
-User.create(:mail => "sahudy@ufscar.br", :name => "Sahudy M. González", :function => "admin")
+User.create(:email => "sahudy@ufscar.br", :name => "Sahudy M. González", :function => "admin", :password => "teste123456", :password_confirmation => "teste123456")
