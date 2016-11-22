@@ -59,7 +59,9 @@
             </div>
             <% i = i + 1 %>
           <% end %>
-
+          <% if @report.empty? %>
+            <div class="alert alert-success" role="alert"><strong>Nenhum report encontrado!</strong></div>
+          <% end %>
           <% if not @laboratory.function.include? "a"%>
             <div class="alert alert-danger alert-dismissible fade in" role="alert">
               <strong>Que loucura!</strong> Acreditamos que este laboratório não possui essa opção disponível.
@@ -118,17 +120,17 @@
   display: none;
 }
 
-    @media screen and (min-width: 768px) {
-      .date hr {
-        border: 0px solid #DDD;
-        border-width: 0px 0 0 0;
-        margin-top: 11px;
-      }
+      @media screen and (min-width: 768px) {
+        .date hr {
+          border: 0px solid #DDD;
+          border-width: 0px 0 0 0;
+          margin-top: 11px;
+        }
 
-      .name {
-        display: block;
+        .name {
+          display: block;
+        }
       }
-    }
 </style>
 <script>
 <% reportjson = @report.to_json %>
