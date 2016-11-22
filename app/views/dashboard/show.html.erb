@@ -47,13 +47,13 @@
         </div>
         <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
           <div class="x_title">
-            <h2>Top Campaign Performance</h2>
+            <h2>Porcentagem de período</h2>
             <div class="clearfix"></div>
           </div>
 
           <div class="col-md-12 col-sm-12 col-xs-6">
             <div>
-              <p>Facebook Campaign</p>
+              <p>Matutino</p>
               <div class="">
                 <div class="progress progress_sm" style="width: 76%;">
                   <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="80"></div>
@@ -61,7 +61,7 @@
               </div>
             </div>
             <div>
-              <p>Twitter Campaign</p>
+              <p>Vespertino</p>
               <div class="">
                 <div class="progress progress_sm" style="width: 76%;">
                   <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="30"></div>
@@ -71,18 +71,10 @@
           </div>
           <div class="col-md-12 col-sm-12 col-xs-6">
             <div>
-              <p>Conventional Media</p>
+              <p>Nortuno</p>
               <div class="">
                 <div class="progress progress_sm" style="width: 76%;">
                   <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="20"></div>
-                </div>
-              </div>
-            </div>
-            <div>
-              <p>Bill boards</p>
-              <div class="">
-                <div class="progress progress_sm" style="width: 76%;">
-                  <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="10"></div>
                 </div>
               </div>
             </div>
@@ -547,12 +539,36 @@ $(document).ready(function() {
 <% last4rep = @last_4_reports.to_json %>
 lastReports = <%= raw last4rep%>;
 
-  for(var i = 0; i > 4; i++){
+  for(var i = 0; i < 4; i++){
     if(i < lastReports.length){
-      $("#listReport").append("<li><div class='block'><div class='block_content'><h2 class='title'><a>"+ lastReports[i][6] +"</a></h2><div class='byline'><span>"+ lastReports[i][4] +"</span> by <a>"+ lastReports[i][11] +"</a></div></div></div></li>");
+      var data = formataData(lastReports[i].created_at);
+      $("#listReport").append("<li><div class='block'><div class='block_content'><h2 class='title'><a>PC"+ lastReports[i].computer_id +" - "+ lastReports[i].laboratory_initials +"</a></h2><div class='byline'><span>"+ data +"</span> por <a>"+ lastReports[i].user_name +"</a></div></div></div></li>");
+    }
+  }
+
+  function formataData(data){
+    var d = new Date(data);
+    var dia = (d.getDate()<10?'0':'') + d.getDate();
+    var mes = d.getMonth()+1;
+    var ano = d.getYear();
+    var hora = (d.getHours()<10?'0':'') + d.getHours();
+    var minuto = (d.getMinutes()<10?'0':'') + d.getMinutes();
+
+    var diaMomento = moment().get('date');
+    var mesMomento = moment().get('month') + 1;
+    var anoMomento = moment().get('year');
+
+    if(dia == diaMomento && mes == mesMomento && ano == anoMomento){
+      return "Hoje às " + hora + ":" + minuto;
+    }else if(dia - 1 == diaMomento && mes == mesMomento && ano == anoMomento){
+      return "Ontem às " + hora + ":" + minuto; 
+    }else{
+      return dia + "/" + mes + " às " + hora + ":" + minuto;
     }
   }
 });
+
+
 
 $(document).ready(function() {
   //Data1 seria o total de horas por dia no qual o lab ficou aberto
