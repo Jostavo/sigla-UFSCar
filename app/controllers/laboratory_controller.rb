@@ -6,7 +6,7 @@ class LaboratoryController < ApplicationController
       @labs = Laboratory.find_by(:initials => "LSO")
     end
     @status = @labs.status.last
-    @computers = @labs.computers
+    @computers = @labs.computers.order(physical_id: "ASC")
 
     if user_signed_in?
       @report = Report.new
