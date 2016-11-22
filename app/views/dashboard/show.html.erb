@@ -32,10 +32,10 @@
             <h3>Tempo Aberto <small>por dia</small></h3>
           </div>
           <div class="col-md-6">
-            <div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+            <!--<div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
               <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
               <span>November 10, 2016 - November 17, 2016</span> <b class="caret"></b>
-            </div>
+            </div> -->
           </div>
         </div>
 
@@ -43,6 +43,72 @@
           <div id="placeholder33" style="height: 260px; display: none" class="demo-placeholder"></div>
           <div style="width: 100%;">
             <div id="canvas_dahs" class="demo-placeholder" style="width: 100%; height:270px;"></div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
+          <div class="x_title">
+            <h2>Porcentagem de período</h2>
+            <div class="clearfix"></div>
+          </div>
+
+          <div class="col-md-12 col-sm-12 col-xs-6">
+            <div>
+              <p>Matutino</p>
+              <div class="">
+                <div class="progress progress_sm" style="width: 76%;">
+                  <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="80"></div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p>Vespertino</p>
+              <div class="">
+                <div class="progress progress_sm" style="width: 76%;">
+                  <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="30"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 col-sm-12 col-xs-6">
+            <div>
+              <p>Nortuno</p>
+              <div class="">
+                <div class="progress progress_sm" style="width: 76%;">
+                  <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="20"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="clearfix"></div>
+      </div>
+    </div>
+
+  </div>
+  <br />
+
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="dashboard_graph">
+
+        <div class="row x_title">
+          <div class="col-md-6">
+            <h3>Pico de usuários do laboratório <small>por dia</small></h3>
+          </div>
+          <div class="col-md-6">
+            <!--<div id="reportrange" class="pull-right" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
+              <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+              <span>November 10, 2016 - November 17, 2016</span> <b class="caret"></b>
+            </div> -->
+          </div>
+        </div>
+
+        <div class="col-md-9 col-sm-9 col-xs-12">
+          <div id="placeholder33" style="height: 260px; display: none" class="demo-placeholder"></div>
+          <div style="width: 100%;">
+            <div id="canvas_dash2" class="demo-placeholder" style="width: 100%; height:270px;"></div>
           </div>
         </div>
         <div class="col-md-3 col-sm-3 col-xs-12 bg-white">
@@ -174,7 +240,7 @@
     <div class="col-md-4 col-sm-4 col-xs-12">
       <div class="x_panel tile fixed_height_320 overflow_hidden">
         <div class="x_title">
-          <h2>Computadores com mais Reports</h2>
+          <h2>Máquinas com mais Reports</h2>
           <ul class="nav navbar-right panel_toolbox">
             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
             </li>
@@ -308,7 +374,7 @@
     <div class="col-md-4 col-sm-4 col-xs-12">
       <div class="x_panel tile fixed_height_320 overflow_hidden">
         <div class="x_title">
-          <h2>Computadores com mais Reports</h2>
+          <h2>Reports</h2>
           <ul class="nav navbar-right panel_toolbox">
             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
             </li>
@@ -329,9 +395,12 @@
         <div class="x_content">
           <table class="" style="width:100%">
             <tr>
+              <th style="width:37%;">
+                <p></p>
+              </th>
               <th>
                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                  <p class="">Computador</p>
+                  <p class="">Tipo</p>
                 </div>
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                   <p class="">Qtde</p>
@@ -382,13 +451,13 @@ if(time_open_today_chart > time_open_today_week_chart){
 $("#TAH").append("<span class='count_top'><i class='fa fa-user'></i> Tempo Aberto Hoje</span>");
 
 if(time_open_today_chart < 60){
-  $("#TAH").append("<div class='count"+ adicao +"'> &gt; 1 Min </div>");
+  $("#TAH").append("<div class='count"+ adicao +"'> &gt; 1 <smallart>min</smallart> </div>");
 }else if(time_open_today_chart > 60 && time_open_today_chart < 3600){
-  $("#TAH").append("<div class='count"+ adicao +"'>"+ Math.floor(time_open_today_chart/60) +" Min </div>");
+  $("#TAH").append("<div class='count"+ adicao +"'>"+ Math.floor(time_open_today_chart/60) +" <smallart>min</smallart> </div>");
 }else if(time_open_today_chart > 3600 && time_open_today_chart < 7200){
-  $("#TAH").append("<div class='count"+ adicao +"'> 1 Hr </div>");
+  $("#TAH").append("<div class='count"+ adicao +"'> 1 <smallart>hr</smallart> </div>");
 }else{
-  $("#TAH").append("<div class='count"+ adicao +"'> "+ Math.floor(time_open_today_chart/3600) +" Hrs </div>");
+  $("#TAH").append("<div class='count"+ adicao +"'> "+ Math.floor(time_open_today_chart/3600) +" <smallart>hrs</smallart> </div>");
 }
 
 if(time_open_today_chart > time_open_today_week_chart){
@@ -425,13 +494,13 @@ if(time_open_week_chart > time_open_last_week_chart){
 $("#TMA").append("<span class='count_top'><i class='fa fa-clock-o'></i> Tempo Médio Aberto</span>");
 
 if(time_open_week_chart < 60){
-  $("#TMA").append("<div class='count"+ adicao +"'> &gt; 1 Min </div>");
+  $("#TMA").append("<div class='count"+ adicao +"'> &gt; 1 <smallart>min</smallart> </div>");
 }else if(time_open_week_chart > 60 && time_open_week_chart < 3600){
-  $("#TMA").append("<div class='count"+ adicao +"'>"+ Math.floor(time_open_week_chart/60) +" Min </div>");
+  $("#TMA").append("<div class='count"+ adicao +"'>"+ Math.floor(time_open_week_chart/60) +" <smallart>min</smallart> </div>");
 }else if(time_open_week_chart > 3600 && time_open_week_chart < 7200){
-  $("#TMA").append("<div class='count"+ adicao +"'> 1 Hr </div>");
+  $("#TMA").append("<div class='count"+ adicao +"'> 1 <smallart>hr</smallart> </div>");
 }else{
-  $("#TMA").append("<div class='count"+ adicao +"'> "+ Math.floor(time_open_week_chart/3600) +" Hrs </div>");
+  $("#TMA").append("<div class='count"+ adicao +"'> "+ Math.floor(time_open_week_chart/3600) +" <smallart>hrs</smallart> </div>");
 }
 
 if(time_open_week_chart > time_open_last_week_chart){
@@ -450,9 +519,9 @@ count_usuarios = <%= raw count_users%>;
 
 $("#UC").append("<span class='count_top'><i class='fa fa-user'></i> Usuários Cadastrados</span>");
 if(count_usuarios != 1)
-  $("#UC").append("<div class='count'>"+count_usuarios+" usuários</div>");
+  $("#UC").append("<div class='count'>"+count_usuarios+" <smallart>usuários</smallart></div>");
 else
-  $("#UC").append("<div class='count'>"+count_usuarios+" usuário</div>");
+  $("#UC").append("<div class='count'>"+count_usuarios+" <smallart>usuário</smallart></div>");
 //<span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
 });
 
@@ -582,18 +651,8 @@ $(document).ready(function() {
     [moment().startOf('day').toDate(), 7/*aqui entra os role do banco de dados*/]
   ];
 
-  //Data2 seria o pico de alunos utilizando o lab
-  var data2 = [
-    [moment().subtract(6, 'days').startOf('day').toDate(), 30/*aqui entra os role do banco de dados*/],
-    [moment().subtract(5, 'days').startOf('day').toDate(), 25/*aqui entra os role do banco de dados*/],
-    [moment().subtract(4, 'days').startOf('day').toDate(), 26/*aqui entra os role do banco de dados*/],
-    [moment().subtract(3, 'days').startOf('day').toDate(), 20/*aqui entra os role do banco de dados*/],
-    [moment().subtract(2, 'days').startOf('day').toDate(), 23/*aqui entra os role do banco de dados*/],
-    [moment().subtract(1, 'days').startOf('day').toDate(), 19/*aqui entra os role do banco de dados*/],
-    [moment().startOf('day').toDate(), 8/*aqui entra os role do banco de dados*/]
-  ];
       $("#canvas_dahs").length && $.plot($("#canvas_dahs"), [
-        data1, data2
+        data1
       ], {
         series: {
           lines: {
@@ -640,6 +699,64 @@ $(document).ready(function() {
       });
 });
 
+$(document).ready(function() {
+  //Data2 seria o pico de alunos utilizando o lab
+  var data2 = [
+    [moment().subtract(6, 'days').startOf('day').toDate(), 30/*aqui entra os role do banco de dados*/],
+    [moment().subtract(5, 'days').startOf('day').toDate(), 25/*aqui entra os role do banco de dados*/],
+    [moment().subtract(4, 'days').startOf('day').toDate(), 26/*aqui entra os role do banco de dados*/],
+    [moment().subtract(3, 'days').startOf('day').toDate(), 20/*aqui entra os role do banco de dados*/],
+    [moment().subtract(2, 'days').startOf('day').toDate(), 23/*aqui entra os role do banco de dados*/],
+    [moment().subtract(1, 'days').startOf('day').toDate(), 19/*aqui entra os role do banco de dados*/],
+    [moment().startOf('day').toDate(), 8/*aqui entra os role do banco de dados*/]
+  ];
+      $("#canvas_dash2").length && $.plot($("#canvas_dash2"), [
+        data2
+      ], {
+        series: {
+          lines: {
+            show: false,
+            fill: true
+          },
+          splines: {
+            show: true,
+            tension: 0.4,
+            lineWidth: 1,
+            fill: 0.4
+          },
+          points: {
+            radius: 0,
+            show: true
+          },
+          shadowSize: 2
+        },
+        grid: {
+          verticalLines: true,
+          hoverable: true,
+          clickable: true,
+          tickColor: "#d5d5d5",
+          borderWidth: 1,
+          color: '#fff'
+        },
+        colors: ["rgba(38, 185, 154, 0.38)", "rgba(3, 88, 106, 0.38)"],
+        xaxis: {
+          tickColor: "rgba(51, 51, 51, 0.06)",
+          mode: "time",
+          tickSize: [1, "day"],
+          //tickLength: 10,
+          axisLabel: "Date",
+          axisLabelUseCanvas: true,
+          axisLabelFontSizePixels: 12,
+          axisLabelFontFamily: 'Verdana, Arial',
+          axisLabelPadding: 20
+        },
+        yaxis: {
+          ticks: 8,
+          tickColor: "rgba(51, 51, 51, 0.06)",
+        },
+        tooltip: false
+      });
+});
 
 $(document).ready(function(){
 <% chart_json = @report.to_json %>
@@ -658,7 +775,7 @@ pc_reports_json = <%= raw chart_json %>; // json criado
   for(var i = 0; i < 5; i++){
     if(i < pc_reports_json.length){
       $("#reportMax").append("<tr><td><p><i class ='"+colorClass[selectedColor]+"'></i>Máquina "+pc_reports_json[i][0]+"</p></td><td>"+pc_reports_json[i][1]+"</td></tr>");
-      labelClass.push(pc_reports_json[i][0]);
+      labelClass.push(("Máquina " + pc_reports_json[i][0]));
       dataClass.push(pc_reports_json[i][1]);
       selectedColor++;
     }
