@@ -71,22 +71,30 @@ h1{
   text-align: center;
 }
 
-// computer status
 .maintenance{
   background-color: gray;
+  text-align: center;
+  color: black;
   height: 20px;
   width: 2em;
 }
+
 .available{
   height: 20px;
   width: 2em;
-  background-color: red;
+  background-color: green;
+  text-align: center;
+  color: white;
 }
+
 .busy{
+  background-color: red;
+  text-align: center;
+  color: white;
   height: 20px;
   width: 2em;
-  background-color: green;
 }
+
 
 @media screen and (min-width: 480px){
 #table-clock{
