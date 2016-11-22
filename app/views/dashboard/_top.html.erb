@@ -12,8 +12,10 @@
             <span class=" fa fa-angle-down"></span>
           </a>
           <ul class="dropdown-menu dropdown-usermenu pull-right">
+            <li><%= link_to('Página Principal', '/') %></li>
+            <li role="separator" class="divider"></li>
             <li><%= link_to('Perfil', '/dashboard/profile') %></li>
-            <li><%= link_to('Ajuda', '/dashboard/help') %></li>
+            <li><% link_to('Ajuda', '/dashboard/help') %></li>
             <li><%= link_to('Sair', destroy_user_session_path, :method => :delete) %></li>
           </ul>
         </li>

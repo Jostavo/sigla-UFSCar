@@ -1,47 +1,46 @@
 <div class="container">
-  <div class="jumbotron">
-  <h2>Editar Profile</h2>
+  <div class="jumbotron" style="margin-top: 50px">
+    <h2>Editar Perfil</h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
+      <div class="field">
+        <%= f.label :name, 'Nome'%><br />
+        <%= f.text_field :name, autofocus: true, class: "form-control" %>
+      </div>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= devise_error_messages! %>
-    <div class="field">
-      <%= f.label :name, 'Nome'%><br />
-      <%= f.text_field :name, autofocus: true %>
-    </div>
+      <div class="field">
+        <%= f.label :email, 'E-mail' %><br />
+        <%= f.email_field :email, autofocus: true , class: "form-control"%>
+      </div>
 
-    <div class="field">
-      <%= f.label :email, 'E-mail' %><br />
-      <%= f.email_field :email, autofocus: true %>
-    </div>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-    <% end %>
-
-    <div class="field">
-      <%= f.label :password, 'Senha' %> <i>(deixe em branco caso não queira modificar)</i><br />
-      <%= f.password_field :password, autocomplete: "off" %>
-      <% if @minimum_password_length %>
-        <br />
-        <em><%= @minimum_password_length %> caracteres no mínimo</em>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
-    </div>
 
-    <div class="field">
-      <%= f.label :password_confirmation, 'Confirme a Senha' %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
-    </div>
+      <div class="field">
+        <%= f.label :password, 'Senha' %> <small><%= @minimum_password_length %> caracteres no mínimo</small>
+        <%= f.password_field :password, autocomplete: "off" , class: "form-control"%>
+        <small>(deixe em branco caso não queira modificar)</small>
+        <% if @minimum_password_length %>
+          <br />
+        <% end %>
+      </div>
 
-    <div class="field">
-      <%= f.label :current_password, 'Senha Atual'%> <i>(precisamos da sua senha atual para realizar suas mudanças)</i><br />
-      <%= f.password_field :current_password, autocomplete: "off" %>
-    </div>
+      <div class="field">
+        <%= f.label :password_confirmation, 'Confirme a Senha' %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" , class: "form-control"%>
+      </div>
 
-    <div class="actions">
-      <%= f.submit "Editar" %>
-    </div>
-  <% end %>
+      <div class="field">
+        <%= f.label :current_password, 'Senha Atual'%><br />
+        <%= f.password_field :current_password, autocomplete: "off" , class: "form-control"%>
+        <small>(precisamos da sua senha atual para realizar suas mudanças)</small>
+      </div><br />
 
-  <%= link_to "Voltar", :back %>
+      <div class="actions">
+        <%= f.submit "Editar Perfil" , class: "btn btn-default btn-lg"%>
+      </div>
+    <% end %>
+    <%= link_to "Voltar", :back %>
   </div>
 </div>
