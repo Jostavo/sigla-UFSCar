@@ -31,11 +31,11 @@ $grid-float-breakpoint: 10px;
   position: fixed;
   height: 400px;
   width: 80%;
-position: fixed;
-left: 50%;
-top: 50%;
-margin-left: -40%;
-margin-top: -200px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -40%;
+  margin-top: -200px;
 }
 
 .alert-danger{
@@ -72,7 +72,7 @@ h1{
 }
 
 .maintenance{
-  background-color: gray;
+  background-color: red;
   text-align: center;
   color: black;
   height: 20px;
@@ -88,7 +88,7 @@ h1{
 }
 
 .busy{
-  background-color: red;
+  background-color: gray;
   text-align: center;
   color: white;
   height: 20px;
@@ -97,31 +97,31 @@ h1{
 
 
 @media screen and (min-width: 480px){
-#table-clock{
-  height: 200px;
-}
+  #table-clock{
+    height: 200px;
+  }
 }
 
 @media screen and (min-width: 768px){
-.maintenance{
-  background-color: gray;
-  height: 20px;
-  width: 5em;
-}
-.available{
-  height: 20px;
-  width: 5em;
-  background-color: red;
-}
-.busy{
-  height: 20px;
-  width: 5em;
-  background-color: green;
-}
+  .maintenance{
+    background-color: red;
+    height: 20px;
+    width: 5em;
+  }
+  .available{
+    height: 20px;
+    width: 5em;
+    background-color: green;
+  }
+  .busy{
+    height: 20px;
+    width: 5em;
+    background-color: gray;
+  }
 
-#table-clock{
-  height: 400px;
-}
+  #table-clock{
+    height: 400px;
+  }
 }
 
 .pc-wrapper{

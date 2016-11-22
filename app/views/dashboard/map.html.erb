@@ -31,8 +31,8 @@
           <div class="clearfix"></div>
           <div class="labels" style="text-align: center">
             <div class="col-xs-6 col-sm-4"><div class="label_status" style="background-color: green"></div> Ligado</div>
-            <div class="col-xs-6 col-sm-4"><div class="label_status" style="background-color: red"></div> Desligado</div>
-            <div class="col-xs-12 col-sm-4"><div class="label_status" style="background-color: gray"></div> Em manutenção</div>
+              <div class="col-xs-6 col-sm-4"><div class="label_status" style="background-color: gray"></div> Desligado</div>
+            <div class="col-xs-12 col-sm-4"><div class="label_status" style="background-color: red"></div> Em manutenção</div>
           </div>
 
           <% if not @laboratory.function.include? "b"%>
@@ -56,7 +56,7 @@
   padding-top: 1em;
 }
 .maintenance{
-  background-color: gray;
+  background-color: red;
   text-align: center;
   color: black;
 }
@@ -68,7 +68,7 @@
 }
 
 .busy{
-  background-color: red;
+  background-color: gray;
   text-align: center;
   color: white;
 }
