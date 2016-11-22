@@ -6,9 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
-
-
 # the function works as abilities that website has to know about this labs
 # report of computers => a
 # computers map => b
@@ -31,7 +28,7 @@ leris.status.create(:isOpen => false);
 
 #inserting computers to the labs
 for k in 1..27
-  a = lso.computers.create(:physical_id => k, :status => "maintenance")
+  a = lso.computers.create(:physical_id => k, :status => "available")
   a.computer_status.create(:status => "available")
 end
 
@@ -40,3 +37,5 @@ for k in 1..6
   a = leris.computers.create(:physical_id => k, :status => "maintenance")
   a.computer_status.create(:status => "available")
 end
+
+User.create(:mail => "sahudy@ufscar.br", :name => "Sahudy M. González", :function => "admin")
