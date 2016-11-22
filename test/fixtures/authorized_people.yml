@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  laboratory: one
+  biometric: MyString
+
+two:
+  user: two
+  laboratory: two
+  biometric: MyString

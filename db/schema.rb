@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161121124500) do
+ActiveRecord::Schema.define(version: 20161122230001) do
+
+  create_table "authorized_people", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "laboratory_id"
+    t.string   "biometric"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["laboratory_id"], name: "index_authorized_people_on_laboratory_id"
+    t.index ["user_id"], name: "index_authorized_people_on_user_id"
+  end
 
   create_table "computer_statuses", force: :cascade do |t|
     t.string   "status"
