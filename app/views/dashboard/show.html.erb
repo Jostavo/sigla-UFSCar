@@ -502,7 +502,7 @@ topLabs = <%= raw top5labs %>;
   var dataClass = [];
 
   for(var i = 0; i < 5; i++){
-    if(i < topLabs.length){
+    if(i < topLabs.length && topLabs[i][1] != 0){
       $("#salasMax").append("<tr><td><p><i class ='"+colorClass[i]+"'></i>"+topLabs[i][0]+"</p></td><td>"+topLabs[i][1]+"</td></tr>");
       labelClass.push(topLabs[i][0]);
       dataClass.push(topLabs[i][1]);
