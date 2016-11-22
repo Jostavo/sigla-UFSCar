@@ -75,17 +75,45 @@ h1{
 .maintenance{
   background-color: gray;
   height: 20px;
-  width: 80px;
+  width: 2em;
 }
 .available{
   height: 20px;
-  width: 80px;
+  width: 2em;
   background-color: red;
 }
 .busy{
   height: 20px;
-  width: 80px;
+  width: 2em;
   background-color: green;
+}
+
+@media screen and (min-width: 480px){
+#table-clock{
+  height: 200px;
+}
+}
+
+@media screen and (min-width: 768px){
+.maintenance{
+  background-color: gray;
+  height: 20px;
+  width: 5em;
+}
+.available{
+  height: 20px;
+  width: 5em;
+  background-color: red;
+}
+.busy{
+  height: 20px;
+  width: 5em;
+  background-color: green;
+}
+
+#table-clock{
+  height: 400px;
+}
 }
 
 .pc-wrapper{
