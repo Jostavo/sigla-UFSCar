@@ -638,7 +638,7 @@ pc_reports_json = <%= raw chart_json %>; // json criado
 
   for(var i = 0; i < 5; i++){
     if(i < pc_reports_json.length){
-      $("#reportMax").append("<tr><td><p><i class ='"+colorClass[selectedColor]+"'></i>"+pc_reports_json[i][0]+"</p></td><td>"+pc_reports_json[i][1]+"</td></tr>");
+      $("#reportMax").append("<tr><td><p><i class ='"+colorClass[selectedColor]+"'></i>Máquina "+pc_reports_json[i][0]+"</p></td><td>"+pc_reports_json[i][1]+"</td></tr>");
       labelClass.push(pc_reports_json[i][0]);
       dataClass.push(pc_reports_json[i][1]);
       selectedColor++;
