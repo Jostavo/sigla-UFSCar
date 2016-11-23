@@ -17,7 +17,7 @@ Laboratory.destroy_all
 lso = Laboratory.create(title: 'Laboratório de Sistemas Operacionais', mantainer: 'Profa. Dra. Sahudy', email: 'dcomp@ufscar.br', linkDocs: 'www.google.com.br', initials: 'LSO', function: 'ab')
 #lasid = Laboratory.create(title: 'Laboratório de Sistemas Digitais', mantainer: 'Profa. Dra. Yeda', email: 'dcomp@ufscar.br', linkDocs: 'www.google.com.br', initials: 'LASiD')
 #lec = Laboratory.create(title: 'Laboratório de Ensino de Computação', mantainer: 'Profa. Dra. Sahudy', email: 'dcomp@ufscar.br', linkDocs: 'www.google.com.br', initials: 'LEC')
-leris = Laboratory.create(title: 'Laboratório de Estudo de Redes, Inovação e Software', mantainer: 'Prof. Dr. Fabio Verdi', email: 'verdi@ufscar.br', linkDocs: 'www.google.com.br', initials: 'LERIS', function: 'abc')
+leris = Laboratory.create(title: 'Laboratório de Estudo de Redes, Inovação e Software', mantainer: 'Prof. Dr. Fabio Verdi', email: 'verdi@ufscar.br', linkDocs: 'www.google.com.br', initials: 'LERIS', function: 'abe')
 
 # you must insert a status to the new laboratory
 # if you ignore this warning, the view will bug :(
@@ -39,3 +39,11 @@ for k in 1..6
 end
 
 User.create(:email => "sahudy@ufscar.br", :name => "Sahudy M. González", :function => "admin", :password => "teste123456", :password_confirmation => "teste123456")
+
+# usuarios normais
+User.create(:email => "adriana@gmail.com", :name => "Adriana Garcia", :function => "normal", :password => "teste123456", :password_confirmation => "teste123456")
+User.create(:email => "ricardo182@gmail.com", :name => "Ricardo Junior", :function => "normal", :password => "teste123456", :password_confirmation => "teste123456")
+User.create(:email => "adalberto1993@gmail.com", :name => "Adalberto Savio", :function => "normal", :password => "teste123456", :password_confirmation => "teste123456")
+User.create(:email => "cristiano@uol.com.br", :name => "Cristiano Ronaldo", :function => "normal", :password => "teste123456", :password_confirmation => "teste123456")
+User.create(:email => "rodrigo@nogueira.com.br", :name => "Rodrigo Dias", :function => "normal", :password => "teste123456", :password_confirmation => "teste123456")
+User.create(:email => "fallen@csgo.com.br", :name => "Gabriel Toledo", :function => "normal", :password => "teste123456", :password_confirmation => "teste123456")
