@@ -14,10 +14,10 @@
 # authorized access => e
 #   for biometric access
 Laboratory.destroy_all
-lso = Laboratory.create(title: 'Laboratório de Sistemas Operacionais', mantainer: 'Profa. Dra. Sahudy', email: 'dcomp@ufscar.br', linkDocs: 'www.google.com.br', initials: 'LSO', function: 'abcd')
+lso = Laboratory.create(title: 'Laboratório de Sistemas Operacionais', mantainer: 'Profa. Dra. Sahudy', email: 'dcomp@ufscar.br', linkDocs: 'www.google.com.br', initials: 'LSO', function: 'ab')
 #lasid = Laboratory.create(title: 'Laboratório de Sistemas Digitais', mantainer: 'Profa. Dra. Yeda', email: 'dcomp@ufscar.br', linkDocs: 'www.google.com.br', initials: 'LASiD')
 #lec = Laboratory.create(title: 'Laboratório de Ensino de Computação', mantainer: 'Profa. Dra. Sahudy', email: 'dcomp@ufscar.br', linkDocs: 'www.google.com.br', initials: 'LEC')
-leris = Laboratory.create(title: 'Laboratório de Estudo de Redes, Inovação e Software', mantainer: 'Prof. Dr. Fabio Verdi', email: 'verdi@ufscar.br', linkDocs: 'www.google.com.br', initials: 'LERIS', function: 'abcde')
+leris = Laboratory.create(title: 'Laboratório de Estudo de Redes, Inovação e Software', mantainer: 'Prof. Dr. Fabio Verdi', email: 'verdi@ufscar.br', linkDocs: 'www.google.com.br', initials: 'LERIS', function: 'abc')
 
 # you must insert a status to the new laboratory
 # if you ignore this warning, the view will bug :(
@@ -34,7 +34,7 @@ end
 
 #inserting computers to the labs
 for k in 1..6
-  a = leris.computers.create(:physical_id => k, :status => "maintenance")
+  a = leris.computers.create(:physical_id => k, :status => "available")
   a.computer_status.create(:status => "available")
 end
 
