@@ -1,11 +1,27 @@
+<div class="col-xs-12 col-sm-12 col-md-12 hidden">
+  <%= form_tag("/dashboard/access/#{@laboratory.initials}", method: "delete") do %>
+    <%= text_field "biometric_revoke", nil,name: "authorized_person[biometric]", :readonly => "true"%>
+    <%= text_field "user_id_revoke", nil,name: "authorized_person[user_id]", :readonly => "true"%>
+    <%= text_field "laboratory_id_revoke", nil,name: "authorized_person[laboratory_id]",value: @laboratory.id, :readonly => "true"%>
+    <button id="commitdelete_" name="biometric" type="submit" class="h"></button>
+  <% end %>
+</div>
+
+
 <!-- page content -->
+<%= render "new_authorized_person" %>
 <div class="right_col" role="main">
   <div class="">
     <div class="row">
+      <% if not @laboratory.function.include? "e"%>
+        <div class="alert alert-danger alert-dismissible fade in" role="alert">
+          <strong>Que loucura!</strong> Acreditamos que este laboratório não possui essa opção disponível.
+        </div>
+      <% end %>
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
           <div class="x_title">
-            <h2>Acesso Autorizado<small>Acesso Autorizado pelo leitor biométrico no <%= @laboratory.title%></small></h2>
+            <h2>Acesso Autorizado</h2>
 
             <ul class="nav navbar-right panel_toolbox">
               <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -24,11 +40,38 @@
             </ul>
             <div class="clearfix"></div>
           </div>
-          <% if not @laboratory.function.include? "e"%>
-            <div class="alert alert-danger alert-dismissible fade in" role="alert">
-              <strong>Que loucura!</strong> Acreditamos que este laboratório não possui essa opção disponível.
+
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="col-xs-7 col-sm-6"><strong>Nome</strong></div>
+            <div class="col-xs-5 col-sm-6"><strong>Revogar Acesso</strong></div>
+          </div>
+
+          <div class="clearfix"></div>
+
+          <% @authorized_people.each do |a| %>
+            <div class="row-info col-xs-12 col-sm-12 col-md-12">
+              <div class="col-xs-7 col-sm-6"><%= a.name %></div>
+              <div class="col-xs-5 col-sm-6" data-toggle="tooltip" title="Remove acesso permantente do laboratório" id="symbol_access" >
+                <button data-lab="<%= @laboratory.id %>" onclick="revoke_access(this)" data-user="<%= a.id %>" id="revoke-access-btn" class="btn btn-danger btn-sm">
+                  <i class="fa fa-minus-square"></i>
+                </button >
+              </div>
             </div>
           <% end %>
+
+          <div class="clearfix"></div>
+
+          <div style="margin-top: 1em">
+            <div class="col-xs-4 col-sm-4"></div>
+            <div class="col-xs-4 col-sm-4">
+              <div id="grant-access-btn" data-toggle="tooltip" title="Concede uma autorização para uma pessoa cadastrada" class="btn btn-success btn-xs">
+                Conceder Acesso
+                <i class="fa fa-plus-square"></i>
+              </div>
+            </div>
+            <div class="col-xs-4 col-sm-4"></div>
+          </div>
+
           <div class="x_content">
             <br />
           </div>
@@ -38,3 +81,56 @@
   </div>
 </div>
 <!-- /page content -->
+<script>
+$(document).ready(function() {
+  $('#grant-access-btn').click(function() {
+    $('#access-authorized').show();
+    $('#input-names').focus();
+  });
+  $('#access-authorized-close-btn').click(function() {
+    $('#access-authorized').hide();
+  });
+  $('#report_danger').click(function() {
+    $('#access-authorized').hide();
+    });
+
+
+});
+
+function revoke_access(e){
+  if (window.confirm("Você tem certeza?")) {
+    $('#user_id_revoke_').val(e.dataset.user);
+    $('#laboratory_id_revoke_').val(e.dataset.lab);
+    $('#commitdelete_').click();
+  }
+}
+</script>
+
+<style>
+.row-info{
+  margin-top: 0.5em;
+}
+#symbol_access{
+  font-size: 20px;
+  text-align: center;
+}
+
+#access-authorized{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 999;
+  background: rgba(0,0,0, 0.5);
+}
+
+#access-authorized-inside{
+  position: fixed;
+  height: 400px;
+  width: 70%;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -30%;
+  margin-top: -200px;
+}
+</style>

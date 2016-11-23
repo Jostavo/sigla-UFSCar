@@ -72,7 +72,9 @@ class DashboardController < ApplicationController
   end
 
   def access
+    @user = User.all.order(id: "ASC")
     @laboratory = Laboratory.find_by(:initials => params[:initials])
+    @authorized_people = @laboratory.authorized_people
   end
 
   # if user is a admin, the user is allowed to access the dashboard

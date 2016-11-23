@@ -1,0 +1,122 @@
+<div id="access-authorized" style="display: none;">
+  <div class="container">
+    <div id="access-authorized-inside" class="jumbotron">
+      <button id="access-authorized-close-btn" type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
+
+      <div class="col-xs-12 col-sm-12 col-md-12 hidden">
+        <%= form_tag("/dashboard/access/#{@laboratory.initials}", method: "post") do %>
+          <%= text_field "biometric", nil,name: "authorized_person[biometric]", :readonly => "true"%>
+          <%= text_field "user_id", nil,name: "authorized_person[user_id]", :readonly => "true"%>
+          <%= text_field "laboratory_id", nil,name: "authorized_person[laboratory_id]",value: @laboratory.id, :readonly => "true"%>
+          <button id="commit_" name="biometric" type="submit" class="h"></button>
+        <% end %>
+      </div>
+
+      <div class="hidden-sm hidden-md hidden-lg">
+        <div class="alert alert-danger alert-dismissible fade in" role="alert">
+          <strong>Que loucura!</strong> Essa opção fica indisponível para telas menores de 768px
+        </div>
+      </div>
+      <div class="form1 hidden-xs">
+        <div id="form_find_names" class="col-xs-12 col-sm-6 col-md-6">
+          <label>Procurar Nome:</label><br>
+          <input id="input-names" class="form-control" list="names"/>
+          <datalist id="names">
+            <% @user.each do |u| %>
+              <option data-value="<%= u.id %>" value="<%= u.name %>"></option>
+            <% end %>
+          </datalist>
+        </div>
+        <div id="form_fingerprint" class="col-xs-12 col-sm-6 col-md-6" style="display: none">
+          <div class="col-xs-4 col-sm-4 col-md-4"></div>
+          <div class="col-xs-4 col-sm-4 col-md-4 thumbnail">
+            <img src="/assets/fingerprint.gif" style="height: 200px"></img>
+          </div>
+          <div class="col-xs-4 col-sm-4 col-md-4"></div>
+          <div class="clearfix"></div>
+          <div class="col-xs-4 col-sm-4 col-md-4"></div>
+          <div class="col-xs-4 col-sm-4 col-md-4">
+            <div name="commit" id="btn_fingerprint" class="btn btn-default"><i class="fa fa-hand-paper-o"></i> Capturar</div>
+          </div>
+          <div class="col-xs-4 col-sm-4 col-md-4"></div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
+          <label>Nome: </label><p id="p-name"></p>
+          <label>E-mail: </label><p id="p-email"></p>
+          <label>Função: </label><p id="p-function"></p>
+        </div>
+        <div class="clearfix"></div>
+        <div class="col-xs-4"></div>
+        <div class="col-xs-12 col-sm-6 col-md-6 form-group btn-group" role="group">
+          <div name="commit" id="report_danger" class="btn btn-sm btn-danger btn-default"><i class="fa fa-arrow-left"></i> Cancelar</div>
+          <div disabled="true" name="commit" id="report_success" class="btn btn-sm btn-success btn-default">Avançar <i class="fa fa-arrow-right"></i></div>
+        </div>
+        <div class="col-xs-4"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+<% json_users = @user.to_json %>
+json_users = <%= raw json_users %>
+state = -1;
+$("#input-names").focusout(function(){
+  var name = $('#input-names').val();
+  var structure = document.querySelector("#names option[value='"+name+"']");
+  if(structure != null){
+    user_id = structure.dataset.value;
+    $('#p-name').text(json_users[user_id-1].name) ;
+    $('#p-email').text(json_users[user_id-1].email) ;
+    if(json_users[user_id -1].function == "admin"){
+      $('#p-function').text("Administrador") ;
+    }else if(json_users[user_id -1].function == "technician"){
+      $('#p-function').text("Técnico") ;
+    }else{
+      $('#p-function').text("Normal") ;
+    }
+
+    $('#user_id_').val(user_id);
+    state = user_id;
+
+    $('#report_success').removeAttr('disabled');
+  }else{
+    $('#report_success').attr('disabled');
+  }
+});
+
+$('#btn_fingerprint').click(function(){
+  alert("Insira o dedo no dispositivo, depois que fizer isso, clique na caixa Ok.");
+  $.post( "/dashboard/access/fingerprint/get", function( data ) {
+    if(jQuery.isEmptyObject(data)){
+      alert("Refaça novamente o cadastro!");
+    }else{
+      $('#btn_fingerprint').attr('disabled');
+      $('#btn_fingerprint').unbind('click');
+      alert("Dedo capturado com sucesso!");
+      $('#biometric_').val(data.hash_biometric);
+      state = -3;
+      $('.form2 #report_success').removeAttr('disabled');
+      $('#commit_').trigger('click');
+    }
+  });
+});
+
+
+$('.form1 #report_success').click(function(){
+  if(state != -1){
+    $('.form1 #form_find_names').hide();
+    $('.form1 #form_fingerprint').show();
+    $('.form1').removeClass('form1').addClass('form2');
+    $(this).unbind('click');
+    $(this).attr('disabled');
+    $(this).hide();
+    $('.form2 #report_danger').click(function(){
+      location.reload(); 
+    });
+    $('.form2 #report_success').click(function(){
+    });
+  }
+});
+
+</script>
