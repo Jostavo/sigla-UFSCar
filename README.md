@@ -22,5 +22,5 @@ https://siglaufscar.herokuapp.com
 |	~~Definição do Projeto~~			| ~~29/09/2016~~ |		~~IHC~~		|
 |	~~MVP 1~~							| ~~18/10/2016~~ |		~~PDS~~		|
 |	~~Canvas + CustDev + Def. MVP 2~~	| ~~01/11/2016~~ |		~~PDS~~		|
-|	**Produto Final**					| **24/11/2016** |		**IHC**		|
+|	~~Produto Final~~					| ~~24/11/2016~~ |		~~IHC~~		|
 |	**MVP 2**							| **13/12/2016** |		**PDS**		|
