@@ -50,7 +50,7 @@
         <div id="map" class="jumbotron" style="margin-top: 5em">
             <h2>Mapa de Computadores</h2>
             <% @computers.each do |pc| %>
-              <div class="pc-wrapper">
+              <div class="pc-wrapper" data-id="<%= pc.physical_id %>">
                 <div class="<%= pc.last_status%>"><%= pc.physical_id %></div>
               </div>
             <% end %>

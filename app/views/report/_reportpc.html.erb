@@ -6,7 +6,7 @@
         <%= form_for(@report, url: report_path) do |f| %>
           <div class="form-group">
             <%= f.label :computer_id, 'Número da Máquina'%><br />
-            <%= f.text_field :computer_id, autofocus: true, class: "form-control" %>
+            <%= f.text_field :computer_id, class: "form-control" %>
           </div>
 
           <div style="dipslay:none" class="form-group">
@@ -16,7 +16,7 @@
 
           <div class="form-group">
             <%= f.label :description, 'Descrição'%><br />
-            <%= f.text_area :description, autofocus: true , class: "form-control"%>
+            <%= f.text_area :description, class: "form-control"%>
           </div>
 
           <div class="actions">
