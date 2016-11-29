@@ -16,7 +16,26 @@
           <%= @labs.initials %>
         <% end %>
       </a>
-      <ul class="nav navbar-nav navbar-right">
+
+      <ul class="nav navbar-nav navbar-right visible-md visible-lg">
+        <li><%= link_to('Home', '/' )%></li>
+        <li><%= link_to('Sobre', '/about' )%></li>
+        <% if user_signed_in? %>
+          <li role="separator" class="divider"></li>
+          <li><a href="/users/edit">Perfil<span class="sr-only">(current)</span></a></li>
+          <li><a href="/report/show">Reports<span class="sr-only">(current)</span></a></li>
+          <% if current_user.function == "admin" %>
+            <li><%= link_to('Dashboard', '/dashboard/') %></li>
+          <% end %>
+          <li role="separator" class="divider"></li>
+          <li><%= link_to('Sair', destroy_user_session_path, :method => :delete) %></li>
+        <% else %>
+          <li role="separator" class="divider"></li>
+          <li><a href="/users/sign_in">Login<span class="sr-only">(current)</span></a></li>
+        <% end %>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right hidden-md hidden-lg">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <i class="fa fa-bars" aria-hidden="true"></i>
@@ -54,10 +73,19 @@ $(document).ready(function() {
   });
   $('#report-btn').click(function() {
     $('#report-form').show();
+    $('#report_description').val($(this).data(''));
+    $('#report_computer_id').val($(this).data(''));
   });
   $('#report-form-close-btn').click(function() {
     $('#report-form').hide();
   });
+
+  $('.pc-wrapper').on('click', function(){
+    $('#report-form').show();
+    $('#report_computer_id').val($(this).data('id'));
+
+  });
+
 });
 
     </script>
