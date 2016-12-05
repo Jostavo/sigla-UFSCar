@@ -47,7 +47,7 @@
     </div>
     <div class="slide">
       <div class="container-fluid">
-        <div id="map" class="jumbotron" style="margin-top: 5em">
+        <div id="map" class="jumbotron" style="margin-top: 5em" align="center">
             <h2>Mapa de Computadores</h2>
             <% @computers.each do |pc| %>
               <div class="pc-wrapper" data-id="<%= pc.physical_id %>">
@@ -56,9 +56,9 @@
             <% end %>
 
             <div class="container-label" style="text-align: center">
-              <div class="label_status" style="background-color: green"></div> Ligado
-              <div class="label_status" style="background-color: gray"></div> Desligado
-              <div class="label_status" style="background-color: red"></div> Em manutenção
+              <div class="label_status" style="background-color: green"></div> Livre
+              <div class="label_status" style="background-color: red"></div> Ocupado
+              <div class="label_status" style="background-color: gray"></div> Em manutenção
             </div>
             <div style="text-align: center">
               <button id="report-btn" class="btn btn-default">

@@ -72,29 +72,37 @@ h1{
 }
 
 .maintenance{
-  background-color: red;
+  background-color: white;
   text-align: center;
   color: black;
   height: 20px;
   width: 2em;
+  border-style: solid;
+  border-color: gray;
+  border-width: thin;
 }
 
 .available{
   height: 20px;
   width: 2em;
-  background-color: green;
+  background-color: white;
   text-align: center;
-  color: white;
+  color: black;
+  border-style: solid;
+  border-color: green;
+  border-width: thin;
 }
 
 .busy{
-  background-color: gray;
+  background-color: white;
   text-align: center;
-  color: white;
+  color: black;
   height: 20px;
   width: 2em;
+  border-style: solid;
+  border-color: red;
+  border-width: thin;
 }
-
 
 @media screen and (min-width: 480px){
   #table-clock{
@@ -104,19 +112,28 @@ h1{
 
 @media screen and (min-width: 768px){
   .maintenance{
-    background-color: red;
+    background-color: white;
     height: 20px;
     width: 5em;
+    border-style: solid;
+    border-color: gray;
+    border-width: thin;
   }
   .available{
     height: 20px;
     width: 5em;
-    background-color: green;
+    background-color: white;
+    border-style: solid;
+    border-color: green;
+    border-width: thin;
   }
   .busy{
     height: 20px;
     width: 5em;
-    background-color: gray;
+    background-color: white;
+    border-style: solid;
+    border-color: red;
+    border-width: thin;
   }
 
   #table-clock{
