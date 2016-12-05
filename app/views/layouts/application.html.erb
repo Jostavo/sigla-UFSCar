@@ -31,7 +31,7 @@
           <li><%= link_to('Sair', destroy_user_session_path, :method => :delete) %></li>
         <% else %>
           <li role="separator" class="divider"></li>
-          <li><a href="/users/sign_in">Login<span class="sr-only">(current)</span></a></li>
+          <li><a href="/users/sign_in">Log in<span class="sr-only">(current)</span></a></li>
         <% end %>
       </ul>
 
@@ -54,7 +54,7 @@
               <li><%= link_to('Sair', destroy_user_session_path, :method => :delete) %></li>
             <% else %>
               <li role="separator" class="divider"></li>
-              <li><a href="/users/sign_in">Login<span class="sr-only">(current)</span></a></li>
+              <li><a href="/users/sign_in">Log in<span class="sr-only">(current)</span></a></li>
             <% end %>
           </ul>
         </li>
@@ -90,4 +90,14 @@ $(document).ready(function() {
 
     </script>
   </body>
+
+<style>
+
+.navbar-inverse .navbar-brand:hover {
+  background-color: transparent;
+  color: #999999;
+}
+
+</style>
 </html>
+

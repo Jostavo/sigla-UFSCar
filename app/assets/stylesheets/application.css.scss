@@ -72,7 +72,7 @@ h1{
 }
 
 .maintenance{
-  background-color: white;
+  background-color: rgba(128, 128, 128, 0.1);
   text-align: center;
   color: black;
   height: 20px;
@@ -85,7 +85,7 @@ h1{
 .available{
   height: 20px;
   width: 2em;
-  background-color: white;
+  background-color: rgba(0, 255, 0, 0.1);
   text-align: center;
   color: black;
   border-style: solid;
@@ -94,7 +94,7 @@ h1{
 }
 
 .busy{
-  background-color: white;
+  background-color: rgba(255, 0, 0, 0.1);
   text-align: center;
   color: black;
   height: 20px;
@@ -112,7 +112,7 @@ h1{
 
 @media screen and (min-width: 768px){
   .maintenance{
-    background-color: white;
+    background-color: rgba(128, 128, 128, 0.1);
     height: 20px;
     width: 5em;
     border-style: solid;
@@ -122,7 +122,7 @@ h1{
   .available{
     height: 20px;
     width: 5em;
-    background-color: white;
+    background-color: rgba(0, 255, 0, 0.1);
     border-style: solid;
     border-color: green;
     border-width: thin;
@@ -130,7 +130,7 @@ h1{
   .busy{
     height: 20px;
     width: 5em;
-    background-color: white;
+    background-color: rgba(255, 0, 0, 0.1);
     border-style: solid;
     border-color: red;
     border-width: thin;
