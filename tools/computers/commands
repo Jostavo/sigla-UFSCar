@@ -1,0 +1,9 @@
+#!/bin/bash
+
+mkdir /etc/sigla
+wget -O /etc/sigla/computer.py https://raw.githubusercontent.com/Darkkgreen/trab-PDS/master/tools/computers/pc.py
+
+TEXT=$(head /etc/rc.local)
+printf "$TEXT\npython /etc/sigla/computer.py $NUM&\nexit 0" > /etc/rc.local
+
+
