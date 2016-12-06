@@ -1,4 +1,5 @@
 #!/bin/bash
+NUM=COLOCARONUMERO
 
 mkdir /etc/sigla
 wget -O /etc/sigla/computer.py https://raw.githubusercontent.com/Darkkgreen/trab-PDS/master/tools/computers/pc.py
