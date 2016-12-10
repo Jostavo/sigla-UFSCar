@@ -10,5 +10,6 @@ while True:
         conn.request("POST", "/LSO/status", params, headers)
         response = conn.getresponse()
     except Exception as e:
+        time.sleep(60)
         continue
     time.sleep(300)
