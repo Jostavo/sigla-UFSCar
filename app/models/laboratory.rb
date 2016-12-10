@@ -11,6 +11,11 @@ class Laboratory < ApplicationRecord
   has_many :reports, dependent: :destroy
 
 
+  # authorized person to access the laboratory
   has_many :authorized_person
   has_many :authorized_people, :through => :authorized_person, :source => :user
+
+  # access's history
+  has_many :biometric_access
+  has_many :access_people, :through => :biometric_access, :source => :user
 end
