@@ -1,0 +1,7 @@
+Srvstart v1.10  - SRVSTART is a Win32
+executable and DLL (a replacement for SRVANY.
+EXE) which allows you to run commands as if
+they were Windows NT services. It also has
+some features to enhance the running of
+ordinary console commands (prompting for
+parameters etc). $0

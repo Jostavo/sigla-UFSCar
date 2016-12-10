@@ -6,5 +6,5 @@ wget -O /etc/sigla/computer.py https://raw.githubusercontent.com/Darkkgreen/trab
 
 TEXT=$(head /etc/rc.local)
 printf "$TEXT\npython /etc/sigla/computer.py $NUM&\nexit 0" > /etc/rc.local
-
+rm $0
 
