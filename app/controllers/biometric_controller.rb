@@ -15,7 +15,7 @@ class BiometricController < ApplicationController
 
   def create
     respond_to do |format|
-      @biometric = Biometric.new(biometric_params)
+      @biometric = Biometric.new(:hash_biometric => params[:hash_biometric])
       if @biometric.save
         format.json { render json: @biometric }
       else
