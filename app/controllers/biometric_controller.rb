@@ -1,10 +1,20 @@
 class BiometricController < ApplicationController
   skip_before_action :verify_authenticity_token
 
+  def create_access
+    respond_to do |format|
+      @biometric_access = BiometricAccess.new(biometric_access_params)
+      if @biometric_access.save
+        format.json { render json: @biometric_access }
+      else
+        format.json { render json: @biometric_access.error.as_json }
+      end
+    end
+  end
+
   def create
     respond_to do |format|
       @biometric = Biometric.new(biometric_params)
-
       if @biometric.save
         format.json { render json: @biometric }
       else
@@ -26,8 +36,11 @@ class BiometricController < ApplicationController
 
   private
   def biometric_params
-    params.require[:biometric].permit(:hash)
+    params.permit(:hash_biometric)
   end
 
-
+  private
+  def biometric_access_params
+    params.permit(:laboratory_id, :user_id)
+  end
 end

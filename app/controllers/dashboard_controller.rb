@@ -25,7 +25,9 @@ class DashboardController < ApplicationController
     @top5_labs = top5_labs
     #Últimos 4 reports de máquinas (e o horário que foram feitos)
     @last_4_reports = Report.last(4).reverse
-    #Últimos 4 acessos ao LERIS --> # modelagem ainda não implementada...
+    #Últimos 5 acessos ao LERIS
+    @biometric_access = BiometricAccess.last(5).reverse
+
   end
 
   def profile
@@ -75,7 +77,7 @@ class DashboardController < ApplicationController
     @user = User.all.order(id: "ASC")
     @laboratory = Laboratory.find_by(:initials => params[:initials])
     @authorized_people = @laboratory.authorized_people
-    @access_people = BiometricAccess.where(:laboratory_id => @laboratory.id)
+    @access_people = BiometricAccess.where(:laboratory_id => @laboratory.id).sort_by(&:created_at)
   end
 
   # if user is a admin, the user is allowed to access the dashboard
