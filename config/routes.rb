@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   post 'dashboard/access/:initials' => 'authorized_person#save'
   delete 'dashboard/access/:initials' => 'authorized_person#delete'
   # orangepi
-  get 'dashboard/access/fingerprint/get/all' => 'authorized_person#get'
+  post 'dashboard/access/fingerprint/get/all' => 'authorized_person#get'
 
   post 'dashboard/access/fingerprint/access' => 'biometric#create_access'
   post 'dashboard/access/fingerprint/get' => 'biometric#get_biometric'
