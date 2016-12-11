@@ -3,6 +3,7 @@ class BiometricController < ApplicationController
 
   def create_access
     respond_to do |format|
+      puts biometric_access_params
       @biometric_access = BiometricAccess.new(biometric_access_params)
       if @biometric_access.save
         format.json { render json: @biometric_access }
@@ -26,7 +27,7 @@ class BiometricController < ApplicationController
   def get_biometric
     respond_to do |format|
       @biometric = Biometric.last
-      if Time.now - @biometric.created_at <= 6000
+      if Time.now - @biometric.created_at <= 60
         format.json { render json: @biometric }
       else
         format.json { render json: @biometric.errors.as_json }
@@ -36,7 +37,7 @@ class BiometricController < ApplicationController
 
   private
   def biometric_params
-    params.permit(:hash_biometric)
+    params.require[:biometric].permit(:hash)
   end
 
   private
