@@ -1,10 +1,12 @@
 #include <iostream>
 #include <libfprint/fprint.h>
-#include <openssl/sha.h>
 #include <openssl/bio.h>
 #include <openssl/evp.h>
 #include <openssl/buffer.h>
 #include <curl/curl.h>
+
+#define CACHE_SIZE 101 // NULL terminated!
+
 
 using namespace std;
 
@@ -26,13 +28,20 @@ size_t write_callback(char *ptr, size_t size, size_t nmemb, void *userdata){
 }
 
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main() {
+    /**
+     * initialize libcurl
+     */
+    cout << "❮ ▶ ❯ Initialiaing libcurl... " << endl;
+    curl_global_init(CURL_GLOBAL_ALL);
+    cout << "❮ ✔ ❯ Libcurl ready for use" << endl;
 
     /**
      * initialize fprintlib
      */
     cout << "❮ ▶ ❯ Initialiaing fingeprint reader..." << endl;
-    cout << "aaa\033[2Kbbb";
 
 
     // if the lib couldn't be initialized
@@ -83,10 +92,38 @@ int main() {
 
     cout << "❮ ✔ ❯ Reader ready for use" << endl;
 
+
+    /**
+     * keep scanning fingers...
+     */
+
+    // cache all fingerprints from database
+    struct fp_print_data** cache;
+
+    // load prints from database
+
+    // after initializing there is no data on the cache
+    cache[0] = NULL;
+    while(true){
+
+        cout << "❮ ☝ ❯ Waiting for finger" << endl;
+
+        size_t cacheMatchPos = 0;
+        int resultCode = fp_identify_finger(device, cache, &cacheMatchPos);
+
+        // if there was a error
+        if (resultCode < 0){
+            cerr << "❮ ⚠ ❯ Error matching fingerprint!" << endl;
+            continue;
+        }
+    }
+
+    return 0;
+
+
     /**
      * keep enrolling fingers...
      */
-    cout << endl << "Press ENTER to enroll a finger or ESC to exit" << endl;
     while (cin.get() != 27){
 
         bool aborted  = false;
@@ -143,22 +180,6 @@ int main() {
             size_t printDataSize = 0;
             printDataSize = fp_print_data_get_data(print, &printData);
 
-//            cout << "❮ ☝ ❯ size: "<< printDataSize << endl;
-
-//            // show hash
-//            char outputBuffer[SHA256_DIGEST_LENGTH*2 +1];
-//            unsigned char hash[SHA256_DIGEST_LENGTH];
-//            SHA256_CTX sha256;
-//            SHA256_Init(&sha256);
-//            SHA256_Update(&sha256, printData, printDataSize);
-//            SHA256_Final(hash, &sha256);
-//            int i = 0;
-//            for(i = 0; i < SHA256_DIGEST_LENGTH; i++){
-//                sprintf(outputBuffer + (i * 2), "%02X", hash[i]);
-//            }
-//            outputBuffer[64] = 0;
-//            cout << "❮ ☝ ♯ ❯ " << outputBuffer << endl;
-
             // generate base64
             BIO *bio, *b64;
             BUF_MEM* bufferPtr;
@@ -176,6 +197,7 @@ int main() {
 
 //            cout << "❮ ☝ ❯ base64: "<< (string(bufferPtr->data, bufferPtr->length)) << endl;
 
+            cout << "❮ ☝ ⬆ ❯ uploading fingerprint..." << endl;
             // send data over http
             CURL* curl;
             CURLcode res;
@@ -200,7 +222,11 @@ int main() {
                 /* Check for errors */
                 if (res != CURLE_OK) {
                     cerr << "❮ ⚠ ❯ Could not save fingerprint on the server! (" << curl_easy_strerror(res) << ")" << endl;
+                }else{
+                    cout << "❮ ✔ ❯ Fingerprint saved to the server" << endl;
                 }
+
+
 
                 /* always cleanup */
                 curl_easy_cleanup(curl);
@@ -221,3 +247,4 @@ int main() {
     curl_global_cleanup(); // unload libcurl
     return 0;
 }
+#pragma clang diagnostic pop
