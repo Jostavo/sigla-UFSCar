@@ -37,7 +37,7 @@ class BiometricController < ApplicationController
 
   private
   def biometric_params
-    params.require[:biometric].permit(:hash)
+    params.permit(:hash_biometric)
   end
 
   private
