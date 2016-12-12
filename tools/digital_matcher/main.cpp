@@ -158,8 +158,6 @@ inline void load_cache(string cacheFileName, struct fp_print_data*** cache, int*
          * add print data to the list
          */
 
-
-
         struct fp_print_data* tmp = fp_print_data_from_data(buffer, decodeLen);
 
         // failed to convert data
@@ -246,8 +244,40 @@ int main() {
                 // open the door
                 // TODO(Renan - 2016-12-11): add code to open the door
 
+
                 // log on server that the door was opened
-                // TODO(Renan - 2016-12-11): send log to the server using HTTP (libcurl)
+                cout << "❮ ⬆ ❯ uploading log..." << endl;
+                CURL* curl;
+                CURLcode res;
+                curl = curl_easy_init();
+                if (curl == NULL){
+                    cerr << "❮ ⚠ ❯ Couldn't get a curl handler!" << endl;
+                }else {
+
+                    /* First set the URL that is about to receive our POST. This URL can
+                       just as well be a https:// URL if that is what should receive the
+                       data. */
+                    string body = "laboratory_id=2&user_id=" + std::to_string(ids[cacheMatchPos]);
+//                    cout << body << endl;
+
+                    curl_easy_setopt(curl, CURLOPT_URL,
+                                     "https://siglaufscar.herokuapp.com/dashboard/access/fingerprint/access");
+                    /* Now specify the POST data */
+                    curl_easy_setopt(curl, CURLOPT_POSTFIELDS, body.c_str());
+                    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
+
+                    /* Perform the request, res will get the return code */
+                    res = curl_easy_perform(curl);
+                    /* Check for errors */
+                    if (res != CURLE_OK) {
+                        cerr << "❮ ⚠ ❯ Could not save log on the server! (" << curl_easy_strerror(res) << ")" << endl;
+                    }else{
+                        cout << "❮ ✔ ❯ Log saved to the server" << endl;
+                    }
+
+                    /* always cleanup */
+                    curl_easy_cleanup(curl);
+                }
                 break;
         }
     }
