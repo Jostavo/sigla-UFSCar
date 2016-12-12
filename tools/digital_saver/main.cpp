@@ -32,7 +32,6 @@ int main() {
      * initialize fprintlib
      */
     cout << "❮ ▶ ❯ Initialiaing fingeprint reader..." << endl;
-    cout << "aaa\033[2Kbbb";
 
 
     // if the lib couldn't be initialized
@@ -143,21 +142,6 @@ int main() {
             size_t printDataSize = 0;
             printDataSize = fp_print_data_get_data(print, &printData);
 
-//            cout << "❮ ☝ ❯ size: "<< printDataSize << endl;
-
-//            // show hash
-//            char outputBuffer[SHA256_DIGEST_LENGTH*2 +1];
-//            unsigned char hash[SHA256_DIGEST_LENGTH];
-//            SHA256_CTX sha256;
-//            SHA256_Init(&sha256);
-//            SHA256_Update(&sha256, printData, printDataSize);
-//            SHA256_Final(hash, &sha256);
-//            int i = 0;
-//            for(i = 0; i < SHA256_DIGEST_LENGTH; i++){
-//                sprintf(outputBuffer + (i * 2), "%02X", hash[i]);
-//            }
-//            outputBuffer[64] = 0;
-//            cout << "❮ ☝ ♯ ❯ " << outputBuffer << endl;
 
             // generate base64
             BIO *bio, *b64;
@@ -174,9 +158,25 @@ int main() {
             BIO_set_close(bio, BIO_NOCLOSE);
             BIO_free_all(bio);
 
+            unsigned char* buffer = (unsigned char*)malloc(printDataSize);
+//            buffer[decodeLen] = '\0';
+
+            bio = BIO_new_mem_buf(bufferPtr->data, -1);
+            b64 = BIO_new(BIO_f_base64());
+            bio = BIO_push(b64, bio);
+
+            BIO_set_flags(bio, BIO_FLAGS_BASE64_NO_NL); //Do not use newlines to flush buffer
+            size_t length = BIO_read(bio, buffer, bufferPtr->length);
+
+            BIO_free_all(bio);
+
+            if(fp_print_data_from_data(buffer, printDataSize) == NULL){
+                fatalError("mais hein?");
+            }
+
 //            cout << "❮ ☝ ❯ base64: "<< (string(bufferPtr->data, bufferPtr->length)) << endl;
 
-            cout << "❮ ☝ ⬆ ❯ uploading fingerprint..." << endl;
+            cout << "❮ ⬆ ❯ uploading fingerprint..." << endl;
             // send data over http
             CURL* curl;
             CURLcode res;
