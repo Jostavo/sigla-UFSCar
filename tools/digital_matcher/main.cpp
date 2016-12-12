@@ -6,6 +6,8 @@
 #include <openssl/buffer.h>
 #include <curl/curl.h>
 #include <list>
+// #include <wiringPi.h>
+// #define DOOR 24
 
 using namespace std;
 
@@ -191,6 +193,15 @@ inline void load_cache(string cacheFileName, struct fp_print_data*** cache, int*
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main() {
     /**
+     * initialize wiringPi
+     */
+    cout << "❮ ▶ ❯ Initialiaing wiringPi... " << endl;
+//    wiringPiSetup();
+//    pinMode(DOOR, OUTPUT);
+//    digitalWrite(DOOR, LOW);
+    cout << "❮ ✔ ❯ WiringPi ready" << endl << endl;
+
+    /**
      * initialize libcurl
      */
     cout << "❮ ▶ ❯ Initialiaing libcurl... " << endl;
@@ -242,7 +253,9 @@ int main() {
             case FP_VERIFY_MATCH:
                 cout << "❮ ☝ ✔ ❯ Fingerprint match user ID: " << ids[cacheMatchPos] << endl;
                 // open the door
-                // TODO(Renan - 2016-12-11): add code to open the door
+//                digitalWrite(DOOR, HIGH);
+//                delay(5000);
+//                digitalWrite(DOOR, LOW);
 
 
                 // log on server that the door was opened
