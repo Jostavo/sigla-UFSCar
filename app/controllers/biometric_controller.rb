@@ -27,7 +27,7 @@ class BiometricController < ApplicationController
   def get_biometric
     respond_to do |format|
       @biometric = Biometric.last
-      if Time.now - @biometric.created_at <= 60
+      if Time.now - @biometric.created_at <= 6000
         format.json { render json: @biometric }
       else
         format.json { render json: @biometric.errors.as_json }
@@ -37,7 +37,7 @@ class BiometricController < ApplicationController
 
   private
   def biometric_params
-    params.require[:biometric].permit(:hash)
+    params.permit(:hash_biometric)
   end
 
   private

@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'rails-i18n', '~> 5.0.0' # For 5.0.x
 gem 'devise'
 gem 'omniauth-github'
 gem 'omniauth-facebook'

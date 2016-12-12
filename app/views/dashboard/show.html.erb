@@ -182,55 +182,20 @@
           <div class="dashboard-widget-content">
 
             <ul class="list-unstyled timeline widget">
-              <li>
-                <div class="block">
-                  <div class="block_content">
-                    <h2 class="title">
-                      <a>Gustavo Rodrigues</a>
-                    </h2>
-                    <div class="byline">
-                      <span>1 hora atrás</span>
+              <% @biometric_access.each do |u| %>
+                <li>
+                  <div class="block">
+                    <div class="block_content">
+                      <h2 class="title">
+                        <a><%= u.user.name %></a>
+                      </h2>
+                      <div class="byline">
+                      <span><%= distance_of_time_in_words(u.created_at, Time.now) %></span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </li>
-              <li>
-                <div class="block">
-                  <div class="block_content">
-                    <h2 class="title">
-                      <a>Henrique Eihara</a>
-                    </h2>
-                    <div class="byline">
-                      <span>1 hora atrás</span>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="block">
-                  <div class="block_content">
-                    <h2 class="title">
-                      <a>André Vieira</a>
-                    </h2>
-                    <div class="byline">
-                      <span>2 horas atrás</span>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li>
-                <div class="block">
-                  <div class="block_content">
-                    <h2 class="title">
-                      <a>Gustavo Rodrigues</a>
-                    </h2>
-                    <div class="byline">
-                      <span>3 horas atrás</span>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              
+                </li>
+              <% end %>
             </ul>
           </div>
         </div>
