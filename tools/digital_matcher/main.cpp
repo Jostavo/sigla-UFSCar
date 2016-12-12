@@ -6,6 +6,7 @@
 #include <openssl/buffer.h>
 #include <curl/curl.h>
 #include <list>
+#include <string.h>
 // #include <wiringPi.h>
 // #define DOOR 24
 
