@@ -377,7 +377,7 @@
                 <canvas id="canvasRandom" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
               </td>
               <td>
-                <table class="tile_info" id="algumidrandom">
+                <table class="tile_info" id="reviewReport">
                 </table>
               </td>
             </tr>
@@ -400,7 +400,10 @@ time_open_today_chart = <%= raw time_open_today%>;
 time_open_today_week_chart = <%= raw time_open_today_week%>;
 
 var porcentagem = time_open_today_chart - time_open_today_week_chart;
-porcentagem = porcentagem / time_open_today_chart;
+if(time_open_today_chart == 0)
+  porcentagem = porcentagem / 1;
+else
+  porcentagem = porcentagem / time_open_today_chart;
 porcentagem = porcentagem * 100;
 
 var adicao;
@@ -443,7 +446,10 @@ time_open_week_chart = <%= raw time_open_week%>;
 time_open_last_week_chart = <%= raw time_open_last_week%>;
 
 var porcentagem = time_open_week_chart - time_open_last_week_chart;
-porcentagem = porcentagem / time_open_week_chart;
+if(time_open_last_week_chart == 0)
+  porcentagem = porcentagem / 1;
+else
+  porcentagem = porcentagem / time_open_week_chart;
 porcentagem = porcentagem * 100;
 
 var adicao;
@@ -499,7 +505,10 @@ pPorts = <%= raw pendingPorts%>;
 tPorts = <%= raw totalPorts%>;
 
 var porcentagem = pPorts - tPorts;
-porcentagem = porcentagem / tPorts;
+if(tPorts == 0)
+  porcentagem = porcentagem / 1;
+else
+  porcentagem = porcentagem / tPorts;
 porcentagem = porcentagem * 100;
 porcentagem = porcentagem + 100;
 
@@ -570,6 +579,57 @@ topLabs = <%= raw top5labs %>;
   });
 });
 
+$(document).ready(function(){
+//aqui insere a estrutura de dados do report, japa
+
+  var options = {
+    legend: false,
+    responsive: false
+  };
+
+  var colorClass = ['fa fa-square blue', 'fa fa-square green', 'fa fa-square purple', 'fa fa-square aero', 'fa fa-square red'];
+  var selectedColor = 0;
+  var labelClass = [];
+  var dataClass = [];
+
+  for(var i = 0; i < 5; i++){
+    if(i < /*aqui vem a estrutura*/ && /*aqui vem a estrutura*/ != 0){
+      $("#reviewReport").append("<tr><td><p><i class ='"+colorClass[selectedColor]+"'></i>"+/*aqui vem a estrutura*/+"</p></td><td>"+/*aqui vem a estrutura*/+"</td></tr>");
+      labelClass.push(/*aqui vem a estrutura*/);
+      dataClass.push(/*aqui vem a estrutura*/);
+      selectedColor++;
+    }
+  }
+
+  new Chart(document.getElementById("canvasSala"), {
+    type: 'doughnut',
+    tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+    data: {
+      labels: 
+        labelClass,
+      datasets: [{
+        data: 
+          dataClass,
+        backgroundColor: [
+          "#3498DB",
+          "#26B99A",
+          "#9B59B6",
+          "#BDC3C7",
+          "#E74C3C"
+        ],
+        hoverBackgroundColor: [
+          "#49A9EA",
+          "#36CAAB",
+          "#B370CF",
+          "#CFD4D8",
+          "#E95E4F"
+        ]
+      }]
+    },
+    options: options
+  });
+});
+
 $(document).ready(function() {
 <% last4rep = @last_4_reports.to_json %>
 lastReports = <%= raw last4rep%>;
@@ -577,7 +637,7 @@ lastReports = <%= raw last4rep%>;
   for(var i = 0; i < 4; i++){
     if(i < lastReports.length){
       var data = formataData(lastReports[i].created_at);
-      $("#listReport").append("<li><div class='block'><div class='block_content'><h2 class='title'><a>PC"+ lastReports[i].computer_id +" - "+ lastReports[i].laboratory_initials +"</a></h2><div class='byline'><span>"+ data +"</span> por <a>"+ lastReports[i].user_name +"</a></div></div></div></li>");
+      $("#listReport").append("<li><div class='block'><div class='block_content'><h2 class='title'><a>PC"+ lastReports[i].computer_id +" - "+ lastReports[i].laboratory_initials +"</a></h2><div class='byline'><span>"+ <%= distance_of_time_in_words(lastReports[i].created_at, Date.now()) %> +"</span> por <a>"+ lastReports[i].user_name +"</a></div></div></div></li>");
     }
   }
 
@@ -602,8 +662,6 @@ lastReports = <%= raw last4rep%>;
     }
   }
 });
-
-
 
 $(document).ready(function() {
   //Data1 seria o total de horas por dia no qual o lab ficou aberto
