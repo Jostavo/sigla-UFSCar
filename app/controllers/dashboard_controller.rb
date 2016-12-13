@@ -27,6 +27,8 @@ class DashboardController < ApplicationController
     @last_4_reports = Report.last(4).reverse
     #Últimos 5 acessos ao LERIS
     @biometric_access = BiometricAccess.last(5).reverse
+    #Reviews separados por resoluções
+    @report_overview = Report.all.group(:resolution).count()
 
   end
 
