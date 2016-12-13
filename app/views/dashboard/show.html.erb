@@ -637,7 +637,7 @@ lastReports = <%= raw last4rep%>;
   for(var i = 0; i < 4; i++){
     if(i < lastReports.length){
       var data = formataData(lastReports[i].created_at);
-      $("#listReport").append("<li><div class='block'><div class='block_content'><h2 class='title'><a>PC"+ lastReports[i].computer_id +" - "+ lastReports[i].laboratory_initials +"</a></h2><div class='byline'><span>"+ <%= distance_of_time_in_words(lastReports[i].created_at, Date.now()) %> +"</span> por <a>"+ lastReports[i].user_name +"</a></div></div></div></li>");
+      $("#listReport").append("<li><div class='block'><div class='block_content'><h2 class='title'><a>PC"+ lastReports[i].computer_id +" - "+ lastReports[i].laboratory_initials +"</a></h2><div class='byline'><span>"+ data +"</span> por <a>"+ lastReports[i].user_name +"</a></div></div></div></li>");
     }
   }
 
