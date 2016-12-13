@@ -25,8 +25,8 @@ class DashboardController < ApplicationController
     @top5_labs = top5_labs
     #Últimos 4 reports de máquinas (e o horário que foram feitos)
     @last_4_reports = Report.last(4).reverse
-    #Últimos 5 acessos ao LERIS
-    @biometric_access = BiometricAccess.last(5).reverse
+    #Últimos 4  acessos ao LERIS
+    @biometric_access = BiometricAccess.last(4).reverse
     #Reviews separados por resoluções
     @report_overview = Report.all.group(:resolution).count()
 
