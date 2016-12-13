@@ -592,14 +592,14 @@ roverview = <%= raw overview %>;
   var selectedColor = 0;
   var labelClass = [];
   var dataClass = [];
+  var names = [pending, resolved, verifying];
+  var namesPort = ["Pendente", "Resolvido", "Verificando"];
 
-  for(var i = 0; i < 5; i++){
-    if(i < roverview.length && roverview[i][1] != 0){
-      $("#reviewReport").append("<tr><td><p><i class ='"+colorClass[selectedColor]+"'></i>"+ roverview[i][0] +"</p></td><td>"+ roverview[i][1] +"</td></tr>");
-      labelClass.push(roverview[i][0]);
-      dataClass.push(roverview[i][1]);
+  for(var i = 0; i < 3; i++){
+      $("#reviewReport").append("<tr><td><p><i class ='"+ colorClass[selectedColor] +"'></i>"+ namesPort[i] +"</p></td><td>"+ roverview[names[i]] +"</td></tr>");
+      labelClass.push(namesPort[i]);
+      dataClass.push(roverview[names[i]]);
       selectedColor++;
-    }
   }
 
   new Chart(document.getElementById("canvasOver"), {
