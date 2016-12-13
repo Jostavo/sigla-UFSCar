@@ -82,7 +82,7 @@ h1{
   border-width: thin;
 }
 
-.available{
+.busy{
   height: 20px;
   width: 2em;
   background-color: rgba(0, 255, 0, 0.1);
@@ -93,7 +93,7 @@ h1{
   border-width: thin;
 }
 
-.busy{
+.available{
   background-color: rgba(255, 0, 0, 0.1);
   text-align: center;
   color: black;
@@ -119,7 +119,7 @@ h1{
     border-color: gray;
     border-width: thin;
   }
-  .available{
+  .busy{
     height: 20px;
     width: 5em;
     background-color: rgba(0, 255, 0, 0.1);
@@ -127,7 +127,7 @@ h1{
     border-color: green;
     border-width: thin;
   }
-  .busy{
+  .available{
     height: 20px;
     width: 5em;
     background-color: rgba(255, 0, 0, 0.1);
