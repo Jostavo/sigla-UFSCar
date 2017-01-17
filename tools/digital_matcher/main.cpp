@@ -124,6 +124,9 @@ inline void load_cache(string cacheFileName, struct fp_print_data*** cache, int*
          */
         idList.push_back(std::stoi(idString));
 
+        // cleaning buffer from c???
+        string test = line.substr(dataStartPos);
+        char * test2 = (char*)test.c_str();
         /**
          * convert print data from base64 to binary
          */
