@@ -131,7 +131,7 @@ inline void load_cache(string cacheFileName, struct fp_print_data*** cache, int*
          * convert print data from base64 to binary
          */
         BIO *bio, *b64;
-        char* b64message = (char*)line.substr(dataStartPos).c_str();
+        char* b64message = test2;
 //        b64message[264] = '\0';
 //        cout << "❮ ☝ ❯ base64: "<< (string(b64message, strlen(b64message))) << endl;
 
