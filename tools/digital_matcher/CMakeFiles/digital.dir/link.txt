@@ -1,1 +1,0 @@
-/usr/bin/c++    -std=c++11 -I/usr/include  -I/usr/local/opt/openssl/include -L/usr/local/opt/openssl/lib -L/opt/local/lib -L/usr/local/Cellar/nss/3.26/lib -L/usr/local/Cellar/nspr/4.12_1/lib -L/usr/local/Cellar/libusb/1.0.20/lib    CMakeFiles/digital.dir/main.cpp.o  -o digital -rdynamic -lfprint -lcrypto -lcurl 
