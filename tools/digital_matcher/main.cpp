@@ -7,8 +7,9 @@
 #include <curl/curl.h>
 #include <list>
 #include <string.h>
-// #include <wiringPi.h>
-// #define DOOR 24
+
+#include <wiringPi.h>
+#define DOOR 15
 
 using namespace std;
 
@@ -200,9 +201,10 @@ int main() {
      * initialize wiringPi
      */
     cout << "❮ ▶ ❯ Initialiaing wiringPi... " << endl;
-//    wiringPiSetup();
-//    pinMode(DOOR, OUTPUT);
-//    digitalWrite(DOOR, LOW);
+    wiringPiSetup();
+    pinMode(DOOR, OUTPUT);
+    digitalWrite(DOOR, LOW);
+
     cout << "❮ ✔ ❯ WiringPi ready" << endl << endl;
 
     /**
@@ -257,10 +259,9 @@ int main() {
             case FP_VERIFY_MATCH:
                 cout << "❮ ☝ ✔ ❯ Fingerprint match user ID: " << ids[cacheMatchPos] << endl;
                 // open the door
-//                digitalWrite(DOOR, HIGH);
-//                delay(5000);
-//                digitalWrite(DOOR, LOW);
-
+                digitalWrite(DOOR, HIGH);
+                delay(500);
+                digitalWrite(DOOR, LOW);
 
                 // log on server that the door was opened
                 cout << "❮ ⬆ ❯ uploading log..." << endl;
