@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include <fstream>
 #include <curl/curl.h>
 #include "json.hpp"
@@ -36,6 +37,7 @@ class Digital{
 
       for(json& unique : this->data){
         string biometric = unique["biometric"];
+        replace(biometric.begin(), biometric.end(), ' ', '+');
         fs << unique["user_id"] << "|" << biometric << endl;
       }
 
