@@ -50,6 +50,7 @@ class Digital{
      * @param name of the file
      */
     void write_data(string name){
+      cout << "❮ ▶ ❯ Writing all fingerprints to cache... " << endl;
       fstream fs;
 
       fs.open(name, ios::out|ios::trunc);
@@ -61,6 +62,8 @@ class Digital{
       }
 
       fs.close();
+
+      cout << "❮ ✔ ❯ Cache is ready" << endl << endl;
     }
 
     /*
@@ -68,7 +71,7 @@ class Digital{
      * Uses curl to accomplish it.
      */
 
-    void get_data(){
+    int get_data(){
       CURL* curl;
       CURLcode res;
       curl = curl_easy_init();
@@ -93,6 +96,7 @@ class Digital{
         /* Check for errors */
         if (res != CURLE_OK) {
           cerr << "❮ ⚠ ❯ Could not donwload all fingerprints! (" << curl_easy_strerror(res) << ")" << endl;
+          return 0;
         }else{
           cout << "❮ ✔ ❯ Downloaded all fingerpritns!" << endl;
         }
@@ -101,6 +105,7 @@ class Digital{
 
         /* always cleanup */
         curl_easy_cleanup(curl);
+        return 1;
       }
 
     }
@@ -311,8 +316,8 @@ int main() {
      * Download fingerprint's cache
      */
     Digital dig;
-    dig.get_data();
-    dig.write_data("cache");
+    if(dig.get_data())
+      dig.write_data("cache");
 
     /**
      * init libfprint and get a device
