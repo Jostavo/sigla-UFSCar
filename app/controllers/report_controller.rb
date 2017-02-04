@@ -12,8 +12,8 @@ class ReportController < ApplicationController
     @report = @computer.reports.new(:description => params[:description], :user_id => current_user.id, :user_name => current_user.name, :laboratory_id => @laboratory.id, :laboratory_initials => @laboratory.initials)
 
     if @report.save
-      flash.notice = "Report salvo!"
       redirect_to root_path
+      flash.notice = "Report salvo!"
     else
       flash.alert= "Não foi possível salvar o report! #{@report.errors}"
       redirect_to root_path
