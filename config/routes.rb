@@ -7,8 +7,13 @@ Rails.application.routes.draw do
     :omniauth_callbacks => "users/omniauth_callbacks"
   }
 
-  post 'report/' => "report#create"
-  get 'report/show' => "report#show"
+
+  resources :laboratory do
+    post 'reports/' => "report#create"
+    get 'reports/show' => "report#show"
+  end
+
+
 
   get 'dashboard/' => 'dashboard#show'
   get 'dashboard/profile' => 'dashboard#profile'
