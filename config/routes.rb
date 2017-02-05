@@ -17,14 +17,15 @@ Rails.application.routes.draw do
     # TODO: need to test this with a embedded system
     post 'computer/:id' => 'status#new_computer', :defaults => { :format => :json }
     post 'status/' => 'status#new_laboratory', :defaults => { :format => :json }
+
   end
 
   scope 'dashboard' do
-    root :to => 'dashboard#index'
+    get '/' => 'dashboard#index', as: :dashboard_root
     get 'profile/' => 'dashboard#profile'
     get 'help/' => 'dashboard#help'
 
-    patch 'edit/' => 'dashboard#edit'
+    patch 'edit/' => 'dashboard#edit', as: :dashboard_edit_profile
 
     scope ':laboratory_initials' do
       get 'reports/' => 'dashboard#report', as: :dashboard_reports
@@ -33,20 +34,22 @@ Rails.application.routes.draw do
       get 'map/' => 'dashboard#map', as: :dashboard_map
       get 'statistics/' => 'dashboard#statistics', as: :dashboard_statistics
       get 'embedded/' => 'dashboard#embedded', as: :dashboard_embedded
+
+      scope 'access' do
+        get '/' => 'dashboard#access', as: :dashboard_access
+        post '/' => 'authorized_person#save', as: :dashboard_access_create
+        delete '/' => 'authorized_person#delete', as: :dashboard_access_delete
+
+        # TODO: need to test this routes with orangepi
+        # orangepi
+        post 'fingerprint/get/all' => 'authorized_person#get'
+
+        post 'fingerprint/access' => 'biometric#create_access'
+        post 'fingerprint/get' => 'biometric#get_biometric'
+        post 'fingerprint/set' => 'biometric#create'
+      end
     end
-
   end
-
-
-  get 'dashboard/access/:initials' => 'dashboard#access'
-  post 'dashboard/access/:initials' => 'authorized_person#save'
-  delete 'dashboard/access/:initials' => 'authorized_person#delete'
-  # orangepi
-  post 'dashboard/access/fingerprint/get/all' => 'authorized_person#get'
-
-  post 'dashboard/access/fingerprint/access' => 'biometric#create_access'
-  post 'dashboard/access/fingerprint/get' => 'biometric#get_biometric'
-  post 'dashboard/access/fingerprint/set' => 'biometric#create'
 
   get 'about/' => 'application#about'
   root 'laboratory#show'

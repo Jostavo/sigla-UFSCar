@@ -1,5 +1,5 @@
 <div class="col-xs-12 col-sm-12 col-md-12 hidden">
-  <%= form_tag("/dashboard/access/#{@laboratory.initials}", method: "delete") do %>
+  <%= form_tag(dashboard_access_delete_path(@laboratory.initials), method: "delete") do %>
     <%= text_field "biometric_revoke", nil,name: "authorized_person[biometric]", :readonly => "true"%>
     <%= text_field "user_id_revoke", nil,name: "authorized_person[user_id]", :readonly => "true"%>
     <%= text_field "laboratory_id_revoke", nil,name: "authorized_person[laboratory_id]",value: @laboratory.id, :readonly => "true"%>

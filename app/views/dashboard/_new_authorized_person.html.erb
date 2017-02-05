@@ -4,7 +4,7 @@
       <button id="access-authorized-close-btn" type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
 
       <div class="col-xs-12 col-sm-12 col-md-12 hidden">
-        <%= form_tag("/dashboard/access/#{@laboratory.initials}", method: "post") do %>
+        <%= form_tag(dashboard_access_create_path(@laboratory.initials), method: "post") do %>
           <%= text_field "biometric", nil,name: "authorized_person[biometric]", :readonly => "true"%>
           <%= text_field "user_id", nil,name: "authorized_person[user_id]", :readonly => "true"%>
           <%= text_field "laboratory_id", nil,name: "authorized_person[laboratory_id]",value: @laboratory.id, :readonly => "true"%>
