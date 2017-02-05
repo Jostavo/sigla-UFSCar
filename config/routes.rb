@@ -45,7 +45,7 @@ Rails.application.routes.draw do
         post 'fingerprint/get/all' => 'authorized_person#get'
 
         post 'fingerprint/access' => 'biometric#create_access'
-        post 'fingerprint/get' => 'biometric#get_biometric'
+        get 'fingerprint/' => 'biometric#get_biometric', as: :dashboard_access_fingerprint
         post 'fingerprint/set' => 'biometric#create'
       end
     end

@@ -87,7 +87,7 @@ $("#input-names").focusout(function(){
 
 $('#btn_fingerprint').click(function(){
   alert("Insira o dedo no dispositivo, depois que fizer isso, clique na caixa Ok.");
-  $.post( "/dashboard/access/fingerprint/get", function( data ) {
+  $.get( "<%= dashboard_access_fingerprint_path(@laboratory.initials) %>", function( data ) {
     if(jQuery.isEmptyObject(data)){
       alert("Refaça novamente o cadastro!");
     }else{
