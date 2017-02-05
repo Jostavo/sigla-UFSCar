@@ -2,7 +2,7 @@
   <div class="container report-form-inside">
     <div class="jumbotron">
       <button id="btn-close" type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
-      <%= form_tag("/dashboard/report/#{@laboratory.initials}", method: "post") do %>
+      <%= form_tag(dashboard_reports_edit_path, method: "patch") do %>
         <h5>Report feito em </h5>
         <div class="form-group">
           <%= text_field "report_id_", nil, class: "form-control hidden", :readonly => "true"%>
