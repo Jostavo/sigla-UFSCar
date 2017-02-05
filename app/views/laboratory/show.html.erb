@@ -65,12 +65,12 @@
                 <i class="glyphicon glyphicon-exclamation-sign"></i>
                 Reportar Máquina
               </button>
-              <a href="/report/show">
-              <div id="report-btn" class="btn btn-default">
-                <i class="glyphicon glyphicon-th-list"></i>
-                Exibir Reports
-              </div>
-              </a>
+              <%= link_to laboratory_reports_path(@labs) do %>
+                <div id="report-btn" class="btn btn-default">
+                  <i class="glyphicon glyphicon-th-list"></i>
+                  Exibir Reports
+                </div>
+              <% end %>
             </div>
           </div>
       </div>
