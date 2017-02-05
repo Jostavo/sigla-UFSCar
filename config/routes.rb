@@ -19,17 +19,25 @@ Rails.application.routes.draw do
     post 'status/' => 'status#new_laboratory', :defaults => { :format => :json }
   end
 
-  get 'dashboard/' => 'dashboard#show'
-  get 'dashboard/profile' => 'dashboard#profile'
-  get 'dashboard/help' => 'dashboard#help'
-  patch 'dashboard/edit' => 'dashboard#edit'
+  scope 'dashboard' do
+    root :to => 'dashboard#index'
+    get 'profile/' => 'dashboard#profile'
+    get 'help/' => 'dashboard#help'
 
-  get 'dashboard/report/:initials/' => 'dashboard#report'
-  post 'dashboard/report/:initials/' => 'report#edit'
+    patch 'edit/' => 'dashboard#edit'
 
-  get 'dashboard/map/:initials' => 'dashboard#map'
-  get 'dashboard/statistics/:initials' => 'dashboard#statistics'
-  get 'dashboard/embedded/:initials' => 'dashboard#embedded'
+    scope ':laboratory_initials' do
+      get 'reports/' => 'dashboard#report', as: :dashboard_reports
+      patch 'reports/' => 'report#edit', as: :dashboard_reports_edit
+
+      get 'map/' => 'dashboard#map', as: :dashboard_map
+      get 'statistics/' => 'dashboard#statistics', as: :dashboard_statistics
+      get 'embedded/' => 'dashboard#embedded', as: :dashboard_embedded
+    end
+
+  end
+
+
   get 'dashboard/access/:initials' => 'dashboard#access'
   post 'dashboard/access/:initials' => 'authorized_person#save'
   delete 'dashboard/access/:initials' => 'authorized_person#delete'
