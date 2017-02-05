@@ -1,8 +1,9 @@
-class ReportController < ApplicationController
+class ReportController < LaboratoryController
   before_action :authenticate_user!
 
   def show
-    @report = Report.where(:user_id => current_user.id).order(created_at: :desc)
+    @labs = Laboratory.find_by(:id => params[:laboratory_id]) || Laboratory.find_by(:initials => params[:laboratory_id])
+    @report = Report.where(:user_id => current_user.id,:laboratory_id => @labs.id).order(created_at: :desc)
   end
 
   def create
