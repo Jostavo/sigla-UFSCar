@@ -7,13 +7,17 @@ Rails.application.routes.draw do
     :omniauth_callbacks => "users/omniauth_callbacks"
   }
 
-
   resources :laboratory do
     post 'reports/' => "report#create"
-    get 'reports/show' => "report#show"
+    get 'reports/' => "report#show"
+
+    get '/subjects' => 'laboratory#subjects', :defaults => { :initials => "LSO" }
+    get '/map' => 'laboratory#map', :defaults => { :initials => "LSO" }
+
+    # TODO: need to test this with a embedded system
+    post 'computer/:id' => 'status#new_computer', :defaults => { :format => :json }
+    post 'status/' => 'status#new_laboratory', :defaults => { :format => :json }
   end
-
-
 
   get 'dashboard/' => 'dashboard#show'
   get 'dashboard/profile' => 'dashboard#profile'
@@ -37,13 +41,6 @@ Rails.application.routes.draw do
   post 'dashboard/access/fingerprint/set' => 'biometric#create'
 
   get 'about/' => 'application#about'
-
-  post 'status/' => 'status#new_laboratory', :defaults => { :format => :json }
-  post '/:initials/status/' => 'status#new_computer', :defaults => { :format => :json }
-  get '/laboratory/:initials' => 'laboratory#show', :defaults => { :initials => "LSO" }
-  get '/:initials/subjects' => 'laboratory#subjects', :defaults => { :initials => "LSO" }
-  get '/:initials/map' => 'laboratory#map', :defaults => { :initials => "LSO" }
-  get '/:initials' => 'laboratory#show'
   root 'laboratory#show'
 
 end
