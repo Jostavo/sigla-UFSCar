@@ -30,7 +30,6 @@ class StatusController < ApplicationController
         format.json { render json: {'error'=>'this computer does not exist.'}.to_json }
         return
       else
-        puts "entrada1"
         @computer_status = @computer.computer_status.new(:status => params[:status])
       end
 

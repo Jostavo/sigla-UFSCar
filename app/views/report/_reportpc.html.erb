@@ -3,7 +3,7 @@
     <div id="report-form-inside" class="jumbotron">
       <button id="report-form-close-btn" type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
       <% if user_signed_in? %>
-        <%= form_for(@report, url: report_path) do |f| %>
+        <%= form_for(@report, url: laboratory_reports_path(@labs)) do |f| %>
           <div class="form-group">
             <%= f.label :computer_id, 'Número da Máquina'%><br />
             <%= f.text_field :computer_id, class: "form-control" %>

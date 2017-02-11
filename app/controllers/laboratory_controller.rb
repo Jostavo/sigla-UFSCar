@@ -1,7 +1,7 @@
 class LaboratoryController < ApplicationController
   def show
-    if params[:initials] != nil
-      @labs = Laboratory.find_by(:initials => params[:initials])
+    if params[:id] != nil
+      @labs = Laboratory.find_by(:id => params[:id]) || Laboratory.find_by(:initials => params[:id])
     else
       @labs = Laboratory.find_by(:initials => "LSO")
     end

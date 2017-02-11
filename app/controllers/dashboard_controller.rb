@@ -3,7 +3,7 @@ class DashboardController < ApplicationController
   layout "dashboard"
   before_action :authenticate_user!, :isAdmin
 
-  def show
+  def index
     @report = Report.group(:computer_id).count().sort_by{|k,v| v}.reverse
     #Tempo aberto no dia atual
     @labopen_today = Laboratory.find_by(:initials => "LSO").status.today_open_in_seconds
@@ -57,27 +57,27 @@ class DashboardController < ApplicationController
   end
 
   def report
-    @laboratory = Laboratory.find_by(:initials => params[:initials])
+    @laboratory = Laboratory.find_by(:initials => params[:laboratory_initials])
     @report = Report.where(:laboratory_initials => @laboratory.initials).order(created_at: "desc")
     @report_edit = Report.new
   end
 
   def map
-    @laboratory = Laboratory.find_by(:initials => params[:initials])
+    @laboratory = Laboratory.find_by(:initials => params[:laboratory_initials])
     @computers = @laboratory.computers.order(physical_id: "ASC")
   end
 
   def statistics
-    @laboratory = Laboratory.find_by(:initials => params[:initials])
+    @laboratory = Laboratory.find_by(:initials => params[:laboratory_initials])
   end
 
   def embedded
-    @laboratory = Laboratory.find_by(:initials => params[:initials])
+    @laboratory = Laboratory.find_by(:initials => params[:laboratory_initials])
   end
 
   def access
     @user = User.all.order(id: "ASC")
-    @laboratory = Laboratory.find_by(:initials => params[:initials])
+    @laboratory = Laboratory.find_by(:initials => params[:laboratory_initials])
     @authorized_people = @laboratory.authorized_people
     @access_people = BiometricAccess.where(:laboratory_id => @laboratory.id).sort_by(&:created_at)
   end

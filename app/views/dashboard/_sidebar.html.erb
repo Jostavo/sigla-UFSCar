@@ -7,19 +7,19 @@
         <li><a><i class="fa fa-desktop"></i> <%= lab.initials %><span class="fa fa-chevron-down"></span></a>
           <ul class="nav child_menu" style="display: none">
             <% if lab.function.include? "a" %>
-              <li><%= link_to('Report de Computadores', "/dashboard/report/#{lab.initials}")%></li>
+              <li><%= link_to('Report de Computadores', dashboard_reports_path(lab.initials))%></li>
             <% end %>
             <% if lab.function.include? "b" %>
-              <li><%= link_to('Mapa de Computadores', "/dashboard/map/#{lab.initials}")%></li>
+              <li><%= link_to('Mapa de Computadores', dashboard_map_path(lab.initials))%></li>
             <% end %>
             <% if lab.function.include? "c" %>
-              <li><%= link_to('Relatório e Estatísticas', "/dashboard/statistics/#{lab.initials}")%></li>
+              <li><%= link_to('Relatório e Estatísticas', dashboard_statistics_path(lab.initials))%></li>
             <% end %>
             <% if lab.function.include? "d" %>
-              <li><%= link_to('Dispositivo Embarcado', "/dashboard/embedded/#{lab.initials}")%></li>
+              <li><%= link_to('Dispositivo Embarcado', dashboard_embedded_path(lab.initials))%></li>
             <% end %>
             <% if lab.function.include? "e" %>
-              <li><%= link_to('Acesso Autorizado', "/dashboard/access/#{lab.initials}")%></li>
+              <li><%= link_to('Acesso Autorizado', dashboard_access_path(lab.initials))%></li>
             <% end %>
           </ul>
         </li>

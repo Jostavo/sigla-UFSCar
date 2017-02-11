@@ -1,8 +1,9 @@
-class ReportController < ApplicationController
+class ReportController < LaboratoryController
   before_action :authenticate_user!
 
   def show
-    @report = Report.where(:user_id => current_user.id).order(created_at: :desc)
+    @labs = Laboratory.find_by(:id => params[:laboratory_id]) || Laboratory.find_by(:initials => params[:laboratory_id])
+    @report = Report.where(:user_id => current_user.id,:laboratory_id => @labs.id).order(created_at: :desc)
   end
 
   def create
@@ -12,11 +13,11 @@ class ReportController < ApplicationController
     @report = @computer.reports.new(:description => params[:description], :user_id => current_user.id, :user_name => current_user.name, :laboratory_id => @laboratory.id, :laboratory_initials => @laboratory.initials)
 
     if @report.save
+      redirect_to laboratory_path(@laboratory)
       flash.notice = "Report salvo!"
-      redirect_to root_path
     else
       flash.alert= "Não foi possível salvar o report! #{@report.errors}"
-      redirect_to root_path
+      redirect_to laboratory_path(@laboratory)
     end
   end
 

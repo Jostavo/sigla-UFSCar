@@ -16,27 +16,16 @@
 using namespace std;
 using json = nlohmann::json;
 
-class Device{
-  private:
-    struct fp_dev* device;
-    struct fp_print_data** cache;
-    int * ids;
-
-    /**
-     * Shows a fatal error message, unloads fprintlib and exit the program with
-     * the status code EXIT_FAILURE
-     * @param msg Message to be displayed
-     */
-    void inline fatalError(string msg){
-      cerr << "❮ ☠ ❯ " << msg << endl;
-      fp_exit();
-      exit(EXIT_FAILURE);
-    }
-
-    static size_t write_callback(char *ptr, size_t size, size_t nmemb, void *userdata){
-      // ignore data and does nothing :)
-      return size*nmemb;
-    }
+/**
+ * Shows a fatal error message, unloads fprintlib and exit the program with
+ * the status code EXIT_FAILURE
+ * @param msg Message to be displayed
+ */
+void inline fatalError(string msg){
+    cerr << "❮ ☠ ❯ " << msg << endl;
+    fp_exit();
+    exit(EXIT_FAILURE);
+}
 
     /**
      * initialize fprintlib and open a device for use

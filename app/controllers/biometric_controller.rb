@@ -27,7 +27,7 @@ class BiometricController < ApplicationController
   def get_biometric
     respond_to do |format|
       @biometric = Biometric.last
-      if Time.now - @biometric.created_at <= 6000
+      if Time.now - @biometric.created_at <= 60
         format.json { render json: @biometric }
       else
         format.json { render json: @biometric.errors.as_json }

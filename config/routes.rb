@@ -7,38 +7,51 @@ Rails.application.routes.draw do
     :omniauth_callbacks => "users/omniauth_callbacks"
   }
 
-  post 'report/' => "report#create"
-  get 'report/show' => "report#show"
+  resources :laboratory do
+    post 'reports/' => "report#create"
+    get 'reports/' => "report#show"
 
-  get 'dashboard/' => 'dashboard#show'
-  get 'dashboard/profile' => 'dashboard#profile'
-  get 'dashboard/help' => 'dashboard#help'
-  patch 'dashboard/edit' => 'dashboard#edit'
+    get '/subjects' => 'laboratory#subjects', :defaults => { :initials => "LSO" }
+    get '/map' => 'laboratory#map', :defaults => { :initials => "LSO" }
 
-  get 'dashboard/report/:initials/' => 'dashboard#report'
-  post 'dashboard/report/:initials/' => 'report#edit'
+    # TODO: need to test this with a embedded system
+    post 'computer/:id' => 'status#new_computer', :defaults => { :format => :json }
+    post 'status/' => 'status#new_laboratory', :defaults => { :format => :json }
 
-  get 'dashboard/map/:initials' => 'dashboard#map'
-  get 'dashboard/statistics/:initials' => 'dashboard#statistics'
-  get 'dashboard/embedded/:initials' => 'dashboard#embedded'
-  get 'dashboard/access/:initials' => 'dashboard#access'
-  post 'dashboard/access/:initials' => 'authorized_person#save'
-  delete 'dashboard/access/:initials' => 'authorized_person#delete'
-  # orangepi
-  post 'dashboard/access/fingerprint/get/all' => 'authorized_person#get'
+  end
 
-  post 'dashboard/access/fingerprint/access' => 'biometric#create_access'
-  post 'dashboard/access/fingerprint/get' => 'biometric#get_biometric'
-  post 'dashboard/access/fingerprint/set' => 'biometric#create'
+  scope 'dashboard' do
+    get '/' => 'dashboard#index', as: :dashboard_root
+    get 'profile/' => 'dashboard#profile'
+    get 'help/' => 'dashboard#help'
+
+    patch 'edit/' => 'dashboard#edit', as: :dashboard_edit_profile
+
+    scope ':laboratory_initials' do
+      get 'reports/' => 'dashboard#report', as: :dashboard_reports
+      patch 'reports/' => 'report#edit', as: :dashboard_reports_edit
+
+      get 'map/' => 'dashboard#map', as: :dashboard_map
+      get 'statistics/' => 'dashboard#statistics', as: :dashboard_statistics
+      get 'embedded/' => 'dashboard#embedded', as: :dashboard_embedded
+
+      scope 'access' do
+        get '/' => 'dashboard#access', as: :dashboard_access
+        post '/' => 'authorized_person#save', as: :dashboard_access_create
+        delete '/' => 'authorized_person#delete', as: :dashboard_access_delete
+
+        # TODO: need to test this routes with orangepi
+        # orangepi
+        post 'fingerprint/get/all' => 'authorized_person#get'
+
+        post 'fingerprint/access' => 'biometric#create_access'
+        get 'fingerprint/' => 'biometric#get_biometric', as: :dashboard_access_fingerprint
+        post 'fingerprint/set' => 'biometric#create'
+      end
+    end
+  end
 
   get 'about/' => 'application#about'
-
-  post 'status/' => 'status#new_laboratory', :defaults => { :format => :json }
-  post '/:initials/status/' => 'status#new_computer', :defaults => { :format => :json }
-  get '/laboratory/:initials' => 'laboratory#show', :defaults => { :initials => "LSO" }
-  get '/:initials/subjects' => 'laboratory#subjects', :defaults => { :initials => "LSO" }
-  get '/:initials/map' => 'laboratory#map', :defaults => { :initials => "LSO" }
-  get '/:initials' => 'laboratory#show'
   root 'laboratory#show'
 
 end
