@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
 
-  get 'authorized_person/new'
+  namespace :api do
+        # TODO: need to test this routes with orangepi
+        # orangepi
+        scope 'fingerprint' do
+          post '/' => 'biometric#get'
+          post '/access/' => 'biometric#create_access'
+          post '/new/' => 'biometric#create'
+        end
+  end
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
@@ -17,7 +25,6 @@ Rails.application.routes.draw do
     # TODO: need to test this with a embedded system
     post 'computer/:id' => 'status#new_computer', :defaults => { :format => :json }
     post 'status/' => 'status#new_laboratory', :defaults => { :format => :json }
-
   end
 
   scope 'dashboard' do
@@ -39,14 +46,7 @@ Rails.application.routes.draw do
         get '/' => 'dashboard#access', as: :dashboard_access
         post '/' => 'authorized_person#save', as: :dashboard_access_create
         delete '/' => 'authorized_person#delete', as: :dashboard_access_delete
-
-        # TODO: need to test this routes with orangepi
-        # orangepi
-        post 'fingerprint/get/all' => 'authorized_person#get'
-
-        post 'fingerprint/access' => 'biometric#create_access'
-        get 'fingerprint/' => 'biometric#get_biometric', as: :dashboard_access_fingerprint
-        post 'fingerprint/set' => 'biometric#create'
+        get 'fingerprint/' => 'authorized_person#get_biometric', as: :dashboard_access_fingerprint
       end
     end
   end
