@@ -1,10 +1,12 @@
 class AuthorizedPersonController < ApplicationController
- skip_before_action :verify_authenticity_token, only: [:get]
-
-  def get
+  def get_biometric
     respond_to do |format|
-      @person_biometric = AuthorizedPerson.where(authorized_person_params_get).select(:user_id, :biometric)
-      format.json { render json: @person_biometric }
+      @biometric = Biometric.last
+      if Time.now - @biometric.created_at <= 60
+        format.json { render json: @biometric }
+      else
+        format.json { render json: @biometric.errors.as_json }
+      end
     end
   end
 
@@ -24,11 +26,6 @@ class AuthorizedPersonController < ApplicationController
     AuthorizedPerson.where(:user_id => params_delete[:user_id]).where(:laboratory_id => params_delete[:laboratory_id])[0].delete
     flash.notice = "Autorização revogada!"
     redirect_to :back
-  end
-
-  private
-  def authorized_person_params_get
-    params.permit(:laboratory_id)
   end
 
   private

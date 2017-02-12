@@ -1,9 +1,9 @@
-class StatusController < ApplicationController
+class Api::StatusController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def new_laboratory
     respond_to do |format|
-      @lab = Laboratory.find_by(:initials => params[:lab_tag])
+      @lab = Laboratory.find_by(:initials => params[:laboratory])
       puts @lab.id
       @status = Status.new(laboratory_id: @lab.id, isOpen: params[:isOpen])
       if @status.save
@@ -16,7 +16,7 @@ class StatusController < ApplicationController
 
   def new_computer
     respond_to do |format|
-      @lab = Laboratory.find_by(:initials => params[:initials])
+      @lab = Laboratory.find_by(:initials => params[:laboratory])
 
       if @lab == nil
         output = "this lab does not exist"

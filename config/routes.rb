@@ -1,13 +1,19 @@
 Rails.application.routes.draw do
 
   namespace :api do
-        # TODO: need to test this routes with orangepi
-        # orangepi
-        scope 'fingerprint' do
-          post '/' => 'biometric#get'
-          post '/access/' => 'biometric#create_access'
-          post '/new/' => 'biometric#create'
-        end
+    scope :laboratory do
+      # TODO: need to test this with a embedded system
+      post 'computer/:id' => 'status#new_computer', :defaults => { :format => :json }
+      post 'status/' => 'status#new_laboratory', :defaults => { :format => :json }
+    end
+
+    # TODO: need to test this routes with orangepi
+    # orangepi
+    scope 'fingerprint' do
+      post '/' => 'biometric#get'
+      post '/access/' => 'biometric#create_access'
+      post '/new/' => 'biometric#create'
+    end
   end
 
   devise_for :users, controllers: {
@@ -18,13 +24,8 @@ Rails.application.routes.draw do
   resources :laboratory do
     post 'reports/' => "report#create"
     get 'reports/' => "report#show"
-
     get '/subjects' => 'laboratory#subjects', :defaults => { :initials => "LSO" }
     get '/map' => 'laboratory#map', :defaults => { :initials => "LSO" }
-
-    # TODO: need to test this with a embedded system
-    post 'computer/:id' => 'status#new_computer', :defaults => { :format => :json }
-    post 'status/' => 'status#new_laboratory', :defaults => { :format => :json }
   end
 
   scope 'dashboard' do

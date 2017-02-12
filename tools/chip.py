@@ -29,10 +29,10 @@ def requestPost(condition):
         condition.acquire()
         print "THREAD 1: mandei request..."+ str(isOpen)
         string_isOpen = str(isOpen).lower()
-        params = urllib.urlencode({'laboratory_id':57, 'lab_tag':'LSO', 'isOpen': string_isOpen})
+        params = urllib.urlencode({'laboratory_id':57, 'isOpen': string_isOpen})
         headers = {"Content-type": "application/x-www-form-urlencoded","Accept": "text/plain"}
         conn = httplib.HTTPConnection("siglaufscar.herokuapp.com")
-        conn.request("POST", "/status", params, headers)
+        conn.request("POST", "/"+laboratory_tag+"/status", params, headers)
         response = conn.getresponse()
         condition.wait()
     condition.release()
