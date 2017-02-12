@@ -191,7 +191,7 @@ int main() {
                 string body = "hash_biometric=" + std::string(bufferPtr->data, bufferPtr->length);
 
                 curl_easy_setopt(curl, CURLOPT_URL,
-                                 "https://siglaufscar.herokuapp.com/dashboard/access/fingerprint/set");
+                                 "https://siglaufscar.herokuapp.com/fingerprint/new");
                 /* Now specify the POST data */
                 curl_easy_setopt(curl, CURLOPT_POSTFIELDS, body.c_str());
                 curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);

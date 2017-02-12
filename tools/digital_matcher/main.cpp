@@ -252,7 +252,7 @@ void inline fatalError(string msg){
               //                    cout << body << endl;
 
               curl_easy_setopt(curl, CURLOPT_URL,
-                  "https://siglaufscar.herokuapp.com/dashboard/access/fingerprint/access");
+                  "https://siglaufscar.herokuapp.com/fingerprint/access/");
               /* Now specify the POST data */
               curl_easy_setopt(curl, CURLOPT_POSTFIELDS, body.c_str());
               curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
@@ -379,7 +379,7 @@ class Digital{
         string body = "laboratory_id=2";
 
         curl_easy_setopt(curl, CURLOPT_URL,
-            "https://siglaufscar.herokuapp.com/dashboard/access/fingerprint/get/all");
+            "https://siglaufscar.herokuapp.com/api/fingerprint/");
         /* Now specify the POST data */
         curl_easy_setopt(curl, CURLOPT_POSTFIELDS, body.c_str());
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, Digital::write_callback);
