@@ -1,4 +1,11 @@
 cmake_minimum_required(VERSION 3.0)
+
+option(DEBUG "Debug ligado..." ON)
+
+if(DEBUG)
+  add_definitions(-DDEBUG)
+endif()
+
 project(digital)
 
 find_path(FPRINT_INCLUDE NAMES libfprint/fprint.h)
@@ -29,7 +36,10 @@ target_link_libraries(digital nspr4)
 target_link_libraries(digital usb-1.0)
 target_link_libraries(digital crypto)
 target_link_libraries(digital curl)
-target_link_libraries(digital wiringPi)
+
+if(DEBUG==OFF)
+  target_link_libraries(digital wiringPi)
+endif()
 
 install(TARGETS digital DESTINATION bin)
 
