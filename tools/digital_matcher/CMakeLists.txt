@@ -20,6 +20,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -L/usr/local/Cellar/nss/3.26/lib")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -L/usr/local/Cellar/nspr/4.12_1/lib")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -L/usr/local/Cellar/libusb/1.0.20/lib")
 
+set(SOURCE_FILES Digital.cpp)
 set(SOURCE_FILES main.cpp)
 add_executable(digital ${SOURCE_FILES})
 

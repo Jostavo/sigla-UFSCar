@@ -1,4 +1,15 @@
+#include <iostream>
+#include <fstream>
+#include <list>
+#include <libfprint/fprint.h>
+#include <openssl/bio.h>
+#include <openssl/evp.h>
+#include <openssl/buffer.h>
+#include <curl/curl.h>
 #include "Digital.h"
+
+using json = nlohmann::json;
+using namespace std;
 
 /*
  * Callback using curl, when curl download fingerprint's data,
@@ -19,7 +30,7 @@ size_t Digital::write_json(char *ptr, size_t size, size_t nmemb){
  * A way to use this lib (made in C) to C++
  */
 
-static size_t Digital::write_callback(char *ptr, size_t size, size_t nmemb, void *userdata){
+size_t Digital::write_callback(char *ptr, size_t size, size_t nmemb, void *userdata){
   return static_cast<Digital*>(userdata)->write_json(ptr, size, nmemb);
 }
 
@@ -48,6 +59,44 @@ void Digital::write_data(string name){
  * Download all fingerprint's data to a variable.
  * Uses curl to accomplish it.
  */
+int Digital::init(){
+
+#if DEBUG == 0
+  /**
+   * initialize wiringPi
+   */
+  cout << "❮ ▶ ❯ Initialiaing wiringPi... " << endl;
+  wiringPiSetup();
+  pinMode(DOOR, OUTPUT);
+  digitalWrite(DOOR, LOW);
+
+  cout << "❮ ✔ ❯ WiringPi ready" << endl << endl;
+#endif
+
+  /**
+   * initialize libcurl
+   */
+  cout << "❮ ▶ ❯ Initialiaing libcurl... " << endl;
+  curl_global_init(CURL_GLOBAL_ALL);
+  cout << "❮ ✔ ❯ Libcurl ready for use" << endl << endl;
+
+  /*
+   * Download fingerprint's cache
+   */
+  if(this->get_data()){
+    this->write_data("cache");
+  }
+
+  device = new Device();
+
+  device->load_cache("cache");
+  device->scan();
+}
+
+/*
+ * Download all fingerprint's data to a variable.
+ * Uses curl to accomplish it.
+ */
 
 int Digital::get_data(){
   CURL* curl;
@@ -63,7 +112,7 @@ int Digital::get_data(){
     string body = "laboratory_id=2";
 
     curl_easy_setopt(curl, CURLOPT_URL,
-        "https://siglaufscar.herokuapp.com/fingerprint/");
+        "https://siglaufscar.herokuapp.com/api/fingerprint/");
     /* Now specify the POST data */
     curl_easy_setopt(curl, CURLOPT_POSTFIELDS, body.c_str());
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, Digital::write_callback);
