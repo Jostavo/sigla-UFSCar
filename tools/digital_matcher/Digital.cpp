@@ -1,11 +1,3 @@
-#include <iostream>
-#include <fstream>
-#include <list>
-#include <libfprint/fprint.h>
-#include <openssl/bio.h>
-#include <openssl/evp.h>
-#include <openssl/buffer.h>
-#include <curl/curl.h>
 #include "Digital.h"
 
 using json = nlohmann::json;
@@ -112,7 +104,7 @@ int Digital::get_data(){
     string body = "laboratory_id=2";
 
     curl_easy_setopt(curl, CURLOPT_URL,
-        "https://siglaufscar.herokuapp.com/api/fingerprint/");
+        "http://localhost:3000/api/fingerprint/");
     /* Now specify the POST data */
     curl_easy_setopt(curl, CURLOPT_POSTFIELDS, body.c_str());
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, Digital::write_callback);

@@ -1,5 +1,19 @@
+#include <iostream>
+#include <fstream>
+#include <list>
+#include <libfprint/fprint.h>
+#include <openssl/bio.h>
+#include <openssl/evp.h>
+#include <openssl/buffer.h>
+#include <curl/curl.h>
+
 #include "lib/json.hpp"
+
+
+#ifndef __DIGITAL_H__
+#define __DIGITAL_H__
 #include "Device.h"
+
 
 class Digital{
   private:
@@ -15,3 +29,5 @@ class Digital{
     int get_data();
     int init();
 };
+
+#endif

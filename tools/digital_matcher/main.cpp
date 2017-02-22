@@ -15,8 +15,6 @@
 using namespace std;
 using json = nlohmann::json;
 
-
-
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main() {
