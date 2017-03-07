@@ -2,8 +2,8 @@ class Laboratory < ApplicationRecord
   validates :title, presence: true
   validates :mantainer, presence: true
   validates :email, presence: true
-  validates :linkDocs, presence: true
   validates :initials, presence: true, uniqueness: true
+  validates :embedded_password, uniqueness: true, presence: true
 
   has_many :status, dependent: :destroy
   has_many :subjects, dependent: :destroy
