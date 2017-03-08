@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209215103) do
+ActiveRecord::Schema.define(version: 20170212022759) do
 
   create_table "authorized_people", force: :cascade do |t|
     t.integer  "user_id"
@@ -58,11 +58,11 @@ ActiveRecord::Schema.define(version: 20161209215103) do
     t.string   "title"
     t.string   "mantainer"
     t.string   "email"
-    t.string   "linkDocs"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.string   "initials"
     t.string   "function"
+    t.string   "embedded_password"
   end
 
   create_table "reports", force: :cascade do |t|
