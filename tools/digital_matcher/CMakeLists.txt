@@ -1,10 +1,7 @@
+# cd build
+# cmake .. -DDEBUG=ON
+# cmake .. -DDEBUG=OFF
 cmake_minimum_required(VERSION 3.0)
-
-option(DEBUG "Debug ligado..." ON)
-
-if(DEBUG)
-  add_definitions(-DDEBUG)
-endif()
 
 project(digital)
 
@@ -43,10 +40,13 @@ target_link_libraries(Digital usb-1.0)
 target_link_libraries(Digital crypto)
 target_link_libraries(Digital curl)
 
-if(DEBUG==OFF)
+if(DEBUG)
+  add_definitions(-DDEBUG)
+  MESSAGE("DEBUG IS SET TO ON")
+else()
+  MESSAGE("DEBUG IS SET TO OFF")
   target_link_libraries(digital wiringPi)
 endif()
-
 
 install(TARGETS digital DESTINATION bin)
 
