@@ -9,11 +9,11 @@
 
 #include "lib/json.hpp"
 
-
 #ifndef __DIGITAL_H__
 #define __DIGITAL_H__
 #include "Device.h"
 
+extern std::string gPASSWORD;
 
 class Digital{
   private:

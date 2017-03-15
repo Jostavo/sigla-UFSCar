@@ -4,7 +4,7 @@
 #include <list>
 #include <string.h>
 
-#if DEBUG == 0
+#ifndef DEBUG
 #define DOOR 15
 #include <wiringPi.h>
 #endif
@@ -14,6 +14,8 @@
 
 using namespace std;
 using json = nlohmann::json;
+
+std::string gPASSWORD = "testelabpesquisa";
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"

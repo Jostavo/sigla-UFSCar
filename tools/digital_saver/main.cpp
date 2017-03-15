@@ -6,8 +6,9 @@
 #include <openssl/buffer.h>
 #include <curl/curl.h>
 
-using namespace std;
+std::string gPASSWORD = "testelabpesquisa";
 
+using namespace std;
 
 /**
  * Shows a fatal error message, unloads fprintlib and exit the program with
@@ -188,10 +189,10 @@ int main() {
                 /* First set the URL that is about to receive our POST. This URL can
                    just as well be a https:// URL if that is what should receive the
                    data. */
-                string body = "hash_biometric=" + std::string(bufferPtr->data, bufferPtr->length);
+                string body = "hash_biometric=" + std::string(bufferPtr->data, bufferPtr->length) + "&embedded_password="+gPASSWORD;
 
                 curl_easy_setopt(curl, CURLOPT_URL,
-                                 "https://siglaufscar.herokuapp.com/fingerprint/new");
+                                 "localhost:3000/api/fingerprint/new");
                 /* Now specify the POST data */
                 curl_easy_setopt(curl, CURLOPT_POSTFIELDS, body.c_str());
                 curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);

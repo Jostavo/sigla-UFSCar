@@ -101,7 +101,7 @@ int Digital::get_data(){
     /* First set the URL that is about to receive our POST. This URL can
        just as well be a https:// URL if that is what should receive the
        data. */
-    string body = "laboratory_id=2";
+    string body = "embedded_password="+gPASSWORD;
 
     curl_easy_setopt(curl, CURLOPT_URL,
         "http://localhost:3000/api/fingerprint/");
@@ -109,7 +109,7 @@ int Digital::get_data(){
     curl_easy_setopt(curl, CURLOPT_POSTFIELDS, body.c_str());
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, Digital::write_callback);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, this);
-
+ 
     /* Perform the request, res will get the return code */
     res = curl_easy_perform(curl);
     /* Check for errors */

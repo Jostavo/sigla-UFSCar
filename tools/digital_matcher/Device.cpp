@@ -1,5 +1,12 @@
 #include "Device.h"
 
+Device::Device(){
+  this->device = init_libfp();
+  this->cache = NULL;
+  this->ids = NULL;
+  this->flag = false;
+}
+
 /**
  * Shows a fatal error message, unloads fprintlib and exit the program with
  * the status code EXIT_FAILURE
@@ -11,9 +18,22 @@ void Device::fatalError(string msg){
   exit(EXIT_FAILURE);
 }
 
-size_t Device::write_callback(char *ptr, size_t size, size_t nmemb, void *userdata){
-  // ignore data and does nothing :)
+size_t Device::response_json(char *ptr, size_t size, size_t nmemb){
+  string aux = (string)ptr;
+
+  cout << aux.size()<< "  " << nmemb << endl;
+  cout << ptr << endl;
+  /*if(aux.size() != nmemb){
+    this->buffer.append(ptr,0,((string)ptr).size()-7);
+  }else{
+    this->buffer.append(ptr);
+  }*/
+
   return size*nmemb;
+}
+
+size_t Device::write_callback(char *ptr, size_t size, size_t nmemb, void *userdata){
+  return static_cast<Device*>(userdata)->response_json(ptr, size, nmemb);
 }
 /**
  * initialize fprintlib and open a device for use
@@ -181,12 +201,6 @@ void Device::load_cache(string cacheFileName){
 }
 
 
-Device::Device(){
-  this->device = init_libfp();
-  this->cache = NULL;
-  this->ids = NULL;
-}
-
 int Device::scan(){
   while(true){
 
@@ -217,7 +231,7 @@ int Device::scan(){
       case FP_VERIFY_MATCH:
         cout << "❮ ☝ ✔ ❯ Fingerprint match user ID: " << ids[cacheMatchPos] << endl;
 
-#if DEBUG == 0
+#ifndef DEBUG
         // open the door
         digitalWrite(DOOR, HIGH);
         delay(500);
@@ -236,7 +250,7 @@ int Device::scan(){
           /* First set the URL that is about to receive our POST. This URL can
              just as well be a https:// URL if that is what should receive the
              data. */
-          string body = "laboratory_id=2&user_id=" + std::to_string(ids[cacheMatchPos]);
+          string body = "embedded_password="+gPASSWORD+"&user_id=" + std::to_string(ids[cacheMatchPos]);
           //                    cout << body << endl;
 
           curl_easy_setopt(curl, CURLOPT_URL,
