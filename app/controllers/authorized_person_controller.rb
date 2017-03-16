@@ -1,4 +1,5 @@
 class AuthorizedPersonController < ApplicationController
+
   def get_biometric
     respond_to do |format|
       @biometric = Biometric.last
@@ -13,6 +14,7 @@ class AuthorizedPersonController < ApplicationController
   def save
     @authorized_person = AuthorizedPerson.new(authorized_person_params)
     if @authorized_person.save
+      @authorized_person.laboratory.update_attributes(:embedded_update => true)
       flash.notice = "Autorização Concedida!"
       redirect_to :back
     else

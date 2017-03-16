@@ -4,7 +4,12 @@ Device::Device(){
   this->device = init_libfp();
   this->cache = NULL;
   this->ids = NULL;
-  this->flag = false;
+  this->update = false;
+}
+
+bool Device::update_check(){
+  cout << this->update << "HEHEH"<< endl;
+  return this->update;
 }
 
 /**
@@ -19,15 +24,17 @@ void Device::fatalError(string msg){
 }
 
 size_t Device::response_json(char *ptr, size_t size, size_t nmemb){
-  string aux = (string)ptr;
+  string aux = ptr;
 
-  cout << aux.size()<< "  " << nmemb << endl;
   cout << ptr << endl;
-  /*if(aux.size() != nmemb){
-    this->buffer.append(ptr,0,((string)ptr).size()-7);
+
+  if(aux.find("true") != -1){
+    this->update = 1;
+    cout << "TRUE" << this->update << endl;
   }else{
-    this->buffer.append(ptr);
-  }*/
+    this->update = 0;
+    cout << "FALSE" << this->update << endl;
+  }
 
   return size*nmemb;
 }
@@ -204,6 +211,11 @@ void Device::load_cache(string cacheFileName){
 int Device::scan(){
   while(true){
 
+    if(update_check() == true){
+      cout << "entrei aqui" << endl;
+      return true;
+    }
+
     cout << endl << "❮ ☝ ❯ Waiting for finger..." << endl;
 
     size_t cacheMatchPos = 0;
@@ -258,9 +270,11 @@ int Device::scan(){
           /* Now specify the POST data */
           curl_easy_setopt(curl, CURLOPT_POSTFIELDS, body.c_str());
           curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
+          curl_easy_setopt(curl, CURLOPT_WRITEDATA, this);
 
           /* Perform the request, res will get the return code */
           res = curl_easy_perform(curl);
+          cout << "VEJA BEEEEEEM: " << this->update << endl;
           /* Check for errors */
           if (res != CURLE_OK) {
             cerr << "❮ ⚠ ❯ Could not save log on the server! (" << curl_easy_strerror(res) << ")" << endl;

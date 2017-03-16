@@ -82,7 +82,13 @@ int Digital::init(){
   device = new Device();
 
   device->load_cache("cache");
-  device->scan();
+  while(device->scan()){
+    cout << " PORRAAAAAAAAAAAAA" << endl;
+    if(this->get_data()){
+      cout << "BAIXEEEEEEEEEEEEEEEEIIIII" << endl;
+      this->write_data("cache");
+    }
+  }
 }
 
 /*
@@ -109,7 +115,7 @@ int Digital::get_data(){
     curl_easy_setopt(curl, CURLOPT_POSTFIELDS, body.c_str());
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, Digital::write_callback);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, this);
- 
+
     /* Perform the request, res will get the return code */
     res = curl_easy_perform(curl);
     /* Check for errors */
@@ -120,7 +126,14 @@ int Digital::get_data(){
       cout << "❮ ✔ ❯ Downloaded all fingerpritns!" << endl;
     }
 
+    {
+      int i;
+      for (i = 0; i < this->json_string.length(); i++){
+        cout << this->json_string[i];
+      }
+    }
     this->data = json::parse(this->json_string);
+    cout << "foiiiii" << endl;
 
     /* always cleanup */
     curl_easy_cleanup(curl);

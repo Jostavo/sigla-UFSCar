@@ -23,8 +23,9 @@ class Device{
     fp_dev* device;
 
     // variables needed to check updates
-    std::string buffer;
-    bool flag;
+    nlohmann::json data;
+    string buffer_json;
+    bool update;
 
     void fatalError(string msg);
     static size_t write_callback(char *ptr, size_t size, size_t nmemb, void *userdata);
@@ -35,6 +36,7 @@ class Device{
     void load_cache(string cacheFileName);
     Device();
     int scan();
+    bool update_check();
 };
 
 #endif
