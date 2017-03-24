@@ -1,5 +1,8 @@
 #include "Digital.h"
 
+//using json = nlohmann::json;
+using namespace std;
+
 /*
  * Callback using curl, when curl download fingerprint's data,
  * this function converts every string into a json data
@@ -19,7 +22,7 @@ size_t Digital::write_json(char *ptr, size_t size, size_t nmemb){
  * A way to use this lib (made in C) to C++
  */
 
-static size_t Digital::write_callback(char *ptr, size_t size, size_t nmemb, void *userdata){
+size_t Digital::write_callback(char *ptr, size_t size, size_t nmemb, void *userdata){
   return static_cast<Digital*>(userdata)->write_json(ptr, size, nmemb);
 }
 
@@ -28,20 +31,65 @@ static size_t Digital::write_callback(char *ptr, size_t size, size_t nmemb, void
  * @param name of the file
  */
 void Digital::write_data(string name){
+  int i;
   cout << "❮ ▶ ❯ Writing all fingerprints to cache... " << endl;
   fstream fs;
+  string biometric;
 
   fs.open(name, ios::out|ios::trunc);
 
-  for(json& unique : this->data){
-    string biometric = unique["biometric"];
-    replace(biometric.begin(), biometric.end(), ' ', '+');
-    fs << unique["user_id"] << "|" << biometric << endl;
+  for(i = 0; i < this->data.size(); i++){
+    biometric = this->data[i]["biometric"].asString();
+    std::replace(biometric.begin(), biometric.end(), ' ', '+');
+    fs << this->data[i]["user_id"] << "|" << biometric << endl;
   }
 
-  fs.close();
+  cout << "❮ ▶ ❯ Writed " << this->data.size() << " fingerprints" << endl;
 
-  cout << "❮ ✔ ❯ Cache is ready" << endl << endl;
+  cout << "❮ ✔ ❯ Cache is ready" << endl;
+}
+
+/*
+ * Download all fingerprint's data to a variable.
+ * Uses curl to accomplish it.
+ */
+int Digital::init(){
+
+#if DEBUG == 0
+  /**
+   * initialize wiringPi
+   */
+  cout << "❮ ▶ ❯ Initialiaing wiringPi... " << endl;
+  wiringPiSetup();
+  pinMode(DOOR, OUTPUT);
+  digitalWrite(DOOR, LOW);
+
+  cout << "❮ ✔ ❯ WiringPi ready" << endl << endl;
+#endif
+
+  /**
+   * initialize libcurl
+   */
+  cout << "❮ ▶ ❯ Initialiaing libcurl... " << endl;
+  curl_global_init(CURL_GLOBAL_ALL);
+  cout << "❮ ✔ ❯ Libcurl ready for use" << endl << endl;
+
+  /*
+   * Download fingerprint's cache
+   */
+  if(this->get_data()){
+    this->write_data("cache");
+  }
+
+  device = new Device();
+
+  device->load_cache("cache");
+  while(device->scan()){
+    if(this->get_data()){
+      this->write_data("cache");
+      device->load_cache("cache");
+    }
+  }
 }
 
 /*
@@ -50,6 +98,7 @@ void Digital::write_data(string name){
  */
 
 int Digital::get_data(){
+  Json::Value aux;
   CURL* curl;
   CURLcode res;
   curl = curl_easy_init();
@@ -60,10 +109,10 @@ int Digital::get_data(){
     /* First set the URL that is about to receive our POST. This URL can
        just as well be a https:// URL if that is what should receive the
        data. */
-    string body = "laboratory_id=2";
+    string body = "embedded_password="+gPASSWORD;
+    string url = gURL + "/api/fingerprint/";
 
-    curl_easy_setopt(curl, CURLOPT_URL,
-        "https://siglaufscar.herokuapp.com/fingerprint/");
+    curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
     /* Now specify the POST data */
     curl_easy_setopt(curl, CURLOPT_POSTFIELDS, body.c_str());
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, Digital::write_callback);
@@ -73,13 +122,15 @@ int Digital::get_data(){
     res = curl_easy_perform(curl);
     /* Check for errors */
     if (res != CURLE_OK) {
+      cerr << "❮ ⚠ ❯ "<< url << endl; 
       cerr << "❮ ⚠ ❯ Could not donwload all fingerprints! (" << curl_easy_strerror(res) << ")" << endl;
       return 0;
     }else{
       cout << "❮ ✔ ❯ Downloaded all fingerpritns!" << endl;
     }
 
-    this->data = json::parse(this->json_string);
+    reader.parse(this->json_string, aux);
+    this->data = aux;
 
     /* always cleanup */
     curl_easy_cleanup(curl);
