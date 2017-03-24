@@ -7,19 +7,24 @@
 #include <openssl/buffer.h>
 #include <curl/curl.h>
 
-#include "lib/json.hpp"
+#include <algorithm>
+#include <json/json.h>
 
 #ifndef __DIGITAL_H__
 #define __DIGITAL_H__
 #include "Device.h"
 
 extern std::string gPASSWORD;
+extern std::string gURL;
 
 class Digital{
   private:
     Device * device;
     std::string json_string;
-    nlohmann::json data;
+
+    Json::Reader reader;
+    Json::Value data;
+//    nlohmann::json data;
 
     size_t write_json(char * ptr, size_t size, size_t nmemb);
     static size_t write_callback(char * ptr, size_t size, size_t nmemb, void * userdata);

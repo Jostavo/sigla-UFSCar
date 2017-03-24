@@ -7,8 +7,11 @@ Device::Device(){
   this->update = false;
 }
 
+void Device::set_update_check(int flag){
+  this->update = flag;
+}
+
 bool Device::update_check(){
-  cout << this->update << "HEHEH"<< endl;
   return this->update;
 }
 
@@ -30,10 +33,10 @@ size_t Device::response_json(char *ptr, size_t size, size_t nmemb){
 
   if(aux.find("true") != -1){
     this->update = 1;
-    cout << "TRUE" << this->update << endl;
+    //cout << "TRUE" << this->update << endl;
   }else{
     this->update = 0;
-    cout << "FALSE" << this->update << endl;
+    //cout << "FALSE" << this->update << endl;
   }
 
   return size*nmemb;
@@ -204,15 +207,16 @@ void Device::load_cache(string cacheFileName){
   (this->cache)[printsList.size()] = NULL;
   copy(printsList.begin(), printsList.end(), this->cache);
 
+  this->set_update_check(0);
   cout << "❮ ✔ ❯ Fingerprints loaded" << endl << endl;
 }
+
 
 
 int Device::scan(){
   while(true){
 
     if(update_check() == true){
-      cout << "entrei aqui" << endl;
       return true;
     }
 
@@ -263,10 +267,10 @@ int Device::scan(){
              just as well be a https:// URL if that is what should receive the
              data. */
           string body = "embedded_password="+gPASSWORD+"&user_id=" + std::to_string(ids[cacheMatchPos]);
+          string url = gURL+"/api/fingerprint/access";
           //                    cout << body << endl;
 
-          curl_easy_setopt(curl, CURLOPT_URL,
-              "http://localhost:3000/api/fingerprint/access/");
+          curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
           /* Now specify the POST data */
           curl_easy_setopt(curl, CURLOPT_POSTFIELDS, body.c_str());
           curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
@@ -274,9 +278,9 @@ int Device::scan(){
 
           /* Perform the request, res will get the return code */
           res = curl_easy_perform(curl);
-          cout << "VEJA BEEEEEEM: " << this->update << endl;
           /* Check for errors */
           if (res != CURLE_OK) {
+            cerr << "❮ ⚠ ❯ " << gURL << endl;
             cerr << "❮ ⚠ ❯ Could not save log on the server! (" << curl_easy_strerror(res) << ")" << endl;
           }else{
             cout << "❮ ✔ ❯ Log saved to the server" << endl;

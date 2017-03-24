@@ -17,6 +17,12 @@ using json = nlohmann::json;
 
 std::string gPASSWORD = "testelabpesquisa";
 
+#ifdef DEBUG
+std::string gURL= "http://localhost:3000";
+#else
+std::string gURL= "https://siglaufscar.herokuapp.com";
+#endif
+
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
 int main() {

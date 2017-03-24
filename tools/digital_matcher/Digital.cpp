@@ -1,6 +1,6 @@
 #include "Digital.h"
 
-using json = nlohmann::json;
+//using json = nlohmann::json;
 using namespace std;
 
 /*
@@ -31,20 +31,22 @@ size_t Digital::write_callback(char *ptr, size_t size, size_t nmemb, void *userd
  * @param name of the file
  */
 void Digital::write_data(string name){
+  int i;
   cout << "❮ ▶ ❯ Writing all fingerprints to cache... " << endl;
   fstream fs;
+  string biometric;
 
   fs.open(name, ios::out|ios::trunc);
 
-  for(json& unique : this->data){
-    string biometric = unique["biometric"];
-    replace(biometric.begin(), biometric.end(), ' ', '+');
-    fs << unique["user_id"] << "|" << biometric << endl;
+  for(i = 0; i < this->data.size(); i++){
+    biometric = this->data[i]["biometric"].asString();
+    std::replace(biometric.begin(), biometric.end(), ' ', '+');
+    fs << this->data[i]["user_id"] << "|" << biometric << endl;
   }
 
-  fs.close();
+  cout << "❮ ▶ ❯ Writed " << this->data.size() << " fingerprints" << endl;
 
-  cout << "❮ ✔ ❯ Cache is ready" << endl << endl;
+  cout << "❮ ✔ ❯ Cache is ready" << endl;
 }
 
 /*
@@ -83,10 +85,9 @@ int Digital::init(){
 
   device->load_cache("cache");
   while(device->scan()){
-    cout << " PORRAAAAAAAAAAAAA" << endl;
     if(this->get_data()){
-      cout << "BAIXEEEEEEEEEEEEEEEEIIIII" << endl;
       this->write_data("cache");
+      device->load_cache("cache");
     }
   }
 }
@@ -97,6 +98,7 @@ int Digital::init(){
  */
 
 int Digital::get_data(){
+  Json::Value aux;
   CURL* curl;
   CURLcode res;
   curl = curl_easy_init();
@@ -108,9 +110,9 @@ int Digital::get_data(){
        just as well be a https:// URL if that is what should receive the
        data. */
     string body = "embedded_password="+gPASSWORD;
+    string url = gURL + "/api/fingerprint/";
 
-    curl_easy_setopt(curl, CURLOPT_URL,
-        "http://localhost:3000/api/fingerprint/");
+    curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
     /* Now specify the POST data */
     curl_easy_setopt(curl, CURLOPT_POSTFIELDS, body.c_str());
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, Digital::write_callback);
@@ -120,20 +122,15 @@ int Digital::get_data(){
     res = curl_easy_perform(curl);
     /* Check for errors */
     if (res != CURLE_OK) {
+      cerr << "❮ ⚠ ❯ "<< url << endl; 
       cerr << "❮ ⚠ ❯ Could not donwload all fingerprints! (" << curl_easy_strerror(res) << ")" << endl;
       return 0;
     }else{
       cout << "❮ ✔ ❯ Downloaded all fingerpritns!" << endl;
     }
 
-    {
-      int i;
-      for (i = 0; i < this->json_string.length(); i++){
-        cout << this->json_string[i];
-      }
-    }
-    this->data = json::parse(this->json_string);
-    cout << "foiiiii" << endl;
+    reader.parse(this->json_string, aux);
+    this->data = aux;
 
     /* always cleanup */
     curl_easy_cleanup(curl);

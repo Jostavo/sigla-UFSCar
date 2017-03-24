@@ -39,6 +39,7 @@ target_link_libraries(Digital nspr4)
 target_link_libraries(Digital usb-1.0)
 target_link_libraries(Digital crypto)
 target_link_libraries(Digital curl)
+target_link_libraries(Digital jsoncpp)
 
 if(DEBUG)
   add_definitions(-DDEBUG)
