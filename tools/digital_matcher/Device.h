@@ -8,6 +8,11 @@
 #include <curl/curl.h>
 #include <cstring>
 
+#ifndef DEBUG
+#define DOOR 15
+#include <wiringPi.h>
+#endif
+
 //#include "lib/json.hpp"
 #include <json/json.h>
 

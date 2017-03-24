@@ -4,11 +4,6 @@
 #include <list>
 #include <string.h>
 
-#ifndef DEBUG
-#define DOOR 15
-#include <wiringPi.h>
-#endif
-
 #include "Digital.h"
 #include "lib/json.hpp"
 
