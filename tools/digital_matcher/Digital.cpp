@@ -98,13 +98,15 @@ int Digital::init(){
  */
 
 int Digital::get_data(){
-  Json::Value aux;
   CURL* curl;
   CURLcode res;
+  Json::Reader reader;
   curl = curl_easy_init();
   if (curl == NULL){
     cerr << "❮ ⚠ ❯ Couldn't get a curl handler!" << endl;
   }else {
+
+    this->json_string = "";
 
     /* First set the URL that is about to receive our POST. This URL can
        just as well be a https:// URL if that is what should receive the
@@ -129,8 +131,8 @@ int Digital::get_data(){
       cout << "❮ ✔ ❯ Downloaded all fingerpritns!" << endl;
     }
 
-    reader.parse(this->json_string, aux);
-    this->data = aux;
+    this->data.clear();
+    reader.parse(this->json_string, this->data);
 
     /* always cleanup */
     curl_easy_cleanup(curl);

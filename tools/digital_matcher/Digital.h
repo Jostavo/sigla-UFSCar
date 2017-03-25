@@ -22,7 +22,6 @@ class Digital{
     Device * device;
     std::string json_string;
 
-    Json::Reader reader;
     Json::Value data;
 //    nlohmann::json data;
 
