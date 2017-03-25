@@ -49,5 +49,5 @@ else()
   target_link_libraries(digital wiringPi)
 endif()
 
-install(TARGETS digital DESTINATION bin)
+install(TARGETS digital DESTINATION /bin)
 
