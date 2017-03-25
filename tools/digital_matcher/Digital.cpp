@@ -36,7 +36,7 @@ void Digital::write_data(string name){
   fstream fs;
   string biometric;
 
-  fs.open(name, ios::out|ios::trunc);
+  fs.open("/etc/"+name, ios::out|ios::trunc);
 
   for(i = 0; i < this->data.size(); i++){
     biometric = this->data[i]["biometric"].asString();
@@ -78,16 +78,16 @@ int Digital::init(){
    * Download fingerprint's cache
    */
   if(this->get_data()){
-    this->write_data("cache");
+    this->write_data("sigla_database");
   }
 
   device = new Device();
 
-  device->load_cache("cache");
+  device->load_cache("sigla_database");
   while(device->scan()){
     if(this->get_data()){
-      this->write_data("cache");
-      device->load_cache("cache");
+      this->write_data("sigla_database");
+      device->load_cache("sigla_database");
     }
   }
 }
@@ -124,8 +124,9 @@ int Digital::get_data(){
     res = curl_easy_perform(curl);
     /* Check for errors */
     if (res != CURLE_OK) {
-      cerr << "❮ ⚠ ❯ "<< url << endl; 
+      cerr << "❮ ⚠ ❯ "<< url << endl;
       cerr << "❮ ⚠ ❯ Could not donwload all fingerprints! (" << curl_easy_strerror(res) << ")" << endl;
+      curl_easy_cleanup(curl);
       return 0;
     }else{
       cout << "❮ ✔ ❯ Downloaded all fingerpritns!" << endl;

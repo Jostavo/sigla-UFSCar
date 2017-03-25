@@ -29,8 +29,6 @@ void Device::fatalError(string msg){
 size_t Device::response_json(char *ptr, size_t size, size_t nmemb){
   string aux = ptr;
 
-  cout << ptr << endl;
-
   if(aux.find("true") != -1){
     this->update = 1;
     //cout << "TRUE" << this->update << endl;
@@ -97,7 +95,7 @@ struct fp_dev* Device::init_libfp(){
   fp_dscv_devs_free(devices_found);
 
 
-  cout << "❮ ✔ ❯ Reader ready for use" << endl << endl;
+  cout << "❮ ✔ ❯ Reader ready" << endl << endl;
   return device;
 }
 
@@ -111,7 +109,7 @@ void Device::load_cache(string cacheFileName){
   cout << "❮ ▶ ❯ Loading fingerprints... " << endl;
 
   // open cache file
-  ifstream cacheFile("cache");
+  ifstream cacheFile("/etc/"+cacheFileName);
 
   // if failed to open file, quit program
   if (!cacheFile.is_open()) {
@@ -208,7 +206,7 @@ void Device::load_cache(string cacheFileName){
   copy(printsList.begin(), printsList.end(), this->cache);
 
   this->set_update_check(0);
-  cout << "❮ ✔ ❯ Fingerprints loaded" << endl << endl;
+  cout << "❮ ✔ ❯ Loaded " << printsList.size() << " fingerprints!" << endl;
 }
 
 
