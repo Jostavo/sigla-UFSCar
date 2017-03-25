@@ -25,6 +25,7 @@ class AuthorizedPersonController < ApplicationController
 
   def delete
     params_delete = authorized_person_params_delete
+    Laboratory.find_by(:id => params_delete[:laboratory_id]).update_attributes(:embedded_update => true)
     AuthorizedPerson.where(:user_id => params_delete[:user_id]).where(:laboratory_id => params_delete[:laboratory_id])[0].delete
     flash.notice = "Autorização revogada!"
     redirect_to :back
