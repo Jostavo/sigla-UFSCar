@@ -225,16 +225,15 @@ int Device::scan(){
     size_t cacheMatchPos = 0;
     int resultCode = fp_identify_finger(this->device, this->cache, &cacheMatchPos);
 
-    // if there was a error, retry
     if (resultCode < 0){
       cerr << "❮ ⚠ ❯ Error matching fingerprint!" << endl;
       continue;
     }
 
     switch (resultCode){
-
       case FP_VERIFY_NO_MATCH:
         cout << "❮ ☝ ✖ ❯ Fingerprint does not match any database entry" << endl;
+        this->sent_request(-1);
         break;
 
       case FP_VERIFY_RETRY:
@@ -246,6 +245,7 @@ int Device::scan(){
 
       case FP_VERIFY_MATCH:
         cout << "❮ ☝ ✔ ❯ Fingerprint match user ID: " << ids[cacheMatchPos] << endl;
+        this->sent_request(ids[cacheMatchPos]);
 
 #ifndef DEBUG
         // open the door
@@ -253,43 +253,51 @@ int Device::scan(){
         delay(500);
         digitalWrite(DOOR, LOW);
 #endif
-
-        // log on server that the door was opened
-        cout << "❮ ⬆ ❯ uploading log..." << endl;
-        CURL* curl;
-        CURLcode res;
-        curl = curl_easy_init();
-        if (curl == NULL){
-          cerr << "❮ ⚠ ❯ Couldn't get a curl handler!" << endl;
-        }else {
-
-          /* First set the URL that is about to receive our POST. This URL can
-             just as well be a https:// URL if that is what should receive the
-             data. */
-          string body = "embedded_password="+gPASSWORD+"&user_id=" + std::to_string(ids[cacheMatchPos]);
-          string url = gURL+"/api/fingerprint/access";
-          //                    cout << body << endl;
-
-          curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
-          /* Now specify the POST data */
-          curl_easy_setopt(curl, CURLOPT_POSTFIELDS, body.c_str());
-          curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
-          curl_easy_setopt(curl, CURLOPT_WRITEDATA, this);
-
-          /* Perform the request, res will get the return code */
-          res = curl_easy_perform(curl);
-          /* Check for errors */
-          if (res != CURLE_OK) {
-            cerr << "❮ ⚠ ❯ " << gURL << endl;
-            cerr << "❮ ⚠ ❯ Could not save log on the server! (" << curl_easy_strerror(res) << ")" << endl;
-          }else{
-            cout << "❮ ✔ ❯ Log saved to the server" << endl;
-          }
-
-          /* always cleanup */
-          curl_easy_cleanup(curl);
-        }
         break;
     }
   }
+}
+
+bool Device::sent_request(int user_id){
+    bool Status = false;
+
+    // log on server that the door was opened
+    cout << "❮ ⬆ ❯ uploading log..." << endl;
+    CURL* curl;
+    CURLcode res;
+    curl = curl_easy_init();
+    if (curl == NULL){
+      cerr << "❮ ⚠ ❯ Couldn't get a curl handler!" << endl;
+    }else {
+
+      string body = "embedded_password="+gPASSWORD+"&user_id=" + std::to_string(user_id);
+      /* First set the URL that is about to receive our POST. This URL can
+         just as well be a https:// URL if that is what should receive the
+         data. */
+      string url = gURL+"/api/fingerprint/access";
+      //                    cout << body << endl;
+
+      curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+      /* Now specify the POST data */
+      curl_easy_setopt(curl, CURLOPT_POSTFIELDS, body.c_str());
+      curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
+      curl_easy_setopt(curl, CURLOPT_WRITEDATA, this);
+
+      /* Perform the request, res will get the return code */
+      res = curl_easy_perform(curl);
+      /* Check for errors */
+      if (res != CURLE_OK) {
+        cerr << "❮ ⚠ ❯ " << gURL << endl;
+        cerr << "❮ ⚠ ❯ Could not save log on the server! (" << curl_easy_strerror(res) << ")" << endl;
+        Status = false;
+      }else{
+        cout << "❮ ✔ ❯ Log saved to the server" << endl;
+        Status = true;
+      }
+
+      /* always cleanup */
+      curl_easy_cleanup(curl);
+    }
+
+    return Status;
 }

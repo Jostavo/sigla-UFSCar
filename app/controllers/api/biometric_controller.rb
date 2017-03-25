@@ -11,8 +11,8 @@ class Api::BiometricController < ApplicationController
       else
         @person = AuthorizedPerson.find_by(:user_id => param[:user_id])
         if !@person
-          @lab.update_attributes(:embedded_update => true)
-          format.json { render :json => { :errors => "this user id does not have permission", :embedded_update => @lab.embedded_update }, :status => 203 }
+          #@lab.update_attributes(:embedded_update => true)
+          format.json { render :json => { :embedded_update => @lab.embedded_update } }
         else
           @biometric_access = BiometricAccess.new(:laboratory_id => @lab.id, :user_id => param[:user_id])
           if @biometric_access.save
