@@ -255,6 +255,7 @@ int Device::scan(){
 #endif
         break;
     }
+    usleep(3000000);
   }
 }
 

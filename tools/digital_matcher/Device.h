@@ -7,6 +7,7 @@
 #include <openssl/buffer.h>
 #include <curl/curl.h>
 #include <cstring>
+#include <unistd.h>
 
 #ifndef DEBUG
 #define DOOR 15
