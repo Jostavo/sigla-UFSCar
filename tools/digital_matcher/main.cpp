@@ -13,20 +13,26 @@ using json = nlohmann::json;
 std::string gPASSWORD = "testelabpesquisa";
 
 #ifdef DEBUG
-std::string gURL= "http://localhost:3000";
+std::string gURL= "https://siglaufscar.herokuapp.com";
 #else
 std::string gURL= "https://siglaufscar.herokuapp.com";
-#endif
 
+#endif
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wmissing-noreturn"
-int main() {
+int main(int argc, char * argv[]) {
   Digital dig;
 
   /*
    * Initialize WiringPI and libcurl
    */
-  dig.init();
+
+  if (argc == 1) {
+    dig.init();
+  }else if (argc > 1) {
+    Device device;
+    device.enroll_scan();
+  }
 
   return 0;
 }

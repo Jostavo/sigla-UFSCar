@@ -1,7 +1,6 @@
 #include "Device.h"
 
 Device::Device(){
-  this->device = init_libfp();
   this->cache = NULL;
   this->ids = NULL;
   this->update = false;
@@ -93,7 +92,6 @@ struct fp_dev* Device::init_libfp(){
 
   // free list of devices from memory
   fp_dscv_devs_free(devices_found);
-
 
   cout << "❮ ✔ ❯ Reader ready" << endl << endl;
   return device;
@@ -299,4 +297,157 @@ bool Device::sent_request(int user_id){
     }
 
     return Status;
+}
+
+BUF_MEM * Device::preparing_data_enroll(fp_print_data ** print){
+  // get fingerprint data
+  unsigned char * printData = NULL;
+  size_t printDataSize = 0;
+  printDataSize = fp_print_data_get_data(*print, &printData);
+
+  // generate base64
+  BIO *bio, *b64;
+  BUF_MEM* bufferPtr;
+
+  b64 = BIO_new(BIO_f_base64());
+  bio = BIO_new(BIO_s_mem());
+  bio = BIO_push(b64, bio);
+
+  BIO_set_flags(bio, BIO_FLAGS_BASE64_NO_NL); //Ignore newlines - write everything in one line
+  BIO_write(bio, printData, printDataSize);
+  BIO_flush(bio);
+  BIO_get_mem_ptr(bio, &bufferPtr);
+  BIO_set_close(bio, BIO_NOCLOSE);
+  BIO_free_all(bio);
+
+  unsigned char* buffer = (unsigned char*)malloc(printDataSize);
+
+  bio = BIO_new_mem_buf(bufferPtr->data, -1);
+  b64 = BIO_new(BIO_f_base64());
+  bio = BIO_push(b64, bio);
+
+  BIO_set_flags(bio, BIO_FLAGS_BASE64_NO_NL); //Do not use newlines to flush buffer
+  size_t length = BIO_read(bio, buffer, bufferPtr->length);
+
+  BIO_free_all(bio);
+  free(printData);
+
+  delete[] printData;
+
+  if(fp_print_data_from_data(buffer, printDataSize) == NULL){
+    return NULL;
+  }
+
+  return bufferPtr;
+}
+
+bool Device::sent_enroll_request(BUF_MEM * bufferPtr){
+  cout << "❮ ⬆ ❯ uploading fingerprint..." << endl;
+  // send data over http
+  CURL* curl;
+  CURLcode res;
+  curl = curl_easy_init();
+  if (curl == NULL){
+    cerr << "❮ ⚠ ❯ Couldn't get a curl handler, fingerprint was NOT saved on the server!" << endl;
+  }else {
+
+    /* First set the URL that is about to receive our POST. This URL can
+       just as well be a https:// URL if that is what should receive the
+       data. */
+    string body = "hash_biometric=" + std::string(bufferPtr->data, bufferPtr->length) + "&embedded_password="+gPASSWORD;
+
+    curl_easy_setopt(curl, CURLOPT_URL,
+        "localhost:3000/api/fingerprint/new");
+    /* Now specify the POST data */
+    curl_easy_setopt(curl, CURLOPT_POSTFIELDS, body.c_str());
+    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
+
+    /* Perform the request, res will get the return code */
+    res = curl_easy_perform(curl);
+    /* Check for errors */
+    if (res != CURLE_OK) {
+      cerr << "❮ ⚠ ❯ Could not save fingerprint on the server! (" << curl_easy_strerror(res) << ")" << endl;
+    }else{
+      cout << "❮ ✔ ❯ Fingerprint saved to the server" << endl;
+    }
+
+    /* always cleanup */
+    curl_easy_cleanup(curl);
+  }
+}
+
+int Device::enroll_scan(){
+
+  fp_print_data * print;
+
+  /**
+   * keep enrolling fingers...
+   */
+  cout << endl << "Press ENTER to enroll a finger or ESC to exit" << endl;
+  while (cin.get() != 27){
+
+    bool aborted  = false;
+    struct fp_print_data* print = NULL;
+
+    // enroll a finger
+    int num_enroll_stages = fp_dev_get_nr_enroll_stages(this->device);
+    for (int i = num_enroll_stages; i > 0; i--) {
+      cout << "Waiting for finger..." << endl;
+      int returnCode = fp_enroll_finger(this->device, &print);
+
+      if (returnCode < 0){
+        cout << "❮ ✖ ❯ I/O error, aborting enrollment..." << endl;
+        aborted = true;
+        break;
+      }
+
+      switch(returnCode){
+        case FP_ENROLL_FAIL:
+          cout << "❮ ☝ ✖ ❯ Data processing failed, aborting enrollment ..." << endl;
+          aborted = true;
+          break;
+
+        case FP_ENROLL_RETRY:
+        case FP_ENROLL_RETRY_TOO_SHORT:
+        case FP_ENROLL_RETRY_CENTER_FINGER:
+        case FP_ENROLL_RETRY_REMOVE_FINGER:
+          cout << "❮ ☝ ↻ ❯ Failed to read fingerprint, retrying stage..." << endl;
+
+          // retry this stage
+          i++;
+          break;
+
+        case FP_ENROLL_PASS:
+          cout << "❮ ☝ ✔ ❯ Stage " << (1 + num_enroll_stages - i) << "/" << num_enroll_stages << " successful" << endl;
+          break;
+
+        case FP_ENROLL_COMPLETE:
+          cout << "❮ ✔ ❯ Enrollment completed" << endl;
+          break;
+      }
+      cout << endl;
+
+      if (aborted){
+        BUF_MEM * buffer = this->preparing_data_enroll(&print);
+        this->sent_enroll_request(buffer);
+        // clean up
+        fp_print_data_free(print);
+
+        break;
+      }
+
+    }
+
+    // if we finished enrolling the finger
+    if (!aborted){
+    }
+
+    cout << endl << "Press ENTER to enroll a finger or ESC to exit" << endl;
+  }
+
+
+  // clean up
+  fp_dev_close(device); // close fingerprint reader
+  fp_exit(); // unload libfprint
+  curl_global_cleanup(); // unload libcurl
 }
