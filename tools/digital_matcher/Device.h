@@ -43,9 +43,13 @@ class Device{
     static size_t write_callback(char *ptr, size_t size, size_t nmemb, void *userdata);
     size_t response_json(char *ptr, size_t size, size_t nmemb);
 
+    BUF_MEM * preparing_data_enroll(fp_print_data ** print);
+    bool sent_enroll_request(BUF_MEM * bufferPtr);
+
   public:
     void load_cache(string cacheFileName);
     Device();
+    int enroll_scan();
     int scan();
     bool update_check();
 };
