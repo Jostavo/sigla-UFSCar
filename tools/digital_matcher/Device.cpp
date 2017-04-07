@@ -352,13 +352,10 @@ bool Device::sent_enroll_request(BUF_MEM * bufferPtr){
     cerr << "❮ ⚠ ❯ Couldn't get a curl handler, fingerprint was NOT saved on the server!" << endl;
   }else {
 
-    /* First set the URL that is about to receive our POST. This URL can
-       just as well be a https:// URL if that is what should receive the
-       data. */
+    string url = gURL + "/api/fingerprint/new";
     string body = "hash_biometric=" + std::string(bufferPtr->data, bufferPtr->length) + "&embedded_password="+gPASSWORD;
 
-    curl_easy_setopt(curl, CURLOPT_URL,
-        "localhost:3000/api/fingerprint/new");
+    curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
     /* Now specify the POST data */
     curl_easy_setopt(curl, CURLOPT_POSTFIELDS, body.c_str());
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
