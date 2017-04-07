@@ -48,9 +48,11 @@ class Device{
 
   public:
     void load_cache(string cacheFileName);
+    void load_cache(fp_print_data ** print);
     Device();
     int enroll_scan();
     int scan();
+    int scan(bool isNewUser);
     bool update_check();
 };
 

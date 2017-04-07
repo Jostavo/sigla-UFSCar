@@ -208,7 +208,12 @@ void Device::load_cache(string cacheFileName){
   cout << "❮ ✔ ❯ Loaded " << printsList.size() << " fingerprints!" << endl;
 }
 
-
+// to register new users
+void Device::load_cache(fp_print_data ** print){
+  this->cache = new struct fp_print_data *[2];
+  this->cache[0] = *print;
+  this->cache[1] = NULL;
+}
 
 int Device::scan(){
   while(true){
@@ -253,6 +258,42 @@ int Device::scan(){
         break;
     }
     usleep(3000000);
+  }
+}
+
+int Device::scan(bool isNewUser){
+  int resultCode = 0;
+  while(resultCode != FP_VERIFY_MATCH){
+    cout << endl << "❮ ☝ ❯ Waiting for finger..." << endl;
+
+    size_t cacheMatchPos = 0;
+    resultCode = fp_identify_finger(this->device, this->cache, &cacheMatchPos);
+
+    if (resultCode < 0){
+      cerr << "❮ ⚠ ❯ Error matching fingerprint!" << endl;
+      continue;
+    }
+
+    switch (resultCode){
+      case FP_VERIFY_NO_MATCH:
+        cout << "❮ ☝ ✖ ❯ Fingerprint does not match any database entry" << endl;
+        break;
+
+      case FP_VERIFY_RETRY:
+      case FP_VERIFY_RETRY_TOO_SHORT:
+      case FP_VERIFY_RETRY_CENTER_FINGER:
+      case FP_VERIFY_RETRY_REMOVE_FINGER:
+        cout << "❮ ☝ ↻ ❯ Failed to read fingerprint, retrying..." << endl;
+        break;
+
+      case FP_VERIFY_MATCH:
+        cout << "❮ ☝ ✔ ❯ Fingerprint match!" << endl;
+        break;
+    }
+
+    cout << endl << "Press ENTER to retry the verification or ESC to exit" << endl;
+    if(cin.get() == 27)
+      break;
   }
 }
 
@@ -423,27 +464,27 @@ int Device::enroll_scan(){
           cout << "❮ ✔ ❯ Enrollment completed" << endl;
           break;
       }
-
-      if (aborted) {
-
-      }
     }
 
-    // if we finished enrolling the finger
-    if (!aborted){
-        cout << "hehehehe...\n" << endl;
-        BUF_MEM * buffer = this->preparing_data_enroll(&print);
-        cout << "hehehehe2...\n" << endl;
-        this->sent_enroll_request(buffer);
-        // clean up
-        fp_print_data_free(print);
+    this->load_cache(&print);
+    this->scan(true);
+    cin.ignore(1000, '\n');
 
-        break;
+    cout << "Press ENTER to confirm to send to server or enter ESC to retry again" << endl;
+    if(cin.get() == 27){
+      cin.clear();
+      continue;
     }
+
+    BUF_MEM * buffer = this->preparing_data_enroll(&print);
+    this->sent_enroll_request(buffer);
+    fp_print_data_free(print);
+    fp_print_data_free(this->cache[0]);
+    fp_print_data_free(this->cache[1]);
+    this->cache = NULL;
 
     cout << endl << "Press ENTER to enroll a finger or ESC to exit" << endl;
   }
-
 
   // clean up
   fp_dev_close(device); // close fingerprint reader
