@@ -247,7 +247,6 @@ int Device::scan(){
 
       case FP_VERIFY_MATCH:
         cout << "❮ ☝ ✔ ❯ Fingerprint match user ID: " << ids[cacheMatchPos] << endl;
-        this->sent_request(ids[cacheMatchPos]);
 
 #ifndef DEBUG
         // open the door
@@ -255,6 +254,8 @@ int Device::scan(){
         delay(500);
         digitalWrite(DOOR, LOW);
 #endif
+
+        this->sent_request(ids[cacheMatchPos]);
         break;
     }
     usleep(3000000);
