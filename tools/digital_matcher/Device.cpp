@@ -1,6 +1,7 @@
 #include "Device.h"
 
 Device::Device(){
+  this->device = init_libfp();
   this->cache = NULL;
   this->ids = NULL;
   this->update = false;
@@ -332,7 +333,7 @@ BUF_MEM * Device::preparing_data_enroll(fp_print_data ** print){
   BIO_free_all(bio);
   free(printData);
 
-  delete[] printData;
+  //delete[] printData;
 
   if(fp_print_data_from_data(buffer, printDataSize) == NULL){
     return NULL;
@@ -425,21 +426,22 @@ int Device::enroll_scan(){
           cout << "❮ ✔ ❯ Enrollment completed" << endl;
           break;
       }
-      cout << endl;
 
-      if (aborted){
+      if (aborted) {
+
+      }
+    }
+
+    // if we finished enrolling the finger
+    if (!aborted){
+        cout << "hehehehe...\n" << endl;
         BUF_MEM * buffer = this->preparing_data_enroll(&print);
+        cout << "hehehehe2...\n" << endl;
         this->sent_enroll_request(buffer);
         // clean up
         fp_print_data_free(print);
 
         break;
-      }
-
-    }
-
-    // if we finished enrolling the finger
-    if (!aborted){
     }
 
     cout << endl << "Press ENTER to enroll a finger or ESC to exit" << endl;
