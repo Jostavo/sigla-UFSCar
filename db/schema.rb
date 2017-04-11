@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170212022759) do
+ActiveRecord::Schema.define(version: 20170410001427) do
 
   create_table "authorized_people", force: :cascade do |t|
     t.integer  "user_id"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20170212022759) do
     t.string   "initials"
     t.string   "function"
     t.string   "embedded_password"
+    t.boolean  "embedded_update"
   end
 
   create_table "reports", force: :cascade do |t|
@@ -118,6 +119,7 @@ ActiveRecord::Schema.define(version: 20170212022759) do
     t.string   "function",               default: "normal"
     t.string   "provider"
     t.string   "uid"
+    t.string   "type_user"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:github, :facebook]
   validates :function, format: { with: /(^admin$|^technician$|^normal$|^$)/, message: "only allow 'admin', 'technician' or 'normal'"}
+  validates :type_user, format: { with: /(^Graduação$|^Pós-Graduação$|^Professor$|^Técnico Administrativo$|^$)/, message: "Insira corretamente o tipo de usuário"}
   validates :name, presence: true
 
   has_many :authorized_person

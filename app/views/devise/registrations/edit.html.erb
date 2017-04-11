@@ -63,6 +63,10 @@ h2 { color: #000; text-shadow: 0 0 10px rgba(0,0,0,0.3); letter-spacing:1px; tex
         <%= f.text_field :name, autofocus: true, placeholder: "Nome", required:"required",class:"frmt" %>
       </div>
 
+      <div class="fieldType">
+        <%= f.select :type_user, ['Graduação', 'Pós-Graduação', 'Professor', 'Técnico Administrativo'], :selected => f.object.type_user%>
+      </div>
+
       <div class="fieldEmail">
         <%= f.email_field :email, autofocus: true , placeholder: "Email", required:"required", class:"frmt"%>
       </div>
