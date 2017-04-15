@@ -68,7 +68,7 @@ h2 { color: #000; text-shadow: 0 0 10px rgba(0,0,0,0.3); letter-spacing:1px; tex
       <div class="fieldUser">
 
         <%= f.select(:type_user) do %>
-          <% [["Graduação", "Graduação"], ["Pós-Graduação", "Pós-Graduação"], ["Professor", "Professor"], ["Técnico Administrativo", "Técnico Administrativo"]].each do |c| -%>
+          <% [["Graduação", "graduation"], ["Pós-Graduação", "postgraduate"], ["Professor", "professor"], ["Técnico Administrativo", "administrative technician"]].each do |c| -%>
             <%= content_tag(:option, c.first, value: c.last) %>
           <% end %>
         <% end %>

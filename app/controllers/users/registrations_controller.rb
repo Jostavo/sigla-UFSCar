@@ -13,12 +13,14 @@ before_action :configure_account_update_params, only: [:update]
   end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    @students = User.where(:type_user => "graduation")
+    super
+  end
 
   # PUT /resource
   def update
+    @students = User.where(:type_user => "graduation")
     super
   end
 
