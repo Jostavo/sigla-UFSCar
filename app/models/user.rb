@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -23,6 +24,8 @@ class User < ApplicationRecord
                        source: :student
   has_many :professor, :through => :passive_relationship,
                        source: :professor
+  accepts_nested_attributes_for :passive_relationship
+  accepts_nested_attributes_for :active_relationship
 
   def isAdmin?
     self.function == "admin"
