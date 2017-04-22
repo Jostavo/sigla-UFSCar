@@ -21,10 +21,50 @@ before_action :configure_account_update_params, only: [:update]
   # PUT /resource
   def update
     @students = User.where(:type_user => "graduation")
+    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
+    prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
 
-    puts params[:users[:users_advisor]]
-    puts "HEHHEHEHEHEHEHEHEASHDUSAHDHSAUDHASUDHUSAHDUHSAU"
-    super
+    resource_updated = update_resource(resource, account_update_params)
+    yield resource if block_given?
+    if resource_updated
+
+      if resource.type_user == "professor"
+        list_students = params[:user][:users_advisor]
+
+        tempBuffer = UsersAdvisor.where(:professor_id => resource.id)
+
+        list_students_temp = Array.new
+        tempBuffer.each do |u|
+          list_students_temp.push u.student_id
+        end
+
+        if (list_students == nil)
+          UsersAdvisor.where(:professor_id => resource.id).each do |u|
+            u.delete
+          end
+        else
+          index = 0
+          while (index < list_students.size)
+            if not list_students_temp.include? list_students["#{index}"].to_i
+              UsersAdvisor.create(:professor_id => resource.id, :student_id => list_students["#{index}"].to_i)
+            end
+            index +=1
+          end
+        end
+      end
+
+      if is_flashing_format?
+        flash_key = update_needs_confirmation?(resource, prev_unconfirmed_email) ?
+          :update_needs_confirmation : :updated
+        set_flash_message :notice, flash_key
+      end
+      bypass_sign_in resource, scope: resource_name
+      respond_with resource, location: after_update_path_for(resource)
+    else
+      clean_up_passwords resource
+      set_minimum_password_length
+      respond_with resource
+    end
   end
 
   # DELETE /resource
