@@ -14,13 +14,13 @@ before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/edit
   def edit
-    @students = User.where(:type_user => "graduation")
+    @students = User.where.not(:id => User.joins("INNER JOIN users_advisors ON users.id = users_advisors.student_id").select("id").map(&:id)).where(:type_user => "graduation"||"post-graduate")
     super
   end
 
   # PUT /resource
   def update
-    @students = User.where(:type_user => "graduation")
+    @students = User.where.not(:id => User.joins("INNER JOIN users_advisors ON users.id = users_advisors.student_id").select("id").map(&:id)).where(:type_user => "graduation"||"post-graduate")
     self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
     prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
 
