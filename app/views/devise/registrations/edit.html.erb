@@ -161,6 +161,7 @@ function dataListAdd(e){
     return;
   }
 
+
   input = document.createElement("input");
   input.setAttribute("style", "display: none");
   input.setAttribute("name", "user[users_advisor["+numberList+"]]");
@@ -175,7 +176,7 @@ function dataListAdd(e){
   image = document.createElement("i");
   image.setAttribute("class", "fa fa-times");
   image.setAttribute("aria-hidden", "true");
-  image.addEventListener("click", dataListRemove);
+  image.addEventListener("click", deleteStudent);
   image.setAttribute("data-id", "student_"+numberList);
 
   document.getElementById("student_names_div").appendChild(input);
@@ -184,20 +185,37 @@ function dataListAdd(e){
 
   numberList +=1;
   document.getElementById('form_student_names').value = "";
+
+  removeElementDataList(user_id);
 }
 
-function dataListRemove(e){
+function removeElementDataList(student_id){
+  row = document.querySelector("[data-id='"+ student_id+"']");
+  row.remove();
+}
+
+function deleteStudent(e){
   array = document.querySelectorAll("#"+e.target.getAttribute('data-id'));
 
   array.forEach(function removeStudent(item, index){
+    if(item.tagName == "LI"){
+      name = item.textContent;
+      id = item.id.split("student_")[1];
+    }
     item.remove();
   });
+
+  new_row = document.createElement('option');
+  new_row.setAttribute("data-id", id);
+  new_row.setAttribute("value", name);
+
+  document.querySelector('datalist').appendChild(new_row);
 }
 
 var lokura;
 document.getElementById('plus_add_student').addEventListener("click", dataListAdd);
 document.querySelectorAll('.delete-student').forEach(function eventListener(item, index){
-  item.addEventListener("click", dataListRemove);
+  item.addEventListener("click", deleteStudent);
 });
   </script>
 
