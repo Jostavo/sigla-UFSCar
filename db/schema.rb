@@ -125,12 +125,14 @@ ActiveRecord::Schema.define(version: 20170411014511) do
   end
 
   create_table "users_advisors", force: :cascade do |t|
+    t.integer  "user_id"
     t.integer  "professor_id"
     t.integer  "student_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["professor_id"], name: "index_users_advisors_on_professor_id"
     t.index ["student_id"], name: "index_users_advisors_on_student_id"
+    t.index ["user_id"], name: "index_users_advisors_on_user_id"
   end
 
 end

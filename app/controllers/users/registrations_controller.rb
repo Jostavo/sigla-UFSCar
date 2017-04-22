@@ -29,26 +29,20 @@ before_action :configure_account_update_params, only: [:update]
     if resource_updated
 
       if resource.type_user == "professor"
-        list_students = params[:user][:users_advisor]
+        list_students = params[:user][:users_advisor].map{|x| x[1]}
+        list_students_temp = UsersAdvisor.where(:professor_id => resource.id).map(&:student_id)
 
-        tempBuffer = UsersAdvisor.where(:professor_id => resource.id)
-
-        list_students_temp = Array.new
-        tempBuffer.each do |u|
-          list_students_temp.push u.student_id
-        end
-
-        if (list_students == nil)
+        if list_students.empty?
           UsersAdvisor.where(:professor_id => resource.id).each do |u|
             u.delete
           end
         else
-          index = 0
-          while (index < list_students.size)
-            if not list_students_temp.include? list_students["#{index}"].to_i
-              UsersAdvisor.create(:professor_id => resource.id, :student_id => list_students["#{index}"].to_i)
-            end
-            index +=1
+          list_to_delete = list_students_temp - list_students
+          list_to_add = list_students - list_students_temp
+
+          UsersAdvisor.where(:professor_id => resource.id, :student_id => list_to_delete).delete_all
+          list_to_add.each do |u|
+            UsersAdvisor.create(:professor_id => resource.id, :student_id => u)
           end
         end
       end
