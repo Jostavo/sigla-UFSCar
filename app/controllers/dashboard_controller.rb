@@ -78,7 +78,7 @@ class DashboardController < ApplicationController
   def access
     @user = User.all.order(id: "ASC")
     @laboratory = Laboratory.find_by(:initials => params[:laboratory_initials])
-    @authorized_people = @laboratory.authorized_people
+    @authorized_people = @laboratory.authorized_person
     @access_people = BiometricAccess.where(:laboratory_id => @laboratory.id).sort_by(&:created_at)
   end
 
