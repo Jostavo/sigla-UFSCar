@@ -50,7 +50,7 @@ class Api::BiometricController < ApplicationController
         format.json { render :json => {:user_id => "-1", :biometric => "-1"}, :status => 203 }
       else
         @lab.update_attributes(:embedded_update => false)
-        @person_biometric = AuthorizedPerson.where(:laboratory_id => @lab.id).select(:user_id, :biometric)
+        @person_biometric = AuthorizedPerson.where(:laboratory_id => @lab.id, :status => "authorized").select(:user_id, :biometric)
         format.json { render json: @person_biometric }
       end
     end

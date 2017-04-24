@@ -48,7 +48,10 @@ Rails.application.routes.draw do
       scope 'access' do
         get '/' => 'dashboard#access', as: :dashboard_access
         post '/' => 'authorized_person#save', as: :dashboard_access_create
-        delete '/' => 'authorized_person#delete', as: :dashboard_access_delete
+        post '/pause' => 'authorized_person#pause', as: :dashboard_access_pause
+        post '/unpause' => 'authorized_person#unpause', as: :dashboard_access_unpause
+        post '/extend' => 'authorized_person#extend', as: :dashboard_access_extend
+        delete '/delete' => 'authorized_person#delete', as: :dashboard_access_delete
         get 'fingerprint/' => 'authorized_person#get_biometric', as: :dashboard_access_fingerprint
       end
     end
