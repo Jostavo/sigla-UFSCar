@@ -120,8 +120,20 @@ ActiveRecord::Schema.define(version: 20170422233932) do
     t.string   "function",               default: "normal"
     t.string   "provider"
     t.string   "uid"
+    t.string   "type_user"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "users_advisors", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "professor_id"
+    t.integer  "student_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["professor_id"], name: "index_users_advisors_on_professor_id"
+    t.index ["student_id"], name: "index_users_advisors_on_student_id"
+    t.index ["user_id"], name: "index_users_advisors_on_user_id"
   end
 
 end
