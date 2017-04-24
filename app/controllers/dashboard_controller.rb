@@ -80,6 +80,9 @@ class DashboardController < ApplicationController
     @laboratory = Laboratory.find_by(:initials => params[:laboratory_initials])
     @authorized_people = @laboratory.authorized_person
     @access_people = BiometricAccess.where(:laboratory_id => @laboratory.id).sort_by(&:created_at)
+
+
+    @authorized_people2 = @laboratory.authorized_person.where(:user_id => User.where(:type_user => 'graduation').map(&:id))
   end
 
   # if user is a admin, the user is allowed to access the dashboard
