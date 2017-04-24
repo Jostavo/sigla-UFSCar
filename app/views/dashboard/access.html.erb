@@ -5,6 +5,24 @@
     <%= text_field "laboratory_id_revoke", nil,name: "authorized_person[laboratory_id]",value: @laboratory.id, :readonly => "true"%>
     <button id="commitdelete_" name="biometric" type="submit" class="h"></button>
   <% end %>
+  <%= form_tag(dashboard_access_pause_path(@laboratory.initials), method: "post") do %>
+    <%= text_field "biometric_pause", nil,name: "authorized_person[biometric]", :readonly => "true"%>
+    <%= text_field "user_id_pause", nil,name: "authorized_person[user_id]", :readonly => "true"%>
+    <%= text_field "laboratory_id_pause", nil,name: "authorized_person[laboratory_id]",value: @laboratory.id, :readonly => "true"%>
+    <button id="commitpause_" name="biometric" type="submit" class="h"></button>
+  <% end %>
+  <%= form_tag(dashboard_access_extend_path(@laboratory.initials), method: "post") do %>
+    <%= text_field "biometric_extend", nil,name: "authorized_person[biometric]", :readonly => "true"%>
+    <%= text_field "user_id_extend", nil,name: "authorized_person[user_id]", :readonly => "true"%>
+    <%= text_field "laboratory_id_extend", nil,name: "authorized_person[laboratory_id]",value: @laboratory.id, :readonly => "true"%>
+    <button id="commitextend_" name="biometric" type="submit" class="h"></button>
+  <% end %>
+  <%= form_tag(dashboard_access_unpause_path(@laboratory.initials), method: "post") do %>
+    <%= text_field "biometric_unpause", nil,name: "authorized_person[biometric]", :readonly => "true"%>
+    <%= text_field "user_id_unpause", nil,name: "authorized_person[user_id]", :readonly => "true"%>
+    <%= text_field "laboratory_id_unpause", nil,name: "authorized_person[laboratory_id]",value: @laboratory.id, :readonly => "true"%>
+    <button id="commitunpause_" name="biometric" type="submit" class="h"></button>
+  <% end %>
 </div>
 
 
@@ -40,23 +58,53 @@
               </li>
               <li><a class="close-link"><i class="fa fa-close"></i></a>
               </li>
-            </ul>
-            <div class="clearfix"></div>
+            </ul> <div class="clearfix"></div>
           </div>
 
           <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="col-xs-7 col-sm-6"><strong>Nome</strong></div>
-            <div class="col-xs-5 col-sm-6"><strong>Revogar Acesso</strong></div>
+            <div class="col-xs-2 col-sm-2"><strong>Data de Expiração</strong></div>
+            <div class="col-xs-3 col-sm-3"><strong>Nome</strong></div>
+            <div class="col-xs-3 col-sm-3"><strong>Orientador</strong></div>
+            <div class="col-xs-2 col-sm-2"><strong>Status</strong></div>
+            <div class="col-xs-2 col-sm-2"><strong>Ações</strong></div>
           </div>
 
           <div class="clearfix"></div>
 
           <% @authorized_people.each do |a| %>
             <div class="row-info col-xs-12 col-sm-12 col-md-12">
-              <div class="col-xs-7 col-sm-6"><%= a.name %></div>
-              <div class="col-xs-5 col-sm-6" data-toggle="tooltip" title="Remove acesso permantente do laboratório" id="symbol_access" >
-                <button data-lab="<%= @laboratory.id %>" onclick="revoke_access(this)" data-user="<%= a.id %>" id="revoke-access-btn" class="btn btn-danger btn-sm">
-                  <i class="fa fa-minus-square"></i>
+              <div class="col-xs-2 col-sm-2"><%= (a.created_at + 1.year).strftime("%d/%m/%Y") %></div>
+              <div class="col-xs-3 col-sm-3"><%= a.user.name %></div>
+              <% if not a.user.professor.empty? %>
+                <div class="col-xs-3 col-sm-3"><%= a.user.professor[0].name%></div>
+              <% else %>
+                <div class="col-xs-3 col-sm-3">Ninguém</div>
+              <% end %>
+              <div class="col-xs-2 col-sm-2">
+                <% if a.status.eql?('authorized') %>
+                  <h5><div class="label label-success">Autorização Concedida</div></h5>
+                <% elsif a.status.eql?('paused') %>
+                  <h5><div class="label label-warning">Autorização Suspensa</div></h5>
+                <% else %>
+                  <h5><div class="label label-danger">Autorização Expirada</div></h5>
+                <% end %>
+              </div>
+              <div class="col-xs-2 col-sm-2" id="symbol_access" >
+                <button data-toggle="tooltip" title="Remover permanentemente o acesso ao laboratório" data-lab="<%= @laboratory.id %>" onclick="revoke_access(this)" data-user="<%= a.user.id %>" id="revoke-access-btn" class="btn btn-danger btn-sm"> <i class="fa fa-minus"></i>
+                </button >
+                <% if not a.status.eql?('expired') %>
+                  <% if a.status.eql?('paused') %>
+                    <button data-toggle="tooltip" title="Ativar novamente o acesso ao laboratório" data-lab="<%= @laboratory.id %>" onclick="unpause_access(this)" data-user="<%= a.user.id %>" id="unpause-access-btn" class="btn btn-success btn-sm">
+                      <i class="fa fa-play"></i>
+                    </button >
+                  <% elsif a.status.eql?('authorized') %>
+                    <button data-toggle="tooltip" title="Desativar temporariamente o acesso ao laboratório" data-lab="<%= @laboratory.id %>" onclick="pause_access(this)" data-user="<%= a.user.id %>" id="pause-access-btn" class="btn btn-warning btn-sm">
+                      <i class="fa fa-pause"></i>
+                    </button >
+                  <% end %>
+                <% end %>
+                <button data-toggle="tooltip" title="Ativar acesso ao laboratório e estender por 1 ano a validade" data-lab="<%= @laboratory.id %>" onclick="extend_access(this)" data-user="<%= a.user.id %>" id="extend-access-btn" class="btn btn-success btn-sm">
+                  <i class="fa fa-plus"></i>
                 </button >
               </div>
             </div>
@@ -125,7 +173,7 @@
         </div>
       </div>
       <!-- Lista de autorizados -->
-      <div class="col-md-12 col-sm-12 col-xs-12 <%= hidden %>">
+      <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
           <div class="x_title">
             <h2>Lista de autorizados</h2>
@@ -151,18 +199,34 @@
           <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="col-xs-4 col-sm-3"><strong>Nome</strong></div>
             <div class="col-xs-2 col-sm-3"><strong>Orientador</strong></div>
-            <div class="col-xs-3 col-sm-3"><strong>Tipo</strong></div>
-            <div class="col-xs-3 col-sm-3"><strong>Data de expiração</strong></div>
+            <div class="col-xs-3 col-sm-3"><strong>Tipo de Usuário</strong></div>
+            <div class="col-xs-3 col-sm-3"><strong>Data de Expiração</strong></div>
           </div>
 
           <div class="clearfix"></div>
 
-          <% @access_people.each do |a| %>
+          <% @authorized_people2.each do |a| %>
             <div class="row-info col-xs-12 col-sm-12 col-md-12">
               <div class="col-xs-4 col-sm-3"><%= a.user.name %></div>
-              <div class="col-xs-2 col-sm-3"><%= a.user.orientador %></div>
-              <div class="col-xs-3 col-sm-3"><%= a.user.type %></div>
-              <div class="col-xs-3 col-sm-3"><%= a.created_at.strftime("%d/%m/%Y às %H:%M:%S") %></div>
+
+              <% if not a.user.professor.empty? %>
+                <div class="col-xs-2 col-sm-3"><%= a.user.professor[0].name%></div>
+              <% else %>
+                <div class="col-xs-2 col-sm-3">Ninguém</div>
+              <% end %>
+
+              <div class="col-xs-3 col-sm-3">
+                <% if a.user.type_user.eql? ("graduation") %>
+                  <%= "Graduação" %>
+                <% elsif a.user.type_upser.eql? ("post-graduate") %>
+                  <%= "Pós-Graduação" %>
+                <% elsif a.user.type_upser.eql? ("professor") %>
+                  <%= "Professor" %>
+                <% else %>
+                  <%= "Técnico Administrativo" %>
+                <% end %>
+              </div>
+              <div class="col-xs-3 col-sm-3"><%= (a.created_at + 1.year).strftime("%d/%m/%Y às %H:%M:%S") %></div>
             </div>
           <% end %>
 
@@ -193,12 +257,32 @@ $(document).ready(function() {
 
 
 });
-
 function revoke_access(e){
   if (window.confirm("Você tem certeza?")) {
     $('#user_id_revoke_').val(e.dataset.user);
     $('#laboratory_id_revoke_').val(e.dataset.lab);
     $('#commitdelete_').click();
+  }
+}
+function pause_access(e){
+  if (window.confirm("Você tem certeza?")) {
+    $('#user_id_pause_').val(e.dataset.user);
+    $('#laboratory_id_pause_').val(e.dataset.lab);
+    $('#commitpause_').click();
+  }
+}
+function unpause_access(e){
+  if (window.confirm("Você tem certeza?")) {
+    $('#user_id_unpause_').val(e.dataset.user);
+    $('#laboratory_id_unpause_').val(e.dataset.lab);
+    $('#commitunpause_').click();
+  }
+}
+function extend_access(e){
+  if (window.confirm("Você tem certeza?")) {
+    $('#user_id_extend_').val(e.dataset.user);
+    $('#laboratory_id_extend_').val(e.dataset.lab);
+    $('#commitextend_').click();
   }
 }
 </script>

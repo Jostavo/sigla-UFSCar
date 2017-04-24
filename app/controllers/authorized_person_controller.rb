@@ -13,6 +13,7 @@ class AuthorizedPersonController < ApplicationController
 
   def save
     @authorized_person = AuthorizedPerson.new(authorized_person_params)
+    @authorized_person.update_attributes(:status => "authorized")
     if @authorized_person.save
       @authorized_person.laboratory.update_attributes(:embedded_update => true)
       flash.notice = "Autorização Concedida!"
@@ -23,16 +24,40 @@ class AuthorizedPersonController < ApplicationController
     end
   end
 
-  def delete
-    params_delete = authorized_person_params_delete
+  def extend
+    params_delete = authorized_person_control
     Laboratory.find_by(:id => params_delete[:laboratory_id]).update_attributes(:embedded_update => true)
-    AuthorizedPerson.where(:user_id => params_delete[:user_id]).where(:laboratory_id => params_delete[:laboratory_id])[0].delete
-    flash.notice = "Autorização revogada!"
+    AuthorizedPerson.where(:user_id => params_delete[:user_id], :laboratory_id => params_delete[:laboratory_id])[0].update_attributes(:status => "authorized", :created_at => DateTime.now)
+    flash.notice = "Autorização estendida por 1 ano!"
+    redirect_to :back
+  end
+
+  def pause
+    params_delete = authorized_person_control
+    Laboratory.find_by(:id => params_delete[:laboratory_id]).update_attributes(:embedded_update => true)
+    AuthorizedPerson.where(:user_id => params_delete[:user_id], :laboratory_id => params_delete[:laboratory_id])[0].update_attributes(:status => "paused")
+    flash.notice = "Autorização revogada temporariamente!"
+    redirect_to :back
+  end
+
+  def unpause
+    params_delete = authorized_person_control
+    Laboratory.find_by(:id => params_delete[:laboratory_id]).update_attributes(:embedded_update => true)
+    AuthorizedPerson.where(:user_id => params_delete[:user_id], :laboratory_id => params_delete[:laboratory_id])[0].update_attributes(:status => "authorized")
+    flash.notice = "Autorização revogada temporariamente!"
+    redirect_to :back
+  end
+
+  def delete
+    params_delete = authorized_person_control
+    Laboratory.find_by(:id => params_delete[:laboratory_id]).update_attributes(:embedded_update => true)
+    AuthorizedPerson.where(:user_id => params_delete[:user_id], :laboratory_id => params_delete[:laboratory_id])[0].delete
+    flash.notice = "Autorização revogada permanentemente!"
     redirect_to :back
   end
 
   private
-  def authorized_person_params_delete
+  def authorized_person_control
     params.require(:authorized_person).permit(:user_id, :laboratory_id, :biometric)
   end
 
