@@ -1,3 +1,5 @@
+require 'csv'
+
 class DashboardController < ApplicationController
   # remove standard layout
   layout "dashboard"
@@ -73,6 +75,44 @@ class DashboardController < ApplicationController
 
   def embedded
     @laboratory = Laboratory.find_by(:initials => params[:laboratory_initials])
+  end
+
+  def students_csv
+    @laboratory = Laboratory.find_by(:initials => params[:laboratory_initials])
+    @authorized_people2 = @laboratory.authorized_person.where(:user_id => User.where(:type_user => 'graduation' || 'post-graduate').map(&:id))
+
+    attributes = %w{nome orientador tipo_de_usuario data_expiracao} #customize columns here
+
+    csv_file = CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      @authorized_people2.each do |person|
+        row = []
+        row  << person.user.name
+        if not (person.user.professor.empty?)
+          row  << person.user.professor[0].name
+        else
+          row  << "Sem Orientador"
+        end
+
+        if person.user.type_user.eql? ("graduation")
+          row  << "Graduação"
+        elsif person.user.type_upser.eql? ("post-graduate")
+          row  << "Pós-Graduação"
+        end
+        row  << (person.created_at + 1.year).strftime("%d/%m/%Y às %H:%M:%S")
+        csv << row
+      end
+    end
+
+    respond_to do |format|
+      format.csv { send_data csv_file, filename: "active_students-#{Date.today}.csv" }
+    end
+  end
+
+  def students
+    @laboratory = Laboratory.find_by(:initials => params[:laboratory_initials])
+    @authorized_people2 = @laboratory.authorized_person.where(:user_id => User.where(:type_user => 'graduation' || 'post-graduate').map(&:id))
   end
 
   def access
