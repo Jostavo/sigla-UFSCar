@@ -44,6 +44,7 @@ Rails.application.routes.draw do
       get 'map/' => 'dashboard#map', as: :dashboard_map
       get 'statistics/' => 'dashboard#statistics', as: :dashboard_statistics
       get 'embedded/' => 'dashboard#embedded', as: :dashboard_embedded
+      #get 'users/' => 'dashboard#embedded', as: :dashboard_embedded
 
       scope 'access' do
         get '/' => 'dashboard#access', as: :dashboard_access
@@ -53,6 +54,8 @@ Rails.application.routes.draw do
         post '/extend' => 'authorized_person#extend', as: :dashboard_access_extend
         delete '/delete' => 'authorized_person#delete', as: :dashboard_access_delete
         get 'fingerprint/' => 'authorized_person#get_biometric', as: :dashboard_access_fingerprint
+        get 'students/' => 'dashboard#students', as: :dashboard_access_students
+        get 'students/csv' => 'dashboard#students_csv', as: :dashboard_access_students_csv, defaults: { format: :csv }
       end
     end
   end

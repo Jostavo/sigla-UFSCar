@@ -47,7 +47,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   # See https://github.com/rails/execjs#readme for more supported runtimes
   gem 'therubyracer', platforms: :ruby
-  gem 'sqlite3'
+  #gem 'sqlite3'
 end
 
 group :development do
