@@ -293,8 +293,12 @@ int Device::scan(bool isNewUser){
     }
 
     cout << endl << "Press ENTER to retry the verification or ESC to exit" << endl;
-    if(cin.get() == 27)
+
+    if(cin.get() == 27){
       break;
+    }
+
+    resultCode = FP_VERIFY_RETRY;
   }
 }
 
@@ -467,9 +471,12 @@ int Device::enroll_scan(){
       }
     }
 
+    cout << "Initializing Test for Finger enrolled..." << endl;
+
     this->load_cache(&print);
     this->scan(true);
-    cin.ignore(1000, '\n');
+
+    cin.ignore();
 
     cout << "Press ENTER to confirm to send to server or enter ESC to retry again" << endl;
     if(cin.get() == 27){
@@ -480,8 +487,10 @@ int Device::enroll_scan(){
     BUF_MEM * buffer = this->preparing_data_enroll(&print);
     this->sent_enroll_request(buffer);
     fp_print_data_free(print);
-    fp_print_data_free(this->cache[0]);
-    fp_print_data_free(this->cache[1]);
+
+    // this variable is allocated in load_cache function
+    delete this->cache;
+
     this->cache = NULL;
 
     cout << endl << "Press ENTER to enroll a finger or ESC to exit" << endl;
