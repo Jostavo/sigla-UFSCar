@@ -5,7 +5,7 @@ task :check_biometrics => :environment do
 
   laboratories.each do |lab|
     lab.authorized_person.each do |aut|
-      if (DateTime.now > aut.created_at )
+      if (DateTime.now > aut.expired_at)
         if not aut.user.function.eql?('admin')
           aut.update_attributes(:status => 'expired')
         end
