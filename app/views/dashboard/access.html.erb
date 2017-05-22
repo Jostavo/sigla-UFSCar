@@ -73,7 +73,7 @@
 
           <% @authorized_people.each do |a| %>
             <div class="row-info col-xs-12 col-sm-12 col-md-12">
-              <div class="col-xs-2 col-sm-2"><%= (a.created_at + 1.year).strftime("%d/%m/%Y") %></div>
+              <div class="col-xs-2 col-sm-2"><%= (a.expired_at).strftime("%d/%m/%Y") %></div>
               <div class="col-xs-3 col-sm-3"><%= a.user.name %></div>
               <% if not a.user.professor.empty? %>
                 <div class="col-xs-3 col-sm-3"><%= a.user.professor[0].name%></div>
