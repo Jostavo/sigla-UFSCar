@@ -27,7 +27,8 @@ class AuthorizedPersonController < ApplicationController
   def extend
     params_delete = authorized_person_control
     Laboratory.find_by(:id => params_delete[:laboratory_id]).update_attributes(:embedded_update => true)
-    AuthorizedPerson.where(:user_id => params_delete[:user_id], :laboratory_id => params_delete[:laboratory_id])[0].update_attributes(:status => "authorized", :created_at => DateTime.now)
+    expired_at_old = AuthorizedPerson.where(:user_id => params_delete[:user_id], :laboratory_id => params_delete[:laboratory_id])[0].expired_at
+    AuthorizedPerson.where(:user_id => params_delete[:user_id], :laboratory_id => params_delete[:laboratory_id])[0].update_attributes(:status => "authorized", :expired_at => expired_at_old + 1.year)
     flash.notice = "Autorização estendida por 1 ano!"
     redirect_to :back
   end
