@@ -8,7 +8,7 @@ O serviço está disponível no `Heroku`, você pode acessar através deste link
 https://siglaufscar.herokuapp.com
 
 ### Colaboradores do Projeto:
-- [@automagicly](https://github.com/automagicly)
+- [@automagically](https://github.com/automagically)
 - [@byandreee](https://github.com/byandreee)
 - [@eiguike](https://github.com/eiguike)
 - [@Darkkgreen](https://github.com/Darkkgreen)
