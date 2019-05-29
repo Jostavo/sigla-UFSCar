@@ -1,0 +1,13 @@
+current directory: /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/json-2.2.0/ext/json
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/bin/ruby -r ./siteconf20190529-5352-h675ms.rb extconf.rb
+creating Makefile
+
+current directory: /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/json-2.2.0/ext/json
+make "DESTDIR=" clean
+
+current directory: /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/json-2.2.0/ext/json
+make "DESTDIR="
+make: Nothing to be done for 'all'.
+
+current directory: /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/json-2.2.0/ext/json
+make "DESTDIR=" install

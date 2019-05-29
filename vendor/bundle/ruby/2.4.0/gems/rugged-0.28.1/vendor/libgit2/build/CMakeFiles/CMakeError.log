@@ -1,0 +1,242 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_406ce/fast 
+/usr/bin/make -f CMakeFiles/cmTC_406ce.dir/build.make CMakeFiles/cmTC_406ce.dir/build
+make[1]: Entering directory '/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_406ce.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -fPIC    -o CMakeFiles/cmTC_406ce.dir/CheckSymbolExists.c.o   -c /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_406ce
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_406ce.dir/link.txt --verbose=1
+/usr/bin/cc -fPIC     -rdynamic CMakeFiles/cmTC_406ce.dir/CheckSymbolExists.c.o  -o cmTC_406ce 
+/usr/bin/ld: CMakeFiles/cmTC_406ce.dir/CheckSymbolExists.c.o: in function `main':
+CheckSymbolExists.c:(.text+0x1b): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_406ce.dir/build.make:87: cmTC_406ce] Error 1
+make[1]: Leaving directory '/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_406ce/fast] Error 2
+
+File /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_b0464/fast 
+/usr/bin/make -f CMakeFiles/cmTC_b0464.dir/build.make CMakeFiles/cmTC_b0464.dir/build
+make[1]: Entering directory '/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b0464.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_b0464.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.14/Modules/CheckFunctionExists.c
+Linking C executable cmTC_b0464
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b0464.dir/link.txt --verbose=1
+/usr/bin/cc -fPIC -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_b0464.dir/CheckFunctionExists.c.o  -o cmTC_b0464 -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_b0464.dir/build.make:87: cmTC_b0464] Error 1
+make[1]: Leaving directory '/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_b0464/fast] Error 2
+
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT_ST_MTIMESPEC failed with the following output:
+Change Dir: /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_1cde9/fast 
+/usr/bin/make -f CMakeFiles/cmTC_1cde9.dir/build.make CMakeFiles/cmTC_1cde9.dir/build
+make[1]: Entering directory '/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_1cde9.dir/src.c.o
+/usr/bin/cc   -fPIC -DHAVE_STRUCT_STAT_ST_MTIMESPEC   -o CMakeFiles/cmTC_1cde9.dir/src.c.o   -c /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp/src.c
+/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp/src.c: In function ‘main’:
+/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp/src.c:7:37: error: ‘struct stat’ has no member named ‘st_mtimespec’; did you mean ‘st_mtim’?
+    (void)sizeof(((struct stat *)0)->st_mtimespec);
+                                     ^~~~~~~~~~~~
+                                     st_mtim
+make[1]: *** [CMakeFiles/cmTC_1cde9.dir/build.make:66: CMakeFiles/cmTC_1cde9.dir/src.c.o] Error 1
+make[1]: Leaving directory '/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_1cde9/fast] Error 2
+
+Source file was:
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+int main()
+{
+   (void)sizeof(((struct stat *)0)->st_mtimespec);
+   return 0;
+}
+
+Performing C SOURCE FILE Test HAVE_STRUCT_STAT_MTIME_NSEC failed with the following output:
+Change Dir: /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_68aac/fast 
+/usr/bin/make -f CMakeFiles/cmTC_68aac.dir/build.make CMakeFiles/cmTC_68aac.dir/build
+make[1]: Entering directory '/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_68aac.dir/src.c.o
+/usr/bin/cc   -fPIC -DHAVE_STRUCT_STAT_MTIME_NSEC   -o CMakeFiles/cmTC_68aac.dir/src.c.o   -c /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp/src.c
+/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp/src.c: In function ‘main’:
+/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp/src.c:6:37: error: ‘struct stat’ has no member named ‘st_mtime_nsec’; did you mean ‘st_mtim’?
+    (void)sizeof(((struct stat *)0)->st_mtime_nsec);
+                                     ^~~~~~~~~~~~~
+                                     st_mtim
+make[1]: *** [CMakeFiles/cmTC_68aac.dir/build.make:66: CMakeFiles/cmTC_68aac.dir/src.c.o] Error 1
+make[1]: Leaving directory '/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_68aac/fast] Error 2
+
+Source file was:
+
+#include <sys/stat.h>
+
+int main()
+{
+   (void)sizeof(((struct stat *)0)->st_mtime_nsec);
+   return 0;
+}
+
+Performing C SOURCE FILE Test IS_WDOCUMENTATION_SUPPORTED failed with the following output:
+Change Dir: /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_9394d/fast 
+/usr/bin/make -f CMakeFiles/cmTC_9394d.dir/build.make CMakeFiles/cmTC_9394d.dir/build
+make[1]: Entering directory '/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_9394d.dir/src.c.o
+/usr/bin/cc   -D_GNU_SOURCE -fPIC -Wall -Wextra -DIS_WDOCUMENTATION_SUPPORTED   -Wdocumentation -o CMakeFiles/cmTC_9394d.dir/src.c.o   -c /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp/src.c
+cc: error: unrecognized command line option '-Wdocumentation'
+make[1]: *** [CMakeFiles/cmTC_9394d.dir/build.make:66: CMakeFiles/cmTC_9394d.dir/src.c.o] Error 1
+make[1]: Leaving directory '/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_9394d/fast] Error 2
+
+Source file was:
+int main(void) { return 0; }
+Determining if the regcomp_l exist failed with the following output:
+Change Dir: /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_4841e/fast 
+/usr/bin/make -f CMakeFiles/cmTC_4841e.dir/build.make CMakeFiles/cmTC_4841e.dir/build
+make[1]: Entering directory '/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4841e.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -D_GNU_SOURCE -fPIC -Wall -Wextra -Wno-missing-field-initializers -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wformat -Wformat-security -Wint-conversion -Wno-documentation-deprecated-sync    -o CMakeFiles/cmTC_4841e.dir/CheckSymbolExists.c.o   -c /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:3:10: fatal error: xlocale.h: No such file or directory
+ #include <xlocale.h>
+          ^~~~~~~~~~~
+compilation terminated.
+make[1]: *** [CMakeFiles/cmTC_4841e.dir/build.make:66: CMakeFiles/cmTC_4841e.dir/CheckSymbolExists.c.o] Error 1
+make[1]: Leaving directory '/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_4841e/fast] Error 2
+
+File /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <regex.h>
+#include <xlocale.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef regcomp_l
+  return ((int*)(&regcomp_l))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the prototype qsort_r exists for HAVE_QSORT_R_BSD failed with the following output:
+Change Dir: /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_ddc6f/fast 
+/usr/bin/make -f CMakeFiles/cmTC_ddc6f.dir/build.make CMakeFiles/cmTC_ddc6f.dir/build
+make[1]: Entering directory '/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ddc6f.dir/CheckPrototypeDefinition.c.o
+/usr/bin/cc   -D_GNU_SOURCE -fPIC -Wall -Wextra -Wno-missing-field-initializers -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wformat -Wformat-security -Wint-conversion -Wno-documentation-deprecated-sync    -o CMakeFiles/cmTC_ddc6f.dir/CheckPrototypeDefinition.c.o   -c /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp/CheckPrototypeDefinition.c
+/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp/CheckPrototypeDefinition.c:14:6: error: conflicting types for ‘qsort_r’
+ void qsort_r(void *base, size_t nmemb, size_t size, void *thunk, int (*compar)(void *, const void *, const void *)) {
+      ^~~~~~~
+In file included from /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp/CheckPrototypeDefinition.c:1:
+/usr/include/stdlib.h:830:13: note: previous declaration of ‘qsort_r’ was here
+ extern void qsort_r (void *__base, size_t __nmemb, size_t __size,
+             ^~~~~~~
+/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp/CheckPrototypeDefinition.c: In function ‘qsort_r’:
+/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp/CheckPrototypeDefinition.c:14:20: warning: unused parameter ‘base’ [-Wunused-parameter]
+ void qsort_r(void *base, size_t nmemb, size_t size, void *thunk, int (*compar)(void *, const void *, const void *)) {
+              ~~~~~~^~~~
+/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp/CheckPrototypeDefinition.c:14:33: warning: unused parameter ‘nmemb’ [-Wunused-parameter]
+ void qsort_r(void *base, size_t nmemb, size_t size, void *thunk, int (*compar)(void *, const void *, const void *)) {
+                          ~~~~~~~^~~~~
+/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp/CheckPrototypeDefinition.c:14:47: warning: unused parameter ‘size’ [-Wunused-parameter]
+ void qsort_r(void *base, size_t nmemb, size_t size, void *thunk, int (*compar)(void *, const void *, const void *)) {
+                                        ~~~~~~~^~~~
+/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp/CheckPrototypeDefinition.c:14:59: warning: unused parameter ‘thunk’ [-Wunused-parameter]
+ void qsort_r(void *base, size_t nmemb, size_t size, void *thunk, int (*compar)(void *, const void *, const void *)) {
+                                                     ~~~~~~^~~~~
+/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp/CheckPrototypeDefinition.c:14:72: warning: unused parameter ‘compar’ [-Wunused-parameter]
+ void qsort_r(void *base, size_t nmemb, size_t size, void *thunk, int (*compar)(void *, const void *, const void *)) {
+                                                                  ~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp/CheckPrototypeDefinition.c: At top level:
+cc1: warning: unrecognized command line option ‘-Wno-documentation-deprecated-sync’
+make[1]: *** [CMakeFiles/cmTC_ddc6f.dir/build.make:66: CMakeFiles/cmTC_ddc6f.dir/CheckPrototypeDefinition.c.o] Error 1
+make[1]: Leaving directory '/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_ddc6f/fast] Error 2
+
+
+#include <stdlib.h>
+
+
+static void cmakeRequireSymbol(int dummy, ...) {
+  (void) dummy;
+}
+
+static void checkSymbol(void) {
+#ifndef qsort_r
+  cmakeRequireSymbol(0, &qsort_r);
+#endif
+}
+
+void qsort_r(void *base, size_t nmemb, size_t size, void *thunk, int (*compar)(void *, const void *, const void *)) {
+  return ;
+}
+
+#ifdef __CLASSIC_C__
+int main() {
+  int ac;
+  char*av[];
+#else
+int main(int ac, char *av[]) {
+#endif
+  checkSymbol();
+  if (ac > 1000) {
+    return *av[0];
+  }
+  return 0;
+}
+
+
+Determining if the function qsort_s exists failed with the following output:
+Change Dir: /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_b2c55/fast 
+/usr/bin/make -f CMakeFiles/cmTC_b2c55.dir/build.make CMakeFiles/cmTC_b2c55.dir/build
+make[1]: Entering directory '/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b2c55.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -D_GNU_SOURCE -fPIC -Wall -Wextra -Wno-missing-field-initializers -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wformat -Wformat-security -Wint-conversion -Wno-documentation-deprecated-sync -DCHECK_FUNCTION_EXISTS=qsort_s   -o CMakeFiles/cmTC_b2c55.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.14/Modules/CheckFunctionExists.c
+Linking C executable cmTC_b2c55
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b2c55.dir/link.txt --verbose=1
+/usr/bin/cc -D_GNU_SOURCE -fPIC -Wall -Wextra -Wno-missing-field-initializers -Wstrict-aliasing -Wstrict-prototypes -Wdeclaration-after-statement -Wshift-count-overflow -Wunused-const-variable -Wunused-function -Wformat -Wformat-security -Wint-conversion -Wno-documentation-deprecated-sync -DCHECK_FUNCTION_EXISTS=qsort_s    -rdynamic CMakeFiles/cmTC_b2c55.dir/CheckFunctionExists.c.o  -o cmTC_b2c55 
+/usr/bin/ld: CMakeFiles/cmTC_b2c55.dir/CheckFunctionExists.c.o: in function `main':
+CheckFunctionExists.c:(.text+0x10): undefined reference to `qsort_s'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_b2c55.dir/build.make:87: cmTC_b2c55] Error 1
+make[1]: Leaving directory '/home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/rugged-0.28.1/vendor/libgit2/build/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_b2c55/fast] Error 2
+
+

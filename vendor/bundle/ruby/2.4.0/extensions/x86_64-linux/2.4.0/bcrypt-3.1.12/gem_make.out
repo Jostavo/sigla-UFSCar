@@ -1,0 +1,70 @@
+current directory: /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/bcrypt-3.1.12/ext/mri
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/bin/ruby -r ./siteconf20190529-5352-b4ae9r.rb extconf.rb
+creating Makefile
+
+current directory: /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/bcrypt-3.1.12/ext/mri
+make "DESTDIR=" clean
+
+current directory: /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/bcrypt-3.1.12/ext/mri
+make "DESTDIR="
+compiling bcrypt_ext.c
+In file included from /home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby.h:33,
+                 from bcrypt_ext.c:1:
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/ruby.h:631:1: warning: ‘const’ attribute on function returning ‘void’ [-Wattributes]
+ CONSTFUNC(void rb_secure_update(VALUE));
+ ^~~~~~~~~
+In file included from /home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/ruby.h:2005,
+                 from /home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby.h:33,
+                 from bcrypt_ext.c:1:
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/intern.h:257:1: warning: ‘const’ attribute on function returning ‘void’ [-Wattributes]
+ CONSTFUNC(void rb_error_untrusted(VALUE));
+ ^~~~~~~~~
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/intern.h:259:1: warning: ‘const’ attribute on function returning ‘void’ [-Wattributes]
+ CONSTFUNC(void rb_check_trusted(VALUE));
+ ^~~~~~~~~
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
+compiling crypt.c
+In file included from /home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby.h:33,
+                 from crypt.c:1:
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/ruby.h:631:1: warning: ‘const’ attribute on function returning ‘void’ [-Wattributes]
+ CONSTFUNC(void rb_secure_update(VALUE));
+ ^~~~~~~~~
+In file included from /home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/ruby.h:2005,
+                 from /home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby.h:33,
+                 from crypt.c:1:
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/intern.h:257:1: warning: ‘const’ attribute on function returning ‘void’ [-Wattributes]
+ CONSTFUNC(void rb_error_untrusted(VALUE));
+ ^~~~~~~~~
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/intern.h:259:1: warning: ‘const’ attribute on function returning ‘void’ [-Wattributes]
+ CONSTFUNC(void rb_check_trusted(VALUE));
+ ^~~~~~~~~
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
+compiling crypt_blowfish.c
+compiling crypt_gensalt.c
+compiling wrapper.c
+In file included from /home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby.h:33,
+                 from wrapper.c:26:
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/ruby.h:631:1: warning: ‘const’ attribute on function returning ‘void’ [-Wattributes]
+ CONSTFUNC(void rb_secure_update(VALUE));
+ ^~~~~~~~~
+In file included from /home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/ruby.h:2005,
+                 from /home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby.h:33,
+                 from wrapper.c:26:
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/intern.h:257:1: warning: ‘const’ attribute on function returning ‘void’ [-Wattributes]
+ CONSTFUNC(void rb_error_untrusted(VALUE));
+ ^~~~~~~~~
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/intern.h:259:1: warning: ‘const’ attribute on function returning ‘void’ [-Wattributes]
+ CONSTFUNC(void rb_check_trusted(VALUE));
+ ^~~~~~~~~
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
+linking shared-object bcrypt_ext.so
+
+current directory: /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/bcrypt-3.1.12/ext/mri
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bcrypt_ext.so ./.gem.20190529-5352-fchry3

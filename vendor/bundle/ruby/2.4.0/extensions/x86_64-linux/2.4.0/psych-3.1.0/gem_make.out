@@ -1,0 +1,116 @@
+current directory: /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/psych-3.1.0/ext/psych
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/bin/ruby -r ./siteconf20190529-5352-r8wft1.rb extconf.rb
+checking for yaml.h... yes
+checking for yaml_get_version() in -lyaml... yes
+creating Makefile
+
+current directory: /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/psych-3.1.0/ext/psych
+make "DESTDIR=" clean
+
+current directory: /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/psych-3.1.0/ext/psych
+make "DESTDIR="
+compiling psych.c
+In file included from /home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby.h:33,
+                 from ./psych.h:4,
+                 from psych.c:1:
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/ruby.h:631:1: warning: ‘const’ attribute on function returning ‘void’ [-Wattributes]
+ CONSTFUNC(void rb_secure_update(VALUE));
+ ^~~~~~~~~
+In file included from /home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/ruby.h:2005,
+                 from /home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby.h:33,
+                 from ./psych.h:4,
+                 from psych.c:1:
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/intern.h:257:1: warning: ‘const’ attribute on function returning ‘void’ [-Wattributes]
+ CONSTFUNC(void rb_error_untrusted(VALUE));
+ ^~~~~~~~~
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/intern.h:259:1: warning: ‘const’ attribute on function returning ‘void’ [-Wattributes]
+ CONSTFUNC(void rb_check_trusted(VALUE));
+ ^~~~~~~~~
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
+compiling psych_emitter.c
+In file included from /home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby.h:33,
+                 from ./psych.h:4,
+                 from psych_emitter.c:1:
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/ruby.h:631:1: warning: ‘const’ attribute on function returning ‘void’ [-Wattributes]
+ CONSTFUNC(void rb_secure_update(VALUE));
+ ^~~~~~~~~
+In file included from /home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/ruby.h:2005,
+                 from /home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby.h:33,
+                 from ./psych.h:4,
+                 from psych_emitter.c:1:
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/intern.h:257:1: warning: ‘const’ attribute on function returning ‘void’ [-Wattributes]
+ CONSTFUNC(void rb_error_untrusted(VALUE));
+ ^~~~~~~~~
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/intern.h:259:1: warning: ‘const’ attribute on function returning ‘void’ [-Wattributes]
+ CONSTFUNC(void rb_check_trusted(VALUE));
+ ^~~~~~~~~
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
+compiling psych_parser.c
+In file included from /home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby.h:33,
+                 from ./psych.h:4,
+                 from psych_parser.c:1:
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/ruby.h:631:1: warning: ‘const’ attribute on function returning ‘void’ [-Wattributes]
+ CONSTFUNC(void rb_secure_update(VALUE));
+ ^~~~~~~~~
+In file included from /home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/ruby.h:2005,
+                 from /home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby.h:33,
+                 from ./psych.h:4,
+                 from psych_parser.c:1:
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/intern.h:257:1: warning: ‘const’ attribute on function returning ‘void’ [-Wattributes]
+ CONSTFUNC(void rb_error_untrusted(VALUE));
+ ^~~~~~~~~
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/intern.h:259:1: warning: ‘const’ attribute on function returning ‘void’ [-Wattributes]
+ CONSTFUNC(void rb_check_trusted(VALUE));
+ ^~~~~~~~~
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
+compiling psych_to_ruby.c
+In file included from /home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby.h:33,
+                 from ./psych.h:4,
+                 from psych_to_ruby.c:1:
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/ruby.h:631:1: warning: ‘const’ attribute on function returning ‘void’ [-Wattributes]
+ CONSTFUNC(void rb_secure_update(VALUE));
+ ^~~~~~~~~
+In file included from /home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/ruby.h:2005,
+                 from /home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby.h:33,
+                 from ./psych.h:4,
+                 from psych_to_ruby.c:1:
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/intern.h:257:1: warning: ‘const’ attribute on function returning ‘void’ [-Wattributes]
+ CONSTFUNC(void rb_error_untrusted(VALUE));
+ ^~~~~~~~~
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/intern.h:259:1: warning: ‘const’ attribute on function returning ‘void’ [-Wattributes]
+ CONSTFUNC(void rb_check_trusted(VALUE));
+ ^~~~~~~~~
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
+compiling psych_yaml_tree.c
+In file included from /home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby.h:33,
+                 from ./psych.h:4,
+                 from psych_yaml_tree.c:1:
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/ruby.h:631:1: warning: ‘const’ attribute on function returning ‘void’ [-Wattributes]
+ CONSTFUNC(void rb_secure_update(VALUE));
+ ^~~~~~~~~
+In file included from /home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/ruby.h:2005,
+                 from /home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby.h:33,
+                 from ./psych.h:4,
+                 from psych_yaml_tree.c:1:
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/intern.h:257:1: warning: ‘const’ attribute on function returning ‘void’ [-Wattributes]
+ CONSTFUNC(void rb_error_untrusted(VALUE));
+ ^~~~~~~~~
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/intern.h:259:1: warning: ‘const’ attribute on function returning ‘void’ [-Wattributes]
+ CONSTFUNC(void rb_check_trusted(VALUE));
+ ^~~~~~~~~
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
+linking shared-object psych.so
+
+current directory: /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/psych-3.1.0/ext/psych
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 psych.so ./.gem.20190529-5352-1h96rl3

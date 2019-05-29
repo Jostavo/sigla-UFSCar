@@ -1,0 +1,32 @@
+current directory: /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/bin/ruby -r ./siteconf20190529-5352-1rebwhr.rb extconf.rb
+creating Makefile
+
+current directory: /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+In file included from /home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby.h:33,
+                 from websocket_mask.c:1:
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/ruby.h:631:1: warning: ‘const’ attribute on function returning ‘void’ [-Wattributes]
+ CONSTFUNC(void rb_secure_update(VALUE));
+ ^~~~~~~~~
+In file included from /home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/ruby.h:2005,
+                 from /home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby.h:33,
+                 from websocket_mask.c:1:
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/intern.h:257:1: warning: ‘const’ attribute on function returning ‘void’ [-Wattributes]
+ CONSTFUNC(void rb_error_untrusted(VALUE));
+ ^~~~~~~~~
+/home/darkkgreen/.rvm/rubies/ruby-2.4.1/include/ruby-2.4.0/ruby/intern.h:259:1: warning: ‘const’ attribute on function returning ‘void’ [-Wattributes]
+ CONSTFUNC(void rb_check_trusted(VALUE));
+ ^~~~~~~~~
+cc1: warning: unrecognized command line option ‘-Wno-self-assign’
+cc1: warning: unrecognized command line option ‘-Wno-constant-logical-operand’
+cc1: warning: unrecognized command line option ‘-Wno-parentheses-equality’
+linking shared-object websocket_mask.so
+
+current directory: /home/darkkgreen/Work/sigla-UFSCar/vendor/bundle/ruby/2.4.0/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 websocket_mask.so ./.gem.20190529-5352-13qhr7h
