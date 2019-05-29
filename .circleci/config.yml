@@ -68,20 +68,20 @@ jobs:
         name: RSpec
         command: bundle exec rspec
 
-      - run:
-          name: Pronto
-          command: |
-            export PRONTO_PULL_REQUEST_ID="$(echo $CIRCLE_PULL_REQUEST | grep -o -E '[0-9]+')"
-            export PRONTO_GITHUB_SLUG="${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}"
-            export PRONTO_FORMAT="%{msg} [%{runner}:%{level}]"
-            export PRONTO_VERBOSE=true
-            bundle exec pronto run -f github_pr github_status -c origin/master
+      # - run:
+      #     name: Pronto
+      #     command: |
+      #       export PRONTO_PULL_REQUEST_ID="$(echo $CIRCLE_PULL_REQUEST | grep -o -E '[0-9]+')"
+      #       export PRONTO_GITHUB_SLUG="${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}"
+      #       export PRONTO_FORMAT="%{msg} [%{runner}:%{level}]"
+      #       export PRONTO_VERBOSE=true
+      #       bundle exec pronto run -f github_pr github_status -c origin/master
 
-      - run:
-          name: Danger
-          command: |
-            bundle exec rake assets:precompile
-            bundle exec danger
+      # - run:
+      #     name: Danger
+      #     command: |
+      #       bundle exec rake assets:precompile
+      #       bundle exec danger
 
       - store_artifacts:
           path: tmp/test_results
