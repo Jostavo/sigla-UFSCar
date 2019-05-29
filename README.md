@@ -1,4 +1,6 @@
 # Sistema de Gerenciamento de Laboratórios (SiGLa)
+
+[![CircleCI](https://circleci.com/gh/Darkkgreen/sigla-UFSCar/tree/master.svg?style=svg)](https://circleci.com/gh/Darkkgreen/sigla-UFSCar/tree/master)
 ---
 Projeto realizado na Universidade Federal de São Carlos - Sorocaba, nas matérias de `Projeto de Desenvolvimento de Software (PDS)` e `Interface Humano Computador (IHC)`.
 
