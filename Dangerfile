@@ -1,6 +1,6 @@
 # frozen_string_literal: true
-# rubocop:disable Metrics/LineLength, Layout/IndentHeredoc
 
+# rubocop:disable Metrics/LineLength, Layout/IndentHeredoc
 message = <<-MESSAGE
   ## Checklist:
   - [ ] Run tests locally
