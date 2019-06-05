@@ -1,0 +1,75 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/sigla-UFSCar
+    docker:
+      - image: circleci/ruby:2.4.1-node-browsers
+        environment:
+          PGHOST: 127.0.0.1
+          RAILS_ENV: development
+          PGUSER: postgres
+          POSTGRES_PASSWORD: postgres
+
+      - image: circleci/postgres:9.4
+        environment:
+          POSTGRES_DB: sigla-test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+    steps:
+      - checkout
+
+      - run:
+          name: Which bundler?
+          command: bundle -v
+
+      - run:
+          name: Install environment dependencies
+          command: sudo apt-get install -y cmake
+
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "Gemfile.lock" }}
+          - v1-dependencies-
+
+      - run:
+          name: Configure Bundler
+          command: |
+            echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
+            source $BASH_ENV
+            gem install bundler
+
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install --path vendor/bundle
+
+
+      - save_cache:
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ./vendor/bundle
+
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:schema:load --trace
+      - run: bundle exec rake db:migrate
+
+      - type: shell
+        name: RSpec
+        command: bundle exec rspec
+
+      - run:
+          name: Pronto
+          command: |
+            export PRONTO_PULL_REQUEST_ID="$(echo $CIRCLE_PULL_REQUEST | grep -o -E '[0-9]+')"
+            export PRONTO_GITHUB_SLUG="${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}"
+            export PRONTO_FORMAT="%{msg} [%{runner}:%{level}]"
+            export PRONTO_VERBOSE=true
+            bundle exec pronto run -f github_pr github_status -c origin/master
+
+      - run:
+          name: Danger
+          command: |
+            bundle exec rake assets:precompile
+            bundle exec danger
+
+      - store_artifacts:
+          path: tmp/test_results
