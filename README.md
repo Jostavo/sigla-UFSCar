@@ -1,4 +1,6 @@
 # Sistema de Gerenciamento de Laboratórios (SiGLa)
+
+[![CircleCI](https://circleci.com/gh/Darkkgreen/sigla-UFSCar/tree/master.svg?style=svg)](https://circleci.com/gh/Darkkgreen/sigla-UFSCar/tree/master)
 ---
 Projeto realizado na Universidade Federal de São Carlos - Sorocaba, nas matérias de `Projeto de Desenvolvimento de Software (PDS)` e `Interface Humano Computador (IHC)`.
 
@@ -8,7 +10,7 @@ O serviço está disponível no `Heroku`, você pode acessar através deste link
 https://siglaufscar.herokuapp.com
 
 ### Colaboradores do Projeto:
-- [@automagicly](https://github.com/automagicly)
+- [@automagically](https://github.com/automagically)
 - [@byandreee](https://github.com/byandreee)
 - [@eiguike](https://github.com/eiguike)
 - [@Darkkgreen](https://github.com/Darkkgreen)
