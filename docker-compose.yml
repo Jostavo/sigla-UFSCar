@@ -3,16 +3,18 @@ services:
   db:
     image: postgres
     environment:
-      - POSTGRES_USER=docker
-      - POSTGRES_PASSWORD=docker
-      - POSTGRES_DB=siglateste
-    volumes:
-      - ./tmp/db:/var/lib/postgresql/data
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
   web:
     build: .
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
-    volumes:
-      - .:/SiGLa
+    command: rails s
+    environment:
+      - RAILS_ENV=development
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=postgres
+      - DATABASE_HOST=db
     ports:
       - "3000:3000"
     depends_on:
