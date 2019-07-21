@@ -1,0 +1,21 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+  web:
+    build: .
+    command: rails s
+    environment:
+      - RAILS_ENV=development
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=postgres
+      - DATABASE_HOST=db
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
