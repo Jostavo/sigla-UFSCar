@@ -19,10 +19,6 @@ jobs:
       - checkout
 
       - run:
-          name: Which bundler?
-          command: bundle -v
-
-      - run:
           name: Install environment dependencies
           command: sudo apt-get install -y cmake
 
