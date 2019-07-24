@@ -1,0 +1,528 @@
+$(document).ready(function() {
+// Variable loading
+// Chart loading (we need to fill them)
+// Chart drawing (we need to write them inside those define htmls)
+// TEMPO ABERTO HOJE
+<% time_open_today = @labopen_today.to_json %>
+time_open_today_chart = <%= raw time_open_today%>;
+
+<% time_open_today_week = @labopen_today_and_week_ago.to_json %>
+time_open_today_week_chart = <%= raw time_open_today_week%>;
+
+var porcentagem = time_open_today_chart - time_open_today_week_chart;
+if(time_open_today_chart == 0)
+  porcentagem = porcentagem / 1;
+else
+  porcentagem = porcentagem / time_open_today_chart;
+porcentagem = porcentagem * 100;
+
+var adicao;
+
+if(time_open_today_chart > time_open_today_week_chart){
+  adicao = " green";
+}else if(time_open_today_chart < time_open_today_week_chart){
+  adicao = " red";
+}else{
+  adicao = "";
+}
+
+$("#TAH").append("<span class='count_top'><i class='fa fa-user'></i> Tempo Aberto Hoje</span>");
+
+if(time_open_today_chart < 60){
+  $("#TAH").append("<div class='count"+ adicao +"'> &gt; 1 <smallart>min</smallart> </div>");
+}else if(time_open_today_chart > 60 && time_open_today_chart < 3600){
+  $("#TAH").append("<div class='count"+ adicao +"'>"+ Math.floor(time_open_today_chart/60) +" <smallart>min</smallart> </div>");
+}else if(time_open_today_chart > 3600 && time_open_today_chart < 7200){
+  $("#TAH").append("<div class='count"+ adicao +"'> 1 <smallart>hr</smallart> </div>");
+}else{
+  $("#TAH").append("<div class='count"+ adicao +"'> "+ Math.floor(time_open_today_chart/3600) +" <smallart>hrs</smallart> </div>");
+}
+
+if(time_open_today_chart > time_open_today_week_chart){
+  $("#TAH").append("<span class='count_bottom'><i class='green'><i class='fa fa-sort-asc'></i>"+ Math.floor(porcentagem) +"%</i> que semana passada</span>");
+}else if(time_open_today_chart < time_open_today_week_chart){
+  $("#TAH").append("<span class='count_bottom'><i class='red'><i class='fa fa-sort-desc'></i>"+ Math.floor(porcentagem) +"%</i> que semana passada</span>");
+}else{
+  $("#TAH").append("<span class='count_bottom'><i class='gray'>Igual</i> a semana passada</span>");
+}
+});
+
+$(document).ready(function() {
+// TEMPO MÉDIO ABERTO ESSA SEMANA
+<% time_open_week = @labopen_week.to_json %>
+time_open_week_chart = <%= raw time_open_week%>;
+
+<% time_open_last_week = @labopen_last_week.to_json %>
+time_open_last_week_chart = <%= raw time_open_last_week%>;
+
+var porcentagem = time_open_week_chart - time_open_last_week_chart;
+if(time_open_last_week_chart == 0)
+  porcentagem = porcentagem / 1;
+else
+  porcentagem = porcentagem / time_open_week_chart;
+porcentagem = porcentagem * 100;
+
+var adicao;
+
+if(time_open_week_chart > time_open_last_week_chart){
+  adicao = " green";
+}else if(time_open_week_chart < time_open_last_week_chart){
+  adicao = " red";
+}else{
+  adicao = "";
+}
+
+$("#TMA").append("<span class='count_top'><i class='fa fa-clock-o'></i> Tempo Médio Aberto</span>");
+
+if(time_open_week_chart < 60){
+  $("#TMA").append("<div class='count"+ adicao +"'> &gt; 1 <smallart>min</smallart> </div>");
+}else if(time_open_week_chart > 60 && time_open_week_chart < 3600){
+  $("#TMA").append("<div class='count"+ adicao +"'>"+ Math.floor(time_open_week_chart/60) +" <smallart>min</smallart> </div>");
+}else if(time_open_week_chart > 3600 && time_open_week_chart < 7200){
+  $("#TMA").append("<div class='count"+ adicao +"'> 1 <smallart>hr</smallart> </div>");
+}else{
+  $("#TMA").append("<div class='count"+ adicao +"'> "+ Math.floor(time_open_week_chart/3600) +" <smallart>hrs</smallart> </div>");
+}
+
+if(time_open_week_chart > time_open_last_week_chart){
+  $("#TMA").append("<span class='count_bottom'><i class='green'><i class='fa fa-sort-asc'></i>"+ Math.floor(porcentagem) +"%</i> que semana passada</span>");
+}else if(time_open_week_chart < time_open_last_week_chart){
+  $("#TMA").append("<span class='count_bottom'><i class='red'><i class='fa fa-sort-desc'></i>"+ Math.floor(porcentagem) +"%</i> que semana passada</span>");
+}else{
+  $("#TMA").append("<span class='count_bottom'><i class='gray'>Igual</i> a semana passada</span>");
+}
+});
+
+$(document).ready(function() {
+// Contador de usuários
+<% count_users = @users_count.to_json %>
+count_usuarios = <%= raw count_users%>;
+
+$("#UC").append("<span class='count_top'><i class='fa fa-user'></i> Usuários Cadastrados</span>");
+if(count_usuarios != 1)
+  $("#UC").append("<div class='count'>"+count_usuarios+" <smallart>usuários</smallart></div>");
+else
+  $("#UC").append("<div class='count'>"+count_usuarios+" <smallart>usuário</smallart></div>");
+//<span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+});
+
+$(document).ready(function(){
+// Sumariza os reports
+<% pendingPorts = @reports_pending.to_json %>
+pPorts = <%= raw pendingPorts%>;
+
+<% totalPorts = @total_reports.to_json %>
+tPorts = <%= raw totalPorts%>;
+
+var porcentagem = pPorts - tPorts;
+if(tPorts == 0)
+  porcentagem = porcentagem / 1;
+else
+  porcentagem = porcentagem / tPorts;
+porcentagem = porcentagem * 100;
+porcentagem = porcentagem + 100;
+
+$("#nReport").append("<span class='count_top'><i class='fa fa-user'></i> Reports Não Resolvidos</span>");
+if(pPorts != 0){
+  $("#nReport").append("<div class='count'>"+ pPorts +"</div>");
+}else{
+  $("#nReport").append("<div class='count green'>"+ pPorts +"</div>");
+}
+
+if(pPorts != 0){
+  $("#nReport").append("<span class='count_bottom'><i class='red'><i class='fa fa-sort-desc'></i>"+ Math.floor(porcentagem) +"%</i> do total</span>");
+}
+
+$("#tReport").append("<span class='count_top'><i class='fa fa-user'></i> Reports Totais </span>");
+$("#tReport").append("<div class='count'>"+ tPorts +"</div>");
+});
+
+$(document).ready(function(){
+<% top5labs = @top5_labs.to_json %>
+topLabs = <%= raw top5labs %>;
+
+  var options = {
+    legend: false,
+    responsive: false
+  };
+
+  var colorClass = ['fa fa-square blue', 'fa fa-square green', 'fa fa-square purple', 'fa fa-square aero', 'fa fa-square red'];
+  var selectedColor = 0;
+  var labelClass = [];
+  var dataClass = [];
+
+  for(var i = 0; i < 5; i++){
+    if(i < topLabs.length && topLabs[i][1] != 0){
+      $("#salasMax").append("<tr><td><p><i class ='"+colorClass[selectedColor]+"'></i>"+topLabs[i][0]+"</p></td><td>"+topLabs[i][1]+"</td></tr>");
+      labelClass.push(topLabs[i][0]);
+      dataClass.push(topLabs[i][1]);
+      selectedColor++;
+    }
+  }
+
+  new Chart(document.getElementById("canvasSala"), {
+    type: 'doughnut',
+    tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+    data: {
+      labels: 
+        labelClass,
+      datasets: [{
+        data: 
+          dataClass,
+        backgroundColor: [
+          "#3498DB",
+          "#26B99A",
+          "#9B59B6",
+          "#BDC3C7",
+          "#E74C3C"
+        ],
+        hoverBackgroundColor: [
+          "#49A9EA",
+          "#36CAAB",
+          "#B370CF",
+          "#CFD4D8",
+          "#E95E4F"
+        ]
+      }]
+    },
+    options: options
+  });
+});
+
+$(document).ready(function(){
+<% overview = @report_overview.to_json %>
+roverview = <%= raw overview %>;
+
+  var options = {
+    legend: false,
+    responsive: false
+  };
+
+  var colorClass = ['fa fa-square blue', 'fa fa-square green', 'fa fa-square purple', 'fa fa-square aero', 'fa fa-square red'];
+  var selectedColor = 0;
+  var labelClass = [];
+  var dataClass = [];
+  var names = ["pending", "resolved", "verifying"];
+  var namesPort = ["Pendente", "Resolvido", "Verificando"];
+
+  for(var i = 0; i < 3; i++){
+      $("#reviewReport").append("<tr><td><p><i class ='"+ colorClass[selectedColor] +"'></i>"+ namesPort[i] +"</p></td><td>"+ roverview[names[i]] +"</td></tr>");
+      labelClass.push(namesPort[i]);
+      dataClass.push(roverview[names[i]]);
+      selectedColor++;
+  }
+
+  new Chart(document.getElementById("canvasOver"), {
+    type: 'doughnut',
+    tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+    data: {
+      labels: 
+        labelClass,
+      datasets: [{
+        data: 
+          dataClass,
+        backgroundColor: [
+          "#3498DB",
+          "#26B99A",
+          "#9B59B6",
+          "#BDC3C7",
+          "#E74C3C"
+        ],
+        hoverBackgroundColor: [
+          "#49A9EA",
+          "#36CAAB",
+          "#B370CF",
+          "#CFD4D8",
+          "#E95E4F"
+        ]
+      }]
+    },
+    options: options
+  });
+});
+
+$(document).ready(function() {
+<% last4rep = @last_4_reports.to_json %>
+lastReports = <%= raw last4rep%>;
+
+  for(var i = 0; i < 4; i++){
+    if(i < lastReports.length){
+      var data = formataData(lastReports[i].created_at);
+      $("#listReport").append("<li><div class='block'><div class='block_content'><h2 class='title'><a>PC"+ lastReports[i].computer_id +" - "+ lastReports[i].laboratory_initials +"</a></h2><div class='byline'><span>"+ data +"</span> por <a>"+ lastReports[i].user_name +"</a></div></div></div></li>");
+    }
+  }
+
+  function formataData(data){
+    var d = new Date(data);
+    var dia = (d.getDate()<10?'0':'') + d.getDate();
+    var mes = d.getMonth()+1;
+    var ano = d.getYear();
+    var hora = (d.getHours()<10?'0':'') + d.getHours();
+    var minuto = (d.getMinutes()<10?'0':'') + d.getMinutes();
+
+    var diaMomento = moment().get('date');
+    var mesMomento = moment().get('month') + 1;
+    var anoMomento = moment().get('year');
+
+    if(dia == diaMomento && mes == mesMomento && ano == anoMomento){
+      return "Hoje às " + hora + ":" + minuto;
+    }else if(dia - 1 == diaMomento && mes == mesMomento && ano == anoMomento){
+      return "Ontem às " + hora + ":" + minuto; 
+    }else{
+      return dia + "/" + mes + " às " + hora + ":" + minuto;
+    }
+  }
+});
+
+$(document).ready(function() {
+  //Data1 seria o total de horas por dia no qual o lab ficou aberto
+  var data1 = [
+    [moment().subtract(6, 'days').startOf('day').toDate(), 15/*aqui entra os role do banco de dados*/],
+    [moment().subtract(5, 'days').startOf('day').toDate(), 5/*aqui entra os role do banco de dados*/],
+    [moment().subtract(4, 'days').startOf('day').toDate(), 19/*aqui entra os role do banco de dados*/],
+    [moment().subtract(3, 'days').startOf('day').toDate(), 25/*aqui entra os role do banco de dados*/],
+    [moment().subtract(2, 'days').startOf('day').toDate(), 22/*aqui entra os role do banco de dados*/],
+    [moment().subtract(1, 'days').startOf('day').toDate(), 18/*aqui entra os role do banco de dados*/],
+    [moment().startOf('day').toDate(), 7/*aqui entra os role do banco de dados*/]
+  ];
+
+      $("#canvas_dahs").length && $.plot($("#canvas_dahs"), [
+        data1
+      ], {
+        series: {
+          lines: {
+            show: false,
+            fill: true
+          },
+          splines: {
+            show: true,
+            tension: 0.4,
+            lineWidth: 1,
+            fill: 0.4
+          },
+          points: {
+            radius: 0,
+            show: true
+          },
+          shadowSize: 2
+        },
+        grid: {
+          verticalLines: true,
+          hoverable: true,
+          clickable: true,
+          tickColor: "#d5d5d5",
+          borderWidth: 1,
+          color: '#fff'
+        },
+        colors: ["rgba(38, 185, 154, 0.38)", "rgba(3, 88, 106, 0.38)"],
+        xaxis: {
+          tickColor: "rgba(51, 51, 51, 0.06)",
+          mode: "time",
+          tickSize: [1, "day"],
+          //tickLength: 10,
+          axisLabel: "Date",
+          axisLabelUseCanvas: true,
+          axisLabelFontSizePixels: 12,
+          axisLabelFontFamily: 'Verdana, Arial',
+          axisLabelPadding: 20
+        },
+        yaxis: {
+          ticks: 8,
+          tickColor: "rgba(51, 51, 51, 0.06)",
+        },
+        tooltip: false
+      });
+});
+
+$(document).ready(function() {
+  //Data2 seria o pico de alunos utilizando o lab
+  var data2 = [
+    [moment().subtract(6, 'days').startOf('day').toDate(), 30/*aqui entra os role do banco de dados*/],
+    [moment().subtract(5, 'days').startOf('day').toDate(), 25/*aqui entra os role do banco de dados*/],
+    [moment().subtract(4, 'days').startOf('day').toDate(), 26/*aqui entra os role do banco de dados*/],
+    [moment().subtract(3, 'days').startOf('day').toDate(), 20/*aqui entra os role do banco de dados*/],
+    [moment().subtract(2, 'days').startOf('day').toDate(), 23/*aqui entra os role do banco de dados*/],
+    [moment().subtract(1, 'days').startOf('day').toDate(), 19/*aqui entra os role do banco de dados*/],
+    [moment().startOf('day').toDate(), 8/*aqui entra os role do banco de dados*/]
+  ];
+      $("#canvas_dash2").length && $.plot($("#canvas_dash2"), [
+        data2
+      ], {
+        series: {
+          lines: {
+            show: false,
+            fill: true
+          },
+          splines: {
+            show: true,
+            tension: 0.4,
+            lineWidth: 1,
+            fill: 0.4
+          },
+          points: {
+            radius: 0,
+            show: true
+          },
+          shadowSize: 2
+        },
+        grid: {
+          verticalLines: true,
+          hoverable: true,
+          clickable: true,
+          tickColor: "#d5d5d5",
+          borderWidth: 1,
+          color: '#fff'
+        },
+        colors: ["rgba(38, 185, 154, 0.38)", "rgba(3, 88, 106, 0.38)"],
+        xaxis: {
+          tickColor: "rgba(51, 51, 51, 0.06)",
+          mode: "time",
+          tickSize: [1, "day"],
+          //tickLength: 10,
+          axisLabel: "Date",
+          axisLabelUseCanvas: true,
+          axisLabelFontSizePixels: 12,
+          axisLabelFontFamily: 'Verdana, Arial',
+          axisLabelPadding: 20
+        },
+        yaxis: {
+          ticks: 8,
+          tickColor: "rgba(51, 51, 51, 0.06)",
+        },
+        tooltip: false
+      });
+});
+
+$(document).ready(function(){
+<% chart_json = @report.to_json %>
+pc_reports_json = <%= raw chart_json %>; // json criado
+
+  var options = {
+    legend: false,
+    responsive: false
+  };
+
+  var colorClass = ['fa fa-square blue', 'fa fa-square green', 'fa fa-square purple', 'fa fa-square aero', 'fa fa-square red'];
+  var selectedColor = 0;
+  var labelClass = [];
+  var dataClass = [];
+
+  for(var i = 0; i < 5; i++){
+    if(i < pc_reports_json.length){
+      $("#reportMax").append("<tr><td><p><i class ='"+colorClass[selectedColor]+"'></i>Máquina "+pc_reports_json[i][0]+"</p></td><td>"+pc_reports_json[i][1]+"</td></tr>");
+      labelClass.push(("Máquina " + pc_reports_json[i][0]));
+      dataClass.push(pc_reports_json[i][1]);
+      selectedColor++;
+    }
+  }
+
+  new Chart(document.getElementById("canvasReport"), {
+    type: 'doughnut',
+    tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+    data: {
+      labels: 
+        labelClass,
+      datasets: [{
+        data: 
+          dataClass,
+        backgroundColor: [
+          "#3498DB",
+          "#26B99A",
+          "#9B59B6",
+          "#BDC3C7",
+          "#E74C3C"
+        ],
+        hoverBackgroundColor: [
+          "#49A9EA",
+          "#36CAAB",
+          "#B370CF",
+          "#CFD4D8",
+          "#E95E4F"
+        ]
+      }]
+    },
+    options: options
+  });
+});
+
+$(document).ready(function() {
+
+  var cb = function(start, end, label) {
+    console.log(start.toISOString(), end.toISOString(), label);
+    $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+  };
+
+  var optionSet1 = {
+    startDate: moment().subtract(7, 'days'),
+    endDate: moment(),
+    minDate: '01/01/2012',
+    maxDate: moment(),
+    dateLimit: {
+      days: 60
+    },
+    showDropdowns: true,
+    showWeekNumbers: true,
+    timePicker: false,
+    timePickerIncrement: 1,
+    timePicker12Hour: true,
+    ranges: {
+      'Today': [moment(), moment()],
+      'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+      'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+      'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+      'This Month': [moment().startOf('month'), moment().endOf('month')],
+      'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+    },
+    opens: 'left',
+    buttonClasses: ['btn btn-default'],
+    applyClass: 'btn-small btn-primary',
+    cancelClass: 'btn-small',
+    format: 'MM/DD/YYYY',
+    separator: ' to ',
+    locale: {
+      applyLabel: 'Submit',
+      cancelLabel: 'Clear',
+      fromLabel: 'From',
+      toLabel: 'To',
+      customRangeLabel: 'Custom',
+      daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+      monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      firstDay: 1
+    }
+  };
+  $('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
+  $('#reportrange').daterangepicker(optionSet1, cb);
+  $('#reportrange').on('show.daterangepicker', function() {
+    console.log("show event fired");
+  });
+  $('#reportrange').on('hide.daterangepicker', function() {
+    console.log("hide event fired");
+  });
+  $('#reportrange').on('apply.daterangepicker', function(ev, picker) {
+    console.log("apply event fired, start/end dates are " + picker.startDate.format('MMMM D, YYYY') + " to " + picker.endDate.format('MMMM D, YYYY'));
+  });
+  $('#reportrange').on('cancel.daterangepicker', function(ev, picker) {
+    console.log("cancel event fired");
+  });
+  $('#options1').click(function() {
+    $('#reportrange').data('daterangepicker').setOptions(optionSet1, cb);
+  });
+  $('#options2').click(function() {
+    $('#reportrange').data('daterangepicker').setOptions(optionSet2, cb);
+  });
+  $('#destroy').click(function() {
+    $('#reportrange').data('daterangepicker').remove();
+  });
+});
+
+// Tempo aberto no mesmo dia, só que 1 semana atrás
+// Tempo médio que ficou aberto essa semana
+// Tempo médio que ficou aberto semana passada
+// Número de usuários cadastrados no sistema
+// Número de Reports não resolvidos
+// Número total de reports
+// Tempo sem energia essa semana
+// Tempo sem energia semana passada
+// 5 salas com mais aulas
+// Últimos 4 reports de máquinas (e o horário que foram feitos)
+// Últimos 4 acessos ao LERIS
