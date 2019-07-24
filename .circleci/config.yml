@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/sigla-UFSCar
     docker:
-      - image: circleci/ruby:2.4.1-node-browsers
+      - image: circleci/ruby:2.6.3-node-browsers
         environment:
           PGHOST: 127.0.0.1
           RAILS_ENV: development
@@ -17,10 +17,6 @@ jobs:
           POSTGRES_PASSWORD: postgres
     steps:
       - checkout
-
-      - run:
-          name: Which bundler?
-          command: bundle -v
 
       - run:
           name: Install environment dependencies
