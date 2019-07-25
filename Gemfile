@@ -27,7 +27,7 @@ group :development, :test do
   gem 'brakeman', require: false
   gem 'byebug', '~> 9.1.0'
   gem 'capybara', '~> 2.13'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'ffaker'
   gem 'pronto', require: false
   gem 'pronto-brakeman', require: false
