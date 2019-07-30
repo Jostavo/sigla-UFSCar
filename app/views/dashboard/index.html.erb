@@ -389,9 +389,11 @@
   </div>
 </div>
 
-<!-- /page content -->
 <script>
 $(document).ready(function() {
+// Variable loading
+// Chart loading (we need to fill them)
+// Chart drawing (we need to write them inside those define htmls)
 // TEMPO ABERTO HOJE
 <% time_open_today = @labopen_today.to_json %>
 time_open_today_chart = <%= raw time_open_today%>;
@@ -904,9 +906,7 @@ $(document).ready(function() {
     $('#reportrange').data('daterangepicker').remove();
   });
 });
-</script>
 
-<script>
 // Tempo aberto no mesmo dia, só que 1 semana atrás
 // Tempo médio que ficou aberto essa semana
 // Tempo médio que ficou aberto semana passada

@@ -1,0 +1,389 @@
+$(document).ready(function(){
+<% top5labs = @top5_labs.to_json %>
+topLabs = <%= raw top5labs %>;
+
+  var options = {
+    legend: false,
+    responsive: false
+  };
+
+  var colorClass = ['fa fa-square blue', 'fa fa-square green', 'fa fa-square purple', 'fa fa-square aero', 'fa fa-square red'];
+  var selectedColor = 0;
+  var labelClass = [];
+  var dataClass = [];
+
+  for(var i = 0; i < 5; i++){
+    if(i < topLabs.length && topLabs[i][1] != 0){
+      $("#salasMax").append("<tr><td><p><i class ='"+colorClass[selectedColor]+"'></i>"+topLabs[i][0]+"</p></td><td>"+topLabs[i][1]+"</td></tr>");
+      labelClass.push(topLabs[i][0]);
+      dataClass.push(topLabs[i][1]);
+      selectedColor++;
+    }
+  }
+
+  new Chart(document.getElementById("canvasSala"), {
+    type: 'doughnut',
+    tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+    data: {
+      labels: 
+        labelClass,
+      datasets: [{
+        data: 
+          dataClass,
+        backgroundColor: [
+          "#3498DB",
+          "#26B99A",
+          "#9B59B6",
+          "#BDC3C7",
+          "#E74C3C"
+        ],
+        hoverBackgroundColor: [
+          "#49A9EA",
+          "#36CAAB",
+          "#B370CF",
+          "#CFD4D8",
+          "#E95E4F"
+        ]
+      }]
+    },
+    options: options
+  });
+});
+
+$(document).ready(function(){
+<% overview = @report_overview.to_json %>
+roverview = <%= raw overview %>;
+
+  var options = {
+    legend: false,
+    responsive: false
+  };
+
+  var colorClass = ['fa fa-square blue', 'fa fa-square green', 'fa fa-square purple', 'fa fa-square aero', 'fa fa-square red'];
+  var selectedColor = 0;
+  var labelClass = [];
+  var dataClass = [];
+  var names = ["pending", "resolved", "verifying"];
+  var namesPort = ["Pendente", "Resolvido", "Verificando"];
+
+  for(var i = 0; i < 3; i++){
+      $("#reviewReport").append("<tr><td><p><i class ='"+ colorClass[selectedColor] +"'></i>"+ namesPort[i] +"</p></td><td>"+ roverview[names[i]] +"</td></tr>");
+      labelClass.push(namesPort[i]);
+      dataClass.push(roverview[names[i]]);
+      selectedColor++;
+  }
+
+  new Chart(document.getElementById("canvasOver"), {
+    type: 'doughnut',
+    tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+    data: {
+      labels: 
+        labelClass,
+      datasets: [{
+        data: 
+          dataClass,
+        backgroundColor: [
+          "#3498DB",
+          "#26B99A",
+          "#9B59B6",
+          "#BDC3C7",
+          "#E74C3C"
+        ],
+        hoverBackgroundColor: [
+          "#49A9EA",
+          "#36CAAB",
+          "#B370CF",
+          "#CFD4D8",
+          "#E95E4F"
+        ]
+      }]
+    },
+    options: options
+  });
+});
+
+$(document).ready(function() {
+<% last4rep = @last_4_reports.to_json %>
+lastReports = <%= raw last4rep%>;
+
+  for(var i = 0; i < 4; i++){
+    if(i < lastReports.length){
+      var data = formataData(lastReports[i].created_at);
+      $("#listReport").append("<li><div class='block'><div class='block_content'><h2 class='title'><a>PC"+ lastReports[i].computer_id +" - "+ lastReports[i].laboratory_initials +"</a></h2><div class='byline'><span>"+ data +"</span> por <a>"+ lastReports[i].user_name +"</a></div></div></div></li>");
+    }
+  }
+
+  function formataData(data){
+    var d = new Date(data);
+    var dia = (d.getDate()<10?'0':'') + d.getDate();
+    var mes = d.getMonth()+1;
+    var ano = d.getYear();
+    var hora = (d.getHours()<10?'0':'') + d.getHours();
+    var minuto = (d.getMinutes()<10?'0':'') + d.getMinutes();
+
+    var diaMomento = moment().get('date');
+    var mesMomento = moment().get('month') + 1;
+    var anoMomento = moment().get('year');
+
+    if(dia == diaMomento && mes == mesMomento && ano == anoMomento){
+      return "Hoje às " + hora + ":" + minuto;
+    }else if(dia - 1 == diaMomento && mes == mesMomento && ano == anoMomento){
+      return "Ontem às " + hora + ":" + minuto; 
+    }else{
+      return dia + "/" + mes + " às " + hora + ":" + minuto;
+    }
+  }
+});
+
+$(document).ready(function() {
+  //Data1 seria o total de horas por dia no qual o lab ficou aberto
+  var data1 = [
+    [moment().subtract(6, 'days').startOf('day').toDate(), 15/*aqui entra os role do banco de dados*/],
+    [moment().subtract(5, 'days').startOf('day').toDate(), 5/*aqui entra os role do banco de dados*/],
+    [moment().subtract(4, 'days').startOf('day').toDate(), 19/*aqui entra os role do banco de dados*/],
+    [moment().subtract(3, 'days').startOf('day').toDate(), 25/*aqui entra os role do banco de dados*/],
+    [moment().subtract(2, 'days').startOf('day').toDate(), 22/*aqui entra os role do banco de dados*/],
+    [moment().subtract(1, 'days').startOf('day').toDate(), 18/*aqui entra os role do banco de dados*/],
+    [moment().startOf('day').toDate(), 7/*aqui entra os role do banco de dados*/]
+  ];
+
+      $("#canvas_dahs").length && $.plot($("#canvas_dahs"), [
+        data1
+      ], {
+        series: {
+          lines: {
+            show: false,
+            fill: true
+          },
+          splines: {
+            show: true,
+            tension: 0.4,
+            lineWidth: 1,
+            fill: 0.4
+          },
+          points: {
+            radius: 0,
+            show: true
+          },
+          shadowSize: 2
+        },
+        grid: {
+          verticalLines: true,
+          hoverable: true,
+          clickable: true,
+          tickColor: "#d5d5d5",
+          borderWidth: 1,
+          color: '#fff'
+        },
+        colors: ["rgba(38, 185, 154, 0.38)", "rgba(3, 88, 106, 0.38)"],
+        xaxis: {
+          tickColor: "rgba(51, 51, 51, 0.06)",
+          mode: "time",
+          tickSize: [1, "day"],
+          //tickLength: 10,
+          axisLabel: "Date",
+          axisLabelUseCanvas: true,
+          axisLabelFontSizePixels: 12,
+          axisLabelFontFamily: 'Verdana, Arial',
+          axisLabelPadding: 20
+        },
+        yaxis: {
+          ticks: 8,
+          tickColor: "rgba(51, 51, 51, 0.06)",
+        },
+        tooltip: false
+      });
+});
+
+$(document).ready(function() {
+  //Data2 seria o pico de alunos utilizando o lab
+  var data2 = [
+    [moment().subtract(6, 'days').startOf('day').toDate(), 30/*aqui entra os role do banco de dados*/],
+    [moment().subtract(5, 'days').startOf('day').toDate(), 25/*aqui entra os role do banco de dados*/],
+    [moment().subtract(4, 'days').startOf('day').toDate(), 26/*aqui entra os role do banco de dados*/],
+    [moment().subtract(3, 'days').startOf('day').toDate(), 20/*aqui entra os role do banco de dados*/],
+    [moment().subtract(2, 'days').startOf('day').toDate(), 23/*aqui entra os role do banco de dados*/],
+    [moment().subtract(1, 'days').startOf('day').toDate(), 19/*aqui entra os role do banco de dados*/],
+    [moment().startOf('day').toDate(), 8/*aqui entra os role do banco de dados*/]
+  ];
+      $("#canvas_dash2").length && $.plot($("#canvas_dash2"), [
+        data2
+      ], {
+        series: {
+          lines: {
+            show: false,
+            fill: true
+          },
+          splines: {
+            show: true,
+            tension: 0.4,
+            lineWidth: 1,
+            fill: 0.4
+          },
+          points: {
+            radius: 0,
+            show: true
+          },
+          shadowSize: 2
+        },
+        grid: {
+          verticalLines: true,
+          hoverable: true,
+          clickable: true,
+          tickColor: "#d5d5d5",
+          borderWidth: 1,
+          color: '#fff'
+        },
+        colors: ["rgba(38, 185, 154, 0.38)", "rgba(3, 88, 106, 0.38)"],
+        xaxis: {
+          tickColor: "rgba(51, 51, 51, 0.06)",
+          mode: "time",
+          tickSize: [1, "day"],
+          //tickLength: 10,
+          axisLabel: "Date",
+          axisLabelUseCanvas: true,
+          axisLabelFontSizePixels: 12,
+          axisLabelFontFamily: 'Verdana, Arial',
+          axisLabelPadding: 20
+        },
+        yaxis: {
+          ticks: 8,
+          tickColor: "rgba(51, 51, 51, 0.06)",
+        },
+        tooltip: false
+      });
+});
+
+$(document).ready(function(){
+<% chart_json = @report.to_json %>
+pc_reports_json = <%= raw chart_json %>; // json criado
+
+  var options = {
+    legend: false,
+    responsive: false
+  };
+
+  var colorClass = ['fa fa-square blue', 'fa fa-square green', 'fa fa-square purple', 'fa fa-square aero', 'fa fa-square red'];
+  var selectedColor = 0;
+  var labelClass = [];
+  var dataClass = [];
+
+  for(var i = 0; i < 5; i++){
+    if(i < pc_reports_json.length){
+      $("#reportMax").append("<tr><td><p><i class ='"+colorClass[selectedColor]+"'></i>Máquina "+pc_reports_json[i][0]+"</p></td><td>"+pc_reports_json[i][1]+"</td></tr>");
+      labelClass.push(("Máquina " + pc_reports_json[i][0]));
+      dataClass.push(pc_reports_json[i][1]);
+      selectedColor++;
+    }
+  }
+
+  new Chart(document.getElementById("canvasReport"), {
+    type: 'doughnut',
+    tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+    data: {
+      labels: 
+        labelClass,
+      datasets: [{
+        data: 
+          dataClass,
+        backgroundColor: [
+          "#3498DB",
+          "#26B99A",
+          "#9B59B6",
+          "#BDC3C7",
+          "#E74C3C"
+        ],
+        hoverBackgroundColor: [
+          "#49A9EA",
+          "#36CAAB",
+          "#B370CF",
+          "#CFD4D8",
+          "#E95E4F"
+        ]
+      }]
+    },
+    options: options
+  });
+});
+
+$(document).ready(function() {
+
+  var cb = function(start, end, label) {
+    console.log(start.toISOString(), end.toISOString(), label);
+    $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+  };
+
+  var optionSet1 = {
+    startDate: moment().subtract(7, 'days'),
+    endDate: moment(),
+    minDate: '01/01/2012',
+    maxDate: moment(),
+    dateLimit: {
+      days: 60
+    },
+    showDropdowns: true,
+    showWeekNumbers: true,
+    timePicker: false,
+    timePickerIncrement: 1,
+    timePicker12Hour: true,
+    ranges: {
+      'Today': [moment(), moment()],
+      'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+      'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+      'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+      'This Month': [moment().startOf('month'), moment().endOf('month')],
+      'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+    },
+    opens: 'left',
+    buttonClasses: ['btn btn-default'],
+    applyClass: 'btn-small btn-primary',
+    cancelClass: 'btn-small',
+    format: 'MM/DD/YYYY',
+    separator: ' to ',
+    locale: {
+      applyLabel: 'Submit',
+      cancelLabel: 'Clear',
+      fromLabel: 'From',
+      toLabel: 'To',
+      customRangeLabel: 'Custom',
+      daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+      monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+      firstDay: 1
+    }
+  };
+  $('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
+  $('#reportrange').daterangepicker(optionSet1, cb);
+  $('#reportrange').on('show.daterangepicker', function() {
+    console.log("show event fired");
+  });
+  $('#reportrange').on('hide.daterangepicker', function() {
+    console.log("hide event fired");
+  });
+  $('#reportrange').on('apply.daterangepicker', function(ev, picker) {
+    console.log("apply event fired, start/end dates are " + picker.startDate.format('MMMM D, YYYY') + " to " + picker.endDate.format('MMMM D, YYYY'));
+  });
+  $('#reportrange').on('cancel.daterangepicker', function(ev, picker) {
+    console.log("cancel event fired");
+  });
+  $('#options1').click(function() {
+    $('#reportrange').data('daterangepicker').setOptions(optionSet1, cb);
+  });
+  $('#options2').click(function() {
+    $('#reportrange').data('daterangepicker').setOptions(optionSet2, cb);
+  });
+  $('#destroy').click(function() {
+    $('#reportrange').data('daterangepicker').remove();
+  });
+});
+
+// Tempo aberto no mesmo dia, só que 1 semana atrás
+// Tempo médio que ficou aberto essa semana
+// Tempo médio que ficou aberto semana passada
+// Número de usuários cadastrados no sistema
+// Número de Reports não resolvidos
+// Número total de reports
+// Tempo sem energia essa semana
+// Tempo sem energia semana passada
+// 5 salas com mais aulas
+// Últimos 4 reports de máquinas (e o horário que foram feitos)
+// Últimos 4 acessos ao LERIS

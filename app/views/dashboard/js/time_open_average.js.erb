@@ -1,0 +1,40 @@
+$(document).ready(function() {
+  var adicao;
+  var time_open_week_chart = <%= raw @labopen_week.to_json %>;
+  var time_open_last_week_chart = <%= raw @labopen_last_week.to_json %>;
+  var porcentagem = time_open_week_chart - time_open_last_week_chart;
+  
+  if (time_open_last_week_chart != 0) {
+    porcentagem /= time_open_week_chart;
+  }
+  porcentagem *= 100;
+
+
+  if (time_open_week_chart > time_open_last_week_chart) {
+    adicao = " green";
+  } else if (time_open_week_chart < time_open_last_week_chart) {
+    adicao = " red";
+  } else {
+    adicao = "";
+  }
+
+$("#TMA").append("<span class='count_top'><i class='fa fa-clock-o'></i> Tempo Médio Aberto</span>");
+
+if(time_open_week_chart < 60){
+  $("#TMA").append("<div class='count"+ adicao +"'> &gt; 1 <smallart>min</smallart> </div>");
+}else if(time_open_week_chart > 60 && time_open_week_chart < 3600){
+  $("#TMA").append("<div class='count"+ adicao +"'>"+ Math.floor(time_open_week_chart/60) +" <smallart>min</smallart> </div>");
+}else if(time_open_week_chart > 3600 && time_open_week_chart < 7200){
+  $("#TMA").append("<div class='count"+ adicao +"'> 1 <smallart>hr</smallart> </div>");
+}else{
+  $("#TMA").append("<div class='count"+ adicao +"'> "+ Math.floor(time_open_week_chart/3600) +" <smallart>hrs</smallart> </div>");
+}
+
+if(time_open_week_chart > time_open_last_week_chart){
+  $("#TMA").append("<span class='count_bottom'><i class='green'><i class='fa fa-sort-asc'></i>"+ Math.floor(porcentagem) +"%</i> que semana passada</span>");
+}else if(time_open_week_chart < time_open_last_week_chart){
+  $("#TMA").append("<span class='count_bottom'><i class='red'><i class='fa fa-sort-desc'></i>"+ Math.floor(porcentagem) +"%</i> que semana passada</span>");
+}else{
+  $("#TMA").append("<span class='count_bottom'><i class='gray'>Igual</i> a semana passada</span>");
+}
+});

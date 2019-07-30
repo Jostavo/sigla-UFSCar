@@ -14,4 +14,4 @@ COPY . /sigla
 
 EXPOSE 3000
 
-CMD [ "./init/entrypoint.sh" ]
+CMD [ "rails", "s" ]

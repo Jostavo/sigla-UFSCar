@@ -1,0 +1,43 @@
+$(document).ready(function() {
+  var adicao;
+  var metric;
+  var icon;
+  var time_open_today_chart = <%= raw @labopen_today.to_json %>;
+  var time_open_today_week_chart = <%= raw @labopen_today_and_week_ago.to_json %>;
+  var porcentagem = time_open_today_chart - time_open_today_week_chart;
+
+  if (time_open_today_chart != 0) {
+    porcentagem /= time_open_today_chart;
+  }
+  porcentagem *= 100;
+
+  if (time_open_today_chart > time_open_today_week_chart) {
+    adicao = "green";
+    icon = "<i class='fa fa-sort-asc'></i>";
+  } else if (time_open_today_chart < time_open_today_week_chart) {
+    adicao = "red";
+    icon = "<i class='fa fa-sort-desc'></i>";
+  } else {
+    adicao = "gray";
+    icon = "";
+  }
+
+  if (time_open_today_chart < 60) {
+    metric = "min"
+  } else if (time_open_today_chart > 60 && time_open_today_chart < 3600) {
+    metric = "mins"
+  } else if (time_open_today_chart > 3600 && time_open_today_chart < 7200) {
+    metric = "hr"
+  } else {
+    metric = "hrs"
+  }
+
+  $("#TAH").append("<span class='count_top'><i class='fa fa-user'></i> Tempo Aberto Hoje</span>");
+  $("#TAH").append("<div class='count "+ adicao +"'> "+ Math.floor(time_open_today_chart/3600) +" <smallart>"+ metric +"</smallart> </div>");
+
+  if(time_open_today_chart == time_open_today_week_chart){
+    $("#TAH").append("<span class='count_bottom'><i class='gray'>Igual</i> a semana passada</span>");
+  }else{
+    $("#TAH").append("<span class='count_bottom'><i class='"+ adicao +"'>"+ icon + Math.floor(porcentagem) +"%</i> que semana passada</span>");
+  }
+});

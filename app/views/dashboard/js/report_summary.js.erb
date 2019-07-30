@@ -1,0 +1,30 @@
+$(document).ready(function(){
+// Sumariza os reports
+<% pendingPorts = @reports_pending.to_json %>
+pPorts = <%= raw pendingPorts%>;
+
+<% totalPorts = @total_reports.to_json %>
+tPorts = <%= raw totalPorts%>;
+
+var porcentagem = pPorts - tPorts;
+if(tPorts == 0)
+  porcentagem = porcentagem / 1;
+else
+  porcentagem = porcentagem / tPorts;
+porcentagem = porcentagem * 100;
+porcentagem = porcentagem + 100;
+
+$("#nReport").append("<span class='count_top'><i class='fa fa-user'></i> Reports Não Resolvidos</span>");
+if(pPorts != 0){
+  $("#nReport").append("<div class='count'>"+ pPorts +"</div>");
+}else{
+  $("#nReport").append("<div class='count green'>"+ pPorts +"</div>");
+}
+
+if(pPorts != 0){
+  $("#nReport").append("<span class='count_bottom'><i class='red'><i class='fa fa-sort-desc'></i>"+ Math.floor(porcentagem) +"%</i> do total</span>");
+}
+
+$("#tReport").append("<span class='count_top'><i class='fa fa-user'></i> Reports Totais </span>");
+$("#tReport").append("<div class='count'>"+ tPorts +"</div>");
+});
