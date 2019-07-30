@@ -1,6 +1,7 @@
 $(document).ready(function() {
   var adicao;
   var metric;
+  var icon;
   var time_open_today_chart = <%= raw @labopen_today.to_json %>;
   var time_open_today_week_chart = <%= raw @labopen_today_and_week_ago.to_json %>;
   var porcentagem = time_open_today_chart - time_open_today_week_chart;
@@ -11,11 +12,14 @@ $(document).ready(function() {
   porcentagem *= 100;
 
   if (time_open_today_chart > time_open_today_week_chart) {
-    adicao = " green";
+    adicao = "green";
+    icon = "<i class='fa fa-sort-asc'></i>";
   } else if (time_open_today_chart < time_open_today_week_chart) {
-    adicao = " red";
+    adicao = "red";
+    icon = "<i class='fa fa-sort-desc'></i>";
   } else {
-    adicao = "";
+    adicao = "gray";
+    icon = "";
   }
 
   if (time_open_today_chart < 60) {
@@ -29,13 +33,11 @@ $(document).ready(function() {
   }
 
   $("#TAH").append("<span class='count_top'><i class='fa fa-user'></i> Tempo Aberto Hoje</span>");
-  $("#TAH").append("<div class='count"+ adicao +"'> "+ Math.floor(time_open_today_chart/3600) +" <smallart>"+ metric +"</smallart> </div>");
+  $("#TAH").append("<div class='count "+ adicao +"'> "+ Math.floor(time_open_today_chart/3600) +" <smallart>"+ metric +"</smallart> </div>");
 
-  if(time_open_today_chart > time_open_today_week_chart){
-    $("#TAH").append("<span class='count_bottom'><i class='green'><i class='fa fa-sort-asc'></i>"+ Math.floor(porcentagem) +"%</i> que semana passada</span>");
-  }else if(time_open_today_chart < time_open_today_week_chart){
-    $("#TAH").append("<span class='count_bottom'><i class='red'><i class='fa fa-sort-desc'></i>"+ Math.floor(porcentagem) +"%</i> que semana passada</span>");
-  }else{
+  if(time_open_today_chart == time_open_today_week_chart){
     $("#TAH").append("<span class='count_bottom'><i class='gray'>Igual</i> a semana passada</span>");
+  }else{
+    $("#TAH").append("<span class='count_bottom'><i class='"+ adicao +"'>"+ icon + Math.floor(porcentagem) +"%</i> que semana passada</span>");
   }
 });

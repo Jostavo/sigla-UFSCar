@@ -1,0 +1,11 @@
+$(document).ready(function() {
+// Contador de usuários
+count_usuarios = <% raw @users_count.to_json %>
+
+$("#UC").append("<span class='count_top'><i class='fa fa-user'></i> Usuários Cadastrados</span>");
+if(count_usuarios != 1)
+  $("#UC").append("<div class='count'>"+count_usuarios+" <smallart>usuários</smallart></div>");
+else
+  $("#UC").append("<div class='count'>"+count_usuarios+" <smallart>usuário</smallart></div>");
+//<span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+});
