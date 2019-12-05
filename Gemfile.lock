@@ -263,7 +263,7 @@ GEM
       pry (~> 0.10)
     psych (3.1.0)
     public_suffix (4.0.1)
-    puma (3.12.1)
+    puma (3.12.2)
     rack (2.0.7)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -458,7 +458,7 @@ DEPENDENCIES
   pronto-simplecov
   pry (~> 0.11.1)
   pry-byebug (~> 3.5.0)
-  puma (~> 3.0)
+  puma (~> 3.12)
   rails (~> 5.0.0)
   rails-controller-testing
   rails-i18n (~> 5.0.0)
