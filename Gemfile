@@ -18,7 +18,7 @@ gem 'pg'
 gem 'puma', '~> 3.12'
 gem 'rails', '~> 5.0.0'
 gem 'rails-i18n', '~> 5.0.0' # For 5.0.x
-gem 'rake', '< 11.0'
+gem 'rake', '< 13.0'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'tzinfo-data', platforms: %w[mingw mswin x64_mingw jruby]
