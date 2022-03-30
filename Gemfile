@@ -15,7 +15,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
 gem 'pg'
-gem 'puma', '~> 3.12'
+gem 'puma', '~> 4.3'
 gem 'rails', '~> 5.0.0'
 gem 'rails-i18n', '~> 5.0.0' # For 5.0.x
 gem 'rake', '< 13.0'
